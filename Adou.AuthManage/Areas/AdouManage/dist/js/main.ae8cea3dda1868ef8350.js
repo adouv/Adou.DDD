@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "168a7e99f6f3c8eb47d0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ae8cea3dda1868ef8350"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -714,7 +714,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "168a7e99f6f3c8eb47d0"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ae8cea3dda1868ef8350"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -12852,7 +12852,7 @@ var _vueRouter = __webpack_require__(8);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _Index = __webpack_require__(11);
+var _Index = __webpack_require__(9);
 
 var _Index2 = _interopRequireDefault(_Index);
 
@@ -15503,13 +15503,6 @@ if (inBrowser && window.Vue) {
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports) {
-
-module.exports = "@{\r\n    ViewBag.Title = \"首页\";\r\n}\r\n\r\n{{message}}";
-
-/***/ }),
-/* 10 */,
-/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15519,9 +15512,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Index = __webpack_require__(9);
+var _Index = __webpack_require__(10);
 
 var _Index2 = _interopRequireDefault(_Index);
+
+__webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15535,6 +15530,18 @@ exports.default = {
     }
 };
 
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = "@{\r\n    ViewBag.Title = \"首页\";\r\n}\r\n<div>\r\n    {{message}}\r\n</div>\r\n";
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+throw new Error("Module parse failed: D:\\adou\\adouproject\\api\\Adou.Api\\Adou.AuthManage\\Areas\\AdouManage\\Views\\Home\\Index.scss Unexpected token (1:5)\nYou may need an appropriate loader to handle this file type.\n| ﻿div {\r\n|     border: 1px solid #f00;\r\n| }\r");
+
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.168a7e99f6f3c8eb47d0.js.map
+//# sourceMappingURL=main.ae8cea3dda1868ef8350.js.map

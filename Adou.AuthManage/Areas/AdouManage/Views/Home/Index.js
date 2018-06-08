@@ -1,4 +1,5 @@
 ﻿import HomeTemplate from "./Index.cshtml";
+import "./Index.scss";
 
 export default {
     name: "HomeComponent",

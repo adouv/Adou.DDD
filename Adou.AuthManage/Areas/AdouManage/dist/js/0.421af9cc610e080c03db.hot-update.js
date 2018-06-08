@@ -1,6 +1,6 @@
 webpackHotUpdate(0,{
 
-/***/ 11:
+/***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,9 +10,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Index = __webpack_require__(9);
+var _Index = __webpack_require__(10);
 
 var _Index2 = _interopRequireDefault(_Index);
+
+__webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,14 +28,7 @@ exports.default = {
     }
 };
 
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports) {
-
-module.exports = "@{\r\n    ViewBag.Title = \"首页\";\r\n}\r\n\r\n{{message}}";
-
 /***/ })
 
 })
-//# sourceMappingURL=0.afddeacd310aa2154c81.hot-update.js.map
+//# sourceMappingURL=0.421af9cc610e080c03db.hot-update.js.map

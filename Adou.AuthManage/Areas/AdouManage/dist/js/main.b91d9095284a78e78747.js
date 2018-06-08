@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e0863bcd88fe608b6424"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b91d9095284a78e78747"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -714,7 +714,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e0863bcd88fe608b6424"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "b91d9095284a78e78747"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -12858,22 +12858,11 @@ var _Index2 = _interopRequireDefault(_Index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Foo = {
-    template: _Index2.default,
-    data: function data() {
-        return {
-            message: "foos"
-        };
-    }
-};
-
-//import foo from '../../Views/Home/HtmlPage1.html';
-
 var Bar = { template: '<div>bar</div>' };
 
 _vue2.default.use(_vueRouter2.default);
 
-var routers = [{ path: '/foo', component: Foo }, { path: '/bar', component: Bar }];
+var routers = [{ path: '/home', component: _Index2.default }, { path: '/bar', component: Bar }];
 
 var router = new _vueRouter2.default({
     routes: routers
@@ -15514,10 +15503,45 @@ if (inBrowser && window.Vue) {
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _Index = __webpack_require__(10);
+
+var _Index2 = _interopRequireDefault(_Index);
+
+__webpack_require__(11);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    name: "HomeComponent",
+    template: _Index2.default,
+    data: function data() {
+        return {
+            message: "homes"
+        };
+    }
+};
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports) {
 
-module.exports = "@{\r\n    ViewBag.Title = \"首页\";\r\n}\r\n\r\n{{message}}";
+module.exports = "@{\r\n    ViewBag.Title = \"首页\";\r\n}\r\n<div>\r\n    {{message}}\r\n</div>\r\n";
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+﻿
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.e0863bcd88fe608b6424.js.map
+//# sourceMappingURL=main.b91d9095284a78e78747.js.map

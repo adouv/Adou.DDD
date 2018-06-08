@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0f9ba014a46c3046a588"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "421af9cc610e080c03db"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -714,7 +714,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0f9ba014a46c3046a588"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "421af9cc610e080c03db"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -12852,7 +12852,7 @@ var _vueRouter = __webpack_require__(8);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _Index = __webpack_require__(11);
+var _Index = __webpack_require__(9);
 
 var _Index2 = _interopRequireDefault(_Index);
 
@@ -15503,13 +15503,6 @@ if (inBrowser && window.Vue) {
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports) {
-
-module.exports = "@{\r\n    ViewBag.Title = \"首页\";\r\n}\r\n<div>\r\n    {{message}}\r\n</div>\r\n";
-
-/***/ }),
-/* 10 */,
-/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15519,9 +15512,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _Index = __webpack_require__(9);
+var _Index = __webpack_require__(10);
 
 var _Index2 = _interopRequireDefault(_Index);
+
+var _Index3 = __webpack_require__(11);
+
+var _Index4 = _interopRequireDefault(_Index3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15535,6 +15532,18 @@ exports.default = {
     }
 };
 
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = "@{\r\n    ViewBag.Title = \"首页\";\r\n}\r\n<div>\r\n    {{message}}\r\n</div>\r\n";
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+﻿
+
 /***/ })
 /******/ ]);
-//# sourceMappingURL=main.0f9ba014a46c3046a588.js.map
+//# sourceMappingURL=main.421af9cc610e080c03db.js.map
