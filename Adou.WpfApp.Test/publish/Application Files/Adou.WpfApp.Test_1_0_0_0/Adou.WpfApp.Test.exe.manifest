@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Adou.WpfApp.Test.exe" version="1.0.0.0" publicKeyToken="627d4411a6b981a4" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Adou.WpfApp.Test" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Adou.WpfApp.Test.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC 清单选项
+         若想要更改 Windows 用户帐户控制级别，请
+         将 requestedExecutionLevel 节点替换为下述某项。
+
+       <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+       <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+       <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+        若想要使用文件和注册表虚拟化以实现向后
+        兼容，请删除 requestedExecutionLevel 节点。
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Adou.WpfApp.Test.exe" size="18904">
+      <assemblyIdentity name="Adou.WpfApp.Test" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>fAvmfLejczrdWLsCyoYg9IuWL6b7a7oMCtgqcxIvxCU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Adou.WpfApp.Test.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-U8N9B7O\ADOU" issuerKeyHash="6d3790f48af90520bae8ec319488be4a4867b875" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>gx4AjODJgj+q75rWOc7jyP1JLyD22uVC1Mm69W4Tx/k=</DigestValue></Reference></SignedInfo><SignatureValue>vrqqRsp/OEfnM+JYfYOjouOcYhQGW9qRRqiGNVosV2jAtwuJUFsAtCfwf1V3GbIqaFWqKk/JouyEwGmcBA5dXODBYPtjUzomTrYY9UIegZaHKNAdPWdYXJm2pc3wJ6kghLi2iSujVCfhl6NK55lt/nGbQB6LuYGuiL68ZDhKZ0M=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>zyc0qYnZ9AJoaY8erC/090fCUeuT3CfvFDFVStJy+hJlMD/dAc4Krz58tzFxeH9Fhmpz4o5S2wxJzFFxGjvqc1D2oPHk3wTd+lrkxXQgOZwIdtmjRjMXgKpJPTqAPfwsBwYDkpIaZGCsEa6gU3h7/SsYIanBgPFVVNjcKS6tb0k=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="f9c7136ef5bac9d442e5daf6202f49fdc8e3ce39d69aefaa3f82c9e08c001e83" Description="" Url=""><as:assemblyIdentity name="Adou.WpfApp.Test.exe" version="1.0.0.0" publicKeyToken="627d4411a6b981a4" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-U8N9B7O\ADOU</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>5zqluaxcRB/LToCXpTluGh2ywvOW82DyTWeecepHFII=</DigestValue></Reference></SignedInfo><SignatureValue>kkS7umTvd5MFBoE28J/5rInkqLXPcyNZbv7JqPkh3s9puIjtnjAwP/MV74uBjk2Jb1Q+9tqmHvycuQK3fQB0LUQeA3mROtRXhb/L+kphO3M41bbJV/CiDK7l/QS7Y7Ki5jlqrzseGXU9Tiy0cBjR7rnWMidATCHW6AulKiEQAgA=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>zyc0qYnZ9AJoaY8erC/090fCUeuT3CfvFDFVStJy+hJlMD/dAc4Krz58tzFxeH9Fhmpz4o5S2wxJzFFxGjvqc1D2oPHk3wTd+lrkxXQgOZwIdtmjRjMXgKpJPTqAPfwsBwYDkpIaZGCsEa6gU3h7/SsYIanBgPFVVNjcKS6tb0k=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB6TCCAVKgAwIBAgIQFQXddtjiz5NIYivrLL8k6DANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDHigARABFAFMASwBUAE8AUAAtAFUAOABOADkAQgA3AE8AXABBAEQATwBVMB4XDTE3MTIwMTA5MDE0NFoXDTE4MTIwMTE1MDE0NFowMzExMC8GA1UEAx4oAEQARQBTAEsAVABPAFAALQBVADgATgA5AEIANwBPAFwAQQBEAE8AVTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAzyc0qYnZ9AJoaY8erC/090fCUeuT3CfvFDFVStJy+hJlMD/dAc4Krz58tzFxeH9Fhmpz4o5S2wxJzFFxGjvqc1D2oPHk3wTd+lrkxXQgOZwIdtmjRjMXgKpJPTqAPfwsBwYDkpIaZGCsEa6gU3h7/SsYIanBgPFVVNjcKS6tb0kCAwEAATANBgkqhkiG9w0BAQsFAAOBgQAN95hPWSzSFIVZaClyKeQ6gZLXH2l7DHQ6MyUReQou6doo5mo2X5Grmov+AjOHN2WnOwO3xNIspjjoOO2+lg533jiRG8lA77wQtY84My0Jn+9tiU2qsqzS7ALdUSIkzIZ0LxwUb4gH7ONJDJFzq6C3+KuX1qMQTWqq+4x3JbPHOw==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
