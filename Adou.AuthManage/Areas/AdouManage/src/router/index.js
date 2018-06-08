@@ -1,16 +1,14 @@
 ﻿import Vue from 'vue'
 import Router from 'vue-router';
 
-import HomeComponent from '../components/Home.vue';
+import HomeComponent from '../../Views/Home/Index.js';
+const Bar = { template: '<div>bar</div>' }
 
 Vue.use(Router);
 
 const routers = [
-    {
-        path: "/",
-        name: "/",
-        component: HomeComponent
-    }
+    { path: '/home', component: HomeComponent },
+    { path: '/bar', component: Bar }
 ];
 
 const router = new Router({

@@ -17,7 +17,7 @@ namespace Adou.AuthManage.Areas.AdouManage
             context.MapRoute(
                 "AdouManage_default",
                 "AdouManage/{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new { controller = "App", action = "Index", id = UrlParameter.Optional },
                 new string[] { "Adou.AuthManage.Areas.AdouManage.Controllers" }
             );
         }

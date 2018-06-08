@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace Adou.AuthManage.Areas.AdouManage.Controllers
 {
-    public class HomeController : Controller
+    public class AppController : Controller
     {
-        // GET: AdouManage/Home
+        // GET: AdouManage/App
         public ActionResult Index()
         {
             return View();

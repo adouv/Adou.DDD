@@ -14,13 +14,6 @@ const NAME = "[name].js";
 
 //配置
 const config = {
-    //devServer: { //这没什么用到，就是在开发时的设定，我一般都是直接production
-    //    port: 4200,
-    //    overlay: {
-    //        errors: true,
-    //        // warnings : true
-    //    }
-    //},
     watch: true,//当改变代码时，会自动更新，除了config
     devtool: 'source-map',//在有bug时，可以看到源码
     entry: [
@@ -83,6 +76,10 @@ const config = {
                     limit: 10000,
                     name: path.join(__dirname, './Areas/AdouManage/dist/fonts/[name].[hash:7].[ext]')
                 }
+            },
+            {
+                test: /\.(html|cshtml)$/,
+                loader: 'html-loader'
             }
         ]
     },//使用babel编译js
@@ -96,7 +93,7 @@ const config = {
         }),//将filename和filename.chunkhash对应起来
         new htmlWebpackPlugin({
             filename: '../../Views/Shared/_Layout.cshtml',
-            template: './Areas/AdouManage/Views/Shared/Template.cshtml',
+            template: './Areas/AdouManage/Views/Shared/_Template.cshtml',
             inject: 'body'
         }),
         new webpack.DefinePlugin({
