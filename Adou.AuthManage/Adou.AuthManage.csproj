@@ -146,6 +146,7 @@
     <Compile Include="Areas\AdouManage\AdouManageAreaRegistration.cs" />
     <Compile Include="Areas\AdouManage\Controllers\AppController.cs" />
     <Compile Include="Areas\AdouManage\Controllers\HomeController.cs" />
+    <Compile Include="Areas\AdouManage\Controllers\LoginController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -156,7 +157,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AdouManage\src\App.js" />
+    <Content Include="Areas\AdouManage\src\components\index.js" />
+    <Content Include="Areas\AdouManage\src\components\tip\index.js" />
+    <Content Include="Areas\AdouManage\src\components\tip\tip.js" />
+    <Content Include="Areas\AdouManage\src\components\tip\tip.html" />
     <Content Include="Areas\AdouManage\Views\Home\Index.js" />
+    <Content Include="Areas\AdouManage\Views\Login\Index.js" />
     <Content Include="webpack.config - 复制.js" />
     <Content Include="webpack.config.js" />
     <Content Include="Areas\AdouManage\src\router\index.js" />
@@ -186,16 +192,19 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="build\webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdouManage\dist\" />
+    <Folder Include="build\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AdouManage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AdouManage\Views\Shared\_Template.cshtml" />
     <Content Include="Areas\AdouManage\Views\App\Index.cshtml" />
+    <Content Include="Areas\AdouManage\src\components\tip\tip.scss" />
+    <None Include="Areas\AdouManage\Views\Home\Index.scss" />
+    <Content Include="Areas\AdouManage\Views\Login\Index.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>

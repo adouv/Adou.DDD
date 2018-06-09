@@ -1,12 +1,17 @@
-﻿import HomeTemplate from "./Index.cshtml";
-import "./Index.scss";
+﻿import "./Index.scss";
+import HomeTemplate from "./Index.cshtml";
 
 export default {
     name: "HomeComponent",
     template: HomeTemplate,
     data() {
         return {
-            message: "homes"
+            message: "home"
+        }
+    },
+    methods: {
+        btnOpen() {
+            this.$tip("hello tip!");
         }
     }
 }

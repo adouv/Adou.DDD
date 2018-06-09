@@ -2,12 +2,14 @@
 import Router from 'vue-router';
 
 import HomeComponent from '../../Views/Home/Index.js';
+import LoginComponent from '../../Views/Login/Index.js';
 const Bar = { template: '<div>bar</div>' }
 
 Vue.use(Router);
 
 const routers = [
     { path: '/home', component: HomeComponent },
+    { path: '/login', component: LoginComponent },
     { path: '/bar', component: Bar }
 ];
 

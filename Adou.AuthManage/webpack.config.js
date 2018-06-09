@@ -38,6 +38,9 @@ const config = {
                 loader: 'vue-loader',
                 options: {
                     // vue-loader options go here
+                    loaders: {
+                        scss: "style-loader!css-loader!sass-loader"
+                    }
                 }
             },
             {
@@ -76,6 +79,10 @@ const config = {
                     limit: 10000,
                     name: path.join(__dirname, './Areas/AdouManage/dist/fonts/[name].[hash:7].[ext]')
                 }
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style-loader", "css-loader", "sass-loader"]
             },
             {
                 test: /\.(html|cshtml)$/,
