@@ -156,28 +156,27 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".babelrc" />
     <Content Include="Areas\AdouManage\src\App.js" />
     <Content Include="Areas\AdouManage\src\components\index.js" />
     <Content Include="Areas\AdouManage\src\components\tip\index.js" />
-    <Content Include="Areas\AdouManage\src\components\tip\tip.js" />
     <Content Include="Areas\AdouManage\src\components\tip\tip.html" />
+    <Content Include="Areas\AdouManage\src\components\tip\tip.js" />
+    <Content Include="Areas\AdouManage\src\components\tip\tip.scss" />
+    <Content Include="Areas\AdouManage\src\router\index.js" />
     <Content Include="Areas\AdouManage\Views\Home\Index.js" />
     <Content Include="Areas\AdouManage\Views\Login\Index.js" />
-    <Content Include="webpack.config - 复制.js" />
-    <Content Include="webpack.config.js" />
-    <Content Include="Areas\AdouManage\src\router\index.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include=".babelrc" />
-    <Content Include="package-lock.json" />
-    <Content Include="package.json" />
-    <Content Include="README.md" />
     <Content Include="Areas\AdouManage\Views\web.config" />
     <Content Include="Areas\AdouManage\Views\_ViewStart.cshtml" />
     <Content Include="Areas\AdouManage\Views\Home\Index.cshtml" />
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -192,20 +191,21 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="webpack.config - 复制.js" />
+    <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdouManage\dist\" />
     <Folder Include="build\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AdouManage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AdouManage\Views\Shared\_Template.cshtml" />
     <Content Include="Areas\AdouManage\Views\App\Index.cshtml" />
-    <Content Include="Areas\AdouManage\src\components\tip\tip.scss" />
     <None Include="Areas\AdouManage\Views\Home\Index.scss" />
     <Content Include="Areas\AdouManage\Views\Login\Index.cshtml" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
