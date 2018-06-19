@@ -13,5 +13,21 @@ namespace Adou.AuthManage.Areas.AdouManage.Controllers
         {
             return View();
         }
+        public ActionResult Header()
+        {
+            return View();
+        }
+        public ActionResult Menu()
+        {
+            return View();
+        }
+        public ActionResult Content()
+        {
+            return View();
+        }
+        public ActionResult Footer()
+        {
+            return View();
+        }
     }
 }

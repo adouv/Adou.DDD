@@ -8,7 +8,7 @@ const Bar = { template: '<div>bar</div>' }
 Vue.use(Router);
 
 const routers = [
-    { path: '/home', component: HomeComponent },
+    { path: '/', component: HomeComponent },
     { path: '/login', component: LoginComponent },
     { path: '/bar', component: Bar }
 ];

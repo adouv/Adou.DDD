@@ -2,6 +2,99 @@
     ViewBag.Title = "首页";
 }
 <div id="home" class="home">
-    {{message}}
-    <a href="javascript:void(0);" @click="btnOpen();">open tip</a>
+    <el-container class="ad-header" height="65px">
+        <el-aside class="ad-header-left" :style="{width:asideWidth}">ADOU</el-aside>
+        <el-container class="ad-header-right">
+            <i class="el-icon-back menu-toggle" v-on:click="toggleCollapse"></i>
+        </el-container>
+    </el-container>
+    <el-container class="ad-container">
+        <el-aside class="ad-container-left" :style="{width:asideWidth}">
+            <el-menu :style="{width:menuWidth}" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" default-active="1-4-1" class="ad-menu" v-on:open="handleOpen" v-on:close="handleClose" :collapse="isCollapse">
+                <el-submenu index="1">
+                    <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span slot="title">系统管理</span>
+                    </template>
+                    <el-menu-item-group>
+                        <el-menu-item index="1-1"><i class="el-icon-back"></i>用户管理</el-menu-item>
+                        <el-menu-item index="1-2"><i class="el-icon-back"></i>角色管理</el-menu-item>
+                        <el-menu-item index="1-3"><i class="el-icon-back"></i>菜单管理</el-menu-item>
+                    </el-menu-item-group>
+                </el-submenu>
+                <el-menu-item index="2">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">系统监控管理</span>
+                </el-menu-item>
+                <el-menu-item index="3">
+                    <i class="el-icon-document"></i>
+                    <span slot="title">登录信息管理</span>
+                </el-menu-item>
+                <el-menu-item index="4">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">操作日志管理</span>
+                </el-menu-item>
+                <el-menu-item index="5">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航五</span>
+                </el-menu-item>
+                <el-menu-item index="6">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航六</span>
+                </el-menu-item>
+                <el-menu-item index="7">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航七</span>
+                </el-menu-item>
+                <el-menu-item index="8">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航八</span>
+                </el-menu-item>
+                <el-menu-item index="9">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航九</span>
+                </el-menu-item>
+                <el-menu-item index="10">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航十</span>
+                </el-menu-item>
+                <el-menu-item index="11">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航十一</span>
+                </el-menu-item>
+                <el-menu-item index="12">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航十二</span>
+                </el-menu-item>
+                <el-menu-item index="13">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航十三</span>
+                </el-menu-item>
+                <el-menu-item index="14">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航十四</span>
+                </el-menu-item>
+                <el-menu-item index="15">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航十五</span>
+                </el-menu-item>
+                <el-menu-item index="16">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航十六</span>
+                </el-menu-item>
+                <el-menu-item index="17">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航十七</span>
+                </el-menu-item>
+                <el-menu-item index="18">
+                    <i class="el-icon-setting"></i>
+                    <span slot="title">导航十八</span>
+                </el-menu-item>
+            </el-menu>
+        </el-aside>
+        <el-container class="ad-container-right" :style="{ paddingLeft:asideWidth}">
+            <el-main>main</el-main>
+        </el-container>
+    </el-container>
+    <el-footer class="ad-footer" height="56px" :style={paddingLeft:asideWidth}>footer</el-footer>
 </div>

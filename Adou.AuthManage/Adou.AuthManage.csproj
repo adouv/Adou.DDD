@@ -166,6 +166,19 @@
     <Content Include="Areas\AdouManage\src\router\index.js" />
     <Content Include="Areas\AdouManage\Views\Home\Index.js" />
     <Content Include="Areas\AdouManage\Views\Login\Index.js" />
+    <Content Include="build\build.js" />
+    <Content Include="build\check-versions.js" />
+    <Content Include="build\utils.js" />
+    <Content Include="build\vue-loader.conf.js" />
+    <Content Include="build\webpack.base.conf.js" />
+    <Content Include="build\webpack.dev.conf.js" />
+    <Content Include="build\webpack.prod.conf.js" />
+    <Content Include="build\webpack.test.conf.js" />
+    <Content Include="config\dev.env.js" />
+    <Content Include="config\index.js" />
+    <Content Include="config\prod.env.js" />
+    <Content Include="config\proxyConfig.js" />
+    <Content Include="config\test.env.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -191,17 +204,18 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="webpack.config - 复制.js" />
     <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="build\" />
+    <Folder Include="Areas\AdouManage\src\assets\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AdouManage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AdouManage\Views\Shared\_Template.cshtml" />
     <Content Include="Areas\AdouManage\Views\App\Index.cshtml" />
+    <Content Include="Areas\AdouManage\src\assets\less\theme\index.less" />
+    <Content Include="Areas\AdouManage\src\assets\scss\index.scss" />
     <None Include="Areas\AdouManage\Views\Home\Index.scss" />
     <Content Include="Areas\AdouManage\Views\Login\Index.cshtml" />
     <None Include="packages.config" />
@@ -233,7 +247,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="http://json.schemastore.org/babelrc" />
+      <UserProperties package_1json__JSONSchema="http://json.schemastore.org/bundleconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
