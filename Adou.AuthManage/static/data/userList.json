@@ -1,0 +1,14 @@
+[
+    {
+        "UserId": 0,
+        "UserName": "admin",
+        "UserPwd": "admin",
+        "UserType": 0
+    }, 
+    {
+        "UserId": 1,
+        "UserName": "fukaihang",
+        "UserPwd": "fukaihang",
+        "UserType": 1
+    }
+]
