@@ -145,8 +145,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\AdouManage\AdouManageAreaRegistration.cs" />
     <Compile Include="Areas\AdouManage\Controllers\AppController.cs" />
-    <Compile Include="Areas\AdouManage\Controllers\HomeController.cs" />
-    <Compile Include="Areas\AdouManage\Controllers\LoginController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -156,29 +154,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".babelrc" />
-    <Content Include="Areas\AdouManage\src\App.js" />
-    <Content Include="Areas\AdouManage\src\components\index.js" />
-    <Content Include="Areas\AdouManage\src\components\tip\index.js" />
-    <Content Include="Areas\AdouManage\src\components\tip\tip.html" />
-    <Content Include="Areas\AdouManage\src\components\tip\tip.js" />
-    <Content Include="Areas\AdouManage\src\components\tip\tip.scss" />
-    <Content Include="Areas\AdouManage\src\router\index.js" />
-    <Content Include="Areas\AdouManage\Views\Home\Index.js" />
-    <Content Include="Areas\AdouManage\Views\Login\Index.js" />
-    <Content Include="build\build.js" />
-    <Content Include="build\check-versions.js" />
-    <Content Include="build\utils.js" />
-    <Content Include="build\vue-loader.conf.js" />
-    <Content Include="build\webpack.base.conf.js" />
-    <Content Include="build\webpack.dev.conf.js" />
-    <Content Include="build\webpack.prod.conf.js" />
-    <Content Include="build\webpack.test.conf.js" />
-    <Content Include="config\dev.env.js" />
-    <Content Include="config\index.js" />
-    <Content Include="config\prod.env.js" />
-    <Content Include="config\proxyConfig.js" />
-    <Content Include="config\test.env.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -186,10 +161,39 @@
     </Content>
     <Content Include="Areas\AdouManage\Views\web.config" />
     <Content Include="Areas\AdouManage\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\AdouManage\Views\Home\Index.cshtml" />
-    <Content Include="package-lock.json" />
-    <Content Include="package.json" />
-    <Content Include="README.md" />
+    <Content Include="src\assets\images\b1.png" />
+    <Content Include="src\assets\images\b10.png" />
+    <Content Include="src\assets\images\b11.png" />
+    <Content Include="src\assets\images\b12.png" />
+    <Content Include="src\assets\images\b13.png" />
+    <Content Include="src\assets\images\b14.png" />
+    <Content Include="src\assets\images\b15.png" />
+    <Content Include="src\assets\images\b2.png" />
+    <Content Include="src\assets\images\b3.png" />
+    <Content Include="src\assets\images\b4.png" />
+    <Content Include="src\assets\images\b5.png" />
+    <Content Include="src\assets\images\b6.png" />
+    <Content Include="src\assets\images\b7.png" />
+    <Content Include="src\assets\images\b8.png" />
+    <Content Include="src\assets\images\b9.png" />
+    <None Include="src\assets\scss\views\button.scss" />
+    <Content Include="src\assets\scss\views\home.scss" />
+    <Content Include="src\assets\scss\views\themeSetting.scss" />
+    <Content Include="src\main.js" />
+    <Content Include="src\router\index.js" />
+    <None Include="src\views\ThemeSetting.vue" />
+    <Content Include="src\services\element.service.js" />
+    <Content Include="src\services\index.js" />
+    <Content Include="src\store\actions.js" />
+    <Content Include="src\store\getters.js" />
+    <Content Include="src\store\index.js" />
+    <Content Include="src\store\modules\skinModule\actions.js" />
+    <Content Include="src\store\modules\skinModule\getters.js" />
+    <Content Include="src\store\modules\skinModule\index.js" />
+    <Content Include="src\store\modules\skinModule\mutation-enum.js" />
+    <Content Include="src\store\modules\skinModule\mutations.js" />
+    <Content Include="src\store\mutation-enum.js" />
+    <Content Include="src\store\mutations.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -204,22 +208,27 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="webpack.config.js" />
+    <Content Include="src\views\Button.vue" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdouManage\src\assets\images\" />
+    <Folder Include="src\components\" />
+    <Folder Include="src\static\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AdouManage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AdouManage\Views\Shared\_Template.cshtml" />
     <Content Include="Areas\AdouManage\Views\App\Index.cshtml" />
-    <Content Include="Areas\AdouManage\src\assets\less\theme\index.less" />
-    <Content Include="Areas\AdouManage\src\assets\scss\index.scss" />
-    <None Include="Areas\AdouManage\Views\Home\Index.scss" />
-    <Content Include="Areas\AdouManage\Views\Login\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="src\App.vue" />
+    <Content Include="src\views\Home.vue" />
+    <Content Include="src\views\Shared\Footer.vue" />
+    <Content Include="src\views\Shared\Header.vue" />
+    <Content Include="src\views\Shared\Shared.vue" />
+    <Content Include="src\views\Shared\Sidebar.vue" />
+    <Content Include="src\assets\scss\index.scss" />
+    <Content Include="src\assets\scss\views\shared.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,185 @@
+﻿$left-menu-width: 230px;
+$header-height: 60px;
+
+.ad {
+    /**
+        页头
+    */
+    &-header {
+        color: #fff;
+        padding: 0;
+        width: 100%;
+        height: $header-height !important;
+        line-height: $header-height;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 210;
+
+        i {
+            line-height: $header-height;
+            font-size: 25px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .ad-header-left,
+        .ad-header-right {
+            float: left;
+        }
+
+        .ad-header-left {
+            text-align: center;
+            font-size: 30px;
+            overflow: hidden;
+
+            i {
+                display: none;
+            }
+        }
+
+        .ad-header-right {
+            padding: 0 10px;
+        }
+    }
+    /**
+        主体
+    */
+    &-container-left,
+    &-container-right {
+        padding-top: $header-height;
+    }
+    /**
+            左侧菜单
+        */
+    &-container-left {
+        -webkit-transition: -webkit-transform 0.1s ease-in-out, width 0.1s ease-in-out;
+        -moz-transition: -moz-transform 0.1s ease-in-out, width 0.1s ease-in-out;
+        -o-transition: -o-transform 0.1s ease-in-out, width 0.1s ease-in-out;
+        transition: transform 0.1s ease-in-out, width 0.1s ease-in-out;
+        border-right: 1px solid #e6e6e6;
+        height: 100%;
+        min-height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 200;
+        overflow: hidden;
+
+        .ad-menu {
+            border-right: none;
+            height: 100%;
+            min-height: 100%;
+            overflow-y: scroll;
+        }
+
+        > ul > li {
+            padding-right: 20px;
+        }
+    }
+    /**
+            右侧内容
+        */
+    &-container-right {
+        -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        margin-left: $left-menu-width;
+    }
+    /**
+        页脚
+    */
+    &-footer {
+        -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        margin-left: $left-menu-width;
+
+        border: {
+            top: 1px solid #e6e6e6;
+        }
+
+        background: #fff;
+        width: 100%;
+        padding: 0;
+        line-height: 56px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 199;
+        color: #8b949e;
+
+        font: {
+            size: 14px;
+        }
+    }
+}
+/**
+    适应手机端
+*/
+@media (max-width:768px) {
+    .ad {
+        &-header {
+            .ad-header-left {
+                border: none;
+                width: 100% !important;
+                display: -webkit-flex;
+                display: flex;
+                justify-content: space-between;
+
+                i {
+                    display: block;
+                    padding: 0 10px;
+                }
+            }
+
+            .ad-header-right {
+                display: none;
+            }
+        }
+
+        &-container-left {
+            -webkit-transform: translate(-($left-menu-width), 0);
+            -ms-transform: translate(-($left-menu-width), 0);
+            -o-transform: translate(-($left-menu-width), 0);
+            transform: translate(-($left-menu-width), 0);
+        }
+
+        &-container-right {
+            width: 100%;
+            margin-left: 0px;
+        }
+
+        &-footer {
+            margin-left: 0px;
+        }
+    }
+}
+/**
+   自定义
+*/
+.disktop-content-toggle {
+    .ad-container-right {
+        margin-left: 72px;
+    }
+}
+
+.phone-aside-show {
+    .ad-container-left {
+        -webkit-transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+        -o-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+
+    .ad-container-right {
+        margin-left: $left-menu-width;
+    }
+
+    .ad-footer {
+        margin-left: $left-menu-width;
+    }
+}
