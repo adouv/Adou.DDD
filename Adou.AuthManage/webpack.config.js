@@ -16,6 +16,8 @@ const webpackConfig = {
     // cheap-module-eval-source-map is faster for development
     devtool: config.build.productionSourceMap ? config.build.devtool : false,
     watch: true,
+    //cssSourceMap: false,
+    //productionSourceMap: false,
     entry: {
         app: './src/main.js'
     },
@@ -24,7 +26,7 @@ const webpackConfig = {
         filename: utils.assetsPath('js/[name].[hash].js'),
         //filename: utils.assetsPath('js/[name].[hash].js'),
         //chunkFilename: utils.assetsPath('js/[id].[hash].js'),
-        publicPath: "/dist"
+        publicPath: "/dist/"
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
@@ -79,7 +81,7 @@ const webpackConfig = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('img/[name].[hash:7].[ext]')
+                    name: utils.assetsPath('images/[name].[hash:7].[ext]')
 
                 }
             },

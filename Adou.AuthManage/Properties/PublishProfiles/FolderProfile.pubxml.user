@@ -10,7 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include=".babelrc">
-      <publishTime>06/25/2018 14:21:04</publishTime>
+      <publishTime>06/29/2018 13:56:43</publishTime>
     </File>
     <File Include="ApplicationInsights.config">
       <publishTime>06/04/2018 13:43:51</publishTime>
@@ -61,10 +61,10 @@
       <publishTime>06/09/2018 22:14:39</publishTime>
     </File>
     <File Include="Areas/AdouManage/Views/Shared/_Layout.cshtml">
-      <publishTime>06/27/2018 00:42:46</publishTime>
+      <publishTime>07/02/2018 19:31:26</publishTime>
     </File>
     <File Include="Areas/AdouManage/Views/Shared/_Template.cshtml">
-      <publishTime>06/20/2018 14:55:48</publishTime>
+      <publishTime>06/27/2018 00:48:11</publishTime>
     </File>
     <File Include="Areas/AdouManage/Views/web.config">
       <publishTime>06/04/2018 13:53:51</publishTime>
@@ -73,10 +73,10 @@
       <publishTime>06/04/2018 14:00:27</publishTime>
     </File>
     <File Include="bin/Adou.AuthManage.dll">
-      <publishTime>06/27/2018 00:34:05</publishTime>
+      <publishTime>07/02/2018 18:27:19</publishTime>
     </File>
     <File Include="bin/Adou.AuthManage.pdb">
-      <publishTime>06/27/2018 00:34:05</publishTime>
+      <publishTime>07/02/2018 18:27:19</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>02/22/2013 08:43:40</publishTime>
@@ -259,13 +259,16 @@
       <publishTime>06/21/2018 14:40:13</publishTime>
     </File>
     <File Include="config/index.js">
-      <publishTime>06/21/2018 14:12:54</publishTime>
+      <publishTime>06/29/2018 11:16:44</publishTime>
     </File>
     <File Include="config/prod.env.js">
       <publishTime>06/21/2018 14:40:30</publishTime>
     </File>
     <File Include="config/test.env.js">
       <publishTime>06/21/2018 14:40:43</publishTime>
+    </File>
+    <File Include="element-variables.scss">
+      <publishTime>06/26/2018 10:38:45</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>06/04/2018 13:43:51</publishTime>
@@ -274,16 +277,19 @@
       <publishTime>06/04/2018 13:43:51</publishTime>
     </File>
     <File Include="package-lock.json">
-      <publishTime>06/26/2018 10:43:53</publishTime>
+      <publishTime>06/29/2018 13:42:14</publishTime>
     </File>
     <File Include="package.json">
-      <publishTime>06/26/2018 10:43:53</publishTime>
+      <publishTime>06/29/2018 13:42:14</publishTime>
     </File>
     <File Include="README.md">
       <publishTime>06/04/2018 13:43:51</publishTime>
     </File>
     <File Include="src/App.vue">
-      <publishTime>06/22/2018 00:16:49</publishTime>
+      <publishTime>06/28/2018 18:03:11</publishTime>
+    </File>
+    <File Include="src/assets/images/adou.jpg">
+      <publishTime>05/05/2017 17:18:24</publishTime>
     </File>
     <File Include="src/assets/images/b1.png">
       <publishTime>06/20/2018 23:25:57</publishTime>
@@ -331,13 +337,16 @@
       <publishTime>06/20/2018 23:25:57</publishTime>
     </File>
     <File Include="src/assets/scss/index.scss">
-      <publishTime>06/26/2018 16:04:58</publishTime>
+      <publishTime>06/29/2018 14:03:57</publishTime>
     </File>
     <File Include="src/assets/scss/views/home.scss">
       <publishTime>06/22/2018 23:41:56</publishTime>
     </File>
+    <File Include="src/assets/scss/views/login.scss">
+      <publishTime>06/29/2018 11:32:56</publishTime>
+    </File>
     <File Include="src/assets/scss/views/shared.scss">
-      <publishTime>06/27/2018 00:30:04</publishTime>
+      <publishTime>07/02/2018 19:23:11</publishTime>
     </File>
     <File Include="src/assets/scss/views/themeSetting.scss">
       <publishTime>06/26/2018 13:58:16</publishTime>
@@ -352,13 +361,13 @@
       <publishTime>06/22/2018 00:23:50</publishTime>
     </File>
     <File Include="src/main.js">
-      <publishTime>06/27/2018 00:19:14</publishTime>
+      <publishTime>06/29/2018 14:12:52</publishTime>
     </File>
     <File Include="src/router/index.js">
-      <publishTime>06/25/2018 15:32:49</publishTime>
+      <publishTime>06/28/2018 18:04:50</publishTime>
     </File>
     <File Include="src/services/element.service.js">
-      <publishTime>06/26/2018 19:02:44</publishTime>
+      <publishTime>06/29/2018 17:05:22</publishTime>
     </File>
     <File Include="src/services/index.js">
       <publishTime>06/26/2018 16:25:48</publishTime>
@@ -399,6 +408,12 @@
     <File Include="src/views/Home.vue">
       <publishTime>06/25/2018 15:35:41</publishTime>
     </File>
+    <File Include="src/views/Login.vue">
+      <publishTime>06/29/2018 16:05:42</publishTime>
+    </File>
+    <File Include="src/views/Role/RoleList.vue">
+      <publishTime>06/28/2018 10:45:51</publishTime>
+    </File>
     <File Include="src/views/Shared/Footer.vue">
       <publishTime>06/19/2018 09:55:03</publishTime>
     </File>
@@ -406,10 +421,13 @@
       <publishTime>06/19/2018 09:55:46</publishTime>
     </File>
     <File Include="src/views/Shared/Shared.vue">
-      <publishTime>06/27/2018 00:40:31</publishTime>
+      <publishTime>07/02/2018 19:28:57</publishTime>
     </File>
     <File Include="src/views/Shared/Sidebar.vue">
       <publishTime>06/19/2018 09:55:29</publishTime>
+    </File>
+    <File Include="src/views/User/UserList.vue">
+      <publishTime>06/28/2018 10:45:33</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>06/04/2018 13:43:51</publishTime>
@@ -424,7 +442,10 @@
       <publishTime>06/04/2018 13:43:51</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>06/04/2018 14:02:38</publishTime>
+      <publishTime>06/29/2018 17:16:06</publishTime>
+    </File>
+    <File Include="Views/Shared/_Template.cshtml">
+      <publishTime>06/29/2018 17:09:46</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/04/2018 13:43:51</publishTime>
@@ -439,7 +460,7 @@
       <publishTime>06/05/2018 22:10:33</publishTime>
     </File>
     <File Include="webpack.config.js">
-      <publishTime>06/22/2018 14:46:14</publishTime>
+      <publishTime>07/02/2018 18:50:53</publishTime>
     </File>
   </ItemGroup>
 </Project>

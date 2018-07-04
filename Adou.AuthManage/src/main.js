@@ -4,9 +4,49 @@ import Vue from 'vue'
 import App from '@/App'
 import router from '@/router'
 import store from '@/store'
-import { Container, Header, Aside, Main, Footer, Menu, Submenu, MenuItem, MenuItemGroup, Col, Row, Icon, Button, Select, Breadcrumb, BreadcrumbItem, Form, FormItem, Input, InputNumber, TimeSelect, TimePicker, Option, OptionGroup, DatePicker, Switch, Checkbox, CheckboxButton, CheckboxGroup, Radio, RadioButton, RadioGroup, Dropdown, DropdownMenu, DropdownItem } from 'element-ui';
-import '../element-variables.scss';
-import '@/assets/scss/index.scss';
+import {
+    Container,
+    Header,
+    Aside,
+    Main,
+    Footer,
+    Menu,
+    Submenu,
+    MenuItem,
+    MenuItemGroup,
+    Col,
+    Row,
+    Icon,
+    Button,
+    Select,
+    Breadcrumb,
+    BreadcrumbItem,
+    Form,
+    FormItem,
+    Input,
+    InputNumber,
+    TimeSelect,
+    TimePicker,
+    Option,
+    OptionGroup,
+    DatePicker,
+    Switch,
+    Checkbox,
+    CheckboxButton,
+    CheckboxGroup,
+    Radio,
+    RadioButton,
+    RadioGroup,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Tabs,
+    TabPane
+} from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import '@/assets/scss/index.scss'
+import '@node/font-awesome/scss/font-awesome.scss'
+import '@/assets/webIcons/scss/web-icons.scss'
 import 'babel-polyfill'
 import 'es6-promise/auto'
 
@@ -47,6 +87,8 @@ Vue.use(RadioGroup);
 Vue.use(Dropdown);
 Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
+Vue.use(Tabs);
+Vue.use(TabPane);
 
 /* eslint-disable no-new */
 new Vue({

@@ -8,7 +8,7 @@
             </el-breadcrumb>
         </div>
         <div class="page-content">
-            <el-form ref="form" :model="form" label-width="80px">
+            <el-form label-position="left" ref="form" :model="form" label-width="80px">
                 <el-form-item label="导航颜色">
                     <div class="skintoolsNavbar">
                         <ul class="color-radio">
@@ -27,10 +27,15 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item label="主题颜色">
-                    <!--<el-radio-group v-model="form.resource">
-                        <el-radio label="线上品牌商赞助"></el-radio>
-                        <el-radio label="线下场地免费"></el-radio>
-                    </el-radio-group>-->
+                    <div class="skintoolsNavbar">
+                        <ul class="color-radio">
+                            <li v-for="item in colorList" :key="item.key">
+                                <div :class="'radio-custom radio-'+item.key">
+                                    <input type="radio" name="themeColor" v-model="form.themeColor" :value="item.val" /> <label></label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </el-form-item>
                 <el-form-item label="Tab页签">
                     <el-switch v-model="form.delivery"></el-switch>
@@ -104,6 +109,7 @@
                 form: {
                     name: '',
                     headerColor: '#409EFF',
+                    themeColor: '#409EFF',
                     date1: '',
                     date2: '',
                     delivery: false,

@@ -1,34 +1,44 @@
 <template>
-    <div class="ad" ref="shared">
-        <el-header class="ad-header" :style="{backgroundColor:$store.state.skin.headerBgColor,Color:$store.state.skin.headerTextColor}">
-            <!--#region | LOGO | 大小LOGO区分-->
-            <el-aside class="ad-header-left" :style="{width:asideWidth}" v-if="!isCollapse">
-                <i class="el-icon-menu" v-on:click="toggleCollapse"></i>
-                <span>ADOU</span>
-                <el-dropdown trigger="click">
+    <div class="main" ref="shared">
+        <header class="main-header" :style="{backgroundColor:$store.state.skin.headerBgColor,Color:$store.state.skin.headerTextColor}">
+            <a href="JavaScript:void(0);" class="logo" :style="{width:asideWidth}">
+                <!--小LOGO-->
+                <span class="logo-mini" v-if="isCollapse">Ad</span>
+                <!--大LOGO-->
+                <span class="logo-lg" v-if="!isCollapse">Adou</span>
+            </a>
+            <nav class="navbar">
+                <i class="icon wb-menu aside-toggle" v-on:click="toggleCollapse"></i>
+                <div class="navbar-menu">
+                    <ul class="navbar-nav">
+                        <li href="JavaScript:void(0);" v-on:click="toPathRouter('login')"><i class="fa fa-sign-out"></i></li>
+                        <li href="JavaScript:void(0);"><i class="icon wb-fullscreen"></i></li>
+                        <li href="JavaScript:void(0);"><i class="icon wb-bell"></i></li>
+                        <li href="JavaScript:void(0);"><i class="icon wb-mobile"></i></li>
+                        <li href="JavaScript:void(0);" v-on:click="toPathRouter('themeSetting')"><i class="icon wb-layout"></i></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="mobile-logo">
+                <i class="icon wb-menu aside-toggle" v-on:click="toggleCollapse"></i>
+                <span class="logo-mo">ADOU</span>
+                <el-dropdown class="navbar-mo" trigger="click" @command="handleCommand">
                     <span class="el-dropdown-link">
-                        <i class="el-icon-more"></i>
+                        <i class="icon wb-more-horizontal"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item>黄金糕</el-dropdown-item>
-                        <el-dropdown-item>狮子头</el-dropdown-item>
-                        <el-dropdown-item>螺蛳粉</el-dropdown-item>
-                        <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-                        <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+                        <el-dropdown-item command="themeSetting"><i class="icon wb-layout"></i>&nbsp;&nbsp;设置主题与布局</el-dropdown-item>
+                        <el-dropdown-item><i class="icon wb-bell"></i>&nbsp;&nbsp;系统通知</el-dropdown-item>
+                        <el-dropdown-item><i class="icon wb-bell"></i>&nbsp;&nbsp;用户信息</el-dropdown-item>
+                        <el-dropdown-item><i class="icon wb-bell"></i>&nbsp;&nbsp;修改密码</el-dropdown-item>
+                        <el-dropdown-item divided command="login"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;退出</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
-            </el-aside>
-            <!--小LOGO-->
-            <el-aside class="ad-header-left" :style="{width:asideWidth}" v-if="isCollapse">AD</el-aside>
-            <!--#endregion-->
-            <el-container class="ad-header-right">
-                <!--#region | 右侧菜单显示隐藏按钮-->
-                <i class="el-icon-back aside-toggle" v-on:click="toggleCollapse"></i>
-                <!--#endregion-->
-            </el-container>
-        </el-header>
-        <el-aside class="ad-container-left" :style="{width:asideWidth}">
-            <el-menu :style="{width:menuWidth}" router :unique-opened="true" default-active="1-4-1" class="ad-menu" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+            </div>
+        </header>
+
+        <aside class="main-aside" :style="{width:asideWidth}">
+            <el-menu :style="{width:menuWidth}" :unique-opened="true" default-active="1-4-1" :collapse="isCollapse">
                 <el-menu-item index="0" v-on:click="toPathRouter('home')">
                     <i class="el-icon-menu"></i>
                     <span slot="title">控制面板</span>
@@ -39,9 +49,9 @@
                         <span slot="title">系统管理</span>
                     </template>
                     <el-menu-item-group>
-                        <el-menu-item index="1-1" v-on:click="toPathRouter('home')"><i class="el-icon-back"></i>用户管理</el-menu-item>
-                        <el-menu-item index="1-2" v-on:click="toPathRouter('home')"><i class="el-icon-back"></i>角色管理</el-menu-item>
-                        <el-menu-item index="1-3" v-on:click="toPathRouter('home')"><i class="el-icon-back"></i>菜单管理</el-menu-item>
+                        <el-menu-item index="1-1" v-on:click="toPathRouter('userList')"><i class="el-icon-back"></i>用户管理</el-menu-item>
+                        <el-menu-item index="1-2" v-on:click="toPathRouter('roleList')"><i class="el-icon-back"></i>角色管理</el-menu-item>
+                        <el-menu-item index="1-3" v-on:click="toPathRouter('menuList')"><i class="el-icon-back"></i>菜单管理</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-menu-item index="2" v-on:click="toPathRouter('home')">
@@ -127,15 +137,17 @@
                     <span slot="title">导航十八</span>
                 </el-menu-item>
             </el-menu>
-        </el-aside>
-        <el-container class="ad-container-right">
-            <el-main v-on:click="toggleCollapse">
-                <router-view></router-view>
-            </el-main>
-        </el-container>
-        <el-footer class="ad-footer" height="56px">
-            这里是底部版权
-        </el-footer>
+        </aside>
+
+        <div class="main-container">
+            <div class="container">
+                <router-view />
+            </div>
+        </div>
+
+        <footer class="main-footer">
+            <p>这里是底部版权</p>
+        </footer>
     </div>
 </template>
 
@@ -150,31 +162,28 @@
             };
         },
         methods: {
-            handleOpen(key, keyPath) {
-                console.log('open');
+            handleCommand(command) {
+                this.toPathRouter(command);
             },
-            handleClose(key, keyPath) {
-                console.log('close');
-            },
-            /**
-             * 左侧菜单显示/隐藏
-             */
+            //菜单切换
             toggleCollapse() {
+                let ref = this.$refs.shared;
                 let _asideName = "phone-aside-show";
                 let _disktopName = "disktop-content-toggle";
-                let _isOpen = this.$refs.shared.classList.value.includes(_asideName);
+                let _isOpen = Service.Element.refHasClass(ref, _asideName);
+
                 if (!this.isPhone) {
                     this.isCollapse = !this.isCollapse;
                     if (this.isCollapse) {
-                        this.$refs.shared.classList.add(_disktopName);
+                        Service.Element.refAddClass(ref, _disktopName);
                     } else {
-                        this.$refs.shared.classList.remove(_disktopName);
+                        Service.Element.refRemoveClass(ref, _disktopName);
                     }
                 } else {
                     if (_isOpen) {
-                        this.$refs.shared.classList.remove(_asideName);
+                        Service.Element.refRemoveClass(ref, _asideName);
                     } else {
-                        this.$refs.shared.classList.add(_asideName);
+                        Service.Element.refAddClass(ref, _asideName);
                     }
                 }
             },
@@ -198,6 +207,13 @@
                 this.isPhone = true;
             } else {//桌面、平板
                 this.isPhone = false;
+            }
+            /*
+                当窗体尺寸改变,重新加载页面
+                上线部署后,可注释此方法
+            */
+            window.onresize = function () {
+                window.location.reload();
             }
         },
         computed: {

@@ -154,6 +154,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".babelrc" />
+    <Content Include="build\logo.png" />
+    <Content Include="build\utils.js" />
+    <Content Include="build\vue-loader.conf.js" />
+    <Content Include="build\webpack.dev.config.js" />
+    <Content Include="build\webpack.prod.config.js" />
+    <Content Include="config\dev.env.js" />
+    <Content Include="config\index.js" />
+    <Content Include="config\prod.env.js" />
+    <Content Include="config\test.env.js" />
+    <Content Include="element-variables.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -161,6 +172,10 @@
     </Content>
     <Content Include="Areas\AdouManage\Views\web.config" />
     <Content Include="Areas\AdouManage\Views\_ViewStart.cshtml" />
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="src\assets\images\adou.jpg" />
     <Content Include="src\assets\images\b1.png" />
     <Content Include="src\assets\images\b10.png" />
     <Content Include="src\assets\images\b11.png" />
@@ -176,11 +191,23 @@
     <Content Include="src\assets\images\b7.png" />
     <Content Include="src\assets\images\b8.png" />
     <Content Include="src\assets\images\b9.png" />
+    <Content Include="webpack.config.js" />
+    <Content Include="src\assets\scss\aside.scss" />
+    <Content Include="src\assets\scss\extend.scss" />
+    <Content Include="src\assets\scss\footer.scss" />
+    <Content Include="src\assets\scss\header.scss" />
+    <Content Include="src\assets\scss\main.scss" />
+    <Content Include="src\assets\scss\mobile.scss" />
+    <Content Include="src\assets\scss\site.scss" />
     <None Include="src\assets\scss\views\button.scss" />
     <Content Include="src\assets\scss\views\home.scss" />
     <Content Include="src\assets\scss\views\themeSetting.scss" />
     <Content Include="src\main.js" />
     <Content Include="src\router\index.js" />
+    <Content Include="src\views\Login.vue" />
+    <Content Include="src\assets\scss\views\login.scss" />
+    <None Include="src\views\Menu\MenuList.vue" />
+    <Content Include="src\views\Role\RoleList.vue" />
     <None Include="src\views\ThemeSetting.vue" />
     <Content Include="src\services\element.service.js" />
     <Content Include="src\services\index.js" />
@@ -209,6 +236,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="src\views\Button.vue" />
+    <Content Include="src\views\User\UserList.vue" />
+    <Content Include="Views\Shared\_Template.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -256,7 +285,6 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="http://json.schemastore.org/bundleconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

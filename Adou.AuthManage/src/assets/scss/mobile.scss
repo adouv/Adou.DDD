@@ -1,0 +1,26 @@
+﻿@media (max-width:800px) {
+    .main {
+        &-header {
+            .logo, .navbar {
+                display: none;
+            }
+
+            .mobile-logo {
+                display: block;
+            }
+        }
+
+
+        &-aside {
+            -webkit-transform: translate(-($aside-width), 0);
+            -ms-transform: translate(-($aside-width), 0);
+            -o-transform: translate(-($aside-width), 0);
+            transform: translate(-($aside-width), 0);
+        }
+
+        &-container {
+            width: 100%;
+            margin-left: 0px;
+        }
+    }
+}
