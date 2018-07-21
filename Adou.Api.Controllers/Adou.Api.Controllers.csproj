@@ -121,6 +121,7 @@
     <Compile Include="BaseController.cs" />
     <Compile Include="Controllers\Account\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Menu\MenuController.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

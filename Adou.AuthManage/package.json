@@ -24,6 +24,7 @@
   "devDependencies": {
     "assets-webpack-plugin": "^3.6.0",
     "autoprefixer": "^8.6.1",
+    "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.4",
@@ -39,6 +40,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
     "babel-runtime": "^6.26.0",
+    "bootstrap": "^3.3.7",
     "bower": "^1.8.4",
     "clean-webpack-plugin": "^0.1.19",
     "compression-webpack-plugin": "^1.1.11",

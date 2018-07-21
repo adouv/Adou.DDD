@@ -11,7 +11,7 @@
                 <i class="icon wb-menu aside-toggle" v-on:click="toggleCollapse"></i>
                 <div class="navbar-menu">
                     <ul class="navbar-nav">
-                        <li href="JavaScript:void(0);" v-on:click="toPathRouter('login')"><i class="fa fa-sign-out"></i></li>
+                        <li href="JavaScript:void(0);" v-on:click="handleCommand('sign-out')"><i class="fa fa-sign-out"></i></li>
                         <li href="JavaScript:void(0);"><i class="icon wb-fullscreen"></i></li>
                         <li href="JavaScript:void(0);"><i class="icon wb-bell"></i></li>
                         <li href="JavaScript:void(0);"><i class="icon wb-mobile"></i></li>
@@ -31,7 +31,7 @@
                         <el-dropdown-item><i class="icon wb-bell"></i>&nbsp;&nbsp;系统通知</el-dropdown-item>
                         <el-dropdown-item><i class="icon wb-bell"></i>&nbsp;&nbsp;用户信息</el-dropdown-item>
                         <el-dropdown-item><i class="icon wb-bell"></i>&nbsp;&nbsp;修改密码</el-dropdown-item>
-                        <el-dropdown-item divided command="login"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;退出</el-dropdown-item>
+                        <el-dropdown-item divided command="sign-out"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;退出</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
             </div>
@@ -82,6 +82,7 @@
                     </template>
                     <el-menu-item-group>
                         <el-menu-item index="6-1" v-on:click="toPathRouter('button')"><i class="el-icon-back"></i>按钮</el-menu-item>
+                        <el-menu-item index="6-1" v-on:click="toPathRouter('notice')"><i class="el-icon-back"></i>通知</el-menu-item>
                     </el-menu-item-group>
                 </el-submenu>
                 <el-menu-item index="7" v-on:click="toPathRouter('home')">
@@ -146,13 +147,14 @@
         </div>
 
         <footer class="main-footer">
-            <p>这里是底部版权</p>
+            <p>Copyright  2018 蚂蚁金服体验技术部出品</p>
         </footer>
+
     </div>
 </template>
 
 <script>
-    import Service from '@/services'
+    import sers from '@/services'
     export default {
         name: "SharedComponent",
         data() {
@@ -163,27 +165,39 @@
         },
         methods: {
             handleCommand(command) {
-                this.toPathRouter(command);
+                switch (command) {
+                    case "sign-out":
+                        this.$confirm('确认要退出吗？', '提示', {
+                            confirm: () => {
+                                localStorage.removeItem(sers.Enum.AD_USER);
+                                window.location.href = '/AdouManage/';
+                            }
+                        });
+                        break;
+                    case "themeSetting":
+                        this.toPathRouter(command);
+                        break;
+                }
             },
             //菜单切换
             toggleCollapse() {
                 let ref = this.$refs.shared;
                 let _asideName = "phone-aside-show";
                 let _disktopName = "disktop-content-toggle";
-                let _isOpen = Service.Element.refHasClass(ref, _asideName);
+                let _isOpen = sers.Element.refHasClass(ref, _asideName);
 
                 if (!this.isPhone) {
                     this.isCollapse = !this.isCollapse;
                     if (this.isCollapse) {
-                        Service.Element.refAddClass(ref, _disktopName);
+                        sers.Element.refAddClass(ref, _disktopName);
                     } else {
-                        Service.Element.refRemoveClass(ref, _disktopName);
+                        sers.Element.refRemoveClass(ref, _disktopName);
                     }
                 } else {
                     if (_isOpen) {
-                        Service.Element.refRemoveClass(ref, _asideName);
+                        sers.Element.refRemoveClass(ref, _asideName);
                     } else {
-                        Service.Element.refAddClass(ref, _asideName);
+                        sers.Element.refAddClass(ref, _asideName);
                     }
                 }
             },
@@ -192,7 +206,7 @@
              * @param name  路由名称
              */
             toPathRouter(name, params = {}) {
-                this.$router.push({ name: name, params: params });
+                this.$router.push({ name: name });
                 //移除移动端左侧菜单显示样式
                 if (this.isPhone) {
                     this.$refs.shared.classList.remove('phone-aside-show');
@@ -212,9 +226,9 @@
                 当窗体尺寸改变,重新加载页面
                 上线部署后,可注释此方法
             */
-            window.onresize = function () {
-                window.location.reload();
-            }
+            //window.onresize = function () {
+            //    window.location.reload();
+            //}
         },
         computed: {
             asideWidth() {

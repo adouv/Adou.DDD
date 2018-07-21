@@ -9,7 +9,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin;
+const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin
+require('babel-polyfill')
 
 const webpackConfig = {
     context: path.resolve(__dirname, './'),
@@ -19,7 +20,7 @@ const webpackConfig = {
     //cssSourceMap: false,
     //productionSourceMap: false,
     entry: {
-        app: './src/main.js'
+        app: ['babel-polyfill', './src/main.js']
     },
     output: {
         path: config.build.assetsRoot,
@@ -197,13 +198,13 @@ const webpackConfig = {
         //    minChunks: 3
         //}),
         // copy custom static assets
-        //new CopyWebpackPlugin([
-        //    {
-        //        from: path.resolve(__dirname, 'src/static'),
-        //        to: config.build.assetsSubDirectory,
-        //        ignore: ['.*']
-        //    }
-        //]),
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, 'src/static'),
+                to: config.build.assetsSubDirectory,
+                ignore: ['.*']
+            }
+        ]),
         new WebpackNotifier(),
         new webpack.HotModuleReplacementPlugin(),
         //new webpack.BannerPlugin(config.build.banner)

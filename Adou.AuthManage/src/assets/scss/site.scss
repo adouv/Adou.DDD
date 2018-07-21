@@ -14,10 +14,21 @@
 
             .page-title {
                 font-size: 18px;
-                margin: 0;
-                margin-bottom: 15px;
+                margin: 0 0 15px 0;
                 color: #585a5f;
             }
+        }
+
+        .page-content {
+            padding-top: 20px;
+
+            &:after {
+                @extend .clear;
+            }
+        }
+
+        &:after {
+            @extend .clear;
         }
     }
 

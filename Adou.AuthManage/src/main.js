@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from '@/App'
 import router from '@/router'
 import store from '@/store'
+import Sers from '@/services'
+import 'babel-polyfill'
+import 'es6-promise/auto'
 import {
     Container,
     Header,
@@ -41,14 +44,18 @@ import {
     DropdownMenu,
     DropdownItem,
     Tabs,
-    TabPane
+    TabPane,
+    Table,
+    TableColumn,
+    Message,
+    Loading
 } from 'element-ui'
+import Coms from '@/components';
 import 'element-ui/lib/theme-chalk/index.css'
+import '@/assets/css/adou-bootstrap.css'
 import '@/assets/scss/index.scss'
 import '@node/font-awesome/scss/font-awesome.scss'
-import '@/assets/webIcons/scss/web-icons.scss'
-import 'babel-polyfill'
-import 'es6-promise/auto'
+import '@/assets/webIconsa/scss/web-icons.scss'
 
 Vue.config.productionTip = false
 
@@ -89,6 +96,16 @@ Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
 Vue.use(Tabs);
 Vue.use(TabPane);
+Vue.use(Table);
+Vue.use(TableColumn);
+
+Vue.use(Loading.directive);
+
+Vue.prototype.$loading = Loading.service;
+/*请求拦截*/
+Sers.Interceptor.axios();
+/*自定义组件*/
+Coms.use({ message: Message });
 
 /* eslint-disable no-new */
 new Vue({

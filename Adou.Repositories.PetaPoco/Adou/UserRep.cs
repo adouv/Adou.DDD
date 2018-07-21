@@ -18,7 +18,7 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// <param name="UserName">用户名</param>
         /// <param name="UserPwd">密码</param>
         /// <returns>adUser</returns>
-        public adUser UserLoginByUserNameAndUserPwd(string UserName, string UserPwd)
+        public adUser GetUser(string UserName, string UserPwd)
         {
             string sqlWhere = string.Empty;
             string sql = string.Empty;

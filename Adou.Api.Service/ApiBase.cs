@@ -15,14 +15,16 @@ namespace Adou.Api.Service
         where P : RequestBaseModel, new()
     {
         //初始化异步锁
-        private static SemaphoreSlim _mutex = new SemaphoreSlim(2);
-        public ApiBase() {
-                           
-        }
+        private static SemaphoreSlim _mutex = new SemaphoreSlim(10);
+        public ApiBase()
+        { }
         /// <summary>
         /// 返回实体
         /// </summary>
         public ResponseMessageModel Result { get; set; }
+        /// <summary>
+        /// 参数
+        /// </summary>
         public P Parameter { get; set; }
         /// <summary>
         /// 业务实现方法
@@ -41,51 +43,33 @@ namespace Adou.Api.Service
         /// <returns></returns>
         public ResponseMessageModel Execute(P model)
         {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
+            var timeSpan = new TimeSpan(0, 5, 0);
+            _mutex.Wait(timeSpan);
             try
             {
-                //异步锁等待
-                _mutex.Wait();
+                //接收参数
                 this.Parameter = model;
                 //执行验证
-                if (!string.IsNullOrWhiteSpace(this.Parameter.Sign))
-                {
-                    this.Validate();
-                }
-                
+                this.Validate();
                 //执行业务方法
                 this.ExecuteMethod();
             }
             catch (Exception ex)
             {
-                LoggerFactory.Instance.Logger_Error(ex, "ExecuteMethodError");
-
                 #region 异常处理
-                string code = string.Empty;
-                if (ex.Message.Contains("|"))
-                {
-                    code = ex.Message.Split('|')[0].ToString();
-                }
-                else
-                {
-                    code = "9999";
-                }
                 this.Result.Data = null;
-                this.Result.ErrorCode = code;
+                this.Result.ErrorCode = "9999";
                 this.Result.Message = ex.Message;
                 this.Result.IsSuccess = false;
 
                 StringBuilder DebugeInfo = new StringBuilder();
-                //DebugeInfo.Append("Model:" + JsonConvert.SerializeObject(this.model) + "\r\n");
                 DebugeInfo.Append("Parameter:" + JsonConvert.SerializeObject(this.Parameter) + "\r\n");
-                DebugeInfo.Append("Exception:" + ex.Message + "|" + ex.StackTrace);
+                DebugeInfo.Append("Exception:" + ex.Message + "|" + ex.StackTrace + "\r\n");
                 LoggerFactory.Instance.Logger_Debug(DebugeInfo.ToString(), "ExecuteMethodError");
                 #endregion
             }
-            sw.Stop();
-            TimeSpan ts = sw.Elapsed;
-            LoggerFactory.Instance.Logger_Info(string.Format("请求花费{0}ms", ts.TotalMilliseconds), "ApiReQuestTime");
+            //异步锁释放
+            _mutex.Release();
             return Result;
         }
     }

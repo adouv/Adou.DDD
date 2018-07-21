@@ -4,6 +4,7 @@
    * @param options {PhoneSize,TabletSize,DesktopSize}
    */
     getScreenCategory: (options) => {
+
         let windowWidth = document.documentElement.clientWidth;
         if (windowWidth <= options.PhoneSize) {//手机
             console.log('phone');

@@ -618,6 +618,24 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 
 
 		/// <summary>
+		/// 父级编号
+		/// </summary>
+
+
+		[Column] public int? FatherId { get; set; }
+
+
+
+		/// <summary>
+		/// 级别
+		/// </summary>
+
+
+		[Column] public int? LevelId { get; set; }
+
+
+
+		/// <summary>
 		/// 
 		/// </summary>
 
@@ -631,7 +649,7 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// </summary>
 
 
-		[Column] public int? CreateUserId { get; set; }
+		[Column] public string CreateUser { get; set; }
 
 
 
@@ -649,16 +667,16 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// </summary>
 
 
-		[Column] public int? ModifyUserId { get; set; }
+		[Column] public string ModifyUser { get; set; }
 
 
 
 		/// <summary>
-		/// 
+		/// 是有效 0无效 1有效
 		/// </summary>
 
 
-		[Column] public bool? IsValid { get; set; }
+		[Column] public int? IstValid { get; set; }
 
 
 
