@@ -36,7 +36,7 @@ namespace Adou.Api.Model
         /// <summary>
         /// 是否有效 0无效  1有效
         /// </summary>
-        public int IstValid { get; set; }
+        public bool IsDel { get; set; }
         /// <summary>
         /// 当前页
         /// </summary>

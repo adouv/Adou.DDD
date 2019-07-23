@@ -47,11 +47,11 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[UserStatus]
                       ,[RoleId]
                       ,[CreateTime]
-                      ,[CreateUserId]
+                      ,[CreateUser]
                       ,[UpdateTime]
-                      ,[UpdateUserId]
+                      ,[UpdateUser]
                 FROM [dbo].[adUser]
-                WHERE 1=1 {0}
+                WHERE 1=1 And IsDel=0 {0}
             ", sqlWhere);
             #endregion
 

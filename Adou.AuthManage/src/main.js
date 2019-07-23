@@ -55,7 +55,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/adou-bootstrap.css'
 import '@/assets/scss/index.scss'
 import '@node/font-awesome/scss/font-awesome.scss'
-import '@/assets/webIconsa/scss/web-icons.scss'
+import '@/assets/icons/AdWebIcons/scss/web-icons.scss'
 
 Vue.config.productionTip = false
 

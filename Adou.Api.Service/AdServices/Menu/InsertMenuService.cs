@@ -25,7 +25,7 @@ namespace Adou.Api.Service.AdServices.Menu
                 MenuUrl = this.Parameter.MenuUrl,
                 FatherId = this.Parameter.FatherId,
                 LevelId = this.Parameter.LevelId,
-                IstValid = this.Parameter.IstValid,
+                IsDel = this.Parameter.IsDel,
                 CreateTime = DateTime.Now,
                 CreateUser = "admin|1"
             };
