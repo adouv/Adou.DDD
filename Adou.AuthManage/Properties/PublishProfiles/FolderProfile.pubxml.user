@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+此文件由 Web 项目的发布/打包过程使用。可以通过编辑此 MSBuild 文件
+自定义此过程的行为。为了解与此相关的更多内容，请访问 https://go.microsoft.com/fwlink/?LinkID=208121。 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\adou\adouproject\api\Adou.Api\Adou.AuthManage\bin\Release\PublishOutput</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include=".babelrc">
+      <publishTime>06/29/2018 13:56:43</publishTime>
+    </File>
+    <File Include="ApplicationInsights.config">
+      <publishTime>06/04/2018 13:43:51</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/dist/js/main.a44adeaf9aa370043797.js">
+      <publishTime>06/11/2018 10:28:53</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/dist/js/main.a44adeaf9aa370043797.js.map">
+      <publishTime>06/11/2018 10:28:53</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/dist/webpack.config.json">
+      <publishTime>06/11/2018 10:28:53</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/src/App.js">
+      <publishTime>06/09/2018 22:33:42</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/src/components/index.js">
+      <publishTime>06/09/2018 22:37:47</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/src/components/tip/index.js">
+      <publishTime>06/09/2018 22:39:29</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/src/components/tip/tip.html">
+      <publishTime>06/09/2018 22:52:53</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/src/components/tip/tip.js">
+      <publishTime>06/09/2018 22:38:07</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/src/components/tip/tip.scss">
+      <publishTime>06/09/2018 22:20:17</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/src/router/index.js">
+      <publishTime>06/09/2018 22:13:26</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/Views/App/Index.cshtml">
+      <publishTime>06/20/2018 23:22:35</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/Views/Home/Index.cshtml">
+      <publishTime>06/09/2018 22:53:58</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/Views/Home/Index.js">
+      <publishTime>06/09/2018 22:38:15</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/Views/Login/Index.cshtml">
+      <publishTime>06/09/2018 22:12:03</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/Views/Login/Index.js">
+      <publishTime>06/09/2018 22:14:39</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/Views/Shared/_Layout.cshtml">
+      <publishTime>07/11/2018 17:04:48</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/Views/Shared/_Template.cshtml">
+      <publishTime>06/27/2018 00:48:11</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/Views/web.config">
+      <publishTime>06/04/2018 13:53:51</publishTime>
+    </File>
+    <File Include="Areas/AdouManage/Views/_ViewStart.cshtml">
+      <publishTime>06/04/2018 14:00:27</publishTime>
+    </File>
+    <File Include="bin/Adou.Api.Controllers.dll">
+      <publishTime>07/07/2018 01:23:23</publishTime>
+    </File>
+    <File Include="bin/Adou.Api.Controllers.dll.config">
+      <publishTime>12/04/2017 15:25:57</publishTime>
+    </File>
+    <File Include="bin/Adou.Api.Controllers.pdb">
+      <publishTime>07/07/2018 01:23:23</publishTime>
+    </File>
+    <File Include="bin/Adou.Api.Model.dll">
+      <publishTime>07/07/2018 01:23:15</publishTime>
+    </File>
+    <File Include="bin/Adou.Api.Model.pdb">
+      <publishTime>07/07/2018 01:23:15</publishTime>
+    </File>
+    <File Include="bin/Adou.Api.Service.dll">
+      <publishTime>07/07/2018 01:23:15</publishTime>
+    </File>
+    <File Include="bin/Adou.Api.Service.pdb">
+      <publishTime>07/07/2018 01:23:15</publishTime>
+    </File>
+    <File Include="bin/Adou.AuthManage.dll">
+      <publishTime>07/11/2018 17:05:46</publishTime>
+    </File>
+    <File Include="bin/Adou.AuthManage.pdb">
+      <publishTime>07/11/2018 17:05:46</publishTime>
+    </File>
+    <File Include="bin/Adou.DDD.dll">
+      <publishTime>07/07/2018 01:23:14</publishTime>
+    </File>
+    <File Include="bin/Adou.DDD.dll.config">
+      <publishTime>11/25/2017 23:18:25</publishTime>
+    </File>
+    <File Include="bin/Adou.DDD.pdb">
+      <publishTime>07/07/2018 01:23:14</publishTime>
+    </File>
+    <File Include="bin/Adou.Entity.dll">
+      <publishTime>07/07/2018 01:23:14</publishTime>
+    </File>
+    <File Include="bin/Adou.Entity.dll.config">
+      <publishTime>12/15/2017 15:39:24</publishTime>
+    </File>
+    <File Include="bin/Adou.Entity.pdb">
+      <publishTime>07/07/2018 01:23:14</publishTime>
+    </File>
+    <File Include="bin/Adou.Repositories.PetaPoco.dll">
+      <publishTime>07/07/2018 01:23:14</publishTime>
+    </File>
+    <File Include="bin/Adou.Repositories.PetaPoco.pdb">
+      <publishTime>07/07/2018 01:23:14</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>02/22/2013 08:43:40</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>02/22/2013 08:43:40</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>06/04/2018 13:43:51</publishTime>
+    </File>
+    <File Include="bin/Autofac.dll">
+      <publishTime>05/09/2018 11:57:54</publishTime>
+    </File>
+    <File Include="bin/Autofac.Integration.Mvc.dll">
+      <publishTime>04/10/2017 15:40:32</publishTime>
+    </File>
+    <File Include="bin/Autofac.Integration.WebApi.dll">
+      <publishTime>06/21/2018 18:25:22</publishTime>
+    </File>
+    <File Include="bin/Autofac.Integration.WebApi.pdb">
+      <publishTime>06/21/2018 18:25:22</publishTime>
+    </File>
+    <File Include="bin/AutoMapper.dll">
+      <publishTime>08/06/2015 03:24:04</publishTime>
+    </File>
+    <File Include="bin/Dapper.Contrib.dll">
+      <publishTime>07/01/2016 18:38:22</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>11/30/2016 16:07:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>12/07/2016 11:45:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>12/07/2016 11:50:34</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>12/06/2016 15:15:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>12/07/2016 11:49:10</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>12/07/2016 11:50:34</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>12/06/2016 15:09:52</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>08/15/2017 13:12:32</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>01/05/2012 11:08:46</publishTime>
+    </File>
+    <File Include="bin/MongoDB.Bson.dll">
+      <publishTime>06/08/2017 14:46:02</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>06/22/2015 11:06:54</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe.config">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.rsp">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/csi.rsp">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.AppContext.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe.config">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.rsp">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>06/27/2016 14:50:24</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>05/10/2018 22:38:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>05/10/2018 22:37:02</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>05/10/2018 22:39:40</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>05/10/2018 22:39:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>05/10/2018 22:41:08</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/28/2015 04:02:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>02/11/2014 15:26:04</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/28/2015 04:02:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>09/10/2013 17:28:38</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>03/02/2015 09:32:38</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.Cors.resources.dll">
+      <publishTime>05/10/2018 22:39:44</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>05/10/2018 22:39:22</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>01/28/2015 04:02:22</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Optimization.resources.dll">
+      <publishTime>02/11/2014 15:28:40</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>01/28/2015 04:02:34</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>01/28/2015 04:04:32</publishTime>
+    </File>
+    <File Include="build/logo.png">
+      <publishTime>05/24/2018 16:05:59</publishTime>
+    </File>
+    <File Include="build/utils.js">
+      <publishTime>07/11/2018 16:07:57</publishTime>
+    </File>
+    <File Include="build/vue-loader.conf.js">
+      <publishTime>06/21/2018 14:41:08</publishTime>
+    </File>
+    <File Include="build/webpack.dev.config.js">
+      <publishTime>06/21/2018 17:31:53</publishTime>
+    </File>
+    <File Include="build/webpack.prod.config.js">
+      <publishTime>06/21/2018 17:31:38</publishTime>
+    </File>
+    <File Include="config/dev.env.js">
+      <publishTime>06/21/2018 14:40:13</publishTime>
+    </File>
+    <File Include="config/index.js">
+      <publishTime>06/29/2018 11:16:44</publishTime>
+    </File>
+    <File Include="config/prod.env.js">
+      <publishTime>06/21/2018 14:40:30</publishTime>
+    </File>
+    <File Include="config/test.env.js">
+      <publishTime>06/21/2018 14:40:43</publishTime>
+    </File>
+    <File Include="element-variables.scss">
+      <publishTime>07/05/2018 17:12:39</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>06/04/2018 13:43:51</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>06/04/2018 13:43:51</publishTime>
+    </File>
+    <File Include="package-lock.json">
+      <publishTime>07/04/2018 16:29:13</publishTime>
+    </File>
+    <File Include="package.json">
+      <publishTime>07/04/2018 16:29:13</publishTime>
+    </File>
+    <File Include="README.md">
+      <publishTime>06/04/2018 13:43:51</publishTime>
+    </File>
+    <File Include="src/App.vue">
+      <publishTime>06/28/2018 18:03:11</publishTime>
+    </File>
+    <File Include="src/assets/images/adou.jpg">
+      <publishTime>05/05/2017 17:18:24</publishTime>
+    </File>
+    <File Include="src/assets/images/b1.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b10.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b11.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b12.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b13.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b14.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b15.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b2.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b3.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b4.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b5.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b6.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b7.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b8.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/images/b9.png">
+      <publishTime>06/20/2018 23:25:57</publishTime>
+    </File>
+    <File Include="src/assets/scss/aside.scss">
+      <publishTime>07/03/2018 14:50:21</publishTime>
+    </File>
+    <File Include="src/assets/scss/extend.scss">
+      <publishTime>07/03/2018 14:35:37</publishTime>
+    </File>
+    <File Include="src/assets/scss/footer.scss">
+      <publishTime>07/03/2018 15:24:50</publishTime>
+    </File>
+    <File Include="src/assets/scss/header.scss">
+      <publishTime>07/03/2018 15:15:49</publishTime>
+    </File>
+    <File Include="src/assets/scss/index.scss">
+      <publishTime>07/08/2018 00:43:25</publishTime>
+    </File>
+    <File Include="src/assets/scss/main.scss">
+      <publishTime>07/04/2018 10:13:21</publishTime>
+    </File>
+    <File Include="src/assets/scss/mobile.scss">
+      <publishTime>07/04/2018 10:10:42</publishTime>
+    </File>
+    <File Include="src/assets/scss/site.scss">
+      <publishTime>07/04/2018 10:07:25</publishTime>
+    </File>
+    <File Include="src/assets/scss/ui/adou-message-box.scss">
+      <publishTime>07/06/2018 15:11:29</publishTime>
+    </File>
+    <File Include="src/assets/scss/ui/adou-message.scss">
+      <publishTime>07/06/2018 10:26:11</publishTime>
+    </File>
+    <File Include="src/assets/scss/ui/adou-tip.scss">
+      <publishTime>07/11/2018 15:00:40</publishTime>
+    </File>
+    <File Include="src/assets/scss/views/home.scss">
+      <publishTime>06/22/2018 23:41:56</publishTime>
+    </File>
+    <File Include="src/assets/scss/views/login.scss">
+      <publishTime>06/29/2018 11:32:56</publishTime>
+    </File>
+    <File Include="src/assets/scss/views/shared.scss">
+      <publishTime>07/02/2018 23:27:47</publishTime>
+    </File>
+    <File Include="src/assets/scss/views/themeSetting.scss">
+      <publishTime>06/26/2018 13:58:16</publishTime>
+    </File>
+    <File Include="src/components/index.js">
+      <publishTime>07/11/2018 15:05:09</publishTime>
+    </File>
+    <File Include="src/components/message/index.js">
+      <publishTime>07/11/2018 15:04:38</publishTime>
+    </File>
+    <File Include="src/components/sideNavigation/levelThreeCategories.vue">
+      <publishTime>06/22/2018 00:22:59</publishTime>
+    </File>
+    <File Include="src/components/sideNavigation/levelTwoCategories.vue">
+      <publishTime>06/22/2018 00:23:00</publishTime>
+    </File>
+    <File Include="src/components/tip/index.js">
+      <publishTime>07/11/2018 15:16:25</publishTime>
+    </File>
+    <File Include="src/components/tip/tip.vue">
+      <publishTime>07/11/2018 15:22:08</publishTime>
+    </File>
+    <File Include="src/components/topNavigation/levelOneCategories.vue">
+      <publishTime>06/22/2018 00:23:50</publishTime>
+    </File>
+    <File Include="src/main.js">
+      <publishTime>07/11/2018 16:15:34</publishTime>
+    </File>
+    <File Include="src/router/index.js">
+      <publishTime>07/07/2018 00:07:39</publishTime>
+    </File>
+    <File Include="src/services/auth.service.js">
+      <publishTime>07/07/2018 01:21:25</publishTime>
+    </File>
+    <File Include="src/services/element.service.js">
+      <publishTime>07/04/2018 12:27:26</publishTime>
+    </File>
+    <File Include="src/services/enum.service.js">
+      <publishTime>07/04/2018 15:17:37</publishTime>
+    </File>
+    <File Include="src/services/index.js">
+      <publishTime>07/06/2018 16:47:29</publishTime>
+    </File>
+    <File Include="src/services/interceptor.service.js">
+      <publishTime>07/07/2018 00:30:06</publishTime>
+    </File>
+    <File Include="src/services/util.service.js">
+      <publishTime>07/06/2018 11:19:13</publishTime>
+    </File>
+    <File Include="src/store/actions.js">
+      <publishTime>06/26/2018 10:47:05</publishTime>
+    </File>
+    <File Include="src/store/getters.js">
+      <publishTime>06/26/2018 10:47:12</publishTime>
+    </File>
+    <File Include="src/store/index.js">
+      <publishTime>06/26/2018 10:46:30</publishTime>
+    </File>
+    <File Include="src/store/modules/skinModule/actions.js">
+      <publishTime>06/26/2018 11:26:08</publishTime>
+    </File>
+    <File Include="src/store/modules/skinModule/getters.js">
+      <publishTime>06/26/2018 10:36:50</publishTime>
+    </File>
+    <File Include="src/store/modules/skinModule/index.js">
+      <publishTime>06/26/2018 11:13:02</publishTime>
+    </File>
+    <File Include="src/store/modules/skinModule/mutation-enum.js">
+      <publishTime>06/26/2018 10:33:22</publishTime>
+    </File>
+    <File Include="src/store/modules/skinModule/mutations.js">
+      <publishTime>06/26/2018 11:19:26</publishTime>
+    </File>
+    <File Include="src/store/mutation-enum.js">
+      <publishTime>06/26/2018 10:47:17</publishTime>
+    </File>
+    <File Include="src/store/mutations.js">
+      <publishTime>06/26/2018 10:47:23</publishTime>
+    </File>
+    <File Include="src/views/Button.vue">
+      <publishTime>06/22/2018 16:44:51</publishTime>
+    </File>
+    <File Include="src/views/Home.vue">
+      <publishTime>07/07/2018 00:15:27</publishTime>
+    </File>
+    <File Include="src/views/Login.vue">
+      <publishTime>07/11/2018 15:21:00</publishTime>
+    </File>
+    <File Include="src/views/Role/RoleList.vue">
+      <publishTime>06/28/2018 10:45:51</publishTime>
+    </File>
+    <File Include="src/views/Shared/Footer.vue">
+      <publishTime>06/19/2018 09:55:03</publishTime>
+    </File>
+    <File Include="src/views/Shared/Header.vue">
+      <publishTime>06/19/2018 09:55:46</publishTime>
+    </File>
+    <File Include="src/views/Shared/Shared.vue">
+      <publishTime>07/07/2018 21:26:51</publishTime>
+    </File>
+    <File Include="src/views/Shared/Sidebar.vue">
+      <publishTime>06/19/2018 09:55:29</publishTime>
+    </File>
+    <File Include="src/views/User/UserList.vue">
+      <publishTime>06/28/2018 10:45:33</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>06/04/2018 13:43:51</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>06/04/2018 13:43:51</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>06/04/2018 13:43:51</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>06/04/2018 13:43:51</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>07/11/2018 16:24:07</publishTime>
+    </File>
+    <File Include="Views/Shared/_Template.cshtml">
+      <publishTime>06/29/2018 17:09:46</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>06/04/2018 13:43:51</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>06/04/2018 13:43:51</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/07/2018 01:23:30</publishTime>
+    </File>
+    <File Include="webpack.config - 复制.js">
+      <publishTime>06/05/2018 22:10:33</publishTime>
+    </File>
+    <File Include="webpack.config.js">
+      <publishTime>07/11/2018 16:29:00</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

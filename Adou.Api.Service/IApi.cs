@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace Adou.Api.Service
 {
-    interface IApi
+    interface IApi<T>
     {
         /// <summary>
         /// 执行
         /// </summary>
         /// <returns></returns>
-        ResponseMessageModel Execute();
+        ResponseMessageModel Execute(T t);
         /// <summary>
         /// 加入提交参数
         /// </summary>
         /// <param name="json"></param>
-        void SetData<P>(P json);
+        // void SetData<P>(P json);
     }
 }

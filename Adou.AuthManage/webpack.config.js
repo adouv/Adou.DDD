@@ -1,70 +1,88 @@
-﻿const path = require('path');
-const webpack = require('webpack');
-const webpackNotifier = require('webpack-notifier');//通知
-const assetsWebpackPlugin = require('assets-webpack-plugin'); // 将每个资源文件的原生filename和chunkhashname一一对应起来的插件 
-const cleanWebpackPlugin = require('clean-webpack-plugin'); // 清空目录的插件
-const htmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');// 添加VueLoaderPlugin，以响应vue-loader
+﻿const path = require('path')
+const utils = require('./build/utils')
+const config = require('./config')
+const webpack = require('webpack')
+const WebpackNotifier = require('webpack-notifier')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin
+require('babel-polyfill')
 
-//路径参数
-const ENTRY_PATH = path.join(__dirname, './Areas/AdouManage/src/App.js');
-const BUNDLE_PATH_ROOT = './Areas/AdouManage/dist';
-const CHUNKHASH_NAME = '[name].[hash].js';
-const NAME = "[name].js";
-
-//配置
-const config = {
-    //devServer: { //这没什么用到，就是在开发时的设定，我一般都是直接production
-    //    port: 4200,
-    //    overlay: {
-    //        errors: true,
-    //        // warnings : true
-    //    }
-    //},
-    watch: true,//当改变代码时，会自动更新，除了config
-    devtool: 'source-map',//在有bug时，可以看到源码
-    entry: [
-        path.join(__dirname, './Areas/AdouManage/src/App.js')
-    ],//入口文件
+const webpackConfig = {
+    context: path.resolve(__dirname, './'),
+    // cheap-module-eval-source-map is faster for development
+    devtool: config.build.productionSourceMap ? config.build.devtool : false,
+    watch: true,
+    //cssSourceMap: false,
+    //productionSourceMap: false,
+    entry: {
+        app: ['babel-polyfill', './src/main.js']
+    },
     output: {
-        path: path.join(__dirname, './Areas/AdouManage/dist/js'),
-        filename: CHUNKHASH_NAME,
-        chunkFilename: CHUNKHASH_NAME,
-        publicPath: "~/Areas/AdouManage/dist/js"
-    },//出口文件
+        path: config.build.assetsRoot,
+        filename: utils.assetsPath('js/[name].[hash].js'),
+        //filename: utils.assetsPath('js/[name].[hash].js'),
+        //chunkFilename: utils.assetsPath('js/[id].[hash].js'),
+        publicPath: "/dist/"
+    },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
-        }//vue编译器
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': path.join(__dirname, 'src'),
+            '@node': path.join(__dirname, 'node_modules'),
+            '@views': path.join(__dirname, 'Areas/AdouManage/Views')
+        }
     },
     module: {
         rules: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader',
-                options: {
-                    // vue-loader options go here
-                }
+                loader: 'vue-loader'
             },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'es2016']
-                },
-                exclude: /node_modules/
+                include: [path.join(__dirname, './src'), path.join(__dirname, './Areas/AdouManage')]
             },
             {
-                test: /(\.css$)/,
-                loaders: ['style-loader', 'css-loader']
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    use: ['css-loader'],
+                    fallback: 'vue-style-loader'
+                })
+            },
+            {
+                test: /\.less$/,
+                use: ExtractTextPlugin.extract({
+                    use: ['css-loader', 'less-loader'],
+                    fallback: 'vue-style-loader'
+                })
+            },
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    use: ['css-loader', 'sass-loader'],
+                    fallback: 'vue-style-loader'
+                })
+            },
+            {
+                test: /\.sass/,
+                use: ExtractTextPlugin.extract({
+                    use: ['css-loader', 'sass-loader'],
+                    fallback: 'vue-style-loader'
+                })
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: path.join(__dirname, './Areas/AdouManage/dist/img/[name].[hash:7].[ext]')
+                    name: utils.assetsPath('images/[name].[hash:7].[ext]')
 
                 }
             },
@@ -73,7 +91,7 @@ const config = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: path.join(__dirname, './Areas/AdouManage/dist/media/[name].[hash:7].[ext]')
+                    name: utils.assetsPath('media/[name].[hash:7].[ext]')
                 }
             },
             {
@@ -81,32 +99,116 @@ const config = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: path.join(__dirname, './Areas/AdouManage/dist/fonts/[name].[hash:7].[ext]')
+                    name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
                 }
+            },
+            {
+                test: /\.(html|cshtml)$/,
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            limit: 10000
+                        }
+                    }
+                ]
             }
         ]
-    },//使用babel编译js
+    },
     plugins: [
-        new cleanWebpackPlugin(path.join(__dirname, './Areas/AdouManage/dist')),//构建前先清空dist文件夹
-        new VueLoaderPlugin(),// 添加VueLoaderPlugin，以响应vue-loader
-        new assetsWebpackPlugin({
-            filename: 'webpack.config.json',
-            path: path.join(__dirname, './Areas/AdouManage/dist'),
-            prettyPrint: true
-        }),//将filename和filename.chunkhash对应起来
-        new htmlWebpackPlugin({
-            filename: '../../Views/Shared/_Layout.cshtml',
-            template: './Areas/AdouManage/Views/Shared/Template.cshtml',
-            inject: 'body'
-        }),
+        new CleanWebpackPlugin(
+            ['dist'],
+            {
+                root: __dirname,
+                verbose: true,
+                dry: false
+            }
+        ),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"'
             }
         }),
-        new webpackNotifier(), // 通知结果
-        new webpack.HotModuleReplacementPlugin()
+        //new UglifyJsPlugin({
+        //    uglifyOptions: {
+        //        compress: {
+        //            warnings: false
+        //        }
+        //    },
+        //    sourceMap: config.build.productionSourceMap,
+        //    parallel: true
+        //}),
+        // extract css into its own file
+        new ExtractTextPlugin({
+            filename: utils.assetsPath('css/[name].[contenthash].css'),
+            // Setting the following option to `false` will not extract CSS from codesplit chunks.
+            // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
+            // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`, 
+            // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
+            allChunks: true,
+        }),
+        // Compress extracted CSS. We are using this plugin so that possible
+        // duplicated CSS from different components can be deduped.
+        new OptimizeCSSPlugin({
+            cssProcessorOptions: config.build.productionSourceMap
+                ? { safe: true, map: { inline: false } }
+                : { safe: true }
+        }),
+        new VueLoaderPlugin(),
+        new HtmlWebpackPlugin({
+            filename: '../Areas/AdouManage/Views/Shared/_Layout.cshtml',
+            template: './Areas/AdouManage/Views/Shared/_Template.cshtml',
+            inject: 'body',
+            hash: true,
+            minify: {
+                removeAttributeQuotes: false
+            }
+        }),
+        // keep module.id stable when vendor modules does not change
+        //new webpack.HashedModuleIdsPlugin(),
+        // enable scope hoisting
+        //new webpack.optimize.ModuleConcatenationPlugin(),
+        // split vendor js into its own file
+        //new webpack.optimize.CommonsChunkPlugin({
+        //    name: 'vendor',
+        //    minChunks(module) {
+        //        // any required modules inside node_modules are extracted to vendor
+        //        return (
+        //            module.resource &&
+        //            /\.js$/.test(module.resource) &&
+        //            module.resource.indexOf(
+        //                path.join(__dirname, 'node_modules')
+        //            ) === 0
+        //        )
+        //    }
+        //}),
+        // extract webpack runtime and module manifest to its own file in order to
+        // prevent vendor hash from being updated whenever app bundle is updated
+        //new webpack.optimize.CommonsChunkPlugin({
+        //    name: 'manifest',
+        //    minChunks: Infinity
+        //}),
+        // This instance extracts shared chunks from code splitted chunks and bundles them
+        // in a separate chunk, similar to the vendor chunk
+        // see: https://webpack.js.org/plugins/commons-chunk-plugin/#extra-async-commons-chunk
+        //new webpack.optimize.CommonsChunkPlugin({
+        //    name: 'app',
+        //    async: 'vendor-async',
+        //    children: true,
+        //    minChunks: 3
+        //}),
+        // copy custom static assets
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, 'src/static'),
+                to: config.build.assetsSubDirectory,
+                ignore: ['.*']
+            }
+        ]),
+        new WebpackNotifier(),
+        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.BannerPlugin(config.build.banner)
     ]
 };
 
-module.exports = config;
+module.exports = webpackConfig;
