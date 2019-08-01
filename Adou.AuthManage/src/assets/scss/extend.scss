@@ -1,0 +1,18 @@
+﻿/**头部扩展样式*/
+.header-font {
+    font-size: 25px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.header-height {
+    height: $header-height;
+    line-height: $header-height;
+}
+
+.clear {
+    display: table;
+    content: " ";
+    clear: both;
+}

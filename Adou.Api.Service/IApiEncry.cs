@@ -14,6 +14,6 @@ namespace Adou.Api.Service
         /// 加入提交参数
         /// </summary>
         /// <param name="json"></param>
-        void SetEncryData(RequestModel json);
+        //void SetEncryData(RequestModel json);
     }
 }

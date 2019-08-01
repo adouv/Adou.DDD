@@ -1,0 +1,53 @@
+﻿.adou-tip {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 3px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 2010;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    transition: opacity 0.3s, transform .4s;
+    overflow: hidden;
+    padding: 10px 20px;
+
+
+    .show {
+        display: flex;
+        align-items: center;
+
+        i {
+            margin-right: 10px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 12px;
+        }
+    }
+}
+
+.el-icon-success {
+    color: #67c23a;
+}
+
+.el-icon-info {
+    color: #909399;
+}
+
+.el-icon-warning {
+    color: #e6a23c;
+}
+
+.el-icon-error {
+    color: #f56c6c;
+}
+
+/*@media (max-width:400px) {
+    .adou-tip {
+        min-width: 90%;
+    }
+}*/

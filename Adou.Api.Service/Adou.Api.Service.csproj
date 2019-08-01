@@ -44,9 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdServices\Account\GetAccountListService.cs" />
+    <Compile Include="AdServices\Menu\GetMenuByFatherIdService.cs" />
+    <Compile Include="AdServices\Menu\InsertMenuService.cs" />
     <Compile Include="AdServices\User\UserLoginService.cs" />
     <Compile Include="ApiBase.cs" />
+    <Compile Include="ApiBaseBase.cs" />
     <Compile Include="ApiEncryBase.cs" />
     <Compile Include="IApi.cs" />
     <Compile Include="IApiEncry.cs" />

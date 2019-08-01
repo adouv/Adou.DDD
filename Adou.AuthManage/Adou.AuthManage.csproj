@@ -48,14 +48,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.2.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.6\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -63,6 +81,15 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.6\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -114,9 +141,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.ApplicationInsights">
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
@@ -140,11 +164,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutofacModule.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\AdouManage\AdouManageAreaRegistration.cs" />
-    <Compile Include="Areas\AdouManage\Controllers\HomeController.cs" />
+    <Compile Include="Areas\AdouManage\Controllers\AppController.cs" />
+    <Compile Include="Areas\AdouManage\Controllers\BaseController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -154,24 +181,90 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\AdouManage\src\App.js" />
-    <Content Include="webpack.config - 复制.js" />
-    <Content Include="webpack.config.js" />
-    <None Include="Areas\AdouManage\src\components\Home.vue" />
-    <Content Include="Areas\AdouManage\src\router\index.js" />
+    <Content Include=".babelrc" />
+    <Content Include="build\logo.png" />
+    <Content Include="build\utils.js" />
+    <Content Include="build\vue-loader.conf.js" />
+    <Content Include="build\webpack.dev.config.js" />
+    <Content Include="build\webpack.prod.config.js" />
+    <Content Include="config\dev.env.js" />
+    <Content Include="config\index.js" />
+    <Content Include="config\prod.env.js" />
+    <Content Include="config\test.env.js" />
+    <Content Include="element-variables.scss" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include=".babelrc" />
-    <Content Include=".gitignore" />
+    <Content Include="Areas\AdouManage\Views\web.config" />
+    <Content Include="Areas\AdouManage\Views\_ViewStart.cshtml" />
     <Content Include="package-lock.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="Areas\AdouManage\Views\web.config" />
-    <Content Include="Areas\AdouManage\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\AdouManage\Views\Home\Index.cshtml" />
+    <Content Include="src\assets\css\adou-bootstrap.css" />
+    <Content Include="src\assets\images\adou.jpg" />
+    <Content Include="src\assets\images\b1.png" />
+    <Content Include="src\assets\images\b10.png" />
+    <Content Include="src\assets\images\b11.png" />
+    <Content Include="src\assets\images\b12.png" />
+    <Content Include="src\assets\images\b13.png" />
+    <Content Include="src\assets\images\b14.png" />
+    <Content Include="src\assets\images\b15.png" />
+    <Content Include="src\assets\images\b2.png" />
+    <Content Include="src\assets\images\b3.png" />
+    <Content Include="src\assets\images\b4.png" />
+    <Content Include="src\assets\images\b5.png" />
+    <Content Include="src\assets\images\b6.png" />
+    <Content Include="src\assets\images\b7.png" />
+    <Content Include="src\assets\images\b8.png" />
+    <Content Include="src\assets\images\b9.png" />
+    <Content Include="src\components\alert\index.js" />
+    <Content Include="src\components\confirm\index.js" />
+    <Content Include="src\components\index.js" />
+    <Content Include="src\components\prompt\index.js" />
+    <Content Include="src\components\tip\index.js" />
+    <Content Include="src\services\auth.service.js" />
+    <Content Include="src\services\enum.service.js" />
+    <Content Include="src\services\interceptor.service.js" />
+    <Content Include="src\services\util.service.js" />
+    <Content Include="webpack.config.js" />
+    <Content Include="src\assets\scss\aside.scss" />
+    <Content Include="src\assets\scss\extend.scss" />
+    <Content Include="src\assets\scss\footer.scss" />
+    <Content Include="src\assets\scss\header.scss" />
+    <Content Include="src\assets\scss\main.scss" />
+    <Content Include="src\assets\scss\mobile.scss" />
+    <Content Include="src\assets\scss\site.scss" />
+    <Content Include="src\assets\scss\ui\adou-message.scss" />
+    <Content Include="src\assets\scss\ui\adou-message-box.scss" />
+    <Content Include="src\assets\scss\ui\adou-tip.scss" />
+    <None Include="src\assets\scss\views\button.scss" />
+    <Content Include="src\assets\scss\views\home.scss" />
+    <Content Include="src\assets\scss\views\themeSetting.scss" />
+    <Content Include="src\main.js" />
+    <Content Include="src\router\index.js" />
+    <Content Include="src\views\Login.vue" />
+    <Content Include="src\assets\scss\views\login.scss" />
+    <Content Include="src\components\tip\tip.vue" />
+    <Content Include="src\views\Menu\AddMenu.vue" />
+    <None Include="src\views\Menu\MenuList.vue" />
+    <Content Include="src\views\Role\RoleList.vue" />
+    <Content Include="src\views\Home.vue" />
+    <Content Include="src\views\Notice.vue" />
+    <None Include="src\views\ThemeSetting.vue" />
+    <Content Include="src\services\element.service.js" />
+    <Content Include="src\services\index.js" />
+    <Content Include="src\store\actions.js" />
+    <Content Include="src\store\getters.js" />
+    <Content Include="src\store\index.js" />
+    <Content Include="src\store\modules\skinModule\actions.js" />
+    <Content Include="src\store\modules\skinModule\getters.js" />
+    <Content Include="src\store\modules\skinModule\index.js" />
+    <Content Include="src\store\modules\skinModule\mutation-enum.js" />
+    <Content Include="src\store\modules\skinModule\mutations.js" />
+    <Content Include="src\store\mutation-enum.js" />
+    <Content Include="src\store\mutations.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -186,20 +279,48 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="build\webpack.config.js" />
+    <Content Include="src\views\Button.vue" />
+    <Content Include="src\views\User\UserList.vue" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdouManage\dist\" />
+    <Folder Include="Areas\AdouManage\Views\Default\" />
+    <Folder Include="src\static\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AdouManage\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\AdouManage\src\App.vue">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Areas\AdouManage\Views\Home\Template.cshtml" />
-    <Content Include="Areas\AdouManage\Views\Shared\Template.cshtml" />
+    <Content Include="Areas\AdouManage\Views\Shared\_Template.cshtml" />
+    <Content Include="Areas\AdouManage\Views\App\Index.cshtml" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="src\App.vue" />
+    <Content Include="src\views\Shared\Footer.vue" />
+    <Content Include="src\views\Shared\Header.vue" />
+    <Content Include="src\views\Shared\Shared.vue" />
+    <Content Include="src\views\Shared\Sidebar.vue" />
+    <Content Include="src\assets\scss\index.scss" />
+    <Content Include="src\assets\scss\views\shared.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Adou.Api.Controllers\Adou.Api.Controllers.csproj">
+      <Project>{11490a7a-ef0a-4572-9099-c4270d7f30df}</Project>
+      <Name>Adou.Api.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adou.Api.Model\Adou.Api.Model.csproj">
+      <Project>{70909357-658e-4b2f-ad35-48dfd70a26fc}</Project>
+      <Name>Adou.Api.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adou.Api.Service\Adou.Api.Service.csproj">
+      <Project>{fa4ab62d-c4c2-470a-8c6c-fcb14bce97e1}</Project>
+      <Name>Adou.Api.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adou.Repositories.PetaPoco\Adou.Repositories.PetaPoco.csproj">
+      <Project>{4b69d875-fca7-4f4e-81b0-b7a442924a15}</Project>
+      <Name>Adou.Repositories.PetaPoco</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -227,7 +348,6 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="http://json.schemastore.org/babelrc" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

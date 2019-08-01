@@ -1,0 +1,56 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font: {
+        family: '微软雅黑','Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        weight: 400;
+    }
+}
+
+span {
+    font: {
+        family: '微软雅黑','Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        weight: 400;
+    }
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+    color: #000;
+
+    &:hover, &:active, &:focus {
+        outline: none;
+        text-decoration: none;
+        color: #000;
+    }
+}
+
+
+/*.wrapper {
+    background: #f0f2f5;
+}*/
+$header-height: 60px;
+$aside-width: 230px;
+$aside-mini-width: 70px;
+
+@import "./extend.scss";
+@import "./header.scss";
+@import "./aside.scss";
+@import "./main.scss";
+@import "./footer.scss";
+@import "./mobile.scss";
+@import "./site.scss";
+
+/**UI*/
+@import "./ui/adou-message.scss";
+@import "./ui/adou-message-box.scss";
+@import "./ui/adou-tip.scss";

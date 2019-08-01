@@ -17,7 +17,7 @@ namespace Adou.Api
         {
             // Web API 配置和服务
             // 对 JSON 数据使用混合大小写。
-            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             //火狐和Google显示的是XML，只有IE内核返回Json数据！此处清除xmlformat序列化！
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
