@@ -1,0 +1,85 @@
+.table-responsive {
+    //移动端滚动条无惯性处理
+    -webkit-overflow-scrolling: touch;
+}
+
+.td-table {
+    border: none !important;
+    >div {
+        width: 100%;
+        table {
+            border: none !important;
+            thead,
+            tbody,
+            tr {
+                border: none !important;
+            }
+        }
+    }
+    @media (max-width: 1200px) {
+        >div {
+            width: 1000px;
+            overflow: auto;
+        }
+    }
+    @media (max-width: 1000px) {
+        >div {
+            width: 1000px;
+            overflow: auto;
+        }
+        >div.table100 {
+            width: 100px !important;
+        }
+        >div.table150 {
+            width: 150px !important;
+        }
+        >div.table200 {
+            width: 200px !important;
+        }
+        >div.table250 {
+            width: 250px !important;
+        }
+        >div.table300 {
+            width: 300px !important;
+        }
+        >div.table350 {
+            width: 350px !important;
+        }
+        >div.table400 {
+            width: 400px !important;
+        }
+        >div.table450 {
+            width: 450px !important;
+        }
+        >div.table500 {
+            width: 500px !important;
+        }
+        >div.table550 {
+            width: 550px !important;
+        }
+        >div.table600 {
+            width: 600px !important;
+        }
+        >div.table650 {
+            width: 650px !important;
+        }
+        >div.table700 {
+            width: 700px !important;
+        }
+        >div.table750 {
+            width: 750px !important;
+        }
+        >div.table800 {
+            width: 800px !important;
+        }
+        >div.table850 {
+            width: 850px !important;
+        }
+        >div.table900 {
+            width: 900px !important;
+        }
+        >div.table950 {
+            width: 950px !important;
+        }
+    }
+}

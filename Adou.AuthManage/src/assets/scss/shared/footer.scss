@@ -1,0 +1,43 @@
+.wrapper {
+    .main-footer {
+        -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        padding: 15px;
+        margin-left: $main-left-width;
+        position: relative;
+        z-index: 820;
+        color: #444;
+        border-top: 1px solid #d2d6de;
+    }
+}
+
+/* 超小屏幕（手机，小于 768px） */
+
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+
+/* 小屏幕（平板，大于等于 768px） */
+
+@media (min-width: 768px) {}
+
+/* 当屏幕小于等于68px */
+
+@media (max-width: 768px) {
+    .wrapper {
+        .main-footer {
+            margin-left: 0;
+            width: 100%;
+            position: relative;
+            z-index: 820;
+        }
+    }
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+
+@media (min-width: 992px) {}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+
+@media (min-width: 1200px) {}

@@ -1,0 +1,91 @@
+/*
+ * Core: General Layout Style
+ * -------------------------
+ */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+
+/* H1 - H6 font */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+/* General Links */
+
+a {
+    color: #3c8dbc;
+}
+
+a:hover,
+a:active,
+a:focus {
+    outline: none;
+    text-decoration: none;
+}
+
+.wrapper {
+    max-width: 100%;
+    height: auto;
+    min-height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overflow: hidden;
+}
+
+.wrapper:before,
+.wrapper:after {
+    content: " ";
+    display: table;
+}
+
+.wrapper:after {
+    clear: both;
+}
+
+.td-page-order-list {
+    .detail {
+        margin: 10px 0 0 0;
+    }
+    .td-order-detail {
+        table {
+            tr {
+                height: 25px;
+                line-height: 25px;
+            }
+        }
+    }
+}
+
+.none {
+    text-align: center;
+    height: 300px;
+    line-height: 300px;
+}
+
+.auto-scroll {
+    overflow: auto;
+    @include scroll-bar(6px);
+}

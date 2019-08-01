@@ -1,0 +1,12 @@
+.el-loading-mask {
+    .el-loading-spinner {
+        .el-icon-loading {
+            &::before {
+                color: #fff !important;
+            }
+        }
+        .el-loading-text {
+            color: #fff !important;
+        }
+    }
+}

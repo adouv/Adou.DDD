@@ -1,56 +1,60 @@
-﻿* {
-    margin: 0;
-    padding: 0;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    font: {
-        family: '微软雅黑','Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        weight: 400;
-    }
-}
-
-span {
-    font: {
-        family: '微软雅黑','Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        weight: 400;
-    }
-}
-
-a {
-    outline: none;
-    text-decoration: none;
-    color: #000;
-
-    &:hover, &:active, &:focus {
-        outline: none;
-        text-decoration: none;
-        color: #000;
-    }
-}
+/*!
+ * IE10 viewport hack for Surface/desktop Windows 8 bug
+ * Copyright 2014-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
 
 
-/*.wrapper {
-    background: #f0f2f5;
-}*/
-$header-height: 60px;
-$aside-width: 230px;
-$aside-mini-width: 70px;
+/*
+ * See the Getting Started docs for more information:
+ * http://getbootstrap.com/getting-started/#support-ie10-width
+ */
 
-@import "./extend.scss";
-@import "./header.scss";
-@import "./aside.scss";
-@import "./main.scss";
-@import "./footer.scss";
-@import "./mobile.scss";
-@import "./site.scss";
+//  @-ms-viewport     { width: device-width; }
+//  @-o-viewport      { width: device-width; }
+//  @viewport         { width: device-width; }
 
-/**UI*/
-@import "./ui/adou-message.scss";
-@import "./ui/adou-message-box.scss";
-@import "./ui/adou-tip.scss";
+/* 头部左侧宽度和左侧菜单宽度 */
+
+$main-left-width:230px;
+
+/* LOGO样式变量 */
+
+$logo-bg:#4397e6;
+
+/* 头部样式变量 main-header */
+
+$main-header-height:60px;
+$main-header-bg:#62a8ea;
+$main-header-bg-hover:#4397e6;
+$main-header-color:#fff;
+$main-header-color-hover:#fff;
+
+/* 头部用户头像等比尺寸 */
+
+$main-header-Avatar-wh:25px;
+
+/* 左侧菜单样式变量 main-sidebar */
+
+$main-sidebar-bg:#263238;
+$main-sidebar-bg-hover:#242f35;
+$main-sidebar-color:rgba(163, 175, 183, .9);
+$main-sidebar-color-hover:rgba(255, 255, 255, .8);
+
+/* 导入样式 */
+
+@import "./ddd/mixin.scss";
+@import "./ui/site.scss";
+@import "./ddd/common.scss";
+@import "./shared/header.scss";
+@import "./shared/sidebar.scss";
+@import "./shared/content.scss";
+@import "./shared/footer.scss";
+@import "./shared/layout.scss";
+@import "./ui/alertify.scss";
+@import "./ui/button.scss";
+@import "./ddd/table.scss";
+@import "./ddd/pagination.scss";
+@import "./ddd/lodop.scss";
+@import "./mint-ui/index.scss";
+@import "./eui/index.scss";

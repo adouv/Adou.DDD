@@ -1,131 +1,129 @@
-﻿const path = require('path')
-const utils = require('./build/utils')
-const config = require('./config')
-const webpack = require('webpack')
-const WebpackNotifier = require('webpack-notifier')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const VueLoaderPlugin = require('vue-loader').VueLoaderPlugin
-require('babel-polyfill')
+﻿const path = require("path");
+const utils = require("./build/utils");
+const config = require("./config");
+const webpack = require("webpack");
+const WebpackNotifier = require("webpack-notifier");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const OptimizeCSSPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader").VueLoaderPlugin;
+require("babel-polyfill");
 
 const webpackConfig = {
-    context: path.resolve(__dirname, './'),
+    context: path.resolve(__dirname, "./"),
     // cheap-module-eval-source-map is faster for development
     devtool: config.build.productionSourceMap ? config.build.devtool : false,
     watch: true,
     //cssSourceMap: false,
     //productionSourceMap: false,
     entry: {
-        app: ['babel-polyfill', './src/main.js']
+        app: ["babel-polyfill", "./src/main.js"]
     },
     output: {
         path: config.build.assetsRoot,
-        filename: utils.assetsPath('js/[name].[hash].js'),
+        filename: utils.assetsPath("js/[name].[hash].js"),
         //filename: utils.assetsPath('js/[name].[hash].js'),
         //chunkFilename: utils.assetsPath('js/[id].[hash].js'),
         publicPath: "/dist/"
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: [".js", ".vue", ".json"],
         alias: {
-            'vue$': 'vue/dist/vue.esm.js',
-            '@': path.join(__dirname, 'src'),
-            '@node': path.join(__dirname, 'node_modules'),
-            '@views': path.join(__dirname, 'Areas/AdouManage/Views')
+            vue$: "vue/dist/vue.esm.js",
+            "@": path.join(__dirname, "src"),
+            "@views": path.join(__dirname, "src/views"),
+            "@lib": path.join(__dirname, "src/assets/lib"),
+            "@scss": path.join(__dirname, "src/assets/scss"),
+            "@node": path.join(__dirname, "node_modules")
         }
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: "vue-loader"
             },
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
-                include: [path.join(__dirname, './src'), path.join(__dirname, './Areas/AdouManage')]
+                loader: "babel-loader",
+                include: [
+                    path.join(__dirname, "./src"),
+                    path.join(__dirname, "./Areas/AdouManage")
+                ]
             },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader'],
-                    fallback: 'vue-style-loader'
+                    use: ["css-loader"],
+                    fallback: "vue-style-loader"
                 })
             },
             {
                 test: /\.less$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader', 'less-loader'],
-                    fallback: 'vue-style-loader'
+                    use: ["css-loader", "less-loader"],
+                    fallback: "vue-style-loader"
                 })
             },
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader', 'sass-loader'],
-                    fallback: 'vue-style-loader'
+                    use: ["css-loader", "sass-loader"],
+                    fallback: "vue-style-loader"
                 })
             },
             {
                 test: /\.sass/,
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader', 'sass-loader'],
-                    fallback: 'vue-style-loader'
+                    use: ["css-loader", "sass-loader"],
+                    fallback: "vue-style-loader"
                 })
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url-loader',
+                loader: "url-loader",
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('images/[name].[hash:7].[ext]')
-
+                    name: utils.assetsPath("images/[name].[hash:7].[ext]")
                 }
             },
             {
                 test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-                loader: 'url-loader',
+                loader: "url-loader",
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('media/[name].[hash:7].[ext]')
+                    name: utils.assetsPath("media/[name].[hash:7].[ext]")
                 }
             },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url-loader',
+                loader: "url-loader",
                 options: {
                     limit: 10000,
-                    name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+                    name: utils.assetsPath("fonts/[name].[hash:7].[ext]")
                 }
             },
             {
                 test: /\.(html|cshtml)$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            limit: 10000
-                        }
+                use: [{
+                    loader: "html-loader",
+                    options: {
+                        limit: 10000
                     }
-                ]
+                }]
             }
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(
-            ['dist'],
-            {
-                root: __dirname,
-                verbose: true,
-                dry: false
-            }
-        ),
+        new CleanWebpackPlugin(["dist"], {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        }),
         new webpack.DefinePlugin({
-            'process.env': {
+            "process.env": {
                 NODE_ENV: '"production"'
             }
         }),
@@ -140,25 +138,25 @@ const webpackConfig = {
         //}),
         // extract css into its own file
         new ExtractTextPlugin({
-            filename: utils.assetsPath('css/[name].[contenthash].css'),
+            filename: utils.assetsPath("css/[name].[contenthash].css"),
             // Setting the following option to `false` will not extract CSS from codesplit chunks.
             // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
-            // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`, 
+            // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`,
             // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
-            allChunks: true,
+            allChunks: true
         }),
         // Compress extracted CSS. We are using this plugin so that possible
         // duplicated CSS from different components can be deduped.
         new OptimizeCSSPlugin({
-            cssProcessorOptions: config.build.productionSourceMap
-                ? { safe: true, map: { inline: false } }
-                : { safe: true }
+            cssProcessorOptions: config.build.productionSourceMap ?
+                { safe: true, map: { inline: false } } :
+                { safe: true }
         }),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
-            filename: '../Areas/AdouManage/Views/Shared/_Layout.cshtml',
-            template: './Areas/AdouManage/Views/Shared/_Template.cshtml',
-            inject: 'body',
+            filename: "../Areas/AdouManage/Views/Shared/_Layout.cshtml",
+            template: "./Areas/AdouManage/Views/Shared/_Template.cshtml",
+            inject: "body",
             hash: true,
             minify: {
                 removeAttributeQuotes: false
@@ -198,15 +196,13 @@ const webpackConfig = {
         //    minChunks: 3
         //}),
         // copy custom static assets
-        new CopyWebpackPlugin([
-            {
-                from: path.resolve(__dirname, 'src/static'),
-                to: config.build.assetsSubDirectory,
-                ignore: ['.*']
-            }
-        ]),
+        new CopyWebpackPlugin([{
+            from: path.resolve(__dirname, "src/static"),
+            to: config.build.assetsSubDirectory,
+            ignore: [".*"]
+        }]),
         new WebpackNotifier(),
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin()
         //new webpack.BannerPlugin(config.build.banner)
     ]
 };

@@ -1,0 +1,9 @@
+@media (max-width: 700px) {
+    .td-pagination {
+        .el-pagination {
+            .el-pager {
+                display: none;
+            }
+        }
+    }
+}

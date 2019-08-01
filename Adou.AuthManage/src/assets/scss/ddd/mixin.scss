@@ -1,0 +1,16 @@
+// 滚动条
+@mixin scroll-bar($width:10px) {
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #ffffff;
+    }
+    &::-webkit-scrollbar {
+        width: $width;
+        height: 10px;
+        background-color: #ffffff;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}

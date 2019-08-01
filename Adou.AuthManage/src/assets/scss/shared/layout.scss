@@ -1,0 +1,83 @@
+/*左侧菜单显示隐藏*/
+
+.sidebar-mini {
+  .content-wrapper,
+  .main-footer {
+    -webkit-transition: -webkit-transform 0.1s ease-in-out, margin 0.1s ease-in-out;
+    -moz-transition: -moz-transform 0.1s ease-in-out, margin 0.1s ease-in-out;
+    -o-transition: -o-transform 0.1s ease-in-out, margin 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out, margin 0.1s ease-in-out;
+  }
+}
+
+/*平板适应*/
+
+@media (min-width: 768px) {
+  .sidebar-mini.sidebar-collapse {
+    .main-sidebar {
+      -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
+      transform: translate(0, 0);
+      width: 90px !important;
+      z-index: 800;
+      overflow: visible;
+      .sidebar {
+        width: 90px;
+        overflow: visible;
+        .sidebar-menu {
+          .header {
+            display: none;
+          }
+          .treeview {
+            overflow: hidden;
+            >a {
+              text-align: center;
+              i {
+                font-size: 20px;
+              }
+              span {
+                display: none;
+              }
+            }
+            .treeview-menu {
+              list-style: none;
+              background: $main-sidebar-bg;
+              width: 190px;
+              min-height: 100%;
+              position: absolute;
+              top: 60px;
+              left: 90px;
+              z-index: 900;
+            }
+          }
+        }
+      }
+    }
+    .content-wrapper,
+    .main-footer {
+      margin-left: 90px !important;
+    }
+    .main-footer {
+      position: relative;
+      z-index: 100;
+    }
+  }
+}
+
+/*手机适应*/
+
+@media (max-width: 768px) {
+  .sidebar-mini.sidebar-open {
+    .main-sidebar {
+      -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
+      transform: translate(0, 0);
+    }
+    .content-wrapper,
+    .main-footer {
+      margin-left: $main-left-width;
+    } 
+  }
+}
