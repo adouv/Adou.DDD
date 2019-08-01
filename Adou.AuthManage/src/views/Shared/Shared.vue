@@ -146,9 +146,9 @@
             </div>
         </div>
 
-        <footer class="main-footer">
+        <!-- <footer class="main-footer">
             <p>Copyright  2018 蚂蚁金服体验技术部出品</p>
-        </footer>
+        </footer> -->
 
     </div>
 </template>

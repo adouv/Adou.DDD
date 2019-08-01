@@ -86,7 +86,7 @@
             }
         },
         mounted() {
-            this.menuList();
+            // this.menuList();
         }
     }
 </script>
