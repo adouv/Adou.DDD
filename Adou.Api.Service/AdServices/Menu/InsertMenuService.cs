@@ -27,7 +27,7 @@ namespace Adou.Api.Service.AdServices.Menu
                 LevelId = this.Parameter.LevelId,
                 IsDel = this.Parameter.IsDel,
                 CreateTime = DateTime.Now,
-                CreateUser = "admin|1"
+                CreateUser = 1
             };
             var result = menuRep.InsertMenu(model);
             this.Result.Data = result;

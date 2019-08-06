@@ -144,7 +144,7 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// <summary>
 		/// 
 		/// </summary>
-		[Column] public string CreateUser { get; set; }
+		[Column] public long? CreateUser { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -152,7 +152,7 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// <summary>
 		/// 
 		/// </summary>
-		[Column] public string ModifyUser { get; set; }
+		[Column] public long? ModifyUser { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>

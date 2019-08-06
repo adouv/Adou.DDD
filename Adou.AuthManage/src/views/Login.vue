@@ -114,6 +114,7 @@
 // import AuthService from "../../_service/auth.service";
 // import UserService from "../../_service/user.service";
 // import EncryptService from "../../_ddd/encrypt.service";
+    import AdMenuService from '../_api/adMenu.service';
 
 export default {
   name: "LoginComponent",
@@ -134,9 +135,13 @@ export default {
      * 用户登录
      */
     btnLogin() {
-      let self = this;
+        let self = this;
 
-      self.$router.push({ path: "/" });
+        AdMenuService.getMenuList({}).then(response => {
+            console.log(response);
+        })
+
+      //self.$router.push({ path: "/" });
 
       return;
       

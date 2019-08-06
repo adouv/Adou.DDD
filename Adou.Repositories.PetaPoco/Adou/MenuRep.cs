@@ -11,6 +11,34 @@ namespace Adou.Repositories.PetaPoco.Adou
     public class MenuRep
     {
         /// <summary>
+        /// 获取菜单列表
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<adMenu> GetMenuList() {
+            string sqlWhere = string.Empty;
+            string sql = string.Empty;
+
+            #region sql
+            sql = string.Format(@"
+                SELECT [Id]
+                      ,[Title]
+                      ,[MenuIcon]
+                      ,[MenuUrl]
+                      ,[FatherId]
+                      ,[LevelId]
+                      ,[CreateTime]
+                      ,[CreateUser]
+                      ,[ModifyTime]
+                      ,[ModifyUser]
+                      ,[IsDel]
+                  FROM [dbo].[adMenu]
+                WHERE 1=1 AND [IsDel] = 1 {0}
+            ", sqlWhere);
+            #endregion
+
+            return PetaPocoAdouDB.GetInstance().Query<adMenu>(sql);
+        }
+        /// <summary>
         /// 通过父级编号获取菜单列表
         /// </summary>
         /// <param name="FatherId">父级编号</param>
@@ -39,9 +67,9 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[CreateUser]
                       ,[ModifyTime]
                       ,[ModifyUser]
-                      ,[IstValid]
+                      ,[IsDel]
                   FROM [dbo].[adMenus]
-                WHERE 1=1 AND [IstValid] = 1 {0}
+                WHERE 1=1 AND [IsDel] = 1 {0}
             ", sqlWhere);
             #endregion
 
@@ -76,9 +104,9 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[CreateUser]
                       ,[ModifyTime]
                       ,[ModifyUser]
-                      ,[IstValid]
+                      ,[IsDel]
                   FROM [dbo].[adMenus]
-                WHERE 1=1 AND [IstValid] = 1 {0}
+                WHERE 1=1 AND [IsDel] = 1 {0}
             ", sqlWhere);
             #endregion
 

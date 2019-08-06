@@ -1,5 +1,5 @@
 import ElementService from './element.service'
-// import HttpService from './http.service'
+import HttpService from './http.service'
 import LocalStorageService from './localStorage.service'
 // import EncryptService from './encrypt.service'
 // import UtilService from './util.service'
@@ -11,7 +11,7 @@ import LocalStorageService from './localStorage.service'
  */
 export default {
     ElementService,
-    //   HttpService,
+    HttpService,
     LocalStorageService,
     //   EncryptService,
     //   UtilService,

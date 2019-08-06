@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdServices\Menu\GetMenuByFatherIdService.cs" />
+    <Compile Include="AdServices\Menu\GetMenuListService.cs" />
     <Compile Include="AdServices\Menu\InsertMenuService.cs" />
     <Compile Include="AdServices\User\UserLoginService.cs" />
     <Compile Include="ApiBase.cs" />

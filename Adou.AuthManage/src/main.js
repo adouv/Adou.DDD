@@ -110,6 +110,8 @@ Vue.elem = Vue.prototype.elem$ = ddd.ElementService
 
 Vue.local = Vue.prototype.local$ = ddd.LocalStorageService
 
+Vue.http = Vue.prototype.http$ = ddd.HttpService
+
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

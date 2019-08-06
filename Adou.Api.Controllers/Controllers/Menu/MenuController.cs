@@ -16,13 +16,27 @@ namespace Adou.Api.Controllers.Controllers.Menu
     public class MenuController : BaseController
     {
         /// <summary>
-        /// 获取菜单服务
+        /// 通过父级编号获取菜单列表服务
         /// </summary>
         public GetMenuByFatherIdService getMenuByFatherIdService { get; set; }
+        /// <summary>
+        /// 获取菜单列表服务
+        /// </summary>
+        public GetMenuListService getMenuListService { get; set; }
         /// <summary>
         /// 添加菜单服务
         /// </summary>
         public InsertMenuService insertMenuService { get; set; }
+        /// <summary>
+        /// 获取菜单列表
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [Route("GetMenuList"), HttpPost]
+        public async Task<ResponseMessageModel> GetMenuList([FromBody]RequestMenuModel model)
+        {
+            return await Task.Run(()=> getMenuListService.Execute(model));
+        }
         /// <summary>
         /// 通过父级编号获取菜单
         /// </summary>
