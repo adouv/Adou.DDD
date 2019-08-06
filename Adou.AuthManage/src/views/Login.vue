@@ -5,31 +5,32 @@
         <div class="page-brand-info vertical-align animation-slide-left hidden-xs">
           <div class="page-brand vertical-align-middle">
             <div class="brand">
-              <!-- <img class="brand-img" src="http://cdn.admui.com/demo/pjax/1.3.0/images/logo-white.svg" height="50" alt="Admui"> -->
+              <img
+                class="brand-img"
+                src="../assets/images/logo-white.svg"
+                height="50"
+                alt="Admui"
+              />
             </div>
             <h2 class="hidden-sm">添丁后台管理系统</h2>
-            <!-- <ul class="list-icons hidden-sm">
+            <ul class="list-icons hidden-sm">
               <li>
                 <i class="wb-check" aria-hidden="true"></i> Adou 是一个基于最新 Web 技术的企业级通用管理系统快速开发框架，可以帮助企业极大的提高工作效率，节省开发成本，提升品牌形象。
               </li>
               <li>
-                <i class="wb-check" aria-hidden="true"></i> 您可以 Admui 为基础，快速开发各种MIS系统，如CMS、OA、CRM、ERP、POS等。</li>
+                <i class="wb-check" aria-hidden="true"></i> 您可以 Admui 为基础，快速开发各种MIS系统，如CMS、OA、CRM、ERP、POS等。
+              </li>
               <li>
                 <i class="wb-check" aria-hidden="true"></i> Admui 紧贴业务特性，涵盖了大量的常用组件和基础功能，最大程度上帮助企业节省时间成本和费用开支。
               </li>
-            </ul>-->
+            </ul>
           </div>
         </div>
         <div class="page-login-main animation-fade">
           <div class="vertical-align">
             <div class="vertical-align-middle">
               <div class="brand visible-xs text-center">
-                <img
-                  class="brand-img"
-                  src="../assets/images/logo.svg"
-                  height="50"
-                  alt="Admui"
-                >
+                <img class="brand-img" src="../assets/images/logo.svg" height="50" alt="Admui" />
               </div>
 
               <h3 class="hidden-xs">登录 添丁</h3>
@@ -45,7 +46,7 @@
                     name="userName"
                     v-model="userName"
                     placeholder="用户名"
-                  >
+                  />
                 </div>
 
                 <div class="form-group has-feedback has-success">
@@ -57,7 +58,7 @@
                     name="userPwd"
                     v-model="userPwd"
                     placeholder="密码"
-                  >
+                  />
                 </div>
 
                 <div class="form-group has-feedback">
@@ -70,21 +71,21 @@
                       placeholder="请输入验证码"
                       v-model="userCode"
                       @keyup.enter="btnLogin();"
-                    >
+                    />
                     <a class="input-group-addon padding-0 reload-vify" href="javascript:;">
                       <img
                         v-bind:src="ImgByteArray"
                         width="100"
                         height="38"
                         @click="btnValidateCode();"
-                      >
+                      />
                     </a>
                   </div>
                 </div>
 
                 <div class="form-group clearfix">
                   <div class="checkbox-custom checkbox-inline checkbox-primary pull-left">
-                    <input type="checkbox" id="remember" checked="true" name="remember">
+                    <input type="checkbox" id="remember" checked="true" name="remember" />
                     <label for="remember">自动登录</label>
                   </div>
                 </div>
@@ -114,7 +115,6 @@
 // import AuthService from "../../_service/auth.service";
 // import UserService from "../../_service/user.service";
 // import EncryptService from "../../_ddd/encrypt.service";
-    import AdMenuService from '../_api/adMenu.service';
 
 export default {
   name: "LoginComponent",
@@ -135,16 +135,12 @@ export default {
      * 用户登录
      */
     btnLogin() {
-        let self = this;
+      let self = this;
 
-        AdMenuService.getMenuList({}).then(response => {
-            console.log(response);
-        })
-
-      //self.$router.push({ path: "/" });
+      self.$router.push({ path: "/" });
 
       return;
-      
+
       let params = {};
 
       params.userName = this.userName;

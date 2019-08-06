@@ -50,7 +50,7 @@ namespace Adou.Api.Model
         {
             get
             {
-                return IsSuccess ? 100 : 200;
+                return IsSuccess ? 200 : 100;
             }
         }
     }
