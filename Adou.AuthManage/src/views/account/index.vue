@@ -22,6 +22,7 @@
               <th>编号</th>
               <th>标题</th>
               <th>账号</th>
+              <th>密码</th>
               <th>邮箱</th>
               <th>手机号</th>
               <th>地址</th>
@@ -34,13 +35,27 @@
               <td>{{item.Id}}</td>
               <td>{{item.Title}}</td>
               <td>{{item.Account}}</td>
+              <td>
+                <el-tag size="mini">查看密码</el-tag>
+              </td>
               <td>{{item.Email}}</td>
               <td>{{item.Mobile}}</td>
               <td>
                 <a :href="item.Url" target="_blank">网址</a>
               </td>
-              <td>{{item.CreateTime}}</td>
-              <td>操作</td>
+              <td>{{item.CreateTime|dateTimeFormats}}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-danger btn-sm"
+                  @click="btnDeleteHandller(item);"
+                >删除</button>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                  @click="btnEditHandller(item);"
+                >编辑</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -122,10 +137,40 @@ export default {
             this.getList();
             close();
           });
+        } else {
+          adAccountService.updateAccount(params).then(response => {
+            if (response.Data > 0 && response.Data !== null) {
+              this.$tip("保存成功");
+            }
+            this.getList();
+            close();
+          });
         }
         console.log(123);
       };
       this.modal$(options);
+    },
+    btnDeleteHandller(item) {
+      let options = {};
+      options.title = "确认提示";
+      options.message = "确认要删除吗？";
+
+      options.params = {};
+      options.params.Id = item.Id;
+      options.params.IsDel = 1;
+
+      options.save = (params, close) => {
+        console.log(params);
+        adAccountService.deleteAccountById(params).then(response => {
+          if (response.Data > 0 && response.Data !== null) {
+            this.$tip("删除成功");
+          }
+          this.getList();
+          close();
+        });
+      };
+
+      this.confirm$(options);
     }
   }
 };

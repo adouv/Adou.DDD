@@ -8,8 +8,10 @@ import store from "@/store";
 import ddd from "@/_ddd";
 import { ComponentInstall } from "@/_components/index";
 import { ExpansionInstall } from "@/_expansion/index";
+import { FilterInstall } from "@/_filters/index";
 
 import {
+    Tag,
     Container,
     Header,
     Aside,
@@ -65,6 +67,7 @@ import "@lib/themify-icons/themify-icons.css";
 
 Vue.config.productionTip = false;
 
+Vue.use(Tag);
 Vue.use(Container);
 Vue.use(Header);
 Vue.use(Aside);
@@ -108,6 +111,7 @@ Vue.use(Loading.directive);
 
 ComponentInstall(Vue);
 ExpansionInstall(Vue);
+FilterInstall(Vue);
 Vue.prototype.$loading = Loading.service;
 
 Vue.elem = Vue.prototype.elem$ = ddd.ElementService;
