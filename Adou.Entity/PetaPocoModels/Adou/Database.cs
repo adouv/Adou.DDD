@@ -6,7 +6,7 @@
 // 
 //     Connection String Name: `AdouConnection`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=.;Initial Catalog=adou;MultipleActiveResultSets=True;user id=sa;password=**zapped**;`
+//     Connection String:      `Data Source=.;Initial Catalog=adou;Persist Security Info=False;User ID=sa;Password=88888888`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -108,6 +108,71 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 	/// <summary>
 	/// 
 	/// </summary>    
+	[TableName("dbo.adAccount")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adAccount : PetaPocoAdouDB.Record<adAccount>  
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Title { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Url { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Account { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Password { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Email { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Mobile { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Keyword { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Descript { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public DateTime CreateTime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long CreateUser { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public DateTime ModifyTime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long ModifyUser { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public bool IsDel { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
 	[TableName("dbo.adMenu")]
 	[PrimaryKey("Id")]
 	[ExplicitColumns]
@@ -205,11 +270,11 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// <summary>
 		/// 
 		/// </summary>
-		[Column] public DateTime? UpdateTime { get; set; }
+		[Column] public DateTime? ModifyTime { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		[Column] public string UpdateUser { get; set; }
+		[Column] public string ModifyUser { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>

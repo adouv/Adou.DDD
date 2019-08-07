@@ -1,11 +1,13 @@
 ﻿// The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from '@/App'
-import router from '@/router'
+import Vue from "vue";
+import App from "@/App";
+import router from "@/router";
 
-import store from '@/store'
-import ddd from '@/_ddd'
+import store from "@/store";
+import ddd from "@/_ddd";
+import { ComponentInstall } from "@/_components/index";
+import { ExpansionInstall } from "@/_expansion/index";
 
 import {
     Container,
@@ -49,19 +51,19 @@ import {
     TableColumn,
     Message,
     Loading
-} from 'element-ui'
-import 'babel-polyfill'
-import 'es6-promise/auto'
+} from "element-ui";
+import "babel-polyfill";
+import "es6-promise/auto";
 
-import 'element-ui/lib/theme-chalk/index.css'
-import '@lib/bootstrap/dist/css/bootstrap.min.css'
-import '@scss/index.scss'
-import '@node/font-awesome/scss/font-awesome.scss'
-import '@lib/Ionicons/scss/ionicons.scss'
-import '@lib/webicons/scss/web-icons.scss'
-import '@lib/themify-icons/themify-icons.css'
+import "element-ui/lib/theme-chalk/index.css";
+import "@lib/bootstrap/dist/css/bootstrap.min.css";
+import "@scss/index.scss";
+import "@node/font-awesome/scss/font-awesome.scss";
+import "@lib/Ionicons/scss/ionicons.scss";
+import "@lib/webicons/scss/web-icons.scss";
+import "@lib/themify-icons/themify-icons.css";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 Vue.use(Container);
 Vue.use(Header);
@@ -104,21 +106,24 @@ Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Loading.directive);
 
-Vue.prototype.$loading = Loading.service
+ComponentInstall(Vue);
+ExpansionInstall(Vue);
+Vue.prototype.$loading = Loading.service;
 
-Vue.elem = Vue.prototype.elem$ = ddd.ElementService
+Vue.elem = Vue.prototype.elem$ = ddd.ElementService;
 
-Vue.local = Vue.prototype.local$ = ddd.LocalStorageService
+Vue.local = Vue.prototype.local$ = ddd.LocalStorageService;
 
-Vue.http = Vue.prototype.http$ = ddd.HttpService
+Vue.http = Vue.prototype.http$ = ddd.HttpService;
+Vue.valid = Vue.prototype.valid$ = ddd.ValidService;
 
 /* eslint-disable no-new */
 new Vue({
-    el: '#app',
+    el: "#app",
     store,
     router,
     components: {
         App
     },
-    template: '<App />'
-})
+    template: "<App />"
+});

@@ -32,15 +32,15 @@ export default {
             //console.log(nextRoute);
             //判断当前路由是否在配置内
             if (nextRoute.indexOf(to.name) > -1) {
-                if (!IsLogin) {
-                    router.push("login");
-                }
+                // if (!IsLogin) {
+                //     router.push("login");
+                // }
             }
             //如果当前路由为logo则判断是否登录
             if (to.name === "login") {
-                if (IsLogin) {
-                    router.push("/");
-                }
+                // if (IsLogin) {
+                //     router.push("/");
+                // }
             }
             next();
         });

@@ -20,7 +20,6 @@ namespace Adou.Api.Service.AdServices.Menu
         /// </summary>
         protected override void ExecuteMethod()
         {
-            int i = Convert.ToInt32("我是谁");
             var result = menuRep.GetMenuList();
             this.Result.Data = result;
         }

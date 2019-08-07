@@ -1,6 +1,6 @@
 ﻿import Vue from 'vue'
 /** 
- * 菜单服务
+ * 菜单管理服务
  */
 export default {
     /**
@@ -10,7 +10,7 @@ export default {
      * @returns
      */
     async getMenuList(params = {}, config = {}) {
-        let result = await Vue.http.post('/api/Adou/Menu/GetMenuList', params, config);
+        let result = await Vue.http.post('Menu/GetMenuList', params, config);
         return result;
     }
 }

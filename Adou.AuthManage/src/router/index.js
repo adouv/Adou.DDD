@@ -8,6 +8,8 @@ import SharedComponent from "@views/shared";
 import HomeComponent from "@views/home.vue";
 import SettingComponent from "@views/shared/setting.vue";
 
+import adAccountComponent from '@views/account/index';
+
 Vue.use(Router);
 
 const routers = [{
@@ -28,12 +30,18 @@ const routers = [{
                 path: "setting",
                 name: "setting",
                 component: SettingComponent
+            },
+            {
+                path: "adAccount",
+                name: "adAccount",
+                component: adAccountComponent
             }
         ]
     }
 ];
 
 const router = new Router({
+    // mode: 'history',
     routes: routers
 });
 

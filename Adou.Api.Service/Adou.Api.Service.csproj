@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdServices\Account\InsertAccountService.cs" />
     <Compile Include="AdServices\Menu\GetMenuByFatherIdService.cs" />
     <Compile Include="AdServices\Menu\GetMenuListService.cs" />
     <Compile Include="AdServices\Menu\InsertMenuService.cs" />

@@ -74,10 +74,9 @@
                     />
                     <a class="input-group-addon padding-0 reload-vify" href="javascript:;">
                       <img
-                        v-bind:src="ImgByteArray"
+                        src="../assets/images/code.jpg"
                         width="100"
                         height="38"
-                        @click="btnValidateCode();"
                       />
                     </a>
                   </div>

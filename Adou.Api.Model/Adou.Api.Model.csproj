@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\Request\RequestAccountListModel.cs" />
+    <Compile Include="Account\Request\RequestAccountModel.cs" />
     <Compile Include="Menu\Request\RequestMenuModel.cs" />
     <Compile Include="User\Request\RequestUserLoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,7 +6,7 @@ import axios from "axios";
  */
 axios.defaults.timeout = 1000000;
 
-axios.defaults.baseURL = ``;
+axios.defaults.baseURL = `/api/Adou/`;
 
 axios.defaults.retry = 4;
 
@@ -38,6 +38,7 @@ axios.interceptors.response.use(
         if (Status === 200 && IsSuccess && Data.length !== 0) {
             return { Data: Data, Message: Message };
         } else {
+            Vue.tip(Message);
             return { Data: null, Message: Message };
         }
     },
