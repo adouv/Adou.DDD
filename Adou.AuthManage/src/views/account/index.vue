@@ -9,7 +9,7 @@
       </div>
 
       <div class="col-sm-12 col-md-12">
-        <el-button size="small">搜索</el-button>
+        <el-button size="small" @click="getList();">搜索</el-button>
         <el-button type="primary" size="small" @click="btnEditHandller({});">添加</el-button>
       </div>
     </div>
@@ -26,11 +26,23 @@
               <th>手机号</th>
               <th>地址</th>
               <th>注册时间</th>
-              <th>修改时间</th>
               <th>操作</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <tr v-for="item in list" :key="item.Id">
+              <td>{{item.Id}}</td>
+              <td>{{item.Title}}</td>
+              <td>{{item.Account}}</td>
+              <td>{{item.Email}}</td>
+              <td>{{item.Mobile}}</td>
+              <td>
+                <a :href="item.Url" target="_blank">网址</a>
+              </td>
+              <td>{{item.CreateTime}}</td>
+              <td>操作</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
@@ -43,13 +55,26 @@ import adAccountService from "../../_api/adAccount.service";
 export default {
   name: "adAccountComponent",
   data() {
-    return {};
+    return {
+      list: []
+    };
+  },
+  mounted() {
+    this.getList();
   },
   methods: {
+    getList() {
+      this.list = [];
+      adAccountService.getAccountList().then(response => {
+        if (response.Data !== null && response.Data.length !== 0) {
+          this.list = response.Data;
+        }
+      });
+    },
     btnEditHandller(item = {}) {
       let IsUndefined = item.Id !== undefined;
       let options = {};
-      options.title = item.Id !== undefined ? "修改账户" : "添加账户";
+      options.title = IsUndefined ? "修改账户" : "添加账户";
       options.componentName = AdAccountEditComponent;
       options.height = 350;
       options.params = {};
@@ -94,6 +119,7 @@ export default {
             if (response.Data > 0 && response.Data !== null) {
               this.$tip("保存成功");
             }
+            this.getList();
             close();
           });
         }

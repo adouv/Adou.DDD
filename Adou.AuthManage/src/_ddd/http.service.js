@@ -35,7 +35,7 @@ axios.interceptors.response.use(
     response => {
         console.log('http.service.response', response);
         let { Data, IsSuccess, Status, Message } = response.data;
-        if (Status === 200 && IsSuccess && Data.length !== 0) {
+        if (Status === 200 && IsSuccess) {
             return { Data: Data, Message: Message };
         } else {
             Vue.tip(Message);
