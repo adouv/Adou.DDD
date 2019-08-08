@@ -4,63 +4,36 @@
       <div class="col-sm-6 col-md-4">
         <div class="example-wrap">
           <h4 class="example-title">标题</h4>
-          <el-input size="small" style="width:100%;" placeholder="请输入标题"></el-input>
+          <el-input size="small" v-model="request.Title" style="width:100%;" placeholder="请输入标题"></el-input>
         </div>
       </div>
 
       <div class="col-sm-12 col-md-12">
-        <el-button size="small" @click="getList();">搜索</el-button>
-        <el-button type="primary" size="small" @click="btnEditHandller({});">添加</el-button>
+        <ad-button type="inverse" @click.native="getList();">搜索</ad-button>
+        <ad-button type="primary" @click.native="btnEditHandller({});">添加</ad-button>
       </div>
     </div>
 
-    <div class="example table-responsive td-table" style="width:100% !important;">
-      <div>
-        <table class="table table-striped" style="width:100% !important;">
-          <thead>
-            <tr>
-              <th>编号</th>
-              <th>标题</th>
-              <th>账号</th>
-              <th>密码</th>
-              <th>邮箱</th>
-              <th>手机号</th>
-              <th>地址</th>
-              <th>注册时间</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in list" :key="item.Id">
-              <td>{{item.Id}}</td>
-              <td>{{item.Title}}</td>
-              <td>{{item.Account}}</td>
-              <td>
-                <el-tag size="mini">查看密码</el-tag>
-              </td>
-              <td>{{item.Email}}</td>
-              <td>{{item.Mobile}}</td>
-              <td>
-                <a :href="item.Url" target="_blank">网址</a>
-              </td>
-              <td>{{item.CreateTime|dateTimeFormats}}</td>
-              <td>
-                <button
-                  type="button"
-                  class="btn btn-danger btn-sm"
-                  @click="btnDeleteHandller(item);"
-                >删除</button>
-                <button
-                  type="button"
-                  class="btn btn-primary btn-sm"
-                  @click="btnEditHandller(item);"
-                >编辑</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <ad-table :headers="headers" :list="list">
+      <tr v-for="item in list" :key="item.Id">
+        <td>{{item.Id}}</td>
+        <td>{{item.Title}}</td>
+        <td>{{item.Account}}</td>
+        <td>
+          <el-tag size="mini">查看密码</el-tag>
+        </td>
+        <td>{{item.Email}}</td>
+        <td>{{item.Mobile}}</td>
+        <td>
+          <a :href="item.Url" target="_blank">网址</a>
+        </td>
+        <td>{{item.CreateTime|dateTimeFormats}}</td>
+        <td>
+          <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
+          <ad-button type="primary" size="sm" @click.native="btnEditHandller(item);">编辑</ad-button>
+        </td>
+      </tr>
+    </ad-table>
   </ad-main>
 </template>
 
@@ -71,7 +44,21 @@ export default {
   name: "adAccountComponent",
   data() {
     return {
-      list: []
+      headers: [
+        "编号",
+        "标题",
+        "账号",
+        "密码",
+        "邮箱",
+        "手机号",
+        "地址",
+        "注册时间",
+        "操作"
+      ],
+      list: [],
+      request: {
+        Title: ""
+      }
     };
   },
   mounted() {
@@ -80,7 +67,8 @@ export default {
   methods: {
     getList() {
       this.list = [];
-      adAccountService.getAccountList().then(response => {
+
+      adAccountService.getAccountList(this.request).then(response => {
         if (response.Data !== null && response.Data.length !== 0) {
           this.list = response.Data;
         }

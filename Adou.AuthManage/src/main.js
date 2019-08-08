@@ -24,7 +24,6 @@ import {
     Col,
     Row,
     Icon,
-    Button,
     Select,
     Breadcrumb,
     BreadcrumbItem,
@@ -80,7 +79,6 @@ Vue.use(MenuItemGroup);
 Vue.use(Col);
 Vue.use(Row);
 Vue.use(Icon);
-Vue.use(Button);
 Vue.use(Select);
 Vue.use(Breadcrumb);
 Vue.use(BreadcrumbItem);
@@ -115,11 +113,11 @@ FilterInstall(Vue);
 Vue.prototype.$loading = Loading.service;
 
 Vue.elem = Vue.prototype.elem$ = ddd.ElementService;
-
 Vue.local = Vue.prototype.local$ = ddd.LocalStorageService;
-
 Vue.http = Vue.prototype.http$ = ddd.HttpService;
 Vue.valid = Vue.prototype.valid$ = ddd.ValidService;
+Vue.encry = Vue.prototype.encry$ = ddd.EncryptService;
+Vue.utils = Vue.prototype.utils$ = ddd.UtilService;
 
 /* eslint-disable no-new */
 new Vue({

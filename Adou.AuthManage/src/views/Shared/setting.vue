@@ -77,10 +77,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">菜单主题：</label>
                     <div class="col-sm-10">
-                        <div class="btn-group bootstrap-select"><button type="button" class="btn dropdown-toggle btn-select" data-toggle="dropdown" data-id="skintoolsSidebar" title="深色主题" aria-expanded="false"><span class="filter-option pull-left">深色主题</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu open" style="max-height: 656px; overflow: hidden; min-height: 0px;"><ul class="dropdown-menu inner" role="menu" style="max-height: 652px; overflow-y: auto; min-height: 0px;"><li data-original-index="0" class="selected"><a tabindex="0" class="" style="" data-tokens="null"><span class="text">深色主题</span><span class="icon wb-check check-mark"></span></a></li><li data-original-index="1" class=""><a tabindex="0" class="" style="" data-tokens="null"><span class="text">浅色主题</span><span class="icon wb-check check-mark"></span></a></li></ul></div><select data-plugin="selectpicker" id="skintoolsSidebar" name="menuTheme" class="" tabindex="-98">
-                            <option value="site-menubar-dark" selected="">深色主题</option>
-                            <option value="site-menubar-light">浅色主题</option>
-                        </select></div>
+                        深色、浅色
                     </div>
                 </div>
                 <div class="form-group">

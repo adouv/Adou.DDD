@@ -1,6 +1,6 @@
 import Vue from "vue";
 import axios from "axios";
-
+import encryptService from "./encrypt.service";
 /**
  * 超时
  */
@@ -17,14 +17,18 @@ axios.defaults.retryDelay = 1000;
  */
 axios.interceptors.request.use(
     config => {
-        console.log('http.service.config', config);
         if (Vue.local.getItem("tdToken") !== undefined) {
             config.headers.Token = `${Vue.local.getItem("tdToken")}`;
         }
+
+        //请求参数加密处理
+        config.data = Vue.encry.dataEncryption(config.data, true);
+
+        console.log("http.service.config", config);
         return config;
     },
     error => {
-        console.log('http.service.error0', error);
+        console.log("http.service.error0", error);
         return Promise.reject(error);
     }
 );
@@ -33,7 +37,7 @@ axios.interceptors.request.use(
  */
 axios.interceptors.response.use(
     response => {
-        console.log('http.service.response', response);
+        console.log("http.service.response", response);
         let { Data, IsSuccess, Status, Message } = response.data;
         if (Status === 200 && IsSuccess) {
             return { Data: Data, Message: Message };
@@ -43,7 +47,7 @@ axios.interceptors.response.use(
         }
     },
     error => {
-        console.log('http.service.error1', error);
+        console.log("http.service.error1", error);
         if (error.response) {
             let {
                 config,

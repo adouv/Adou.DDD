@@ -10,7 +10,8 @@ export default {
      * @returns
      */
     async insertAccount(params = {}, config = {}) {
-        let result = await Vue.http.post('Account/InsertAccount', params, config);
+        let newParams = Vue.utils.requestParamsFormat(params);
+        let result = await Vue.http.post('Account/InsertAccount', newParams, config);
         return result;
     },
     /**
@@ -20,7 +21,8 @@ export default {
      * @returns
      */
     async updateAccount(params = {}, config = {}) {
-        let result = await Vue.http.post('Account/UpdateAccount', params, config);
+        let newParams = Vue.utils.requestParamsFormat(params);
+        let result = await Vue.http.post('Account/UpdateAccount', newParams, config);
         return result;
     },
     /**
@@ -29,7 +31,8 @@ export default {
      * @param {*} config 
      */
     async getAccountList(params = {}, config = {}) {
-        let result = await Vue.http.post('Account/GetAccountList', params, config);
+        let newParams = Vue.utils.requestParamsFormat(params);
+        let result = await Vue.http.post('Account/GetAccountList', newParams, config);
         return result;
     },
     /**
@@ -38,7 +41,8 @@ export default {
      * @param {*} config 
      */
     async deleteAccountById(params = {}, config = {}) {
-        let result = await Vue.http.post('Account/DeleteAccountById', params, config);
+        let newParams = Vue.utils.requestParamsFormat(params);
+        let result = await Vue.http.post('Account/DeleteAccountById', newParams, config);
         return result;
     }
 }

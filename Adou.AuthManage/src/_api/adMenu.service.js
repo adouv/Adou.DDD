@@ -10,7 +10,8 @@ export default {
      * @returns
      */
     async getMenuList(params = {}, config = {}) {
-        let result = await Vue.http.post('Menu/GetMenuList', params, config);
+        let newParams = Vue.utils.requestParamsFormat(params);
+        let result = await Vue.http.post('Menu/GetMenuList', newParams, config);
         return result;
     }
 }
