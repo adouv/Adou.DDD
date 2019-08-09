@@ -12,7 +12,7 @@ namespace Adou.Api.Service.AdServices.Account
     /// <summary>
     /// 分页获取账户列表
     /// </summary>
-    public class GetAccountPageListService : ApiBase<RequestAccountModel>
+    public class GetAccountPageListService : ApiBase<RequestGetAccountListModel>
     {
         public AccountRep accountRep { get; set; }
         /// <summary>
@@ -25,7 +25,7 @@ namespace Adou.Api.Service.AdServices.Account
                 Title = this.Parameter.Title
             };
 
-            var result = accountRep.GetAccountPageList(this.Parameter.PageIndex, this.Parameter.PageSize, model);
+            var result = accountRep.GetAccountPageList(this.Parameter.PageIndex, this.Parameter.PageSize, this.Parameter.OrderBy, this.Parameter.IsDesc, model);
 
             this.Result.Data = result;
         }

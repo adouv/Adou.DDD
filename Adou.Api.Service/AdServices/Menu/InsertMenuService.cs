@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Adou.Api.Service.AdServices.Menu
 {
-    public class InsertMenuService : ApiBase<RequestMenuModel>
+    public class InsertMenuService : ApiBase<RequestInsertMenuModel>
     {
         public MenuRep menuRep { get; set; }
 
@@ -29,7 +29,8 @@ namespace Adou.Api.Service.AdServices.Menu
                 CreateUser = 1,
                 ModifyUser = 0,
                 ModifyTime = DateTime.Now,
-                IsDel = true
+                IsDel = true,
+                Sort = this.Parameter.Sort
             };
             var result = menuRep.InsertMenu(model);
             this.Result.Data = result;

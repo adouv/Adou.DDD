@@ -41,7 +41,7 @@ namespace Adou.Api.Controllers.Controllers.Account
         /// <param name="model">请求实体</param>
         /// <returns>ResponseMessageModel</returns>
         [Route("InsertAccount"), HttpPost]
-        public async Task<ResponseMessageModel> InsertMenu([FromBody]RequestAccountModel model)
+        public async Task<ResponseMessageModel> InsertMenu([FromBody]RequestInsertAccountModel model)
         {
             return await Task.Run(() => insertAccountService.Execute(model));
         }
@@ -51,7 +51,7 @@ namespace Adou.Api.Controllers.Controllers.Account
         /// <param name="model">请求实体</param>
         /// <returns></returns>
         [Route("UpdateAccountById"), HttpPost]
-        public async Task<ResponseMessageModel> UpdateAccountById([FromBody]RequestAccountModel model)
+        public async Task<ResponseMessageModel> UpdateAccountById([FromBody]RequestUpdateAccountByIdModel model)
         {
             return await Task.Run(() => updateAccountByIdService.Execute(model));
         }
@@ -61,7 +61,7 @@ namespace Adou.Api.Controllers.Controllers.Account
         /// <param name="model">请求实体</param>
         /// <returns></returns>
         [Route("GetAccountList"), HttpPost]
-        public async Task<ResponseMessageModel> GetAccountList([FromBody]RequestAccountModel model)
+        public async Task<ResponseMessageModel> GetAccountList([FromBody]RequestGetAccountListModel model)
         {
             return await Task.Run(() => getAccountService.Execute(model));
         }
@@ -71,7 +71,7 @@ namespace Adou.Api.Controllers.Controllers.Account
         /// <param name="model">请求实体</param>
         /// <returns></returns>
         [Route("DeleteAccountById"), HttpPost]
-        public async Task<ResponseMessageModel> DeleteAccountById([FromBody]RequestAccountModel model)
+        public async Task<ResponseMessageModel> DeleteAccountById([FromBody]RequestDeleteAccountByIdModel model)
         {
             return await Task.Run(() => deleteAccountByIdService.Execute(model));
         }
@@ -81,7 +81,7 @@ namespace Adou.Api.Controllers.Controllers.Account
         /// <param name="model">请求实体</param>
         /// <returns></returns>
         [Route("GetAccountPageList"), HttpPost]
-        public async Task<ResponseMessageModel> GetAccountPageList([FromBody]RequestAccountModel model)
+        public async Task<ResponseMessageModel> GetAccountPageList([FromBody]RequestGetAccountListModel model)
         {
             return await Task.Run(() => getAccountPageListService.Execute(model));
         }

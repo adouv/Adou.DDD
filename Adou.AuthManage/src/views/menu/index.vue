@@ -19,7 +19,16 @@
             &nbsp;&nbsp;{{item.Title}}
           </td>
           <td>{{item.MenuUrl}}</td>
-          <td>{{item.CreateTime|dateTimeFormats}}</td>
+          <td>
+            <input
+              type="text"
+              style="width:50px;text-align:center;"
+              class="form-control"
+              v-model="item.Sort"
+              @blur="sortHandller(item)"
+            />
+          </td>
+          <td>{{item.CreateTime|dateFormats}}</td>
           <td>
             <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
             <ad-button type="primary" size="sm" @click.native="btnEditHandller(item);">编辑</ad-button>
@@ -35,7 +44,16 @@
             &nbsp;{{items.Title}}
           </td>
           <td>{{items.MenuUrl}}</td>
-          <td>{{items.CreateTime|dateTimeFormats}}</td>
+          <td>
+            <input
+              type="text"
+              style="width:50px;text-align:center;"
+              class="form-control"
+              v-model="items.Sort"
+              @blur="sortHandller(items)"
+            />
+          </td>
+          <td>{{items.CreateTime|dateFormats}}</td>
           <td>
             <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(items);">删除</ad-button>
             <ad-button type="primary" size="sm" @click.native="btnEditHandller(items);">编辑</ad-button>
@@ -53,9 +71,12 @@ export default {
   name: "AdMenuComponent",
   data() {
     return {
-      headers: ["", "编号", "菜单名称", "地址", "创建时间", "操作"],
+      headers: ["", "编号", "菜单名称", "地址", "排序", "创建时间", "操作"],
       list: [],
-      request: {}
+      request: {
+        OrderBy: "Sort",
+        IsDesc: true
+      }
     };
   },
   mounted() {
@@ -78,6 +99,7 @@ export default {
                 MenuUrl: "#",
                 FatherId: element.FatherId,
                 LevelId: element.LevelId,
+                Sort: element.Sort,
                 isSubShow: false,
                 children: children
               });
@@ -91,7 +113,8 @@ export default {
                   MenuIcon: "",
                   MenuUrl: subElement.MenuUrl,
                   FatherId: subElement.FatherId,
-                  LevelId: subElement.LevelId
+                  LevelId: subElement.LevelId,
+                  Sort: subElement.Sort
                 });
               }
             });
@@ -112,7 +135,7 @@ export default {
       options.params.MenuUrl = IsUndefined ? item.MenuUrl : "#";
       options.params.FatherId = IsUndefined ? item.FatherId : 0;
       options.params.LevelId = IsUndefined ? item.LevelId : 0;
-
+      options.params.Sort = IsUndefined ? item.Sort : 100;
       options.save = (params, close) => {
         params.LevelId = params.FatherId === 0 ? 0 : 1;
 
@@ -120,8 +143,6 @@ export default {
           this.$tip("请填写菜单名称");
           return;
         }
-
-        console.log(params);
 
         let result = null;
 
@@ -163,6 +184,15 @@ export default {
       };
 
       this.confirm$(options);
+    },
+    sortHandller(item) {
+      let params = {};
+      params.Id = item.Id;
+      params.Sort = item.Sort;
+      adMenuService.updateMenuSortById(params).then(response => {
+        console.log(response);
+        this.getList();
+      });
     }
   }
 };

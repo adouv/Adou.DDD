@@ -36,6 +36,10 @@ namespace Adou.Api.Controllers.Controllers.Menu
         /// </summary>
         public UpdateMenuByIdService updateMenuByIdService { get; set; }
         /// <summary>
+        /// 通过编号更新菜单排序服务
+        /// </summary>
+        public UpdateMenuSortByIdService updateMenuSortByIdService { get; set; }
+        /// <summary>
         /// 删除菜单
         /// </summary>
         public DeleteMenuByIdService deleteMenuByIdService { get; set; }
@@ -45,7 +49,7 @@ namespace Adou.Api.Controllers.Controllers.Menu
         /// <param name="model"></param>
         /// <returns></returns>
         [Route("GetMenuList"), HttpPost]
-        public async Task<ResponseMessageModel> GetMenuList([FromBody]RequestMenuModel model)
+        public async Task<ResponseMessageModel> GetMenuList([FromBody]RequestGetMenuListModel model)
         {
             return await Task.Run(() => getMenuListService.Execute(model));
         }
@@ -55,7 +59,7 @@ namespace Adou.Api.Controllers.Controllers.Menu
         /// <param name="model">请求实体</param>
         /// <returns>ResponseMessageModel</returns>
         [Route("GetMenuListByFatherId"), HttpPost]
-        public async Task<ResponseMessageModel> GetMenuListByFatherId([FromBody]RequestMenuModel model)
+        public async Task<ResponseMessageModel> GetMenuListByFatherId([FromBody]RequestGetMenuListModel model)
         {
             return await Task.Run(() => getMenuListByFatherIdService.Execute(model));
         }
@@ -65,7 +69,7 @@ namespace Adou.Api.Controllers.Controllers.Menu
         /// <param name="model">请求实体</param>
         /// <returns></returns>
         [Route("GetSingleMenuByFatherId"), HttpPost]
-        public async Task<ResponseMessageModel> GetSingleMenuByFatherId([FromBody]RequestMenuModel model)
+        public async Task<ResponseMessageModel> GetSingleMenuByFatherId([FromBody]RequestGetMenuListModel model)
         {
             return await Task.Run(() => getSingleMenuByFatherIdService.Execute(model));
         }
@@ -75,7 +79,7 @@ namespace Adou.Api.Controllers.Controllers.Menu
         /// <param name="model">请求实体</param>
         /// <returns>ResponseMessageModel</returns>
         [Route("InsertMenu"), HttpPost]
-        public async Task<ResponseMessageModel> InsertMenu([FromBody]RequestMenuModel model)
+        public async Task<ResponseMessageModel> InsertMenu([FromBody]RequestInsertMenuModel model)
         {
             return await Task.Run(() => insertMenuService.Execute(model));
         }
@@ -85,9 +89,20 @@ namespace Adou.Api.Controllers.Controllers.Menu
         /// <param name="model">请求实体</param>
         /// <returns>ResponseMessageModel</returns>
         [Route("UpdateMenuById"), HttpPost]
-        public async Task<ResponseMessageModel> UpdateMenuById([FromBody]RequestMenuModel model)
+        public async Task<ResponseMessageModel> UpdateMenuById([FromBody]RequestUpdateMenuByIdModel model)
         {
             return await Task.Run(() => updateMenuByIdService.Execute(model));
+        }
+        
+        /// <summary>
+        /// 通过编号更新菜单排序
+        /// </summary>
+        /// <param name="model">请求实体</param>
+        /// <returns>ResponseMessageModel</returns>
+        [Route("UpdateMenuSortById"), HttpPost]
+        public async Task<ResponseMessageModel> UpdateMenuSortById([FromBody]RequestUpdateMenuSortByIdModel model)
+        {
+            return await Task.Run(() => updateMenuSortByIdService.Execute(model));
         }
         /// <summary>
         /// 删除菜单
@@ -95,7 +110,7 @@ namespace Adou.Api.Controllers.Controllers.Menu
         /// <param name="model">请求实体</param>
         /// <returns>ResponseMessageModel</returns>
         [Route("DeleteMenuById"), HttpPost]
-        public async Task<ResponseMessageModel> DeleteMenuById([FromBody]RequestMenuModel model)
+        public async Task<ResponseMessageModel> DeleteMenuById([FromBody]RequestDeleteMenuByIdModel model)
         {
             return await Task.Run(() => deleteMenuByIdService.Execute(model));
         }

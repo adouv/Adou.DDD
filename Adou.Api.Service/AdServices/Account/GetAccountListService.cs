@@ -12,7 +12,7 @@ namespace Adou.Api.Service.AdServices.Account
     /// <summary>
     /// 获取账户列表服务
     /// </summary>
-    public class GetAccountListService : ApiBase<RequestAccountModel>
+    public class GetAccountListService : ApiBase<RequestGetAccountListModel>
     {
         public AccountRep accountRep { get; set; }
         /// <summary>
@@ -28,7 +28,7 @@ namespace Adou.Api.Service.AdServices.Account
                 Mobile = this.Parameter.Mobile
             };
 
-            var result = accountRep.GetAccountList(model);
+            var result = accountRep.GetAccountList(this.Parameter.OrderBy, this.Parameter.IsDesc, model);
 
             this.Result.Data = result;
         }

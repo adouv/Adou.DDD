@@ -6,7 +6,7 @@
 // 
 //     Connection String Name: `AdouConnection`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=.;Initial Catalog=adou;Persist Security Info=False;User ID=sa;Password=88888888`
+//     Connection String:      `Data Source=.;Initial Catalog=adou;MultipleActiveResultSets=True;user id=sa;password=**zapped**;`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -169,6 +169,10 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// 
 		/// </summary>
 		[Column] public bool IsDel { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public int? Sort { get; set; }
 	}
 	/// <summary>
 	/// 
@@ -222,6 +226,10 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// 
 		/// </summary>
 		[Column] public bool? IsDel { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public int? Sort { get; set; }
 	}
 	/// <summary>
 	/// 
@@ -279,5 +287,9 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// 
 		/// </summary>
 		[Column] public bool? IsDel { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public int? Sort { get; set; }
 	}
 }

@@ -12,7 +12,7 @@ namespace Adou.Api.Service.AdServices.Menu
     /// <summary>
     /// 删除菜单服务
     /// </summary>
-    public class DeleteMenuByIdService : ApiBase<RequestMenuModel>
+    public class DeleteMenuByIdService : ApiBase<RequestDeleteMenuByIdModel>
     {
         public MenuRep menuRep { get; set; }
         /// <summary>

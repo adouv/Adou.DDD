@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Adou.Api.Model
 {
-    public class RequestMenuModel : RequestBaseModel
+    /// <summary>
+    /// 
+    /// </summary>
+    public class RequestInsertMenuModel : RequestBaseModel
     {
         /// <summary>
-        /// 编号 自增
+        /// 编号
         /// </summary>
         public int Id { get; set; }
         /// <summary>
@@ -38,12 +41,8 @@ namespace Adou.Api.Model
         /// </summary>
         public bool IsDel { get; set; }
         /// <summary>
-        /// 当前页
+        /// 排序
         /// </summary>
-        public int PageIndex { get; set; }
-        /// <summary>
-        /// 每页条数
-        /// </summary>
-        public int PageSize { get; set; }
+        public int Sort { get; set; }
     }
 }

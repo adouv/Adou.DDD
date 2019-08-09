@@ -42,8 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\Request\RequestAccountModel.cs" />
-    <Compile Include="Menu\Request\RequestMenuModel.cs" />
+    <Compile Include="Account\Request\RequestDeleteAccountByIdModel.cs" />
+    <Compile Include="Account\Request\RequestGetAccountListModel.cs" />
+    <Compile Include="Account\Request\RequestInsertAccountModel.cs" />
+    <Compile Include="Account\Request\RequestUpdateAccountByIdModel.cs" />
+    <Compile Include="Menu\Request\RequestDeleteMenuByIdModel.cs" />
+    <Compile Include="Menu\Request\RequestGetMenuListModel.cs" />
+    <Compile Include="Menu\Request\RequestInsertMenuModel.cs" />
+    <Compile Include="Menu\Request\RequestUpdateMenuByIdModel.cs" />
+    <Compile Include="Menu\Request\RequestMenuUpdateSortByIdModel.cs" />
     <Compile Include="User\Request\RequestUserLoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestBaseModel.cs" />

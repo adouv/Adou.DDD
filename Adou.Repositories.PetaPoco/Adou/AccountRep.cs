@@ -42,7 +42,8 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[ModifyTime] = @8
                       ,[ModifyUser] = @9
                       ,[IsDel] = @10
-                 WHERE 1=1 AND [Id] = @11
+                      ,[Sort] = @11
+                 WHERE 1=1 AND [Id] = @12
             ");
             #endregion
 
@@ -58,6 +59,7 @@ namespace Adou.Repositories.PetaPoco.Adou
                 model.ModifyTime,
                 model.ModifyUser,
                 model.IsDel,
+                model.Sort,
                 model.Id);
         }
         /// <summary>
@@ -65,7 +67,7 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// </summary>
         /// <param name="model">请求参数</param>
         /// <returns></returns>
-        public IEnumerable<adAccount> GetAccountList(adAccount model)
+        public IEnumerable<adAccount> GetAccountList(string orderBy, bool isDes, adAccount model)
         {
             string sqlWhere = string.Empty;
             string sql = string.Empty;
@@ -76,6 +78,19 @@ namespace Adou.Repositories.PetaPoco.Adou
                 sqlWhere += " AND [Title] = @0 ";
             }
             #endregion
+
+            string strOrderBy = "";
+            if (isDes)
+            {
+                if (string.IsNullOrWhiteSpace(orderBy))
+                {
+                    strOrderBy = " ORDER BY CreateTime DESC ";
+                }
+                else
+                {
+                    strOrderBy = " ORDER BY " + orderBy + " DESC ";
+                }
+            }
 
             #region sql
             sql = string.Format(@"
@@ -93,9 +108,10 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[ModifyTime]
                       ,[ModifyUser]
                       ,[IsDel]
+                      ,[Sort]
                   FROM [dbo].[adAccount]
-                  WHERE 1=1 AND [IsDel] = 1 {0}
-            ", sqlWhere);
+                  WHERE 1=1 AND [IsDel] = 1 {0} {1}
+            ", sqlWhere, strOrderBy);
             #endregion
 
             return PetaPocoAdouDB.GetInstance().Query<adAccount>(sql, model.Title);
@@ -105,9 +121,11 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// </summary>
         /// <param name="pageIndex">当前页</param>
         /// <param name="pageSize">每页条数</param>
+        /// <param name="orderBy">排序字段</param>
+        /// <param name="isDes">是否倒序</param>
         /// <param name="model">请求实体</param>
         /// <returns></returns>
-        public Page<adAccount> GetAccountPageList(int pageIndex, int pageSize, adAccount model)
+        public Page<adAccount> GetAccountPageList(int pageIndex, int pageSize, string orderBy, bool isDes, adAccount model)
         {
             string sqlWhere = string.Empty;
             string sql = string.Empty;
@@ -118,6 +136,20 @@ namespace Adou.Repositories.PetaPoco.Adou
                 sqlWhere += " AND [Title] = @0 ";
             }
             #endregion
+
+
+            string strOrderBy = "";
+            if (isDes)
+            {
+                if (string.IsNullOrWhiteSpace(orderBy))
+                {
+                    strOrderBy = " ORDER BY CreateTime DESC ";
+                }
+                else
+                {
+                    strOrderBy = " ORDER BY " + orderBy + " DESC ";
+                }
+            }
 
             #region sql
             sql = string.Format(@"
@@ -135,8 +167,9 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[ModifyTime]
                       ,[ModifyUser]
                       ,[IsDel]
-                  FROM [dbo].[adAccount] WHERE 1=1 {0}
-            ", sqlWhere);
+                      ,[Sort]
+                  FROM [dbo].[adAccount] WHERE 1=1 {0} {1} 
+            ", sqlWhere, strOrderBy);
             #endregion
 
             return PetaPocoAdouDB.GetInstance().Page<adAccount>(pageIndex, pageSize, sql, model.Title);

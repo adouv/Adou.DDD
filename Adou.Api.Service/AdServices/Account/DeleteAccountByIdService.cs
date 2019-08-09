@@ -11,7 +11,7 @@ namespace Adou.Api.Service.AdServices.Account
     /// <summary>
     /// 通过Id删除账户服务
     /// </summary>
-    public class DeleteAccountByIdService : ApiBase<RequestAccountModel>
+    public class DeleteAccountByIdService : ApiBase<RequestDeleteAccountByIdModel>
     {
         public AccountRep accountRep { get; set; }
         /// <summary>

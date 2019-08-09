@@ -12,7 +12,7 @@ namespace Adou.Api.Service.AdServices.Account
     /// <summary>
     /// 更新账户服务
     /// </summary>
-    public class UpdateAccountByIdService : ApiBase<RequestAccountModel>
+    public class UpdateAccountByIdService : ApiBase<RequestUpdateAccountByIdModel>
     {
         public AccountRep accountRep { get; set; }
         /// <summary>
@@ -33,7 +33,8 @@ namespace Adou.Api.Service.AdServices.Account
                 Descript = this.Parameter.Descript,
                 ModifyUser = 0,
                 ModifyTime = DateTime.Now,
-                IsDel = true
+                IsDel = true,
+                Sort = 100
             };
 
             long result = accountRep.UpdateAccountById(model);

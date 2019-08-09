@@ -9,7 +9,7 @@ using Adou.Entity.PetaPocoModels.AdouModel;
 
 namespace Adou.Api.Service.AdServices.Account
 {
-    public class InsertAccountService : ApiBase<RequestAccountModel>
+    public class InsertAccountService : ApiBase<RequestInsertAccountModel>
     {
         public AccountRep accountRep { get; set; }
         /// <summary>
@@ -32,7 +32,8 @@ namespace Adou.Api.Service.AdServices.Account
                 CreateTime = DateTime.Now,
                 ModifyUser = 0,
                 ModifyTime = DateTime.Now,
-                IsDel = true
+                IsDel = true,
+                Sort = 100
             };
 
             long result = accountRep.InsertAccount(model);

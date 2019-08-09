@@ -37,6 +37,17 @@
         placeholder="图标"
       />
     </div>
+
+    <div class="example-wrap">
+      <h4 class="example-title">排序</h4>
+      <input
+        type="text"
+        class="form-control"
+        autocomplete="off"
+        v-model="params.Sort"
+        placeholder="排序"
+      />
+    </div>
   </div>
 </template>
 
@@ -64,6 +75,7 @@ export default {
 
       let params = {};
       params.FatherId = 0;
+      params.IsDesc = true;
 
       adMenuService.getMenuListByFatherId(params).then(response => {
         if (response.Data !== null && response.Data.length !== 0) {

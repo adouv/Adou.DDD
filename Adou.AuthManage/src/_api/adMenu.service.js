@@ -65,6 +65,16 @@ export default {
         return result;
     },
     /**
+     * 修改菜单排序
+     * @param {*} [params={}]
+     * @param {*} [config={}]
+     * @returns
+     */
+    async updateMenuSortById(params = {}, config = {}) {
+        let result = await Vue.http.post("Menu/UpdateMenuSortById", params, config);
+        return result;
+    },
+    /**
      * 删除菜单
      * @param {*} [params={}]
      * @param {*} [config={}]

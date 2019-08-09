@@ -12,7 +12,7 @@ namespace Adou.Api.Service.AdServices.Menu
     /// <summary>
     /// 获取单个菜单信息服务
     /// </summary>
-    public class GetSingleMenuByFatherIdService:ApiBase<RequestMenuModel>
+    public class GetSingleMenuByFatherIdService:ApiBase<RequestGetMenuListModel>
     {
         public MenuRep menuRep { get; set; }
         /// <summary>

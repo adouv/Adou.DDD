@@ -28,7 +28,7 @@
           <td>
             <el-link type="primary" :href="item.Url">网址</el-link>
           </td>
-          <td>{{item.CreateTime|dateTimeFormats}}</td>
+          <td>{{item.CreateTime|dateFormats}}</td>
           <td>
             <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
             <ad-button type="primary" size="sm" @click.native="btnEditHandller(item);">编辑</ad-button>
@@ -63,7 +63,9 @@ export default {
       request: {
         Title: "",
         PageIndex: 1,
-        PageSize: 10
+        PageSize: 10,
+        OrderBy: "",
+        IsDesc: true
       },
       TotalItems: 0
     };
@@ -135,7 +137,7 @@ export default {
         } else {
           result = adAccountService.updateAccountById(params);
         }
-        
+
         result.then(response => {
           if (response.Data > 0 && response.Data !== null) {
             this.$tip("保存成功");

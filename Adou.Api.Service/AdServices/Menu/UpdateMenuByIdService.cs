@@ -9,7 +9,7 @@ using Adou.Entity.PetaPocoModels.AdouModel;
 
 namespace Adou.Api.Service.AdServices.Menu
 {
-    public class UpdateMenuByIdService : ApiBase<RequestMenuModel>
+    public class UpdateMenuByIdService : ApiBase<RequestUpdateMenuByIdModel>
     {
         public MenuRep menuRep { get; set; }
         /// <summary>
@@ -27,7 +27,8 @@ namespace Adou.Api.Service.AdServices.Menu
                 LevelId = this.Parameter.LevelId,
                 ModifyUser = 0,
                 ModifyTime = DateTime.Now,
-                IsDel = true
+                IsDel = true,
+                Sort = this.Parameter.Sort
             };
             var result = menuRep.UpdateMenuById(model);
             this.Result.Data = result;

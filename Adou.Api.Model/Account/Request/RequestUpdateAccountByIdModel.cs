@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Adou.Api.Model
 {
-    public class RequestAccountModel : RequestBaseModel
+    /// <summary>
+    /// 更新账户实体
+    /// </summary>
+    public class RequestUpdateAccountByIdModel : RequestBaseModel
     {
         /// <summary>
-		/// 编号
-		/// </summary>
-		 public long Id { get; set; }
+        /// 编号
+        /// </summary>
+        public long Id { get; set; }
         /// <summary>
         /// 标题
         /// </summary>
@@ -27,7 +30,7 @@ namespace Adou.Api.Model
         /// <summary>
         /// 密码
         /// </summary>
-       public string Password { get; set; }
+        public string Password { get; set; }
         /// <summary>
         /// 邮箱
         /// </summary>
@@ -45,12 +48,12 @@ namespace Adou.Api.Model
         /// </summary>
         public string Descript { get; set; }
         /// <summary>
-        /// 当前页
+        /// 是否删除
         /// </summary>
-        public int PageIndex { get; set; }
+        public bool IsDel { get; set; }
         /// <summary>
-        /// 每页条数
+        /// 排序
         /// </summary>
-        public int PageSize { get; set; }
+        public int Sort { get; set; }
     }
 }
