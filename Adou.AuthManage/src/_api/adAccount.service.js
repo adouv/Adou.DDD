@@ -10,8 +10,7 @@ export default {
      * @returns
      */
     async insertAccount(params = {}, config = {}) {
-        let newParams = Vue.utils.requestParamsFormat(params);
-        let result = await Vue.http.post('Account/InsertAccount', newParams, config);
+        let result = await Vue.http.post('Account/InsertAccount', params, config);
         return result;
     },
     /**
@@ -21,8 +20,7 @@ export default {
      * @returns
      */
     async updateAccountById(params = {}, config = {}) {
-        let newParams = Vue.utils.requestParamsFormat(params);
-        let result = await Vue.http.post('Account/UpdateAccountById', newParams, config);
+        let result = await Vue.http.post('Account/UpdateAccountById', params, config);
         return result;
     },
     /**
@@ -51,8 +49,7 @@ export default {
      * @param {*} config 
      */
     async deleteAccountById(params = {}, config = {}) {
-        let newParams = Vue.utils.requestParamsFormat(params);
-        let result = await Vue.http.post('Account/DeleteAccountById', newParams, config);
+        let result = await Vue.http.post('Account/DeleteAccountById', params, config);
         return result;
     }
 }

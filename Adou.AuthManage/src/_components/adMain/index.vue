@@ -6,7 +6,7 @@
     <div class="page-content">
       <div class="panel">
         <div class="panel-body container-fluid">
-            <slot></slot>
+          <slot></slot>
         </div>
       </div>
     </div>
@@ -15,11 +15,11 @@
 
 <script>
 export default {
-    props: ["title","className"],
-    name:"AdMainComponent",
-    data(){
-        return{}
-    }
-}
+  props: ["title", "className"],
+  name: "AdMainComponent",
+  data() {
+    return {};
+  }
+};
 </script>
 

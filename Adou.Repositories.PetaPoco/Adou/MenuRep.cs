@@ -14,7 +14,8 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// 获取菜单列表
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<adMenu> GetMenuList() {
+        public IEnumerable<adMenu> GetMenuList()
+        {
             string sqlWhere = string.Empty;
             string sql = string.Empty;
 
@@ -43,7 +44,7 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// </summary>
         /// <param name="FatherId">父级编号</param>
         /// <returns>IEnumerable<adMenu></returns>
-        public IEnumerable<adMenu> GetMenuByFatherId(int FatherId)
+        public IEnumerable<adMenu> GetMenuListByFatherId(int FatherId)
         {
             string sqlWhere = string.Empty;
             string sql = string.Empty;
@@ -68,7 +69,7 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[ModifyTime]
                       ,[ModifyUser]
                       ,[IsDel]
-                  FROM [dbo].[adMenus]
+                  FROM [dbo].[adMenu]
                 WHERE 1=1 AND [IsDel] = 1 {0}
             ", sqlWhere);
             #endregion
@@ -105,7 +106,7 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[ModifyTime]
                       ,[ModifyUser]
                       ,[IsDel]
-                  FROM [dbo].[adMenus]
+                  FROM [dbo].[adMenu]
                 WHERE 1=1 AND [IsDel] = 1 {0}
             ", sqlWhere);
             #endregion
@@ -121,6 +122,44 @@ namespace Adou.Repositories.PetaPoco.Adou
         {
             PetaPocoAdouDB.GetInstance().Insert(model);
             return model.Id;
+        }
+        /// <summary>
+        /// 通过Id删除账户
+        /// </summary>
+        /// <param name="model">请求实体</param>
+        /// <returns></returns>
+        public int DeleteMenuById(int Id)
+        {
+            string sql = string.Format(@"
+                DELETE FROM [dbo].[adMenu] WHERE 1=1 AND Id = {0}
+            ", Id);
+
+            return PetaPocoAdouDB.GetInstance().Execute(sql);
+        }
+        /// <summary>
+        /// 修改账户
+        /// </summary>
+        /// <param name="model">请求参数</param>
+        /// <returns></returns>
+        public int UpdateMenuById(adMenu model)
+        {
+            string sql = string.Empty;
+
+            #region sql
+            sql = string.Format(@"
+                   SET [Title] = @0
+                      ,[MenuIcon] = @1
+                      ,[MenuUrl] = @2
+                      ,[FatherId] = @3
+                      ,[LevelId] = @4
+                      ,[ModifyTime] = @5
+                      ,[ModifyUser] = @6
+                      ,[IsDel] = @7
+                 WHERE 1=1 AND [Id] = @8
+            ");
+            #endregion
+
+            return PetaPocoAdouDB.GetInstance().Update<adMenu>(sql, model.Title, model.MenuIcon, model.MenuUrl, model.FatherId, model.LevelId, model.ModifyTime, model.ModifyUser, model.IsDel, model.Id);
         }
     }
 }

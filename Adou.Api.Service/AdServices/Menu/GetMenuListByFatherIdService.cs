@@ -12,7 +12,7 @@ namespace Adou.Api.Service.AdServices.Menu
     /// <summary>
     /// 通过父级编号获取菜单列表
     /// </summary>
-    public class GetMenuByFatherIdService : ApiBase<RequestMenuModel>
+    public class GetMenuListByFatherIdService : ApiBase<RequestMenuModel>
     {
         public MenuRep menuRep { get; set; }
 
@@ -21,7 +21,7 @@ namespace Adou.Api.Service.AdServices.Menu
         /// </summary>
         protected override void ExecuteMethod()
         {
-            var result = menuRep.GetMenuByFatherId(this.Parameter.FatherId);
+            var result = menuRep.GetMenuListByFatherId(this.Parameter.FatherId);
             this.Result.Data = result;
         }
     }

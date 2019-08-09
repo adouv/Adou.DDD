@@ -15,24 +15,26 @@
     </div>
 
     <ad-table :headers="headers" :list="list">
-      <tr v-for="item in list" :key="item.Id">
-        <td>{{item.Id}}</td>
-        <td>{{item.Title}}</td>
-        <td>{{item.Account}}</td>
-        <td>
-          <el-link type="primary">查看密码</el-link>
-        </td>
-        <td>{{item.Email}}</td>
-        <td>{{item.Mobile}}</td>
-        <td>
-          <el-link type="primary" :href="item.Url">网址</el-link>
-        </td>
-        <td>{{item.CreateTime|dateTimeFormats}}</td>
-        <td>
-          <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
-          <ad-button type="primary" size="sm" @click.native="btnEditHandller(item);">编辑</ad-button>
-        </td>
-      </tr>
+      <tbody>
+        <tr v-for="item in list" :key="item.Id">
+          <td>{{item.Id}}</td>
+          <td>{{item.Title}}</td>
+          <td>{{item.Account}}</td>
+          <td>
+            <el-link type="primary">查看密码</el-link>
+          </td>
+          <td>{{item.Email}}</td>
+          <td>{{item.Mobile}}</td>
+          <td>
+            <el-link type="primary" :href="item.Url">网址</el-link>
+          </td>
+          <td>{{item.CreateTime|dateTimeFormats}}</td>
+          <td>
+            <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
+            <ad-button type="primary" size="sm" @click.native="btnEditHandller(item);">编辑</ad-button>
+          </td>
+        </tr>
+      </tbody>
     </ad-table>
 
     <ad-pagination :total="TotalItems" :pageIndex="request.PageIndex" @currentChange="getList"></ad-pagination>
@@ -126,24 +128,21 @@ export default {
           return;
         }
 
+        let result = null;
+
         if (params.Id === 0) {
-          adAccountService.insertAccount(params).then(response => {
-            if (response.Data > 0 && response.Data !== null) {
-              this.$tip("保存成功");
-            }
-            this.getList();
-            close();
-          });
+          result = adAccountService.insertAccount(params);
         } else {
-          adAccountService.updateAccountById(params).then(response => {
-            if (response.Data > 0 && response.Data !== null) {
-              this.$tip("保存成功");
-            }
-            this.getList();
-            close();
-          });
+          result = adAccountService.updateAccountById(params);
         }
-        console.log(123);
+        
+        result.then(response => {
+          if (response.Data > 0 && response.Data !== null) {
+            this.$tip("保存成功");
+          }
+          this.getList();
+          close();
+        });
       };
       this.modal$(options);
     },

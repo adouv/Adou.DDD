@@ -2300,6 +2300,8 @@
     <Content Include="src\views\account\edit.vue" />
     <Content Include="src\_components\adTable\index.vue" />
     <Content Include="src\_components\adButton\index.vue" />
+    <Content Include="src\views\menu\edit.vue" />
+    <Content Include="src\views\menu\index.vue" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

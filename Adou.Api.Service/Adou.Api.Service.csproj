@@ -49,9 +49,12 @@
     <Compile Include="AdServices\Account\InsertAccountService.cs" />
     <Compile Include="AdServices\Account\GetAccountPageListService.cs" />
     <Compile Include="AdServices\Account\UpdateAccountByIdService.cs" />
-    <Compile Include="AdServices\Menu\GetMenuByFatherIdService.cs" />
+    <Compile Include="AdServices\Menu\DeleteMenuByIdService.cs" />
+    <Compile Include="AdServices\Menu\GetMenuListByFatherIdService.cs" />
     <Compile Include="AdServices\Menu\GetMenuListService.cs" />
+    <Compile Include="AdServices\Menu\GetSingleMenuByFatherIdService.cs" />
     <Compile Include="AdServices\Menu\InsertMenuService.cs" />
+    <Compile Include="AdServices\Menu\UpdateMenuByIdService.cs" />
     <Compile Include="AdServices\User\UserLoginService.cs" />
     <Compile Include="ApiBase.cs" />
     <Compile Include="ApiBaseBase.cs" />

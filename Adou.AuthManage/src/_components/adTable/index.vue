@@ -7,9 +7,7 @@
             <th v-for="(item,index) in headers" :key="index">{{item}}</th>
           </tr>
         </thead>
-        <tbody>
-          <slot></slot>
-        </tbody>
+        <slot></slot>
       </table>
     </div>
   </div>
