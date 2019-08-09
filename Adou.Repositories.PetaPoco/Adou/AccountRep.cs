@@ -25,7 +25,7 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// </summary>
         /// <param name="model">请求参数</param>
         /// <returns></returns>
-        public long UpdateAccount(adAccount model)
+        public long UpdateAccountById(adAccount model)
         {
             string sql = string.Empty;
 
@@ -70,10 +70,12 @@ namespace Adou.Repositories.PetaPoco.Adou
             string sqlWhere = string.Empty;
             string sql = string.Empty;
 
+            #region where
             if (!string.IsNullOrWhiteSpace(model.Title))
             {
                 sqlWhere += " AND [Title] = @0 ";
             }
+            #endregion
 
             #region sql
             sql = string.Format(@"
@@ -97,6 +99,47 @@ namespace Adou.Repositories.PetaPoco.Adou
             #endregion
 
             return PetaPocoAdouDB.GetInstance().Query<adAccount>(sql, model.Title);
+        }
+        /// <summary>
+        /// 分页获取账户列表
+        /// </summary>
+        /// <param name="pageIndex">当前页</param>
+        /// <param name="pageSize">每页条数</param>
+        /// <param name="model">请求实体</param>
+        /// <returns></returns>
+        public Page<adAccount> GetAccountPageList(int pageIndex, int pageSize, adAccount model)
+        {
+            string sqlWhere = string.Empty;
+            string sql = string.Empty;
+
+            #region where
+            if (!string.IsNullOrWhiteSpace(model.Title))
+            {
+                sqlWhere += " AND [Title] = @0 ";
+            }
+            #endregion
+
+            #region sql
+            sql = string.Format(@"
+                SELECT [Id]
+                      ,[Title]
+                      ,[Url]
+                      ,[Account]
+                      ,[Password]
+                      ,[Email]
+                      ,[Mobile]
+                      ,[Keyword]
+                      ,[Descript]
+                      ,[CreateTime]
+                      ,[CreateUser]
+                      ,[ModifyTime]
+                      ,[ModifyUser]
+                      ,[IsDel]
+                  FROM [dbo].[adAccount] WHERE 1=1 {0}
+            ", sqlWhere);
+            #endregion
+
+            return PetaPocoAdouDB.GetInstance().Page<adAccount>(pageIndex, pageSize, model.Title);
         }
         /// <summary>
         /// 通过Id删除账户

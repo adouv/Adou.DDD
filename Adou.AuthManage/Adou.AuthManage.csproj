@@ -183,6 +183,7 @@
   <ItemGroup>
     <Content Include=".babelrc" />
     <Content Include=".gitignore" />
+    <Content Include="build\dev-server.js" />
     <Content Include="build\logo.png" />
     <Content Include="build\utils.js" />
     <Content Include="build\vue-loader.conf.js" />
@@ -2160,14 +2161,18 @@
     <Content Include="src\views\account\index.vue" />
     <Content Include="src\_api\adAccount.service.js" />
     <Content Include="src\_api\adMenu.service.js" />
+    <Content Include="src\_components\adButton\index.js" />
     <Content Include="src\_components\adMain\index.js" />
     <Content Include="src\_components\adPagination\index.js" />
+    <Content Include="src\_components\adTable\index.js" />
     <Content Include="src\_components\index.js" />
     <Content Include="src\_ddd\auth.service.js" />
     <Content Include="src\_ddd\element.service.js" />
+    <Content Include="src\_ddd\encrypt.service.js" />
     <Content Include="src\_ddd\http.service.js" />
     <Content Include="src\_ddd\index.js" />
     <Content Include="src\_ddd\localStorage.service.js" />
+    <Content Include="src\_ddd\utils.service.js" />
     <Content Include="src\_ddd\valid.service.js" />
     <Content Include="src\_expansion\adConfirm\index.js" />
     <Content Include="src\_expansion\adModal\index.js" />
@@ -2293,6 +2298,8 @@
     <Content Include="src\_expansion\adModal\index.vue" />
     <Content Include="src\_expansion\adTip\index.vue" />
     <Content Include="src\views\account\edit.vue" />
+    <Content Include="src\_components\adTable\index.vue" />
+    <Content Include="src\_components\adButton\index.vue" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

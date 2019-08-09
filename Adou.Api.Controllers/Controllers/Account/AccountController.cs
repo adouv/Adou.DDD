@@ -22,7 +22,7 @@ namespace Adou.Api.Controllers.Controllers.Account
         /// <summary>
         /// 编辑账户
         /// </summary>
-        public UpdateAccountService updateAccountService { get; set; }
+        public UpdateAccountByIdService updateAccountByIdService { get; set; }
         /// <summary>
         /// 获取账户列表
         /// </summary>
@@ -31,6 +31,10 @@ namespace Adou.Api.Controllers.Controllers.Account
         /// 通过Id删除账户
         /// </summary>
         public DeleteAccountByIdService deleteAccountByIdService { get; set; }
+        /// <summary>
+        /// 分页获取账户列表
+        /// </summary>
+        public GetAccountPageListService getAccountPageListService { get; set; }
         /// <summary>
         /// 添加账户
         /// </summary>
@@ -46,15 +50,15 @@ namespace Adou.Api.Controllers.Controllers.Account
         /// </summary>
         /// <param name="model">请求实体</param>
         /// <returns></returns>
-        [Route("UpdateAccount"), HttpPost]
-        public async Task<ResponseMessageModel> UpdateAccount([FromBody]RequestAccountModel model)
+        [Route("UpdateAccountById"), HttpPost]
+        public async Task<ResponseMessageModel> UpdateAccountById([FromBody]RequestAccountModel model)
         {
-            return await Task.Run(() => updateAccountService.Execute(model));
+            return await Task.Run(() => updateAccountByIdService.Execute(model));
         }
         /// <summary>
         /// 获取账户列表
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="model">请求实体</param>
         /// <returns></returns>
         [Route("GetAccountList"), HttpPost]
         public async Task<ResponseMessageModel> GetAccountList([FromBody]RequestAccountModel model)
@@ -70,6 +74,16 @@ namespace Adou.Api.Controllers.Controllers.Account
         public async Task<ResponseMessageModel> DeleteAccountById([FromBody]RequestAccountModel model)
         {
             return await Task.Run(() => deleteAccountByIdService.Execute(model));
+        }
+        /// <summary>
+        /// 分页获取账户列表
+        /// </summary>
+        /// <param name="model">请求实体</param>
+        /// <returns></returns>
+        [Route("GetAccountPageList"), HttpPost]
+        public async Task<ResponseMessageModel> GetAccountPageList([FromBody]RequestAccountModel model)
+        {
+            return await Task.Run(() => getAccountPageListService.Execute(model));
         }
     }
 }
