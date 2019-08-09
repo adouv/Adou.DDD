@@ -20,9 +20,9 @@ export default {
      * @param {*} [config={}]
      * @returns
      */
-    async updateAccount(params = {}, config = {}) {
+    async updateAccountById(params = {}, config = {}) {
         let newParams = Vue.utils.requestParamsFormat(params);
-        let result = await Vue.http.post('Account/UpdateAccount', newParams, config);
+        let result = await Vue.http.post('Account/UpdateAccountById', newParams, config);
         return result;
     },
     /**
@@ -33,6 +33,16 @@ export default {
     async getAccountList(params = {}, config = {}) {
         let newParams = Vue.utils.requestParamsFormat(params);
         let result = await Vue.http.post('Account/GetAccountList', newParams, config);
+        return result;
+    },
+    /**
+     * 分页获取账户列表
+     * @param {*} params 
+     * @param {*} config 
+     */
+    async getAccountPageList(params = {}, config = {}) {
+        let newParams = Vue.utils.requestParamsFormat(params);
+        let result = await Vue.http.post('Account/GetAccountPageList', newParams, config);
         return result;
     },
     /**

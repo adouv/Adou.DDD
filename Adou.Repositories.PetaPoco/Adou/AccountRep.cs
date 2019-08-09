@@ -139,7 +139,7 @@ namespace Adou.Repositories.PetaPoco.Adou
             ", sqlWhere);
             #endregion
 
-            return PetaPocoAdouDB.GetInstance().Page<adAccount>(pageIndex, pageSize, model.Title);
+            return PetaPocoAdouDB.GetInstance().Page<adAccount>(pageIndex, pageSize, sql, model.Title);
         }
         /// <summary>
         /// 通过Id删除账户

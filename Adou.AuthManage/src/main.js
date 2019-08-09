@@ -50,6 +50,8 @@ import {
     TabPane,
     Table,
     TableColumn,
+    Pagination,
+    Link,
     Message,
     Loading
 } from "element-ui";
@@ -105,6 +107,8 @@ Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Table);
 Vue.use(TableColumn);
+Vue.use(Pagination);
+Vue.use(Link);
 Vue.use(Loading.directive);
 
 ComponentInstall(Vue);

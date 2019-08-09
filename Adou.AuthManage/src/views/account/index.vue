@@ -20,12 +20,12 @@
         <td>{{item.Title}}</td>
         <td>{{item.Account}}</td>
         <td>
-          <el-tag size="mini">查看密码</el-tag>
+          <el-link type="primary">查看密码</el-link>
         </td>
         <td>{{item.Email}}</td>
         <td>{{item.Mobile}}</td>
         <td>
-          <a :href="item.Url" target="_blank">网址</a>
+          <el-link type="primary" :href="item.Url">网址</el-link>
         </td>
         <td>{{item.CreateTime|dateTimeFormats}}</td>
         <td>
@@ -34,6 +34,8 @@
         </td>
       </tr>
     </ad-table>
+
+    <ad-pagination :total="TotalItems" :pageIndex="request.PageIndex" @currentChange="getList"></ad-pagination>
   </ad-main>
 </template>
 
@@ -57,20 +59,27 @@ export default {
       ],
       list: [],
       request: {
-        Title: ""
-      }
+        Title: "",
+        PageIndex: 1,
+        PageSize: 10
+      },
+      TotalItems: 0
     };
   },
   mounted() {
     this.getList();
   },
   methods: {
-    getList() {
+    getList(PageIndex = 1) {
       this.list = [];
 
-      adAccountService.getAccountList(this.request).then(response => {
-        if (response.Data !== null && response.Data.length !== 0) {
-          this.list = response.Data;
+      this.request.PageIndex = PageIndex;
+
+      adAccountService.getAccountPageList(this.request).then(response => {
+        if (response.Data !== null && response.Data.Items.length !== 0) {
+          this.list = response.Data.Items;
+          this.TotalItems = response.Data.TotalItems;
+          this.request.PageIndex = response.Data.CurrentPage;
         }
       });
     },
@@ -126,7 +135,7 @@ export default {
             close();
           });
         } else {
-          adAccountService.updateAccount(params).then(response => {
+          adAccountService.updateAccountById(params).then(response => {
             if (response.Data > 0 && response.Data !== null) {
               this.$tip("保存成功");
             }
