@@ -42,10 +42,9 @@
 </template>
 
 <script>
-import AdAccountEditComponent from "./edit";
-import adAccountService from "../../_api/adAccount.service";
+import AdUserEditComponent from "./edit";
 export default {
-  name: "AdAccountComponent",
+  name: "AdUserComponent",
   data() {
     return {
       headers: [
@@ -90,8 +89,8 @@ export default {
     btnEditHandller(item = {}) {
       let IsUndefined = item.Id !== undefined;
       let options = {};
-      options.title = IsUndefined ? "修改账户" : "添加账户";
-      options.componentName = AdAccountEditComponent;
+      options.title = IsUndefined ? "修改用户" : "添加用户";
+      options.componentName = AdUserEditComponent;
       options.height = 350;
       options.params = {};
       options.params.Id = IsUndefined ? item.Id : 0;

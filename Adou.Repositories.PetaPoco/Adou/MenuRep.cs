@@ -8,29 +8,16 @@ using System.Threading.Tasks;
 
 namespace Adou.Repositories.PetaPoco.Adou
 {
-    public class MenuRep
+    public class MenuRep : BaseRep<adMenu>
     {
         /// <summary>
         /// 获取菜单列表
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<adMenu> GetMenuList(string orderBy, bool isDes)
+        public IEnumerable<adMenu> GetMenuList(string orderBy, bool isDesc)
         {
             string sqlWhere = string.Empty;
             string sql = string.Empty;
-
-            string strOrderBy = "";
-            if (isDes)
-            {
-                if (string.IsNullOrWhiteSpace(orderBy))
-                {
-                    strOrderBy = " ORDER BY CreateTime DESC ";
-                }
-                else
-                {
-                    strOrderBy = " ORDER BY " + orderBy + " DESC ";
-                }
-            }
 
             #region sql
             sql = string.Format(@"
@@ -47,44 +34,21 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[IsDel]
                       ,[Sort]
                   FROM [dbo].[adMenu]
-                WHERE 1=1 AND [IsDel] = 1 {0} {1}
-            ", sqlWhere, strOrderBy);
+                WHERE 1=1 AND [IsDel] = 0 {0} 
+            ", sqlWhere);
             #endregion
 
-            return PetaPocoAdouDB.GetInstance().Query<adMenu>(sql);
+            return this.GetList(orderBy, isDesc, sql);
         }
         /// <summary>
         /// 通过父级编号获取菜单列表
         /// </summary>
         /// <param name="FatherId">父级编号</param>
         /// <returns>IEnumerable<adMenu></returns>
-        public IEnumerable<adMenu> GetMenuListByFatherId(int FatherId, string orderBy, bool isDes)
+        public IEnumerable<adMenu> GetMenuListByFatherId(int FatherId, string orderBy, bool isDesc)
         {
-            string sqlWhere = string.Empty;
-            string sql = string.Empty;
-
-            #region where
-            if (FatherId >= 0)
-            {
-                sqlWhere += " AND [FatherId] = @0 ";
-            }
-            #endregion
-
-            string strOrderBy = "";
-            if (isDes)
-            {
-                if (string.IsNullOrWhiteSpace(orderBy))
-                {
-                    strOrderBy = " ORDER BY CreateTime DESC ";
-                }
-                else
-                {
-                    strOrderBy = " ORDER BY " + orderBy + " DESC ";
-                }
-            }
-
             #region sql
-            sql = string.Format(@"
+            string sql = string.Format(@"
                 SELECT [Id]
                       ,[Title]
                       ,[MenuIcon]
@@ -98,11 +62,11 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[IsDel]
                       ,[Sort]
                   FROM [dbo].[adMenu]
-                WHERE 1=1 AND [IsDel] = 1 {0} {1}
-            ", sqlWhere, strOrderBy);
+                WHERE 1=1 AND [IsDel] = 0 AND [FatherId] = @0 
+            ");
             #endregion
 
-            return PetaPocoAdouDB.GetInstance().Query<adMenu>(sql, FatherId);
+            return this.GetList(orderBy, isDesc, sql, FatherId);
         }
         /// <summary>
         /// 通过父级编号获取菜单
@@ -136,7 +100,7 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[IsDel]
                       ,[Sort]
                   FROM [dbo].[adMenu]
-                WHERE 1=1 AND [IsDel] = 1 {0}
+                WHERE 1=1 AND [IsDel] = 0 {0}
             ", sqlWhere);
             #endregion
 
@@ -149,7 +113,7 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// <returns>int</returns>
         public int InsertMenu(adMenu model)
         {
-            PetaPocoAdouDB.GetInstance().Insert(model);
+            this.Insert(model);
             return model.Id;
         }
         /// <summary>
@@ -157,13 +121,9 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// </summary>
         /// <param name="model">请求实体</param>
         /// <returns></returns>
-        public int DeleteMenuById(int Id)
+        public int DeleteMenuById(int id)
         {
-            string sql = string.Format(@"
-                DELETE FROM [dbo].[adMenu] WHERE 1=1 AND Id = {0}
-            ", Id);
-
-            return PetaPocoAdouDB.GetInstance().Execute(sql);
+            return this.Delete(id);
         }
         /// <summary>
         /// 修改账户
@@ -204,6 +164,16 @@ namespace Adou.Repositories.PetaPoco.Adou
             ");
 
             return PetaPocoAdouDB.GetInstance().Update<adMenu>(sql, sort, id);
+        }
+        /// <summary>
+        /// 通过编号伪删除
+        /// </summary>
+        /// <param name="isDel">是否删除</param>
+        /// <param name="id">编号</param>
+        /// <returns>int</returns>
+        public int UpdateUserIsDelById(bool isDel, long id)
+        {
+            return this.UpdateIsDel(isDel, id);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Adou.Api.Service.AdServices.Menu
                 LevelId = this.Parameter.LevelId,
                 ModifyUser = 0,
                 ModifyTime = DateTime.Now,
-                IsDel = true,
+                IsDel = false,
                 Sort = this.Parameter.Sort
             };
             var result = menuRep.UpdateMenuById(model);

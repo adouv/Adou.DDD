@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4B69D875-FCA7-4F4E-81B0-B7A442924A15}</ProjectGuid>
+    <ProjectGuid>{6B8064AC-0F46-4632-8509-5EF9CAF9424D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Adou.Repositories.PetaPoco</RootNamespace>
-    <AssemblyName>Adou.Repositories.PetaPoco</AssemblyName>
+    <RootNamespace>Adou.IRepositories.PetaPoco</RootNamespace>
+    <AssemblyName>Adou.IRepositories.PetaPoco</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,17 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adou\AccountRep.cs" />
-    <Compile Include="Adou\BaseRep.cs" />
-    <Compile Include="Adou\MenuRep.cs" />
-    <Compile Include="Adou\UserRep.cs" />
+    <Compile Include="Adou\IAccountRep.cs" />
+    <Compile Include="Adou\IBaseRep.cs" />
+    <Compile Include="Adou\IMenuRep.cs" />
+    <Compile Include="Adou\IUserRep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Adou.Entity\Adou.Entity.csproj">
       <Project>{90bcdb23-5829-4020-abfe-0ce3591cab5c}</Project>
       <Name>Adou.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adou.Repositories.PetaPoco\Adou.Repositories.PetaPoco.csproj">
+      <Project>{4b69d875-fca7-4f4e-81b0-b7a442924a15}</Project>
+      <Name>Adou.Repositories.PetaPoco</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

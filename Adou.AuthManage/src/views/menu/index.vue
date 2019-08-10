@@ -75,7 +75,7 @@ export default {
       list: [],
       request: {
         OrderBy: "Sort",
-        IsDesc: true
+        IsDesc: false
       }
     };
   },

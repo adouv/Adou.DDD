@@ -32,7 +32,7 @@ namespace Adou.Api.Service.AdServices.Account
                 CreateTime = DateTime.Now,
                 ModifyUser = 0,
                 ModifyTime = DateTime.Now,
-                IsDel = true,
+                IsDel = false,
                 Sort = 100
             };
 

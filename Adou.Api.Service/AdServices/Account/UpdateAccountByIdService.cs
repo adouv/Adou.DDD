@@ -33,7 +33,7 @@ namespace Adou.Api.Service.AdServices.Account
                 Descript = this.Parameter.Descript,
                 ModifyUser = 0,
                 ModifyTime = DateTime.Now,
-                IsDel = true,
+                IsDel = false,
                 Sort = 100
             };
 

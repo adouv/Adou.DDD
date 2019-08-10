@@ -65,7 +65,11 @@ export default {
       });
     },
     getMenuList() {
-      let params = {};
+      let params = {
+        OrderBy: "Sort",
+        IsDesc: false
+      };
+      
       adMenuService.getMenuList(params).then(response => {
         let { Data } = response;
         if (null !== Data) {

@@ -16,6 +16,14 @@ namespace Adou.Api.Controllers.Controllers.Account
     public class AccountController : BaseController
     {
         /// <summary>
+        /// 获取账户列表
+        /// </summary>
+        public GetAccountListService getAccountService { get; set; }
+        /// <summary>
+        /// 分页获取账户列表
+        /// </summary>
+        public GetAccountPageListService getAccountPageListService { get; set; }
+        /// <summary>
         /// 添加账户
         /// </summary>
         public InsertAccountService insertAccountService { get; set; }
@@ -24,17 +32,35 @@ namespace Adou.Api.Controllers.Controllers.Account
         /// </summary>
         public UpdateAccountByIdService updateAccountByIdService { get; set; }
         /// <summary>
-        /// 获取账户列表
-        /// </summary>
-        public GetAccountListService getAccountService { get; set; }
-        /// <summary>
         /// 通过Id删除账户
         /// </summary>
         public DeleteAccountByIdService deleteAccountByIdService { get; set; }
         /// <summary>
+        /// 伪删除
+        /// </summary>
+        public UpdateAccountIsDelByIdService updateAccountIsDelByIdService { get; set; }
+
+
+        /// <summary>
+        /// 获取账户列表
+        /// </summary>
+        /// <param name="model">请求实体</param>
+        /// <returns></returns>
+        [Route("GetAccountList"), HttpPost]
+        public async Task<ResponseMessageModel> GetAccountList([FromBody]RequestGetAccountListModel model)
+        {
+            return await Task.Run(() => getAccountService.Execute(model));
+        }
+        /// <summary>
         /// 分页获取账户列表
         /// </summary>
-        public GetAccountPageListService getAccountPageListService { get; set; }
+        /// <param name="model">请求实体</param>
+        /// <returns></returns>
+        [Route("GetAccountPageList"), HttpPost]
+        public async Task<ResponseMessageModel> GetAccountPageList([FromBody]RequestGetAccountListModel model)
+        {
+            return await Task.Run(() => getAccountPageListService.Execute(model));
+        }
         /// <summary>
         /// 添加账户
         /// </summary>
@@ -56,16 +82,6 @@ namespace Adou.Api.Controllers.Controllers.Account
             return await Task.Run(() => updateAccountByIdService.Execute(model));
         }
         /// <summary>
-        /// 获取账户列表
-        /// </summary>
-        /// <param name="model">请求实体</param>
-        /// <returns></returns>
-        [Route("GetAccountList"), HttpPost]
-        public async Task<ResponseMessageModel> GetAccountList([FromBody]RequestGetAccountListModel model)
-        {
-            return await Task.Run(() => getAccountService.Execute(model));
-        }
-        /// <summary>
         /// 通过Id删除账户
         /// </summary>
         /// <param name="model">请求实体</param>
@@ -76,14 +92,14 @@ namespace Adou.Api.Controllers.Controllers.Account
             return await Task.Run(() => deleteAccountByIdService.Execute(model));
         }
         /// <summary>
-        /// 分页获取账户列表
+        /// 伪删除
         /// </summary>
-        /// <param name="model">请求实体</param>
+        /// <param name="model"></param>
         /// <returns></returns>
-        [Route("GetAccountPageList"), HttpPost]
-        public async Task<ResponseMessageModel> GetAccountPageList([FromBody]RequestGetAccountListModel model)
+        [Route("UpdateAccountIsDelById"), HttpPost]
+        public async Task<ResponseMessageModel> UpdateAccountIsDelById([FromBody]RequestUpdateAccountIsDelByIdModel model)
         {
-            return await Task.Run(() => getAccountPageListService.Execute(model));
+            return await Task.Run(()=> updateAccountIsDelByIdService.Execute(model));
         }
     }
 }

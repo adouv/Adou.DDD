@@ -8,8 +8,9 @@ import SharedComponent from "@views/shared";
 import HomeComponent from "@views/home.vue";
 import SettingComponent from "@views/shared/setting.vue";
 
-import adAccountComponent from "@views/account/index";
+import AdAccountComponent from "@views/account/index";
 import AdMenuComponent from "@views/menu/index";
+import AdUserComponent from "@views/user/index";
 
 Vue.use(Router);
 
@@ -35,12 +36,17 @@ const routers = [{
             {
                 path: "adAccount",
                 name: "adAccount",
-                component: adAccountComponent
+                component: AdAccountComponent
             },
             {
                 path: "adMenu",
                 name: "adMenu",
                 component: AdMenuComponent
+            },
+            {
+                path: "adUser",
+                name: "adUser",
+                component: AdUserComponent
             }
         ]
     }

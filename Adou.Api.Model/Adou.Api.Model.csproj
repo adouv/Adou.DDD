@@ -46,6 +46,7 @@
     <Compile Include="Account\Request\RequestGetAccountListModel.cs" />
     <Compile Include="Account\Request\RequestInsertAccountModel.cs" />
     <Compile Include="Account\Request\RequestUpdateAccountByIdModel.cs" />
+    <Compile Include="Account\Request\RequestUpdateAccountIsDelByIdModel.cs" />
     <Compile Include="Menu\Request\RequestDeleteMenuByIdModel.cs" />
     <Compile Include="Menu\Request\RequestGetMenuListModel.cs" />
     <Compile Include="Menu\Request\RequestInsertMenuModel.cs" />

@@ -256,11 +256,11 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// </summary>
 		[Column] public string UserHead { get; set; }
 		/// <summary>
-		/// 
+		/// 1为超级管理员 0为分配管理员
 		/// </summary>
 		[Column] public int? UserType { get; set; }
 		/// <summary>
-		/// 
+		/// 0禁用  1可用
 		/// </summary>
 		[Column] public int? UserStatus { get; set; }
 		/// <summary>
