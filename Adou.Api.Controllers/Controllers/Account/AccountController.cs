@@ -16,27 +16,27 @@ namespace Adou.Api.Controllers.Controllers.Account
     public class AccountController : BaseController
     {
         /// <summary>
-        /// 获取账户列表
+        /// 获取账户列表服务
         /// </summary>
         public GetAccountListService getAccountService { get; set; }
         /// <summary>
-        /// 分页获取账户列表
+        /// 分页获取账户列表服务
         /// </summary>
         public GetAccountPageListService getAccountPageListService { get; set; }
         /// <summary>
-        /// 添加账户
+        /// 添加账户服务
         /// </summary>
         public InsertAccountService insertAccountService { get; set; }
         /// <summary>
-        /// 编辑账户
+        /// 通过编号更新账户服务
         /// </summary>
         public UpdateAccountByIdService updateAccountByIdService { get; set; }
         /// <summary>
-        /// 通过Id删除账户
+        /// 通过编号删除账户服务
         /// </summary>
         public DeleteAccountByIdService deleteAccountByIdService { get; set; }
         /// <summary>
-        /// 伪删除
+        /// 通过编号更新是否删除状态服务（伪删除）
         /// </summary>
         public UpdateAccountIsDelByIdService updateAccountIsDelByIdService { get; set; }
 
@@ -72,7 +72,7 @@ namespace Adou.Api.Controllers.Controllers.Account
             return await Task.Run(() => insertAccountService.Execute(model));
         }
         /// <summary>
-        /// 编辑账户
+        /// 通过编号更新账户
         /// </summary>
         /// <param name="model">请求实体</param>
         /// <returns></returns>
@@ -82,7 +82,7 @@ namespace Adou.Api.Controllers.Controllers.Account
             return await Task.Run(() => updateAccountByIdService.Execute(model));
         }
         /// <summary>
-        /// 通过Id删除账户
+        /// 通过编号删除账户
         /// </summary>
         /// <param name="model">请求实体</param>
         /// <returns></returns>
@@ -92,7 +92,7 @@ namespace Adou.Api.Controllers.Controllers.Account
             return await Task.Run(() => deleteAccountByIdService.Execute(model));
         }
         /// <summary>
-        /// 伪删除
+        /// 通过编号更新是否删除状态服务（伪删除）
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>

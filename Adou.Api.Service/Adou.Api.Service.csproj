@@ -57,15 +57,14 @@
     <Compile Include="AdServices\Menu\InsertMenuService.cs" />
     <Compile Include="AdServices\Menu\UpdateMenuByIdService.cs" />
     <Compile Include="AdServices\Menu\UpdateMenuSortByIdService.cs" />
-    <Compile Include="AdServices\Menu\UpdateUserIsDelByIdService.cs" />
+    <Compile Include="AdServices\Menu\UpdateMenuIsDelByIdService.cs" />
     <Compile Include="AdServices\User\DeleteUserByIdService.cs" />
     <Compile Include="AdServices\User\GetUserListService.cs" />
     <Compile Include="AdServices\User\GetUserPageListService.cs" />
-    <Compile Include="AdServices\User\GetUserService.cs" />
+    <Compile Include="AdServices\User\UserLoginService.cs" />
     <Compile Include="AdServices\User\InsertUserService.cs" />
     <Compile Include="AdServices\User\UpdateUserByIdService.cs" />
     <Compile Include="AdServices\User\UpdateUserIsDelByIdService.cs" />
-    <Compile Include="AdServices\User\UserLoginService.cs" />
     <Compile Include="ApiBase.cs" />
     <Compile Include="ApiBaseBase.cs" />
     <Compile Include="ApiEncryBase.cs" />

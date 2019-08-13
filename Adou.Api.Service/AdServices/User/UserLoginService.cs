@@ -1,26 +1,21 @@
-﻿using Adou.Api.Model;
-using Adou.Entity.PetaPocoModels.AdouModel;
-using Adou.Repositories.PetaPoco.Adou;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Adou.Api.Model;
+using Adou.Repositories.PetaPoco.Adou;
 
 namespace Adou.Api.Service.AdServices.User
 {
     /// <summary>
-    /// 用户登录
+    /// 
     /// </summary>
     public class UserLoginService : ApiBase<RequestUserLoginModel>
     {
-        #region 注入服务
         public UserRep userRep { get; set; }
-        #endregion
-
         /// <summary>
-        /// 业务逻辑
+        /// 执行具体业务逻辑
         /// </summary>
         protected override void ExecuteMethod()
         {
@@ -36,4 +31,5 @@ namespace Adou.Api.Service.AdServices.User
             }
         }
     }
+
 }

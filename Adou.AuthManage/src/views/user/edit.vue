@@ -1,43 +1,68 @@
 <template>
   <div class="page right-edit">
     <div class="example-wrap">
-      <h4 class="example-title">标题<span style="color:#f00;padding-left:5px;">*</span></h4>
-      <input type="text" class="form-control" v-model="params.Title" placeholder="标题" />
+      <h4 class="example-title">
+        用户名
+        <span style="color:#f00;padding-left:5px;">*</span>
+      </h4>
+      <input type="text" class="form-control" autocomplete="off" v-model="params.UserName" placeholder="用户名" />
     </div>
 
     <div class="example-wrap">
-      <h4 class="example-title">账号<span style="color:#f00;padding-left:5px;">*</span></h4>
-      <input type="text" class="form-control" autocomplete="off" v-model="params.Account" placeholder="账号" />
+      <h4 class="example-title">
+        密码
+        <span style="color:#f00;padding-left:5px;">*</span>
+      </h4>
+      <input type="password" class="form-control" autocomplete="off" v-model="params.UserPwd" placeholder="密码" />
     </div>
 
     <div class="example-wrap">
-      <h4 class="example-title">密码<span style="color:#f00;padding-left:5px;">*</span></h4>
-      <input type="password" class="form-control" autocomplete="off" v-model="params.Password" placeholder="密码" />
+      <h4 class="example-title">
+        确认密码
+        <span style="color:#f00;padding-left:5px;">*</span>
+      </h4>
+      <input type="password" class="form-control" autocomplete="off" v-model="params.ReUserPwd" placeholder="确认密码" />
     </div>
 
     <div class="example-wrap">
-      <h4 class="example-title">链接</h4>
-      <input type="text" class="form-control" v-model="params.Url" placeholder="链接" />
+      <h4 class="example-title">排序</h4>
+      <input type="text" class="form-control" v-model="params.Sort" placeholder="排序" />
     </div>
 
     <div class="example-wrap">
-      <h4 class="example-title">手机号</h4>
-      <input type="text" class="form-control" v-model="params.Mobile" placeholder="手机号" />
+      <h4 class="example-title">是否超级管理员</h4>
+      <ul class="list-unstyled list-inline">
+        <li class="list-inline-item" v-for="item in UserTypeData" :key="item.id">
+          <div class="radio-custom radio-primary">
+            <input
+              type="radio"
+              :id="`UserType${item.key}`"
+              :name="`UserType${item.key}`"
+              v-model="params.UserType"
+              :value="item.key"
+            />
+            <label :for="`UserType${item.key}`">{{item.val}}</label>
+          </div>
+        </li>
+      </ul>
     </div>
 
     <div class="example-wrap">
-      <h4 class="example-title">邮箱</h4>
-      <input type="text" class="form-control" v-model="params.Email" placeholder="邮箱" />
-    </div>
-
-    <div class="example-wrap">
-      <h4 class="example-title">关键词</h4>
-      <input type="text" class="form-control" v-model="params.Keyword" placeholder="关键词" />
-    </div>
-
-    <div class="example-wrap">
-      <h4 class="example-title">描述</h4>
-      <textarea class="form-control" v-model="params.Descript" rows="3" placeholder="描述"></textarea>
+      <h4 class="example-title">是否启用</h4>
+      <ul class="list-unstyled list-inline">
+        <li class="list-inline-item" v-for="item in UserStatusData" :key="item.id">
+          <div class="radio-custom radio-primary">
+            <input
+              type="radio"
+              :id="`UserStatus${item.key}`"
+              :name="`UserStatus${item.key}`"
+              v-model="params.UserStatus"
+              :value="item.key"
+            />
+            <label :for="`UserStatus${item.key}`">{{item.val}}</label>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -50,6 +75,12 @@ export default {
       type: Object,
       default: {}
     }
+  },
+  data() {
+    return {
+      UserStatusData: [{ key: 0, val: "禁用" }, { key: 1, val: "启用" }],
+      UserTypeData: [{ key: 0, val: "否" }, { key: 1, val: "是" }]
+    };
   }
 };
 </script>

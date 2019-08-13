@@ -9,21 +9,106 @@ namespace Adou.Api.Controllers.Controllers.User
     /// 用户信息 - 控制器
     /// </summary>
     [RoutePrefix("api/Adou/User")]
-    public class UserController: BaseController
+    public class UserController : BaseController
     {
         /// <summary>
-        /// 用户登录 - 服务 
+        /// 获取用户列表服务
+        /// </summary>
+        public GetUserListService getUserListService { get; set; }
+        /// <summary>
+        /// 分页获取用户列表服务
+        /// </summary>
+        public GetUserPageListService getUserPageListService { get; set; }
+        /// <summary>
+        /// 用户登录服务
         /// </summary>
         public UserLoginService userLoginService { get; set; }
         /// <summary>
+        /// 添加用户服务
+        /// </summary>
+        public InsertUserService insertUserService { get; set; }
+        /// <summary>
+        /// 通过编号更新用户服务
+        /// </summary>
+        public UpdateUserByIdService updateUserByIdService { get; set; }
+        /// <summary>
+        /// 通过编号删除用户服务
+        /// </summary>
+        public DeleteUserByIdService deleteUserByIdService { get; set; }
+        /// <summary>
+        /// 通过编号更新用户是否删除状态服务（伪删除）
+        /// </summary>
+        public UpdateUserIsDelByIdService updateUserIsDelByIdService { get; set; }
+
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        [Route("GetUserList"), HttpPost]
+        public async Task<ResponseMessageModel> GetUserList([FromBody]RequestGetUserListModel mode)
+        {
+            return await Task.Run(()=>getUserListService.Execute(mode));
+        }
+        /// <summary>
+        /// 分页获取用户列表
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        [Route("GetUserPageList"), HttpPost]
+        public async Task<ResponseMessageModel> GetUserPageList([FromBody]RequestGetUserListModel mode)
+        {
+            return await Task.Run(() =>getUserPageListService.Execute(mode));
+        }
+        /// <summary>
         /// 用户登录
         /// </summary>
-        /// <param name="model">请求实体</param>
-        /// <returns>ResponseMessageModel</returns>      
+        /// <param name="mode"></param>
+        /// <returns></returns>
         [Route("UserLogin"), HttpPost]
-        public async Task<ResponseMessageModel> UserLogin([FromBody]RequestUserLoginModel model)
+        public async Task<ResponseMessageModel> UserLogin([FromBody]RequestUserLoginModel mode)
         {
-            return await Task.Run(() => userLoginService.Execute(model));
+            return await Task.Run(()=> userLoginService.Execute(mode));
+        }
+        /// <summary>
+        /// 添加用户
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        [Route("InsertUser"), HttpPost]
+        public async Task<ResponseMessageModel> InsertUser([FromBody]RequestInsertUserModel mode)
+        {
+            return await Task.Run(()=>insertUserService.Execute(mode));
+        }
+        /// <summary>
+        /// 通过编号更新用户
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        [Route("UpdateUserById"), HttpPost]
+        public async Task<ResponseMessageModel> UpdateUserById([FromBody]RequestUpdateUserByIdModel mode)
+        {
+            return await Task.Run(()=>updateUserByIdService.Execute(mode));
+        }
+        /// <summary>
+        /// 通过编号删除用户
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        [Route("DeleteUserById"), HttpPost]
+        public async Task<ResponseMessageModel> DeleteUserById([FromBody]RequestDeleteUserByIdModel mode)
+        {
+            return await Task.Run(()=>deleteUserByIdService.Execute(mode));
+        }
+        /// <summary>
+        /// 通过编号更新用户是否删除状态（伪删除）
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        [Route("UpdateUserIsDelById"), HttpPost]
+        public async Task<ResponseMessageModel> UpdateUserIsDelById([FromBody]RequestUpdateUserIsDelByIdModel mode)
+        {
+            return await Task.Run(()=>updateUserIsDelByIdService.Execute(mode));
         }
     }
 }

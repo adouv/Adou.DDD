@@ -198,7 +198,7 @@ namespace Adou.Repositories.PetaPoco.Adou
             ");
             #endregion
 
-            return PetaPocoAdouDB.GetInstance().Update<adMenu>(sql,
+            return PetaPocoAdouDB.GetInstance().Update<adUser>(sql,
                 model.UserName,
                 model.UserPwd,
                 model.UserHead,

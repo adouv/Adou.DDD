@@ -6,38 +6,38 @@ using System.Threading.Tasks;
 
 namespace Adou.Api.Model
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class RequestInsertMenuModel : RequestBaseModel
+    public class RequestInsertUserModel : RequestBaseModel
     {
         /// <summary>
         /// 编号
         /// </summary>
         public long Id { get; set; }
         /// <summary>
-        /// 菜单名称
+        /// 用户名
         /// </summary>
-        public string Title { get; set; }
+        public string UserName { get; set; }
         /// <summary>
-        /// 图标
+        /// 密码
         /// </summary>
-        public string MenuIcon { get; set; }
+        public string UserPwd { get; set; }
         /// <summary>
-        /// 菜单地址
+        /// 用户头像
         /// </summary>
-        public string MenuUrl { get; set; }
-
+        public string UserHead { get; set; }
         /// <summary>
-        /// 父级编号
+        /// 用户类型
         /// </summary>
-        public int FatherId { get; set; }
+        public int UserType { get; set; }
         /// <summary>
-        /// 级别
+        /// 用户状态
         /// </summary>
-        public int LevelId { get; set; }
+        public int UserStatus { get; set; }
         /// <summary>
-        /// 是否有效 0无效  1有效
+        /// 角色编号
+        /// </summary>
+        public long RoleId { get; set; }
+        /// <summary>
+        /// 是否删除
         /// </summary>
         public bool IsDel { get; set; }
         /// <summary>

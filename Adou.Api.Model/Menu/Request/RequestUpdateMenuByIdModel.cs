@@ -14,7 +14,7 @@ namespace Adou.Api.Model
         /// <summary>
         /// 编号
         /// </summary>
-        public int Id { get; set; }
+        public long Id { get; set; }
         /// <summary>
         /// 菜单名称
         /// </summary>

@@ -6,21 +6,20 @@ using System.Threading.Tasks;
 using Adou.Api.Model;
 using Adou.Repositories.PetaPoco.Adou;
 
-namespace Adou.Api.Service.AdServices.User
+namespace Adou.Api.Service.AdServices.Menu
 {
     /// <summary>
-    /// 更新用户删除状态
+    /// 
     /// </summary>
-    public class UpdateUserIsDelByIdService : ApiBase<RequestUpdateUserIsDelByIdModel>
+    public class UpdateMenuIsDelByIdService : ApiBase<RequestUpdateMenuIsDelByIdModel>
     {
-        public UserRep userRep { get; set; }
+        public MenuRep menuRep { get; set; }
         /// <summary>
         /// 执行具体业务逻辑
         /// </summary>
         protected override void ExecuteMethod()
         {
-            var result = userRep.UpdateUserIsDelById(this.Parameter.IsDel, this.Parameter.Id);
-
+            var result = menuRep.UpdateMenuIsDelById(this.Parameter.IsDel, this.Parameter.Id);
             this.Result.Data = result;
         }
     }

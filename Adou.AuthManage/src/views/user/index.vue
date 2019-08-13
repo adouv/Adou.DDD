@@ -3,8 +3,13 @@
     <div class="row row-lg">
       <div class="col-sm-6 col-md-4">
         <div class="example-wrap">
-          <h4 class="example-title">标题</h4>
-          <el-input size="small" v-model="request.Title" style="width:100%;" placeholder="请输入标题"></el-input>
+          <h4 class="example-title">用户名</h4>
+          <el-input
+            size="small"
+            v-model="request.UserName"
+            style="width:100%;"
+            placeholder="请输入用户名"
+          ></el-input>
         </div>
       </div>
 
@@ -18,16 +23,10 @@
       <tbody>
         <tr v-for="item in list" :key="item.Id">
           <td>{{item.Id}}</td>
-          <td>{{item.Title}}</td>
-          <td>{{item.Account}}</td>
-          <td>
-            <el-link type="primary">查看密码</el-link>
-          </td>
-          <td>{{item.Email}}</td>
-          <td>{{item.Mobile}}</td>
-          <td>
-            <el-link type="primary" :href="item.Url">网址</el-link>
-          </td>
+          <td>{{item.UserName}}</td>
+          <td>{{item.UserType===0?'管理员':'超级管理员'}}</td>
+          <td>{{item.UserStatus===0?'禁用':'启用'}}</td>
+          <td>{{item.Sort}}</td>
           <td>{{item.CreateTime|dateFormats}}</td>
           <td>
             <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
@@ -42,6 +41,7 @@
 </template>
 
 <script>
+import adUserService from "../../_api/adUser.service";
 import AdUserEditComponent from "./edit";
 export default {
   name: "AdUserComponent",
@@ -49,18 +49,16 @@ export default {
     return {
       headers: [
         "编号",
-        "标题",
-        "账号",
-        "密码",
-        "邮箱",
-        "手机号",
-        "地址",
+        "用户名",
+        "用户类型",
+        "用户状态",
+        "排序",
         "注册时间",
         "操作"
       ],
       list: [],
       request: {
-        Title: "",
+        UserName: "",
         PageIndex: 1,
         PageSize: 10,
         OrderBy: "",
@@ -78,7 +76,7 @@ export default {
 
       this.request.PageIndex = PageIndex;
 
-      adAccountService.getAccountPageList(this.request).then(response => {
+      adUserService.getUserPageList(this.request).then(response => {
         if (response.Data !== null && response.Data.Items.length !== 0) {
           this.list = response.Data.Items;
           this.TotalItems = response.Data.TotalItems;
@@ -94,47 +92,47 @@ export default {
       options.height = 350;
       options.params = {};
       options.params.Id = IsUndefined ? item.Id : 0;
-      options.params.Title = IsUndefined ? item.Title : "";
-      options.params.Url = IsUndefined ? item.Url : "#";
-      options.params.Account = IsUndefined ? item.Account : "";
-      options.params.Password = IsUndefined ? item.Password : "";
-      options.params.Email = IsUndefined ? item.Email : "";
-      options.params.Mobile = IsUndefined ? item.Mobile : "";
-      options.params.Keyword = IsUndefined ? item.Keyword : "";
-      options.params.Descript = IsUndefined ? item.Descript : "";
+      options.params.UserName = IsUndefined ? item.UserName : "";
+      options.params.UserPwd = "";
+      options.params.ReUserPwd = "";
+      options.params.UserHead = "";
+      options.params.UserType = IsUndefined ? item.UserType : 0;
+      options.params.UserStatus = IsUndefined ? item.UserStatus : 0;
+      options.params.RoleId = IsUndefined ? item.RoleId : 0;
+      options.params.Sort = IsUndefined ? item.Sort : 100;
       options.save = (params, close) => {
         console.log(params);
-        if (!params.Title) {
-          this.$tip("请填写标题");
+        if (!params.UserName) {
+          this.$tip("请填写用户名");
           return;
         }
 
-        if (!params.Account) {
-          this.$tip("请填写账号");
-          return;
-        }
-
-        if (!params.Password) {
+        if (params.Id === 0 && !params.UserPwd) {
           this.$tip("请填写密码");
           return;
         }
 
-        if (params.Mobile && !this.valid$.isMobileValid(params.Mobile)) {
-          this.$tip("请填写正确的手机号");
+        if (params.Id === 0 && !params.ReUserPwd) {
+          this.$tip("请填写确认密码");
           return;
         }
 
-        if (params.Email && !this.valid$.isEmailValid(params.Email)) {
-          this.$tip("请填写正确的邮箱");
+        if (params.Id === 0 && params.UserPwd !== params.ReUserPwd) {
+          this.$tip("两次输入密码不一致");
+          return;
+        }
+
+        if (!params.Sort) {
+          this.$tip("请填写排序值");
           return;
         }
 
         let result = null;
 
         if (params.Id === 0) {
-          result = adAccountService.insertAccount(params);
+          result = adUserService.insertUser(params);
         } else {
-          result = adAccountService.updateAccountById(params);
+          result = adUserService.updateUserById(params);
         }
 
         result.then(response => {
@@ -158,7 +156,7 @@ export default {
 
       options.save = (params, close) => {
         console.log(params);
-        adAccountService.deleteAccountById(params).then(response => {
+        adUserService.updateUserIsDelById(params).then(response => {
           if (response.Data > 0 && response.Data !== null) {
             this.$tip("删除成功");
           }

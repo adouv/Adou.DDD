@@ -111,7 +111,7 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// </summary>
         /// <param name="model">菜单请求实体</param>
         /// <returns>int</returns>
-        public int InsertMenu(adMenu model)
+        public long InsertMenu(adMenu model)
         {
             this.Insert(model);
             return model.Id;
@@ -121,7 +121,7 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// </summary>
         /// <param name="model">请求实体</param>
         /// <returns></returns>
-        public int DeleteMenuById(int id)
+        public int DeleteMenuById(long id)
         {
             return this.Delete(id);
         }
@@ -157,7 +157,7 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// <param name="id">编号</param>
         /// <param name="sort">排序</param>
         /// <returns></returns>
-        public int UpdateMenuSortById(int id, int sort)
+        public int UpdateMenuSortById(long id, int sort)
         {
             string sql = string.Format(@"
                    SET [Sort] = @0 WHERE 1=1 AND [Id] = @1
@@ -171,7 +171,7 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// <param name="isDel">是否删除</param>
         /// <param name="id">编号</param>
         /// <returns>int</returns>
-        public int UpdateUserIsDelById(bool isDel, long id)
+        public int UpdateMenuIsDelById(bool isDel, long id)
         {
             return this.UpdateIsDel(isDel, id);
         }

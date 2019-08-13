@@ -40,7 +40,7 @@ namespace Adou.Api.Controllers.Controllers.Menu
         /// </summary>
         public UpdateMenuSortByIdService updateMenuSortByIdService { get; set; }
         /// <summary>
-        /// 删除菜单
+        /// 通过编号删除菜单服务
         /// </summary>
         public DeleteMenuByIdService deleteMenuByIdService { get; set; }
         /// <summary>
@@ -84,7 +84,7 @@ namespace Adou.Api.Controllers.Controllers.Menu
             return await Task.Run(() => insertMenuService.Execute(model));
         }
         /// <summary>
-        /// 修改菜单
+        /// 通过编号修改菜单
         /// </summary>
         /// <param name="model">请求实体</param>
         /// <returns>ResponseMessageModel</returns>
@@ -93,7 +93,6 @@ namespace Adou.Api.Controllers.Controllers.Menu
         {
             return await Task.Run(() => updateMenuByIdService.Execute(model));
         }
-        
         /// <summary>
         /// 通过编号更新菜单排序
         /// </summary>
@@ -105,7 +104,7 @@ namespace Adou.Api.Controllers.Controllers.Menu
             return await Task.Run(() => updateMenuSortByIdService.Execute(model));
         }
         /// <summary>
-        /// 删除菜单
+        /// 通过编号删除菜单
         /// </summary>
         /// <param name="model">请求实体</param>
         /// <returns>ResponseMessageModel</returns>

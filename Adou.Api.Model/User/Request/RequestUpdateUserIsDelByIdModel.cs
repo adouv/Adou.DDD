@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace Adou.Api.Model
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class RequestUpdateMenuSortByIdModel : RequestBaseModel
+    public class RequestUpdateUserIsDelByIdModel : RequestBaseModel
     {
         /// <summary>
         /// 编号
         /// </summary>
         public long Id { get; set; }
         /// <summary>
-        /// 排序
+        /// 是否删除
         /// </summary>
-        public int Sort { get; set; }
+        public bool IsDel { get; set; }
     }
 }

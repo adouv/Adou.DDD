@@ -185,7 +185,7 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// <summary>
 		/// 
 		/// </summary>
-		[Column] public int Id { get; set; }
+		[Column] public long Id { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
