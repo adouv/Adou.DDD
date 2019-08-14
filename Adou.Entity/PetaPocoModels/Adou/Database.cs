@@ -173,6 +173,10 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// 
 		/// </summary>
 		[Column] public int? Sort { get; set; }
+		/// <summary>
+		/// 0个人 1公司 2
+		/// </summary>
+		[Column] public int? Type { get; set; }
 	}
 	/// <summary>
 	/// 

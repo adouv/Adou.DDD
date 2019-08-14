@@ -53,6 +53,10 @@ namespace Adou.Api.Model
         /// </summary>
         public int Sort { get; set; }
         /// <summary>
+        /// 类型
+        /// </summary>
+        public int Type { get; set; }
+        /// <summary>
         /// 当前页
         /// </summary>
         public int PageIndex { get; set; }

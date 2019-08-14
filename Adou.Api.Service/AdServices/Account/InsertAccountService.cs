@@ -33,7 +33,8 @@ namespace Adou.Api.Service.AdServices.Account
                 ModifyUser = 0,
                 ModifyTime = DateTime.Now,
                 IsDel = false,
-                Sort = 100
+                Sort = 100,
+                Type = this.Parameter.Type
             };
 
             long result = accountRep.InsertAccount(model);

@@ -22,7 +22,8 @@ namespace Adou.Api.Service.AdServices.Account
         {
             var model = new adAccount()
             {
-                Title = this.Parameter.Title
+                Title = this.Parameter.Title,
+                Type = this.Parameter.Type
             };
 
             var result = accountRep.GetAccountPageList(this.Parameter.PageIndex, this.Parameter.PageSize, this.Parameter.OrderBy, this.Parameter.IsDesc, model);

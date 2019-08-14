@@ -55,5 +55,9 @@ namespace Adou.Api.Model
         /// 排序
         /// </summary>
         public int Sort { get; set; }
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public int Type { get; set; }
     }
 }

@@ -23,9 +23,7 @@ namespace Adou.Api.Service.AdServices.Account
             var model = new adAccount()
             {
                 Title = this.Parameter.Title,
-                Account = this.Parameter.Account,
-                Email = this.Parameter.Email,
-                Mobile = this.Parameter.Mobile
+                Type = this.Parameter.Type
             };
 
             var result = accountRep.GetAccountList(this.Parameter.OrderBy, this.Parameter.IsDesc, model);

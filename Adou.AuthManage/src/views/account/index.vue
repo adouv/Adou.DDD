@@ -8,23 +8,41 @@
         </div>
       </div>
 
+      <div class="col-sm-6 col-md-4">
+        <div class="example-wrap">
+          <h4 class="example-title">分类</h4>
+          <select class="form-control" v-model="request.Type">
+            <option :value="-1">请选择</option>
+            <option v-for="(item,index) in typeData" :key="index" :value="item.key">{{item.val}}</option>
+          </select>
+        </div>
+      </div>
+
       <div class="col-sm-12 col-md-12">
         <ad-button type="inverse" @click.native="getList();">搜索</ad-button>
         <ad-button type="primary" @click.native="btnEditHandller({});">添加</ad-button>
       </div>
     </div>
 
+    <div
+      class="alert alert-alt alert-warning alert-dismissible"
+      style="margin-top:20px;"
+      role="alert"
+    >双击表格查看详情！</div>
+
     <ad-table :headers="headers" :list="list">
       <tbody>
-        <tr v-for="item in list" :key="item.Id">
+        <tr
+          v-for="item in list"
+          :key="item.Id"
+          style="cursor:pointer;"
+          @dblclick="btnDetailHandller(item);"
+        >
           <td>{{item.Id}}</td>
           <td>{{item.Title}}</td>
+          <td>{{typeData.find(e=>e.key===item.Type).val}}</td>
           <td>{{item.Account}}</td>
-          <td>
-            <el-link type="primary">查看密码</el-link>
-          </td>
-          <td>{{item.Email}}</td>
-          <td>{{item.Mobile}}</td>
+          <td>{{item.Mobile|emptyFormats}}</td>
           <td>
             <el-link type="primary" :href="item.Url">网址</el-link>
           </td>
@@ -37,12 +55,13 @@
       </tbody>
     </ad-table>
 
-    <ad-pagination :total="TotalItems" :pageIndex="request.PageIndex" @currentChange="getList"></ad-pagination>
+    <ad-pagination v-if="list.length!=0" :total="TotalItems" :pageIndex="request.PageIndex" @currentChange="getList"></ad-pagination>
   </ad-main>
 </template>
 
 <script>
 import AdAccountEditComponent from "./edit";
+import AdAccountDetailComponent from "./detail";
 import adAccountService from "../../_api/adAccount.service";
 export default {
   name: "AdAccountComponent",
@@ -51,9 +70,8 @@ export default {
       headers: [
         "编号",
         "标题",
+        "类型",
         "账号",
-        "密码",
-        "邮箱",
         "手机号",
         "地址",
         "注册时间",
@@ -62,12 +80,27 @@ export default {
       list: [],
       request: {
         Title: "",
+        Type: -1,
         PageIndex: 1,
         PageSize: 10,
         OrderBy: "",
         IsDesc: true
       },
-      TotalItems: 0
+      TotalItems: 0,
+      typeData: [
+        {
+          key: 0,
+          val: "个人"
+        },
+        {
+          key: 1,
+          val: "工汇科技(公司)"
+        },
+        {
+          key: 2,
+          val: "添丁"
+        }
+      ]
     };
   },
   mounted() {
@@ -103,6 +136,7 @@ export default {
       options.params.Mobile = IsUndefined ? item.Mobile : "";
       options.params.Keyword = IsUndefined ? item.Keyword : "";
       options.params.Descript = IsUndefined ? item.Descript : "";
+      options.params.Type = IsUndefined ? item.Type : -1;
       options.save = (params, close) => {
         console.log(params);
         if (!params.Title) {
@@ -112,11 +146,6 @@ export default {
 
         if (!params.Account) {
           this.$tip("请填写账号");
-          return;
-        }
-
-        if (!params.Password) {
-          this.$tip("请填写密码");
           return;
         }
 
@@ -169,6 +198,18 @@ export default {
       };
 
       this.confirm$(options);
+    },
+    btnDetailHandller(item) {
+      let options = {
+        title: item.Title,
+        componentName: AdAccountDetailComponent,
+        width: 400,
+        height: 350,
+        params: item,
+        showSave: false
+      };
+
+      this.modal$(options);
     }
   }
 };

@@ -2268,6 +2268,7 @@
     <Content Include="src\_expansion\adTip\index.js" />
     <Content Include="src\_expansion\adTip\index.vue" />
     <Content Include="src\_expansion\index.js" />
+    <Content Include="src\_filters\empty.filter.js" />
     <Content Include="src\_filters\date.filter.js" />
     <Content Include="src\_filters\dateTime.filter.js" />
     <Content Include="src\_filters\index.js" />

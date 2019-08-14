@@ -1,18 +1,47 @@
 <template>
   <div class="page right-edit">
     <div class="example-wrap">
-      <h4 class="example-title">标题<span style="color:#f00;padding-left:5px;">*</span></h4>
+      <h4 class="example-title">
+        标题
+        <span style="color:#f00;padding-left:5px;">*</span>
+      </h4>
       <input type="text" class="form-control" v-model="params.Title" placeholder="标题" />
     </div>
 
     <div class="example-wrap">
-      <h4 class="example-title">账号<span style="color:#f00;padding-left:5px;">*</span></h4>
-      <input type="text" class="form-control" autocomplete="off" v-model="params.Account" placeholder="账号" />
+      <h4 class="example-title">分类</h4>
+      <select class="form-control" v-model="params.Type">
+        <option :value="-1">请选择</option>
+        <option v-for="(item,index) in typeData" :key="index" :value="item.key">{{item.val}}</option>
+      </select>
     </div>
 
     <div class="example-wrap">
-      <h4 class="example-title">密码<span style="color:#f00;padding-left:5px;">*</span></h4>
-      <input type="password" class="form-control" autocomplete="off" v-model="params.Password" placeholder="密码" />
+      <h4 class="example-title">
+        账号
+        <span style="color:#f00;padding-left:5px;">*</span>
+      </h4>
+      <input
+        type="text"
+        class="form-control"
+        autocomplete="off"
+        v-model="params.Account"
+        placeholder="账号"
+      />
+    </div>
+
+    <div class="example-wrap">
+      <h4 class="example-title">
+        密码
+        <span style="color:#f00;padding-left:5px;">*</span>
+      </h4>
+      <input
+        type="password"
+        class="form-control"
+        autocomplete="off"
+        v-model="params.Password"
+        placeholder="密码"
+      />
     </div>
 
     <div class="example-wrap">
@@ -50,6 +79,24 @@ export default {
       type: Object,
       default: {}
     }
+  },
+  data() {
+    return {
+      typeData: [
+        {
+          key: 0,
+          val: "个人"
+        },
+        {
+          key: 1,
+          val: "工汇科技(公司)"
+        },
+        {
+          key: 2,
+          val: "添丁"
+        }
+      ]
+    };
   }
 };
 </script>

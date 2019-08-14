@@ -25,50 +25,10 @@ namespace Adou.Repositories.PetaPoco.Adou
             {
                 sqlWhere += " AND [Title] = @0 ";
             }
-            #endregion
 
-            #region sql
-            sql = string.Format(@"
-                SELECT [Id]
-                      ,[Title]
-                      ,[Url]
-                      ,[Account]
-                      ,[Password]
-                      ,[Email]
-                      ,[Mobile]
-                      ,[Keyword]
-                      ,[Descript]
-                      ,[CreateTime]
-                      ,[CreateUser]
-                      ,[ModifyTime]
-                      ,[ModifyUser]
-                      ,[IsDel]
-                      ,[Sort]
-                  FROM [dbo].[adAccount]
-                  WHERE 1=1 AND [IsDel] = 0 {0} 
-            ", sqlWhere);
-            #endregion
-
-            return this.GetList(orderBy, isDesc, sql, model.Title);
-        }
-        /// <summary>
-        /// 分页获取账户列表
-        /// </summary>
-        /// <param name="pageIndex">当前页</param>
-        /// <param name="pageSize">每页条数</param>
-        /// <param name="orderBy">排序字段</param>
-        /// <param name="isDes">是否倒序</param>
-        /// <param name="model">请求实体</param>
-        /// <returns></returns>
-        public Page<adAccount> GetAccountPageList(int pageIndex, int pageSize, string orderBy, bool isDesc, adAccount model)
-        {
-            string sqlWhere = string.Empty;
-            string sql = string.Empty;
-
-            #region where
-            if (!string.IsNullOrWhiteSpace(model.Title))
+            if (model.Type != -1)
             {
-                sqlWhere += " AND [Title] = @0 ";
+                sqlWhere += " AND [Type] = @1 ";
             }
             #endregion
 
@@ -89,11 +49,63 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[ModifyUser]
                       ,[IsDel]
                       ,[Sort]
+                      ,[Type]
+                  FROM [dbo].[adAccount]
+                  WHERE 1=1 AND [IsDel] = 0 {0} 
+            ", sqlWhere);
+            #endregion
+
+            return this.GetList(orderBy, isDesc, sql, model.Title, model.Type);
+        }
+        /// <summary>
+        /// 分页获取账户列表
+        /// </summary>
+        /// <param name="pageIndex">当前页</param>
+        /// <param name="pageSize">每页条数</param>
+        /// <param name="orderBy">排序字段</param>
+        /// <param name="isDes">是否倒序</param>
+        /// <param name="model">请求实体</param>
+        /// <returns></returns>
+        public Page<adAccount> GetAccountPageList(int pageIndex, int pageSize, string orderBy, bool isDesc, adAccount model)
+        {
+            string sqlWhere = string.Empty;
+            string sql = string.Empty;
+
+            #region where
+            if (!string.IsNullOrWhiteSpace(model.Title))
+            {
+                sqlWhere += " AND [Title] = @0 ";
+            }
+
+            if (model.Type != -1)
+            {
+                sqlWhere += " AND [Type] = @1 ";
+            }
+            #endregion
+
+            #region sql
+            sql = string.Format(@"
+                SELECT [Id]
+                      ,[Title]
+                      ,[Url]
+                      ,[Account]
+                      ,[Password]
+                      ,[Email]
+                      ,[Mobile]
+                      ,[Keyword]
+                      ,[Descript]
+                      ,[CreateTime]
+                      ,[CreateUser]
+                      ,[ModifyTime]
+                      ,[ModifyUser]
+                      ,[IsDel]
+                      ,[Sort]
+                      ,[Type]
                   FROM [dbo].[adAccount] WHERE 1=1 AND [IsDel] = 0  {0} 
             ", sqlWhere);
             #endregion
 
-            return this.GetPageList(orderBy, isDesc, pageIndex, pageSize, sql, model.Title);
+            return this.GetPageList(orderBy, isDesc, pageIndex, pageSize, sql, model.Title, model.Type);
         }
         /// <summary>
         /// 删除账户
@@ -137,7 +149,8 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[ModifyUser] = @9
                       ,[IsDel] = @10
                       ,[Sort] = @11
-                 WHERE 1=1 AND [Id] = @12
+                      ,[Type] = @12
+                 WHERE 1=1 AND [Id] = @13
             ");
             #endregion
 
@@ -154,6 +167,7 @@ namespace Adou.Repositories.PetaPoco.Adou
                 model.ModifyUser,
                 model.IsDel,
                 model.Sort,
+                model.Type,
                 model.Id);
         }
         /// <summary>
@@ -162,7 +176,7 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// <param name="isDel"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public int UpdateAccountIsDelById(bool isDel,int id)
+        public int UpdateAccountIsDelById(bool isDel, int id)
         {
             return this.UpdateIsDel(isDel, id);
         }
