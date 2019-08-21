@@ -1,5 +1,5 @@
 <template>
-  <ad-main title="账户管理" class="ad-account">
+  <ad-main title="账户管理" class="ad-user">
     <div class="row row-lg">
       <div class="col-sm-6 col-md-4">
         <div class="example-wrap">
@@ -15,7 +15,7 @@
 
       <div class="col-sm-12 col-md-12">
         <ad-button type="inverse" @click.native="getList();">搜索</ad-button>
-        <ad-button type="primary" @click.native="btnEditHandller({});">添加</ad-button>
+        <ad-button type="primary" @click.native="$router.push({ name: 'adUserEdit', params: {} })">添加</ad-button>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
           <td>{{item.CreateTime|dateFormats}}</td>
           <td>
             <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
-            <ad-button type="primary" size="sm" @click.native="btnEditHandller(item);">编辑</ad-button>
+            <ad-button type="primary" size="sm" @click.native="$router.push({ name: 'adUserEdit', params: item })">编辑</ad-button>
           </td>
         </tr>
       </tbody>
@@ -83,67 +83,6 @@ export default {
           this.request.PageIndex = response.Data.CurrentPage;
         }
       });
-    },
-    btnEditHandller(item = {}) {
-      let IsUndefined = item.Id !== undefined;
-      let options = {};
-      options.title = IsUndefined ? "修改用户" : "添加用户";
-      options.componentName = AdUserEditComponent;
-      options.height = 350;
-      options.params = {};
-      options.params.Id = IsUndefined ? item.Id : 0;
-      options.params.UserName = IsUndefined ? item.UserName : "";
-      options.params.UserPwd = "";
-      options.params.ReUserPwd = "";
-      options.params.UserHead = "";
-      options.params.UserType = IsUndefined ? item.UserType : 0;
-      options.params.UserStatus = IsUndefined ? item.UserStatus : 0;
-      options.params.RoleId = IsUndefined ? item.RoleId : 0;
-      options.params.Sort = IsUndefined ? item.Sort : 100;
-      options.save = (params, close) => {
-        console.log(params);
-        if (!params.UserName) {
-          this.$tip("请填写用户名");
-          return;
-        }
-
-        if (params.Id === 0 && !params.UserPwd) {
-          this.$tip("请填写密码");
-          return;
-        }
-
-        if (params.Id === 0 && !params.ReUserPwd) {
-          this.$tip("请填写确认密码");
-          return;
-        }
-
-        if (params.Id === 0 && params.UserPwd !== params.ReUserPwd) {
-          this.$tip("两次输入密码不一致");
-          return;
-        }
-
-        if (!params.Sort) {
-          this.$tip("请填写排序值");
-          return;
-        }
-
-        let result = null;
-
-        if (params.Id === 0) {
-          result = adUserService.insertUser(params);
-        } else {
-          result = adUserService.updateUserById(params);
-        }
-
-        result.then(response => {
-          if (response.Data > 0 && response.Data !== null) {
-            this.$tip("保存成功");
-          }
-          this.getList();
-          close();
-        });
-      };
-      this.modal$(options);
     },
     btnDeleteHandller(item) {
       let options = {};

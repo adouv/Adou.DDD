@@ -238,6 +238,47 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 	/// <summary>
 	/// 
 	/// </summary>    
+	[TableName("dbo.adRole")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adRole : PetaPocoAdouDB.Record<adRole>  
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string RoleName { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public DateTime? CreateTime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string CreateUser { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public DateTime? ModifyTime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string ModifyUser { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public bool? IsDel { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public int? Sort { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
 	[TableName("dbo.adUser")]
 	[PrimaryKey("Id")]
 	[ExplicitColumns]
@@ -295,5 +336,26 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// 
 		/// </summary>
 		[Column] public int? Sort { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
+	[TableName("dbo.adUserAndRole")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adUserAndRole : PetaPocoAdouDB.Record<adUserAndRole>  
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long? RoleId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long? UserId { get; set; }
 	}
 }
