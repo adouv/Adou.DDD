@@ -11,6 +11,7 @@ import SettingComponent from "@views/shared/setting.vue";
 import AdAccountComponent from "@views/account/index";
 import AdMenuComponent from "@views/menu/index";
 import AdUserComponent from "@views/user/index";
+import AdUserEditComponent from "@views/user/edit";
 
 Vue.use(Router);
 
@@ -47,6 +48,11 @@ const routers = [{
                 path: "adUser",
                 name: "adUser",
                 component: AdUserComponent
+            },
+            {
+                path: "adUserEdit",
+                name: "adUserEdit",
+                component: AdUserEditComponent
             }
         ]
     }

@@ -1,5 +1,5 @@
 <template>
-  <ad-main title="账户管理" class="ad-account">
+  <ad-main title="账户管理" class="ad-user">
     <div class="row row-lg">
       <div class="col-sm-6 col-md-4">
         <div class="example-wrap">
@@ -85,6 +85,8 @@ export default {
       });
     },
     btnEditHandller(item = {}) {
+      this.$router.push({ name: "adUserEdit", params: item });
+      return;
       let IsUndefined = item.Id !== undefined;
       let options = {};
       options.title = IsUndefined ? "修改用户" : "添加用户";
