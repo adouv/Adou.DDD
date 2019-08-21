@@ -102,6 +102,7 @@
 </template>
 
 <script>
+import adUserService from "../../_api/adUser.service";
 export default {
   name: "AdUserEditComponent",
   data() {
@@ -127,6 +128,51 @@ export default {
       this.params.Sort = 100;
     }
   },
-  methods: {}
+  methods: {
+    btnSave() {
+      if (!this.params.UserName) {
+        this.$tip("请填写用户名");
+        return;
+      }
+
+      if (this.params.Id === 0 && !this.params.UserPwd) {
+        this.$tip("请填写密码");
+        return;
+      }
+
+      if (this.params.Id === 0 && !this.params.ReUserPwd) {
+        this.$tip("请填写确认密码");
+        return;
+      }
+
+      if (
+        this.params.Id === 0 &&
+        this.params.UserPwd !== this.params.ReUserPwd
+      ) {
+        this.$tip("两次输入密码不一致");
+        return;
+      }
+
+      if (!this.params.Sort) {
+        this.$tip("请填写排序值");
+        return;
+      }
+
+      let result = null;
+
+      if (this.params.Id === 0) {
+        result = adUserService.insertUser(this.params);
+      } else {
+        result = adUserService.updateUserById(this.params);
+      }
+
+      result.then(response => {
+        if (response.Data > 0 && response.Data !== null) {
+          this.$tip("保存成功");
+        }
+        this.$router.push({ name: "adUser" });
+      });
+    }
+  }
 };
 </script>
