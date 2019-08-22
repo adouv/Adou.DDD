@@ -43,6 +43,7 @@
     <Compile Include="Adou\AccountRep.cs" />
     <Compile Include="Adou\BaseRep.cs" />
     <Compile Include="Adou\MenuRep.cs" />
+    <Compile Include="Adou\RoleRep.cs" />
     <Compile Include="Adou\UserRep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

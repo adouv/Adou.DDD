@@ -19,44 +19,41 @@
       </div>
     </div>
 
-    <!-- <ad-table :headers="headers" :list="list">
+    <ad-table :headers="headers" :list="list">
       <tbody>
         <tr v-for="item in list" :key="item.Id">
           <td>{{item.Id}}</td>
-          <td>{{item.UserName}}</td>
-          <td>{{item.UserType===0?'管理员':'超级管理员'}}</td>
-          <td>{{item.UserStatus===0?'禁用':'启用'}}</td>
+          <td>{{item.RoleName}}</td>
           <td>{{item.Sort}}</td>
           <td>{{item.CreateTime|dateFormats}}</td>
           <td>
             <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
-            <ad-button type="primary" size="sm" @click.native="$router.push({ name: 'adUserEdit', params: item })">编辑</ad-button>
+            <ad-button type="primary" size="sm" @click.native="$router.push({ name: 'adRoleEdit', params: item })">编辑</ad-button>
           </td>
         </tr>
       </tbody>
     </ad-table>
 
-    <ad-pagination :total="TotalItems" :pageIndex="request.PageIndex" @currentChange="getList"></ad-pagination> -->
+    <ad-pagination :total="TotalItems" :pageIndex="request.PageIndex" @currentChange="getList"></ad-pagination>
   </ad-main>
 </template>
 
 <script>
+import adRoleService from '../../_api/adRole.service';
 export default {
   name: "AdRoleComponent",
   data() {
     return {
       headers: [
         "编号",
-        "用户名",
-        "用户类型",
-        "用户状态",
+        "角色名称",
         "排序",
-        "注册时间",
+        "创建时间",
         "操作"
       ],
       list: [],
       request: {
-        UserName: "",
+        RoleName: "",
         PageIndex: 1,
         PageSize: 10,
         OrderBy: "",
@@ -66,7 +63,7 @@ export default {
     };
   },
   mounted() {
-    
+    this.getList();
   },
   methods: {
     getList(PageIndex = 1) {
@@ -74,7 +71,7 @@ export default {
 
       this.request.PageIndex = PageIndex;
 
-      adUserService.getUserPageList(this.request).then(response => {
+      adRoleService.getRolePageList(this.request).then(response => {
         if (response.Data !== null && response.Data.Items.length !== 0) {
           this.list = response.Data.Items;
           this.TotalItems = response.Data.TotalItems;
@@ -93,7 +90,7 @@ export default {
 
       options.save = (params, close) => {
         console.log(params);
-        adUserService.updateUserIsDelById(params).then(response => {
+        adRoleService.updateRoleIsDelById(params).then(response => {
           if (response.Data > 0 && response.Data !== null) {
             this.$tip("删除成功");
           }

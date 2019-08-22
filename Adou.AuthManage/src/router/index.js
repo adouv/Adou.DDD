@@ -14,6 +14,7 @@ import AdMenuEditComponent from "@views/menu/edit";
 import AdUserComponent from "@views/user/index";
 import AdUserEditComponent from "@views/user/edit";
 import AdRoleComponent from "@views/role/index";
+import AdRoleEditComponent from "@views/role/edit";
 
 Vue.use(Router);
 
@@ -65,6 +66,11 @@ const routers = [{
                 path: "adRole",
                 name: "adRole",
                 component: AdRoleComponent
+            },
+            {
+                path: "adRoleEdit",
+                name: "adRoleEdit",
+                component: AdRoleEditComponent
             }
         ]
     }

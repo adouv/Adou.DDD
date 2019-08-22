@@ -58,6 +58,12 @@
     <Compile Include="AdServices\Menu\UpdateMenuByIdService.cs" />
     <Compile Include="AdServices\Menu\UpdateMenuSortByIdService.cs" />
     <Compile Include="AdServices\Menu\UpdateMenuIsDelByIdService.cs" />
+    <Compile Include="AdServices\Role\DeleteRoleByIdService.cs" />
+    <Compile Include="AdServices\Role\GetRoleListService.cs" />
+    <Compile Include="AdServices\Role\GetRolePageListService.cs" />
+    <Compile Include="AdServices\Role\InsertRoleService.cs" />
+    <Compile Include="AdServices\Role\UpdateRoleByIdService.cs" />
+    <Compile Include="AdServices\Role\UpdateRoleIsDelByIdService.cs" />
     <Compile Include="AdServices\User\DeleteUserByIdService.cs" />
     <Compile Include="AdServices\User\GetUserListService.cs" />
     <Compile Include="AdServices\User\GetUserPageListService.cs" />
