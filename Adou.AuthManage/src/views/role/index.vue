@@ -1,25 +1,25 @@
 <template>
-  <ad-main title="账户管理" class="ad-user">
+  <ad-main title="角色管理" class="ad-role">
     <div class="row row-lg">
       <div class="col-sm-6 col-md-4">
         <div class="example-wrap">
-          <h4 class="example-title">用户名</h4>
+          <h4 class="example-title">角色名称</h4>
           <el-input
             size="small"
             v-model="request.UserName"
             style="width:100%;"
-            placeholder="请输入用户名"
+            placeholder="请输入角色名称"
           ></el-input>
         </div>
       </div>
 
       <div class="col-sm-12 col-md-12">
         <ad-button type="inverse" @click.native="getList();">搜索</ad-button>
-        <ad-button type="primary" @click.native="$router.push({ name: 'adUserEdit', params: {} })">添加</ad-button>
+        <ad-button type="primary" @click.native="$router.push({ name: 'adRoleEdit', params: {} })">添加</ad-button>
       </div>
     </div>
 
-    <ad-table :headers="headers" :list="list">
+    <!-- <ad-table :headers="headers" :list="list">
       <tbody>
         <tr v-for="item in list" :key="item.Id">
           <td>{{item.Id}}</td>
@@ -36,14 +36,13 @@
       </tbody>
     </ad-table>
 
-    <ad-pagination :total="TotalItems" :pageIndex="request.PageIndex" @currentChange="getList"></ad-pagination>
+    <ad-pagination :total="TotalItems" :pageIndex="request.PageIndex" @currentChange="getList"></ad-pagination> -->
   </ad-main>
 </template>
 
 <script>
-import adUserService from "../../_api/adUser.service";
 export default {
-  name: "AdUserComponent",
+  name: "AdRoleComponent",
   data() {
     return {
       headers: [
@@ -67,7 +66,7 @@ export default {
     };
   },
   mounted() {
-    this.getList();
+    
   },
   methods: {
     getList(PageIndex = 1) {

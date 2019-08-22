@@ -279,6 +279,27 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 	/// <summary>
 	/// 
 	/// </summary>    
+	[TableName("dbo.adRoleAndMenu")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adRoleAndMenu : PetaPocoAdouDB.Record<adRoleAndMenu>  
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long? RoleId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long? MenuId { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
 	[TableName("dbo.adUser")]
 	[PrimaryKey("Id")]
 	[ExplicitColumns]
