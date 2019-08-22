@@ -1,5 +1,6 @@
 ﻿using Adou.Api.Model;
 using Adou.Api.Service.AdServices.User;
+using Adou.Api.Service.AdServices.UserAndRole;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -39,6 +40,14 @@ namespace Adou.Api.Controllers.Controllers
         /// 通过编号更新用户是否删除状态服务（伪删除）
         /// </summary>
         public UpdateUserIsDelByIdService updateUserIsDelByIdService { get; set; }
+        /// <summary>
+        /// 添加用户角色权限
+        /// </summary>
+        public InsertUserAndRoleService insertUserAndRoleService { get; set; }
+        /// <summary>
+        /// 删除用户角色权限
+        /// </summary>
+        public DeleteUserAndRoleByUserIdService deleteUserAndRoleByUserIdService { get; set; }
 
         /// <summary>
         /// 获取用户列表
@@ -109,6 +118,26 @@ namespace Adou.Api.Controllers.Controllers
         public async Task<ResponseMessageModel> UpdateUserIsDelById([FromBody]RequestUpdateUserIsDelByIdModel model)
         {
             return await Task.Run(() => updateUserIsDelByIdService.Execute(model));
+        }
+        /// <summary>
+        /// 添加用户角色权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [Route("InsertUserAndRole"), HttpPost]
+        public async Task<ResponseMessageModel> InsertUserAndRole([FromBody]RequestInsertUserAndRoleModel model)
+        {
+            return await Task.Run(() => insertUserAndRoleService.Execute(model));
+        }
+        /// <summary>
+        /// 通过用户编号删除用户角色权限
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [Route("DeleteUserAndRoleByUserId"), HttpPost]
+        public async Task<ResponseMessageModel> DeleteUserAndRoleByUserId([FromBody]RequestDeleteUserAndRoleByUserIdModel model)
+        {
+            return await Task.Run(() => deleteUserAndRoleByUserIdService.Execute(model));
         }
     }
 }

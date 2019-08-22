@@ -20,6 +20,10 @@ namespace Adou.Api.Controllers.Controllers
         /// </summary>
         public GetRolePageListService getRolePageListService { get; set; }
         /// <summary>
+        /// 通过用户编号获取角色列表服务
+        /// </summary>
+        public GetRoleListByUserIdService getRoleListByUserIdService { get; set; }
+        /// <summary>
         /// 添加角色服务
         /// </summary>
         public InsertRoleService insertRoleService { get; set; }
@@ -56,6 +60,16 @@ namespace Adou.Api.Controllers.Controllers
         public async Task<ResponseMessageModel> GetRolePageList([FromBody]RequestGetRoleListModel model)
         {
             return await Task.Run(() => getRolePageListService.Execute(model));
+        }
+        /// <summary>
+        /// 通过用户编号获取角色列表
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [Route("GetRoleListByUserId"), HttpPost]
+        public async Task<ResponseMessageModel> GetRoleListByUserId([FromBody]RequestGetRoleListByUserIdModel model)
+        {
+            return await Task.Run(() => getRoleListByUserIdService.Execute(model));
         }
         /// <summary>
         /// 添加角色

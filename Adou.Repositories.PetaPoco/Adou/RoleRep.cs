@@ -85,6 +85,23 @@ namespace Adou.Repositories.PetaPoco.Adou
             return this.GetPageList(orderBy, isDesc, pageIndex, pageSize, sql, model.RoleName);
         }
         /// <summary>
+        /// 通过用户编号获取角色
+        /// </summary>
+        /// <param name="userId">用户编号</param>
+        /// <returns></returns>
+        public IEnumerable<adRole> GetRoleListByUserId(long userId)
+        {
+            string sql = string.Empty;
+
+            sql = string.Format(@"
+                SELECT b.Id,b.RoleName FROM adUserAndRole a 
+                INNER JOIN adRole b ON a.RoleId=b.Id
+                WHERE UserId = @0
+            ");
+
+            return PetaPocoAdouDB.GetInstance().Query<adRole>(sql, userId);
+        }
+        /// <summary>
         /// 添加角色
         /// </summary>
         /// <param name="model">请求实体</param>

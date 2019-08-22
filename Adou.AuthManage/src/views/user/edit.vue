@@ -1,5 +1,5 @@
 <template>
-  <ad-main :title="`用户管理 / ${params.Id==undefined?'添加':'编辑'}用户`" :back="true" class="ad-user-edit">
+  <ad-main :title="`用户管理 / ${params.Id===0?'添加':'编辑'}用户`" :back="true" class="ad-user-edit">
     <div class="row row-lg">
       <div class="col-sm-12 col-md-12">
         <div class="example-wrap">
@@ -75,6 +75,27 @@
 
       <div class="col-sm-12 col-md-12">
         <div class="example-wrap">
+          <h4 class="example-title">角色</h4>
+          <el-select
+            v-model="roleIds"
+            size="mini"
+            clearable
+            multiple
+            placeholder="请选择"
+            style="width:100%;"
+          >
+            <el-option
+              v-for="(item,index) in roleList"
+              :key="index"
+              :label="item.RoleName"
+              :value="item.Id"
+            ></el-option>
+          </el-select>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-12">
+        <div class="example-wrap">
           <h4 class="example-title">是否启用</h4>
           <ul class="list-unstyled list-inline">
             <li class="list-inline-item" v-for="item in UserStatusData" :key="item.id">
@@ -103,32 +124,52 @@
 
 <script>
 import adUserService from "../../_api/adUser.service";
+import adRoleService from "../../_api/adRole.service";
 export default {
   name: "AdUserEditComponent",
   data() {
     return {
-      params: {},
+      params: {
+        Id: 0,
+        UserName: "",
+        UserPwd: "",
+        ReUserPwd: "",
+        UserHead: "",
+        UserType: 0,
+        UserStatus: 0,
+        RoleId: 0,
+        Sort: 100
+      },
+      roleList: [],
+      roleIds: [],
       UserStatusData: [{ key: 0, val: "禁用" }, { key: 1, val: "启用" }],
       UserTypeData: [{ key: 0, val: "否" }, { key: 1, val: "是" }]
     };
   },
   mounted() {
-    this.params = this.$route.params;
+    let params = this.$route.params;
+    if (params.Id !== undefined) {
+      this.params = params;
+
+      this.params.RoleList.forEach(element => {
+        this.roleIds.push(element.Id);
+      });
+    }
 
     this.params.UserPwd = "";
     this.params.ReUserPwd = "";
 
-    if (this.params.Id === undefined) {
-      this.params.Id = 0;
-      this.params.UserName = "";
-      this.params.UserHead = "";
-      this.params.UserType = 0;
-      this.params.UserStatus = 0;
-      this.params.RoleId = 0;
-      this.params.Sort = 100;
-    }
+    this.getRoleList();
   },
   methods: {
+    getRoleList() {
+      let params = {};
+      adRoleService.getRoleList(params).then(response => {
+        if (response.Data) {
+          this.roleList = response.Data;
+        }
+      });
+    },
     btnSave() {
       if (!this.params.UserName) {
         this.$tip("请填写用户名");
@@ -164,7 +205,11 @@ export default {
         return;
       }
 
+      this.params.RoleIds = this.roleIds;
+
       let result = null;
+
+      return;
 
       if (this.params.Id === 0) {
         result = adUserService.insertUser(this.params);

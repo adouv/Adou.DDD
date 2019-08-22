@@ -54,10 +54,13 @@
     <Compile Include="Menu\Request\RequestMenuUpdateSortByIdModel.cs" />
     <Compile Include="Menu\Request\RequestUpdateMenuIsDelByIdModel.cs" />
     <Compile Include="Role\Request\RequestDeleteRoleByIdModel.cs" />
+    <Compile Include="Role\Request\RequestGetRoleListByUserIdModel.cs" />
     <Compile Include="Role\Request\RequestGetRoleListModel.cs" />
     <Compile Include="Role\Request\RequestInsertRoleModel.cs" />
     <Compile Include="Role\Request\RequestUpdateRoleByIdModel.cs" />
     <Compile Include="Role\Request\RequestUpdateRoleIsDelByIdModel.cs" />
+    <Compile Include="UserAndRole\Request\RequestDeleteUserAndRoleByUserIdModel.cs" />
+    <Compile Include="UserAndRole\Request\RequestInsertUserAndRoleModel.cs" />
     <Compile Include="User\Request\RequestDeleteUserByIdModel.cs" />
     <Compile Include="User\Request\RequestGetUserListModel.cs" />
     <Compile Include="User\Request\RequestUserLoginModel.cs" />

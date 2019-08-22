@@ -24,6 +24,15 @@ export default {
         return result;
     },
     /**
+     * 通过用户编号获取角色列表
+     * @param {*} params 
+     * @param {*} config 
+     */
+    async getRoleListByUserId(params = {}, config = {}) {
+        let result = await Vue.http.post("Role/GetRoleListByUserId", params, config);
+        return result;
+    },
+    /**
      * 添加角色
      * @param {*} params 
      * @param {*} config 

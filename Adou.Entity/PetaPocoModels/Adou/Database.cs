@@ -373,10 +373,10 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// <summary>
 		/// 
 		/// </summary>
-		[Column] public long? RoleId { get; set; }
+		[Column] public long? UserId { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		[Column] public long? UserId { get; set; }
+		[Column] public long? RoleId { get; set; }
 	}
 }
