@@ -3,7 +3,7 @@
     <div class="row row-lg">
       <div class="col-sm-12 col-md-12">
         <ad-button type="inverse" @click.native="getList();">搜索</ad-button>
-        <ad-button type="primary" @click.native="btnEditHandller({});">添加</ad-button>
+        <ad-button type="primary" @click.native="$router.push({ name: 'adMenuEdit', params: {} })">添加</ad-button>
       </div>
     </div>
 
@@ -31,7 +31,7 @@
           <td>{{item.CreateTime|dateFormats}}</td>
           <td>
             <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
-            <ad-button type="primary" size="sm" @click.native="btnEditHandller(item);">编辑</ad-button>
+            <ad-button type="primary" size="sm" @click.native="$router.push({ name: 'adMenuEdit', params: item })">编辑</ad-button>
           </td>
         </tr>
         <tr v-for="items in item.children" :key="items.Id">
@@ -56,7 +56,7 @@
           <td>{{items.CreateTime|dateFormats}}</td>
           <td>
             <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(items);">删除</ad-button>
-            <ad-button type="primary" size="sm" @click.native="btnEditHandller(items);">编辑</ad-button>
+            <ad-button type="primary" size="sm" @click.native="$router.push({ name: 'adMenuEdit', params: items })">编辑</ad-button>
           </td>
         </tr>
       </tbody>
@@ -66,7 +66,6 @@
 
 <script>
 import adMenuService from "../../_api/adMenu.service";
-import AdMenuEditComponent from "./edit.vue";
 export default {
   name: "AdMenuComponent",
   data() {
@@ -121,47 +120,6 @@ export default {
           });
         }
       });
-    },
-    btnEditHandller(item) {
-      let IsUndefined = item.Id !== undefined;
-      let options = {};
-      options.title = IsUndefined ? "修改菜单" : "添加菜单";
-      options.componentName = AdMenuEditComponent;
-      options.height = 350;
-      options.params = {};
-      options.params.Id = IsUndefined ? item.Id : 0;
-      options.params.Title = IsUndefined ? item.Title : "";
-      options.params.MenuIcon = IsUndefined ? item.MenuIcon : "";
-      options.params.MenuUrl = IsUndefined ? item.MenuUrl : "#";
-      options.params.FatherId = IsUndefined ? item.FatherId : 0;
-      options.params.LevelId = IsUndefined ? item.LevelId : 0;
-      options.params.Sort = IsUndefined ? item.Sort : 100;
-      options.save = (params, close) => {
-        params.LevelId = params.FatherId === 0 ? 0 : 1;
-
-        if (!params.Title) {
-          this.$tip("请填写菜单名称");
-          return;
-        }
-
-        let result = null;
-
-        if (params.Id === 0) {
-          result = adMenuService.insertMenu(params);
-        } else {
-          result = adMenuService.updateMenuById(params);
-        }
-
-        result.then(response => {
-          if (response.Data > 0 && response.Data !== null) {
-            this.$tip("保存成功");
-          }
-          this.getList();
-          close();
-        });
-      };
-
-      this.modal$(options);
     },
     btnDeleteHandller(item) {
       let options = {};

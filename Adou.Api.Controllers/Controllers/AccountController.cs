@@ -7,13 +7,13 @@ using System.Web.Http;
 using Adou.Api.Model;
 using Adou.Api.Service.AdServices.Account;
 
-namespace Adou.Api.Controllers.Controllers.Account
+namespace Adou.Api.Controllers.Controllers
 {
     /// <summary>
     /// 账户信息 - 控制器
     /// </summary>
     [RoutePrefix("api/Adou/Account")]
-    public class AccountController : BaseController
+    public class AccountController:BaseController
     {
         /// <summary>
         /// 获取账户列表服务
@@ -99,7 +99,7 @@ namespace Adou.Api.Controllers.Controllers.Account
         [Route("UpdateAccountIsDelById"), HttpPost]
         public async Task<ResponseMessageModel> UpdateAccountIsDelById([FromBody]RequestUpdateAccountIsDelByIdModel model)
         {
-            return await Task.Run(()=> updateAccountIsDelByIdService.Execute(model));
+            return await Task.Run(() => updateAccountIsDelByIdService.Execute(model));
         }
     }
 }

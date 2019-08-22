@@ -3,7 +3,7 @@ using Adou.Api.Service.AdServices.User;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace Adou.Api.Controllers.Controllers.User
+namespace Adou.Api.Controllers.Controllers
 {
     /// <summary>
     /// 用户信息 - 控制器
@@ -48,7 +48,7 @@ namespace Adou.Api.Controllers.Controllers.User
         [Route("GetUserList"), HttpPost]
         public async Task<ResponseMessageModel> GetUserList([FromBody]RequestGetUserListModel mode)
         {
-            return await Task.Run(()=>getUserListService.Execute(mode));
+            return await Task.Run(() => getUserListService.Execute(mode));
         }
         /// <summary>
         /// 分页获取用户列表
@@ -58,7 +58,7 @@ namespace Adou.Api.Controllers.Controllers.User
         [Route("GetUserPageList"), HttpPost]
         public async Task<ResponseMessageModel> GetUserPageList([FromBody]RequestGetUserListModel mode)
         {
-            return await Task.Run(() =>getUserPageListService.Execute(mode));
+            return await Task.Run(() => getUserPageListService.Execute(mode));
         }
         /// <summary>
         /// 用户登录
@@ -68,7 +68,7 @@ namespace Adou.Api.Controllers.Controllers.User
         [Route("UserLogin"), HttpPost]
         public async Task<ResponseMessageModel> UserLogin([FromBody]RequestUserLoginModel mode)
         {
-            return await Task.Run(()=> userLoginService.Execute(mode));
+            return await Task.Run(() => userLoginService.Execute(mode));
         }
         /// <summary>
         /// 添加用户
@@ -78,7 +78,7 @@ namespace Adou.Api.Controllers.Controllers.User
         [Route("InsertUser"), HttpPost]
         public async Task<ResponseMessageModel> InsertUser([FromBody]RequestInsertUserModel mode)
         {
-            return await Task.Run(()=>insertUserService.Execute(mode));
+            return await Task.Run(() => insertUserService.Execute(mode));
         }
         /// <summary>
         /// 通过编号更新用户
@@ -88,7 +88,7 @@ namespace Adou.Api.Controllers.Controllers.User
         [Route("UpdateUserById"), HttpPost]
         public async Task<ResponseMessageModel> UpdateUserById([FromBody]RequestUpdateUserByIdModel mode)
         {
-            return await Task.Run(()=>updateUserByIdService.Execute(mode));
+            return await Task.Run(() => updateUserByIdService.Execute(mode));
         }
         /// <summary>
         /// 通过编号删除用户
@@ -98,7 +98,7 @@ namespace Adou.Api.Controllers.Controllers.User
         [Route("DeleteUserById"), HttpPost]
         public async Task<ResponseMessageModel> DeleteUserById([FromBody]RequestDeleteUserByIdModel mode)
         {
-            return await Task.Run(()=>deleteUserByIdService.Execute(mode));
+            return await Task.Run(() => deleteUserByIdService.Execute(mode));
         }
         /// <summary>
         /// 通过编号更新用户是否删除状态（伪删除）
@@ -108,7 +108,7 @@ namespace Adou.Api.Controllers.Controllers.User
         [Route("UpdateUserIsDelById"), HttpPost]
         public async Task<ResponseMessageModel> UpdateUserIsDelById([FromBody]RequestUpdateUserIsDelByIdModel mode)
         {
-            return await Task.Run(()=>updateUserIsDelByIdService.Execute(mode));
+            return await Task.Run(() => updateUserIsDelByIdService.Execute(mode));
         }
     }
 }

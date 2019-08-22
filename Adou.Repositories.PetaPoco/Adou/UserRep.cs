@@ -182,8 +182,39 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// <returns>int</returns>
         public int UpdateUserById(adUser model)
         {
-            #region sql
-            string sql = string.Format(@"
+            if (string.IsNullOrWhiteSpace(model.UserPwd))
+            {
+                #region sql
+                string sql = string.Format(@"
+                    SET [UserName] = @0
+                        ,[UserHead] = @1
+                        ,[UserType] = @2
+                        ,[UserStatus] = @3
+                        ,[RoleId] = @4
+                        ,[ModifyTime] = @5
+                        ,[ModifyUser] = @6
+                        ,[IsDel] = @7
+                        ,[Sort] = @8
+                    WHERE 1 = 1 AND [Id] = @9
+                ");
+                #endregion
+
+                return PetaPocoAdouDB.GetInstance().Update<adUser>(sql,
+                    model.UserName,
+                    model.UserHead,
+                    model.UserType,
+                    model.UserStatus,
+                    model.RoleId,
+                    model.ModifyTime,
+                    model.ModifyUser,
+                    model.IsDel,
+                    model.Sort,
+                    model.Id);
+            }
+            else
+            {
+                #region sql
+                string sql = string.Format(@"
                 SET [UserName] = @0
                     ,[UserPwd] = @1
                     ,[UserHead] = @2
@@ -196,20 +227,22 @@ namespace Adou.Repositories.PetaPoco.Adou
                     ,[Sort] = @9
                 WHERE 1 = 1 AND [Id] = @10
             ");
-            #endregion
+                #endregion
 
-            return PetaPocoAdouDB.GetInstance().Update<adUser>(sql,
-                model.UserName,
-                model.UserPwd,
-                model.UserHead,
-                model.UserType,
-                model.UserStatus,
-                model.RoleId,
-                model.ModifyTime,
-                model.ModifyUser,
-                model.IsDel,
-                model.Sort,
-                model.Id);
+                return PetaPocoAdouDB.GetInstance().Update<adUser>(sql,
+                    model.UserName,
+                    model.UserPwd,
+                    model.UserHead,
+                    model.UserType,
+                    model.UserStatus,
+                    model.RoleId,
+                    model.ModifyTime,
+                    model.ModifyUser,
+                    model.IsDel,
+                    model.Sort,
+                    model.Id);
+            }
+            
         }
         /// <summary>
         /// 通过编号更新用户是否删除（伪删除）

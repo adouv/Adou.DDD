@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace Adou.Api.Controllers.Controllers.Menu
+namespace Adou.Api.Controllers.Controllers
 {
     /// <summary>
     /// 菜单信息 - 控制器

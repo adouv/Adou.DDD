@@ -1,5 +1,5 @@
 <template>
-  <ad-main :title="`用户管理 - ${params.Id==undefined?'添加':'编辑'}用户`" class="ad-user-edit">
+  <ad-main :title="`用户管理 / ${params.Id==undefined?'添加':'编辑'}用户`" :back="true" class="ad-user-edit">
     <div class="row row-lg">
       <div class="col-sm-12 col-md-12">
         <div class="example-wrap">
@@ -135,22 +135,28 @@ export default {
         return;
       }
 
-      if (this.params.Id === 0 && !this.params.UserPwd) {
-        this.$tip("请填写密码");
-        return;
-      }
+      if (this.params.Id === 0) {
+        if (!this.params.UserPwd) {
+          this.$tip("请填写密码");
+          return;
+        }
 
-      if (this.params.Id === 0 && !this.params.ReUserPwd) {
-        this.$tip("请填写确认密码");
-        return;
-      }
+        if (!this.params.ReUserPwd) {
+          this.$tip("请填写确认密码");
+          return;
+        }
 
-      if (
-        this.params.Id === 0 &&
-        this.params.UserPwd !== this.params.ReUserPwd
-      ) {
-        this.$tip("两次输入密码不一致");
-        return;
+        if (this.params.UserPwd !== this.params.ReUserPwd) {
+          this.$tip("两次输入密码不一致");
+          return;
+        }
+      } else {
+        if (this.params.UserPwd || this.params.ReUserPwd) {
+          if (this.params.UserPwd !== this.params.ReUserPwd) {
+            this.$tip("两次输入密码不一致");
+            return;
+          }
+        }
       }
 
       if (!this.params.Sort) {

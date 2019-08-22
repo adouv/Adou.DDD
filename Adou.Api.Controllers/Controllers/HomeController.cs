@@ -18,7 +18,7 @@ namespace Adou.Api.Controllers.Controllers
         /// <returns>ActionResult</returns>
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Api";
 
             return View();
         }

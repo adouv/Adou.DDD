@@ -10,6 +10,7 @@ import SettingComponent from "@views/shared/setting.vue";
 
 import AdAccountComponent from "@views/account/index";
 import AdMenuComponent from "@views/menu/index";
+import AdMenuEditComponent from "@views/menu/edit";
 import AdUserComponent from "@views/user/index";
 import AdUserEditComponent from "@views/user/edit";
 
@@ -43,6 +44,11 @@ const routers = [{
                 path: "adMenu",
                 name: "adMenu",
                 component: AdMenuComponent
+            },
+            {
+                path: "adMenuEdit",
+                name: "adMenuEdit",
+                component: AdMenuEditComponent
             },
             {
                 path: "adUser",
