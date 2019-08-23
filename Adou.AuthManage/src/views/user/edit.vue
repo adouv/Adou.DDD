@@ -234,10 +234,12 @@ export default {
             let uid = this.params.Id > 0 ? this.params.Id : response.Data;
 
             this.params.RoleIds.forEach(role => {
+
               let args = {
                 UserId: uid,
                 RoleId: role
               };
+
               rolePromiseAll.push(adUserService.insertUserAndRole(args));
             });
 

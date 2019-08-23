@@ -1,5 +1,6 @@
 ﻿using Adou.Api.Model;
 using Adou.Api.Service.AdServices.Role;
+using Adou.Api.Service.AdServices.RoleAndMenu;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -39,7 +40,14 @@ namespace Adou.Api.Controllers.Controllers
         /// 通过编号删除角色服务
         /// </summary>
         public DeleteRoleByIdService deleteRoleByIdService { get; set; }
-
+        /// <summary>
+        /// 添加角色菜单服务
+        /// </summary>
+        public InsertRoleAndMenuService insertRoleAndMenuService { get; set; }
+        /// <summary>
+        /// 通过角色编号删除角色菜单服务
+        /// </summary>
+        public DeleteRoleAndMenuByRoleIdService deleteRoleAndMenuByRoleIdService { get; set; }
 
         /// <summary>
         /// 获取用户列表
@@ -110,6 +118,26 @@ namespace Adou.Api.Controllers.Controllers
         public async Task<ResponseMessageModel> UpdateRoleIsDelById([FromBody]RequestUpdateRoleIsDelByIdModel model)
         {
             return await Task.Run(() => updateRoleIsDelByIdService.Execute(model));
+        }
+        /// <summary>
+        /// 添加角色菜单
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [Route("InsertRoleAndMenu"), HttpPost]
+        public async Task<ResponseMessageModel> InsertRoleAndMenu([FromBody]RequestInsertRoleAndMenuModel model)
+        {
+            return await Task.Run(() => insertRoleAndMenuService.Execute(model));
+        }
+        /// <summary>
+        /// 通过角色编号删除角色菜单
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [Route("DeleteRoleAndMenuByRoleId"), HttpPost]
+        public async Task<ResponseMessageModel> DeleteRoleAndMenuByRoleId([FromBody]RequestDeleteRoleAndMenuByRoleIdModel model)
+        {
+            return await Task.Run(() => deleteRoleAndMenuByRoleIdService.Execute(model));
         }
     }
 }
