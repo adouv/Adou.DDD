@@ -66,5 +66,23 @@ export default {
     async updateUserIsDelById(params = {}, config = {}) {
         let result = await Vue.http.post("User/UpdateUserIsDelById", params, config);
         return result;
+    },
+    /**
+     * 添加用户角色
+     * @param {*} params 
+     * @param {*} config 
+     */
+    async insertUserAndRole(params = {}, config = {}) {
+        let result = await Vue.http.post("User/InsertUserAndRole", params, config);
+        return result;
+    },
+    /**
+     * 删除用户角色
+     * @param {*} params 
+     * @param {*} config 
+     */
+    async deleteUserAndRoleByUserId(params = {}, config = {}) {
+        let result = await Vue.http.post("User/DeleteUserAndRoleByUserId", params, config);
+        return result;
     }
 }

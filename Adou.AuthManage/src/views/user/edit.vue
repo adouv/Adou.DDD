@@ -73,7 +73,7 @@
         </div>
       </div>
 
-      <div class="col-sm-12 col-md-12">
+      <div class="col-sm-12 col-md-12" v-if="params.UserType===0">
         <div class="example-wrap">
           <h4 class="example-title">角色</h4>
           <el-select
@@ -170,7 +170,7 @@ export default {
         }
       });
     },
-    btnSave() {
+    async btnSave() {
       if (!this.params.UserName) {
         this.$tip("请填写用户名");
         return;
@@ -205,24 +205,58 @@ export default {
         return;
       }
 
+      if (this.params.UserType === 0) {
+        if (this.roleIds.length === 0) {
+          this.$tip("请选择角色");
+          return;
+        }
+      }
+
       this.params.RoleIds = this.roleIds;
+
+      console.log(this.params);
 
       let result = null;
 
-      return;
-
-      if (this.params.Id === 0) {
-        result = adUserService.insertUser(this.params);
-      } else {
-        result = adUserService.updateUserById(this.params);
-      }
-
-      result.then(response => {
-        if (response.Data > 0 && response.Data !== null) {
-          this.$tip("保存成功");
+      try {
+        if (this.params.Id === 0) {
+          result = adUserService.insertUser(this.params);
+        } else {
+          result = adUserService.updateUserById(this.params);
         }
+
+        let response = await result;
+
+        if (response.Data > 0 && response.Data !== null) {
+          if (this.params.RoleIds.length > 0) {
+            let rolePromiseAll = [];
+
+            let uid = this.params.Id > 0 ? this.params.Id : response.Data;
+
+            this.params.RoleIds.forEach(role => {
+              let args = {
+                UserId: uid,
+                RoleId: role
+              };
+              rolePromiseAll.push(adUserService.insertUserAndRole(args));
+            });
+
+            let result = await this.http$.all(rolePromiseAll);
+
+            if (result.length > 0) {
+              this.$tip("保存成功");
+            }
+
+            if (!result) {
+              this.$tip("角色保存成功");
+            }
+          }
+        }
+
         this.$router.push({ name: "adUser" });
-      });
+      } catch (error) {
+        this.$tip("保存失败");
+      }
     }
   }
 };

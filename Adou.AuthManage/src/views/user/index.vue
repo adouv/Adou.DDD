@@ -30,7 +30,11 @@
           <td>{{item.UserType===0?'管理员':'超级管理员'}}</td>
           <td>{{item.UserStatus===0?'禁用':'启用'}}</td>
           <td>
-            <span v-for="role in item.RoleList" :key="role.Id" style="display:block;">{{role.RoleName}}</span>
+            <span
+              v-for="role in item.RoleList"
+              :key="role.Id"
+              style="display:block;"
+            >{{role.RoleName}}</span>
           </td>
           <td>{{item.Sort}}</td>
           <td>{{item.CreateTime|dateFormats}}</td>
@@ -120,13 +124,22 @@ export default {
 
       options.save = (params, close) => {
         console.log(params);
-        adUserService.updateUserIsDelById(params).then(response => {
-          if (response.Data > 0 && response.Data !== null) {
-            this.$tip("删除成功");
-          }
-          this.getList();
-          close();
-        });
+        let args = {
+          UserId: params.Id
+        };
+
+        this.http$
+          .all([
+            adUserService.updateUserIsDelById(params),
+            adUserService.deleteUserAndRoleByUserId(args)
+          ])
+          .then(response => {
+            if (response[0].Data > 0) {
+              this.$tip("删除成功");
+            }
+            this.getList();
+            close();
+          });
       };
 
       this.confirm$(options);
