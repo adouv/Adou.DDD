@@ -45,10 +45,18 @@ export default {
   name: "SidebarComponent",
   data() {
     return {
-      sidebarList: []
+      sidebarList: [],
+      loading: null
     };
   },
   mounted() {
+    this.loading = this.loading$({
+      lock: true,
+      text: "正在加载...",
+      spinner: "el-icon-loading",
+      background: "rgba(0, 0, 0, 0.7)"
+    });
+
     this.getMenuList();
   },
   methods: {
@@ -69,7 +77,7 @@ export default {
         OrderBy: "Sort",
         IsDesc: false
       };
-      
+
       adMenuService.getMenuList(params).then(response => {
         let { Data } = response;
         if (null !== Data) {
@@ -103,6 +111,9 @@ export default {
           });
           //===
         }
+        this.loading.close();
+      }).catch(err=>{
+        this.loading.close();
       });
     }
   }

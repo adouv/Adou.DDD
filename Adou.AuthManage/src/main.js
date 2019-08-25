@@ -52,7 +52,6 @@ import {
     TableColumn,
     Pagination,
     Link,
-    Message,
     Loading
 } from "element-ui";
 import "babel-polyfill";
@@ -110,11 +109,12 @@ Vue.use(TableColumn);
 Vue.use(Pagination);
 Vue.use(Link);
 Vue.use(Loading.directive);
+Vue.use(Loading.directive);
 
 ComponentInstall(Vue);
 ExpansionInstall(Vue);
 FilterInstall(Vue);
-Vue.prototype.$loading = Loading.service;
+Vue.loading = Vue.prototype.loading$ = Loading.service;
 
 Vue.elem = Vue.prototype.elem$ = ddd.ElementService;
 Vue.local = Vue.prototype.local$ = ddd.LocalStorageService;

@@ -15,7 +15,10 @@
 
       <div class="col-sm-12 col-md-12">
         <ad-button type="inverse" @click.native="getList();">搜索</ad-button>
-        <ad-button type="primary" @click.native="$router.push({ name: 'adRoleEdit', params: {} })">添加</ad-button>
+        <ad-button
+          type="primary"
+          @click.native="$router.push({ name: 'adRoleEdit', params: {} })"
+        >添加</ad-button>
       </div>
     </div>
 
@@ -28,7 +31,11 @@
           <td>{{item.CreateTime|dateFormats}}</td>
           <td>
             <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
-            <ad-button type="primary" size="sm" @click.native="$router.push({ name: 'adRoleEdit', params: item })">编辑</ad-button>
+            <ad-button
+              type="primary"
+              size="sm"
+              @click.native="$router.push({ name: 'adRoleEdit', params: item })"
+            >编辑</ad-button>
           </td>
         </tr>
       </tbody>
@@ -39,18 +46,12 @@
 </template>
 
 <script>
-import adRoleService from '../../_api/adRole.service';
+import adRoleService from "../../_api/adRole.service";
 export default {
   name: "AdRoleComponent",
   data() {
     return {
-      headers: [
-        "编号",
-        "角色名称",
-        "排序",
-        "创建时间",
-        "操作"
-      ],
+      headers: ["编号", "角色名称", "排序", "创建时间", "操作"],
       list: [],
       request: {
         RoleName: "",
@@ -59,10 +60,18 @@ export default {
         OrderBy: "",
         IsDesc: true
       },
-      TotalItems: 0
+      TotalItems: 0,
+      loading: null
     };
   },
   mounted() {
+    this.loading = this.loading$({
+      lock: true,
+      text: "正在加载...",
+      spinner: "el-icon-loading",
+      background: "rgba(0, 0, 0, 0.7)"
+    });
+
     this.getList();
   },
   methods: {
@@ -71,13 +80,19 @@ export default {
 
       this.request.PageIndex = PageIndex;
 
-      adRoleService.getRolePageList(this.request).then(response => {
-        if (response.Data !== null && response.Data.Items.length !== 0) {
-          this.list = response.Data.Items;
-          this.TotalItems = response.Data.TotalItems;
-          this.request.PageIndex = response.Data.CurrentPage;
-        }
-      });
+      adRoleService
+        .getRolePageList(this.request)
+        .then(response => {
+          if (response.Data !== null && response.Data.Items.length !== 0) {
+            this.list = response.Data.Items;
+            this.TotalItems = response.Data.TotalItems;
+            this.request.PageIndex = response.Data.CurrentPage;
+          }
+          this.loading.close();
+        })
+        .catch(err => {
+          this.loading.close();
+        });
     },
     btnDeleteHandller(item) {
       let options = {};

@@ -79,10 +79,18 @@ export default {
         OrderBy: "",
         IsDesc: true
       },
-      TotalItems: 0
+      TotalItems: 0,
+      loading: null
     };
   },
   mounted() {
+    this.loading = this.loading$({
+      lock: true,
+      text: "正在加载...",
+      spinner: "el-icon-loading",
+      background: "rgba(0, 0, 0, 0.7)"
+    });
+
     this.getList();
   },
   methods: {
@@ -90,27 +98,31 @@ export default {
       this.list = [];
 
       this.request.PageIndex = PageIndex;
+      try {
+        let response = await adUserService.getUserPageList(this.request);
 
-      let response = await adUserService.getUserPageList(this.request);
+        if (response.Data !== null && response.Data.Items.length !== 0) {
+          this.TotalItems = response.Data.TotalItems;
+          this.request.PageIndex = response.Data.CurrentPage;
 
-      if (response.Data !== null && response.Data.Items.length !== 0) {
-        this.TotalItems = response.Data.TotalItems;
-        this.request.PageIndex = response.Data.CurrentPage;
+          let promiseAll = [];
+          response.Data.Items.forEach(element => {
+            let params = {
+              UserId: element.Id
+            };
+            promiseAll.push(adRoleService.getRoleListByUserId(params));
+          });
 
-        let promiseAll = [];
-        response.Data.Items.forEach(element => {
-          let params = {
-            UserId: element.Id
-          };
-          promiseAll.push(adRoleService.getRoleListByUserId(params));
-        });
+          let result = await this.http$.all(promiseAll);
 
-        let result = await this.http$.all(promiseAll);
-
-        response.Data.Items.forEach((element, index) => {
-          element.RoleList = result[index].Data;
-          this.list.push(element);
-        });
+          response.Data.Items.forEach((element, index) => {
+            element.RoleList = result[index].Data;
+            this.list.push(element);
+          });
+        }
+        this.loading.close();
+      } catch (error) {
+        this.loading.close();
       }
     },
     btnDeleteHandller(item) {

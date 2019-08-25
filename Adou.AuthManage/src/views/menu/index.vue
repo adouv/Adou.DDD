@@ -3,7 +3,10 @@
     <div class="row row-lg">
       <div class="col-sm-12 col-md-12">
         <ad-button type="inverse" @click.native="getList();">搜索</ad-button>
-        <ad-button type="primary" @click.native="$router.push({ name: 'adMenuEdit', params: {} })">添加</ad-button>
+        <ad-button
+          type="primary"
+          @click.native="$router.push({ name: 'adMenuEdit', params: {} })"
+        >添加</ad-button>
       </div>
     </div>
 
@@ -31,7 +34,11 @@
           <td>{{item.CreateTime|dateFormats}}</td>
           <td>
             <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
-            <ad-button type="primary" size="sm" @click.native="$router.push({ name: 'adMenuEdit', params: item })">编辑</ad-button>
+            <ad-button
+              type="primary"
+              size="sm"
+              @click.native="$router.push({ name: 'adMenuEdit', params: item })"
+            >编辑</ad-button>
           </td>
         </tr>
         <tr v-for="items in item.children" :key="items.Id">
@@ -56,7 +63,11 @@
           <td>{{items.CreateTime|dateFormats}}</td>
           <td>
             <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(items);">删除</ad-button>
-            <ad-button type="primary" size="sm" @click.native="$router.push({ name: 'adMenuEdit', params: items })">编辑</ad-button>
+            <ad-button
+              type="primary"
+              size="sm"
+              @click.native="$router.push({ name: 'adMenuEdit', params: items })"
+            >编辑</ad-button>
           </td>
         </tr>
       </tbody>
@@ -75,51 +86,65 @@ export default {
       request: {
         OrderBy: "Sort",
         IsDesc: false
-      }
+      },
+      loading: null
     };
   },
   mounted() {
+    this.loading = this.loading$({
+      lock: true,
+      text: "正在加载...",
+      spinner: "el-icon-loading",
+      background: "rgba(0, 0, 0, 0.7)"
+    });
+
     this.getList();
   },
   methods: {
     getList() {
       this.list = [];
 
-      adMenuService.getMenuList(this.request).then(response => {
-        if (response.Data !== null && response.Data.length !== 0) {
-          response.Data.forEach(element => {
-            let children = [];
+      adMenuService
+        .getMenuList(this.request)
+        .then(response => {
+          if (response.Data !== null && response.Data.length !== 0) {
+            response.Data.forEach(element => {
+              let children = [];
 
-            if (element.FatherId === 0) {
-              this.list.push({
-                Id: element.Id,
-                Title: element.Title,
-                MenuIcon: element.MenuIcon,
-                MenuUrl: "#",
-                FatherId: element.FatherId,
-                LevelId: element.LevelId,
-                Sort: element.Sort,
-                isSubShow: false,
-                children: children
-              });
-            }
-
-            response.Data.forEach(subElement => {
-              if (subElement.FatherId === element.Id) {
-                children.push({
-                  Id: subElement.Id,
-                  Title: subElement.Title,
-                  MenuIcon: "",
-                  MenuUrl: subElement.MenuUrl,
-                  FatherId: subElement.FatherId,
-                  LevelId: subElement.LevelId,
-                  Sort: subElement.Sort
+              if (element.FatherId === 0) {
+                this.list.push({
+                  Id: element.Id,
+                  Title: element.Title,
+                  MenuIcon: element.MenuIcon,
+                  MenuUrl: "#",
+                  FatherId: element.FatherId,
+                  LevelId: element.LevelId,
+                  Sort: element.Sort,
+                  isSubShow: false,
+                  children: children
                 });
               }
+
+              response.Data.forEach(subElement => {
+                if (subElement.FatherId === element.Id) {
+                  children.push({
+                    Id: subElement.Id,
+                    Title: subElement.Title,
+                    MenuIcon: "",
+                    MenuUrl: subElement.MenuUrl,
+                    FatherId: subElement.FatherId,
+                    LevelId: subElement.LevelId,
+                    Sort: subElement.Sort
+                  });
+                }
+              });
             });
-          });
-        }
-      });
+          }
+          this.loading.close();
+        })
+        .catch(err => {
+          this.loading.close();
+        });
     },
     btnDeleteHandller(item) {
       let options = {};

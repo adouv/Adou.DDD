@@ -55,7 +55,12 @@
       </tbody>
     </ad-table>
 
-    <ad-pagination v-if="list.length!=0" :total="TotalItems" :pageIndex="request.PageIndex" @currentChange="getList"></ad-pagination>
+    <ad-pagination
+      v-if="list.length!=0"
+      :total="TotalItems"
+      :pageIndex="request.PageIndex"
+      @currentChange="getList"
+    ></ad-pagination>
   </ad-main>
 </template>
 
@@ -100,10 +105,18 @@ export default {
           key: 2,
           val: "添丁"
         }
-      ]
+      ],
+      loading: null
     };
   },
   mounted() {
+    this.loading = this.loading$({
+      lock: true,
+      text: "正在加载...",
+      spinner: "el-icon-loading",
+      background: "rgba(0, 0, 0, 0.7)"
+    });
+
     this.getList();
   },
   methods: {
@@ -112,13 +125,19 @@ export default {
 
       this.request.PageIndex = PageIndex;
 
-      adAccountService.getAccountPageList(this.request).then(response => {
-        if (response.Data !== null && response.Data.Items.length !== 0) {
-          this.list = response.Data.Items;
-          this.TotalItems = response.Data.TotalItems;
-          this.request.PageIndex = response.Data.CurrentPage;
-        }
-      });
+      adAccountService
+        .getAccountPageList(this.request)
+        .then(response => {
+          if (response.Data !== null && response.Data.Items.length !== 0) {
+            this.list = response.Data.Items;
+            this.TotalItems = response.Data.TotalItems;
+            this.request.PageIndex = response.Data.CurrentPage;
+          }
+          this.loading.close();
+        })
+        .catch(err => {
+          this.loading.close();
+        });
     },
     btnEditHandller(item = {}) {
       let IsUndefined = item.Id !== undefined;
