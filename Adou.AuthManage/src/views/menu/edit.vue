@@ -73,21 +73,31 @@ export default {
   name: "AdMenuEditComponent",
   data() {
     return {
-      params: {},
-      list: []
+      params: {
+        Id: 0,
+        Title: "",
+        MenuIcon: "",
+        MenuUrl: "#",
+        FatherId: 0,
+        LevelId: 0,
+        Sort: 100
+      },
+      list: [],
+      loading: null
     };
   },
   mounted() {
-    this.params = this.$route.params;
+    this.loading = this.loading$({
+      lock: true,
+      text: "正在加载...",
+      spinner: "el-icon-loading",
+      background: "rgba(0, 0, 0, 0.7)"
+    });
 
-    if (this.params.Id === undefined) {
-      this.params.Id = 0;
-      this.params.Title = "";
-      this.params.MenuIcon = "";
-      this.params.MenuUrl = "#";
-      this.params.FatherId = 0;
-      this.params.LevelId = 0;
-      this.params.Sort = 100;
+    let params = this.$route.params;
+
+    if (params.Id === undefined) {
+      this.params = params;
     }
 
     this.getMenuListByFatherId();
@@ -100,11 +110,18 @@ export default {
       params.FatherId = 0;
       params.IsDesc = true;
 
-      adMenuService.getMenuListByFatherId(params).then(response => {
-        if (response.Data !== null && response.Data.length !== 0) {
-          this.list = response.Data;
-        }
-      });
+      adMenuService
+        .getMenuListByFatherId(params)
+        .then(response => {
+          if (response.Data !== null && response.Data.length !== 0) {
+            this.list = response.Data;
+          }
+
+          this.loading.close();
+        })
+        .catch(err => {
+          this.loading.close();
+        });
     },
     btnSave() {
       this.params.LevelId = this.params.FatherId === 0 ? 0 : 1;

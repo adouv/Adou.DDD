@@ -47,6 +47,7 @@
 
 <script>
 import adRoleService from "../../_api/adRole.service";
+import adMenuService from "../../_api/adMenu.service";
 export default {
   name: "AdRoleComponent",
   data() {
@@ -75,24 +76,38 @@ export default {
     this.getList();
   },
   methods: {
-    getList(PageIndex = 1) {
+    async getList(PageIndex = 1) {
       this.list = [];
 
       this.request.PageIndex = PageIndex;
 
-      adRoleService
-        .getRolePageList(this.request)
-        .then(response => {
-          if (response.Data !== null && response.Data.Items.length !== 0) {
-            this.list = response.Data.Items;
-            this.TotalItems = response.Data.TotalItems;
-            this.request.PageIndex = response.Data.CurrentPage;
-          }
-          this.loading.close();
-        })
-        .catch(err => {
-          this.loading.close();
-        });
+      try {
+        let response = await adRoleService.getRolePageList(this.request);
+
+        if (response.Data !== null && response.Data.Items.length !== 0) {
+          this.TotalItems = response.Data.TotalItems;
+          this.request.PageIndex = response.Data.CurrentPage;
+
+          let promiseAll = [];
+          response.Data.Items.forEach(element => {
+            let params = {
+              RoleId: element.Id
+            };
+            promiseAll.push(adMenuService.GetMenuListByRoleId(params));
+          });
+
+          let result = await this.http$.all(promiseAll);
+
+          response.Data.Items.forEach((element, index) => {
+            element.MenuList = result[index].Data;
+            this.list.push(element);
+          });
+        }
+        
+        this.loading.close();
+      } catch (error) {
+        this.loading.close();
+      }
     },
     btnDeleteHandller(item) {
       let options = {};

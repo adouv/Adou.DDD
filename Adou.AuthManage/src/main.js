@@ -52,7 +52,8 @@ import {
     TableColumn,
     Pagination,
     Link,
-    Loading
+    Loading,
+    Tree
 } from "element-ui";
 import "babel-polyfill";
 import "es6-promise/auto";
@@ -109,7 +110,7 @@ Vue.use(TableColumn);
 Vue.use(Pagination);
 Vue.use(Link);
 Vue.use(Loading.directive);
-Vue.use(Loading.directive);
+Vue.use(Tree);
 
 ComponentInstall(Vue);
 ExpansionInstall(Vue);

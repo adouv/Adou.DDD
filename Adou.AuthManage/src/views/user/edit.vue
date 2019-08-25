@@ -143,17 +143,22 @@ export default {
       roleList: [],
       roleIds: [],
       UserStatusData: [{ key: 0, val: "禁用" }, { key: 1, val: "启用" }],
-      UserTypeData: [{ key: 0, val: "否" }, { key: 1, val: "是" }]
+      UserTypeData: [{ key: 0, val: "否" }, { key: 1, val: "是" }],
+      loading: null
     };
   },
   mounted() {
+    this.loading = this.loading$({
+      lock: true,
+      text: "正在加载...",
+      spinner: "el-icon-loading",
+      background: "rgba(0, 0, 0, 0.7)"
+    });
+
     let params = this.$route.params;
+
     if (params.Id !== undefined) {
       this.params = params;
-
-      this.params.RoleList.forEach(element => {
-        this.roleIds.push(element.Id);
-      });
     }
 
     this.params.UserPwd = "";
@@ -164,11 +169,25 @@ export default {
   methods: {
     getRoleList() {
       let params = {};
-      adRoleService.getRoleList(params).then(response => {
-        if (response.Data) {
-          this.roleList = response.Data;
-        }
-      });
+      
+      adRoleService
+        .getRoleList(params)
+        .then(response => {
+          if (response.Data) {
+            this.roleList = response.Data;
+          }
+
+          if (this.roleList.length > 0 && this.params.Id > 0) {
+            this.params.RoleList.forEach(element => {
+              this.roleIds.push(element.Id);
+            });
+          }
+
+          this.loading.close();
+        })
+        .catch(err => {
+          this.loading.close();
+        });
     },
     async btnSave() {
       if (!this.params.UserName) {
@@ -234,7 +253,6 @@ export default {
             let uid = this.params.Id > 0 ? this.params.Id : response.Data;
 
             this.params.RoleIds.forEach(role => {
-
               let args = {
                 UserId: uid,
                 RoleId: role
@@ -243,14 +261,14 @@ export default {
               rolePromiseAll.push(adUserService.insertUserAndRole(args));
             });
 
-            let result = await this.http$.all(rolePromiseAll);
+            let r = await this.http$.all(rolePromiseAll);
 
-            if (result.length > 0) {
+            if (r.length > 0) {
               this.$tip("保存成功");
             }
 
-            if (!result) {
-              this.$tip("角色保存成功");
+            if (r.length === 0) {
+              this.$tip("角色保存失败");
             }
           }
         }

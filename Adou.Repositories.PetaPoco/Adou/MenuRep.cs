@@ -107,6 +107,23 @@ namespace Adou.Repositories.PetaPoco.Adou
             return PetaPocoAdouDB.GetInstance().SingleOrDefault<adMenu>(sql, FatherId);
         }
         /// <summary>
+        /// 通过角色编号获取菜单
+        /// </summary>
+        /// <param name="roleId">角色编号</param>
+        /// <returns></returns>
+        public IEnumerable<adMenu> GetMenuListByRoleId(long roleId)
+        {
+            string sql = string.Empty;
+
+            sql = string.Format(@"
+                SELECT b.Id,b.Title,b.FatherId,b.LevelId FROM adRoleAndMenu a 
+                INNER JOIN adMenu b ON a.MenuId=b.Id
+                WHERE RoleId = @0
+            ");
+
+            return PetaPocoAdouDB.GetInstance().Query<adMenu>(sql, roleId);
+        }
+        /// <summary>
         /// 添加菜单
         /// </summary>
         /// <param name="model">菜单请求实体</param>

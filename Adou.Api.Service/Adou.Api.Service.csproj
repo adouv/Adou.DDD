@@ -52,6 +52,7 @@
     <Compile Include="AdServices\Account\UpdateAccountIsDelByIdService.cs" />
     <Compile Include="AdServices\Menu\DeleteMenuByIdService.cs" />
     <Compile Include="AdServices\Menu\GetMenuListByFatherIdService.cs" />
+    <Compile Include="AdServices\Menu\GetMenuListByRoleIdService.cs" />
     <Compile Include="AdServices\Menu\GetMenuListService.cs" />
     <Compile Include="AdServices\Menu\GetSingleMenuByFatherIdService.cs" />
     <Compile Include="AdServices\Menu\InsertMenuService.cs" />

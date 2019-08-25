@@ -67,5 +67,23 @@ export default {
     async updateRoleIsDelById(params = {}, config = {}) {
         let result = await Vue.http.post("Role/UpdateRoleIsDelById", params, config);
         return result;
+    },
+    /**
+     * 添加角色菜单
+     * @param {*} params 
+     * @param {*} config 
+     */
+    async insertRoleAndMenu(params = {}, config = {}) {
+        let result = await Vue.http.post("Role/InsertRoleAndMenu", params, config);
+        return result;
+    },
+    /**
+     * 通过角色编号删除角色菜单
+     * @param {*} params 
+     * @param {*} config 
+     */
+    async deleteRoleAndMenuByRoleId(params = {}, config = {}) {
+        let result = await Vue.http.post("Role/DeleteRoleAndMenuByRoleId", params, config);
+        return result;
     }
 }

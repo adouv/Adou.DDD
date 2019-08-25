@@ -9,10 +9,6 @@ namespace Adou.Api.Model
     public class RequestInsertRoleAndMenuModel : RequestBaseModel
     {
         /// <summary>
-        /// 编号
-        /// </summary>
-        public long Id { get; set; }
-        /// <summary>
         /// 角色编号
         /// </summary>
         public long RoleId { get; set; }

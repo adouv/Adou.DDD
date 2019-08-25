@@ -24,6 +24,10 @@ namespace Adou.Api.Controllers.Controllers
         /// </summary>
         public GetMenuListService getMenuListService { get; set; }
         /// <summary>
+        /// 通过角色编号获取菜单列表
+        /// </summary>
+        public GetMenuListByRoleIdService getMenuListByRoleIdService { get; set; }
+        /// <summary>
         /// 获取单个菜单信息服务
         /// </summary>
         public GetSingleMenuByFatherIdService getSingleMenuByFatherIdService { get; set; }
@@ -62,6 +66,16 @@ namespace Adou.Api.Controllers.Controllers
         public async Task<ResponseMessageModel> GetMenuListByFatherId([FromBody]RequestGetMenuListModel model)
         {
             return await Task.Run(() => getMenuListByFatherIdService.Execute(model));
+        }
+        /// <summary>
+        /// 通过角色编号获取菜单列表
+        /// </summary>
+        /// <param name="model">请求实体</param>
+        /// <returns>ResponseMessageModel</returns>
+        [Route("GetMenuListByRoleId"), HttpPost]
+        public async Task<ResponseMessageModel> GetMenuListByRoleId([FromBody]RequestGetMenuListByRoleIdModel model)
+        {
+            return await Task.Run(() => getMenuListByRoleIdService.Execute(model));
         }
         /// <summary>
         /// 获取单个菜单信息

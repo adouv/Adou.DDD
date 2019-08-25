@@ -30,6 +30,15 @@ export default {
         return result;
     },
     /**
+     * 通過角色編號獲取菜單列表
+     * @param {*} params 
+     * @param {*} config 
+     */
+    async GetMenuListByRoleId(params = {}, config = {}) {
+        let result = await Vue.http.post("Menu/GetMenuListByRoleId", params, config);
+        return result;
+    },
+    /**
      * 获取单个菜单信息
      * @param {*} [params={}]
      * @param {*} [config={}]
