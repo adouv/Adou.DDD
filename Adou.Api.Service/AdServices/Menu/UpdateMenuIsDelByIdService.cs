@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Adou.Api.Model;
 using Adou.Repositories.PetaPoco.Adou;
+using Adou.Entity.PetaPocoModels.AdouModel;
+using Adou.DDD.Config;
 
 namespace Adou.Api.Service.AdServices.Menu
 {
@@ -19,7 +21,16 @@ namespace Adou.Api.Service.AdServices.Menu
         /// </summary>
         protected override void ExecuteMethod()
         {
-            var result = menuRep.UpdateMenuIsDelById(this.Parameter.IsDel, this.Parameter.Id);
+            var model = new adMenu()
+            {
+                Id = this.Parameter.Id,
+                IsDel = this.Parameter.IsDel,
+                ModifyTime = DateTime.Now,
+                ModifyUser = AdouConfigHelper.UserName
+            };
+
+            var result = menuRep.UpdateMenuIsDelById(model);
+
             this.Result.Data = result;
         }
     }

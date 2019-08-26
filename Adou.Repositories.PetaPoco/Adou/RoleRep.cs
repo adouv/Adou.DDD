@@ -219,12 +219,20 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// <summary>
         /// 通过编号更新角色是否删除（伪删除）
         /// </summary>
-        /// <param name="isDel">是否删除</param>
-        /// <param name="id">编号</param>
+        /// <param name="model">请求实体</param>
         /// <returns>int</returns>
-        public int UpdateRoleIsDelById(bool isDel, long id)
+        public int UpdateRoleIsDelById(adRole model)
         {
-            return this.UpdateIsDel(isDel, id);
+            #region sql
+            string sql = string.Format(@"
+                SET [IsDel] = @0 ,
+                [ModifyTime] = @1,
+                [ModifyUser] = @2
+                WHERE 1 = 1 AND [Id] = @3
+            ");
+            #endregion
+
+            return PetaPocoAdouDB.GetInstance().Update<adRole>(sql, model.IsDel, model.ModifyTime, model.ModifyUser, model.Id);
         }
         /// <summary>
         /// 通过编号删除用户

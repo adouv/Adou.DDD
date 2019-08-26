@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Adou.Api.Model;
 using Adou.Repositories.PetaPoco.Adou;
 using Adou.Entity.PetaPocoModels.AdouModel;
+using Adou.DDD.Config;
 
 namespace Adou.Api.Service.AdServices.User
 {
@@ -29,14 +30,15 @@ namespace Adou.Api.Service.AdServices.User
                 UserStatus = this.Parameter.UserStatus,
                 RoleId = this.Parameter.RoleId,
                 CreateTime = DateTime.Now,
-                CreateUser = "fukaihang",
+                CreateUser = AdouConfigHelper.UserName,
                 ModifyTime = DateTime.Now,
-                ModifyUser = "fukaihang",
+                ModifyUser = AdouConfigHelper.UserName,
                 IsDel = false,
                 Sort = this.Parameter.Sort
             };
 
             var result = userRep.InsertUserAndRole(model, this.Parameter.RoleArr);
+
             this.Result.Data = result;
         }
     }

@@ -115,11 +115,13 @@ namespace Adou.Repositories.PetaPoco.Adou
         {
             string sql = string.Empty;
 
+            #region sql
             sql = string.Format(@"
                 SELECT b.Id,b.Title,b.FatherId,b.LevelId FROM adRoleAndMenu a 
                 INNER JOIN adMenu b ON a.MenuId=b.Id
                 WHERE RoleId = @0
             ");
+            #endregion
 
             return PetaPocoAdouDB.GetInstance().Query<adMenu>(sql, roleId);
         }
@@ -185,12 +187,20 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// <summary>
         /// 通过编号伪删除
         /// </summary>
-        /// <param name="isDel">是否删除</param>
-        /// <param name="id">编号</param>
+        /// <param name="model">请求实体</param>
         /// <returns>int</returns>
-        public int UpdateMenuIsDelById(bool isDel, long id)
+        public int UpdateMenuIsDelById(adMenu model)
         {
-            return this.UpdateIsDel(isDel, id);
+            #region sql
+            string sql = string.Format(@"
+                SET [IsDel] = @0 ,
+                [ModifyTime] = @1,
+                [ModifyUser] = @2
+                WHERE 1 = 1 AND [Id] = @3
+            ");
+            #endregion
+
+            return PetaPocoAdouDB.GetInstance().Update<adMenu>(sql, model.IsDel, model.ModifyTime, model.ModifyUser, model.Id);
         }
     }
 }

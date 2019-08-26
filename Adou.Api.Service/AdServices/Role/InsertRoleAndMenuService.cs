@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Adou.Api.Model;
 using Adou.Repositories.PetaPoco.Adou;
 using Adou.Entity.PetaPocoModels.AdouModel;
+using Adou.DDD.Config;
 
 namespace Adou.Api.Service.AdServices.Role
 {
@@ -24,9 +25,9 @@ namespace Adou.Api.Service.AdServices.Role
             {
                 RoleName = this.Parameter.RoleName,
                 CreateTime = DateTime.Now,
-                CreateUser = "fukaihang",
+                CreateUser = AdouConfigHelper.UserName,
                 ModifyTime = DateTime.Now,
-                ModifyUser = "fukaihang",
+                ModifyUser = AdouConfigHelper.UserName,
                 IsDel = this.Parameter.IsDel,
                 Sort = this.Parameter.Sort
             };

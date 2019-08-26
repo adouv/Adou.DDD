@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Adou.Api.Model;
 using Adou.Entity.PetaPocoModels.AdouModel;
-
 using Adou.Repositories.PetaPoco.Adou;
+using Adou.DDD.Config;
 
 namespace Adou.Api.Service.AdServices.User
 {
@@ -30,7 +30,7 @@ namespace Adou.Api.Service.AdServices.User
                 UserStatus = this.Parameter.UserStatus,
                 RoleId = this.Parameter.RoleId,
                 ModifyTime = DateTime.Now,
-                ModifyUser = "fukaihang",
+                ModifyUser = AdouConfigHelper.UserName,
                 IsDel = false,
                 Sort = this.Parameter.Sort
             };

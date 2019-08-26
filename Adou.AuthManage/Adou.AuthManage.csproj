@@ -181,7 +181,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dist\static\css\app.1c7031e2965f8b945267b21dd165833b.css" />
+    <Content Include="dist\static\css\app.78a9a3e7a1a21c043fd2a6f92a6c4132.css" />
     <Content Include="dist\static\fonts\element-icons.535877f.woff" />
     <Content Include="dist\static\fonts\element-icons.732389d.ttf" />
     <Content Include="dist\static\fonts\fontawesome-webfont.674f50d.eot" />
@@ -205,7 +205,7 @@
     <Content Include="dist\static\images\themify.cba68f9.svg" />
     <Content Include="dist\static\images\user9-200x200.2767ce2.png" />
     <Content Include="dist\static\images\web-icons.c649234.svg" />
-    <Content Include="dist\static\js\app.817cc2eb801f8a13a15d.js" />
+    <Content Include="dist\static\js\app.58bcc7d95cdcaf404e7c.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -238,8 +238,8 @@
     <Content Include="Areas\AdouManage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AdouManage\Views\Shared\_Template.cshtml" />
     <Content Include="Areas\AdouManage\Views\App\Index.cshtml" />
-    <Content Include="dist\static\css\app.1c7031e2965f8b945267b21dd165833b.css.map" />
-    <Content Include="dist\static\js\app.817cc2eb801f8a13a15d.js.map" />
+    <Content Include="dist\static\css\app.78a9a3e7a1a21c043fd2a6f92a6c4132.css.map" />
+    <Content Include="dist\static\js\app.58bcc7d95cdcaf404e7c.js.map" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>

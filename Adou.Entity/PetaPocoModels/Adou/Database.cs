@@ -6,7 +6,7 @@
 // 
 //     Connection String Name: `AdouConnection`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=.;Initial Catalog=adou;MultipleActiveResultSets=True;user id=sa;password=**zapped**;`
+//     Connection String:      `Data Source=39.105.132.19;Initial Catalog=adou;MultipleActiveResultSets=True;user id=sa;password=**zapped**;`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -156,7 +156,7 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// <summary>
 		/// 
 		/// </summary>
-		[Column] public long CreateUser { get; set; }
+		[Column] public string CreateUser { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -164,7 +164,7 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// <summary>
 		/// 
 		/// </summary>
-		[Column] public long ModifyUser { get; set; }
+		[Column] public string ModifyUser { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -175,6 +175,31 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		[Column] public int? Sort { get; set; }
 		/// <summary>
 		/// 0个人 1公司 2
+		/// </summary>
+		[Column] public int? Type { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
+	[TableName("dbo.adDictionary")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adDictionary : PetaPocoAdouDB.Record<adDictionary>  
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long Id { get; set; }
+		/// <summary>
+		/// 键
+		/// </summary>
+		[Column] public string dicKey { get; set; }
+		/// <summary>
+		/// 值
+		/// </summary>
+		[Column] public string dicValue { get; set; }
+		/// <summary>
+		/// 类型
 		/// </summary>
 		[Column] public int? Type { get; set; }
 	}
@@ -217,7 +242,7 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// <summary>
 		/// 
 		/// </summary>
-		[Column] public long? CreateUser { get; set; }
+		[Column] public string CreateUser { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -225,7 +250,7 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// <summary>
 		/// 
 		/// </summary>
-		[Column] public long? ModifyUser { get; set; }
+		[Column] public string ModifyUser { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
@@ -234,6 +259,75 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// 
 		/// </summary>
 		[Column] public int? Sort { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
+	[TableName("dbo.adProduct")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adProduct : PetaPocoAdouDB.Record<adProduct>  
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long Id { get; set; }
+		/// <summary>
+		/// 产品名称
+		/// </summary>
+		[Column] public string Name { get; set; }
+		/// <summary>
+		/// 产品分类
+		/// </summary>
+		[Column] public long? ProductTypeId { get; set; }
+		/// <summary>
+		/// 品种
+		/// </summary>
+		[Column] public long? VarietyId { get; set; }
+		/// <summary>
+		/// 规格
+		/// </summary>
+		[Column] public string Specification { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long? FewHolesId { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long? ZincLayerId { get; set; }
+		/// <summary>
+		/// 颜色
+		/// </summary>
+		[Column] public long? ColorId { get; set; }
+		/// <summary>
+		/// 数量
+		/// </summary>
+		[Column] public string Quantity { get; set; }
+		/// <summary>
+		/// 公司名称
+		/// </summary>
+		[Column] public string CompanyName { get; set; }
+		/// <summary>
+		/// 是否热点
+		/// </summary>
+		[Column] public int? IsHot { get; set; }
+		/// <summary>
+		/// 排序
+		/// </summary>
+		[Column] public int? Sort { get; set; }
+		/// <summary>
+		/// 创建时间、发布时间
+		/// </summary>
+		[Column] public DateTime? CreateTime { get; set; }
+		/// <summary>
+		/// 创建用户
+		/// </summary>
+		[Column] public string CreateUser { get; set; }
+		/// <summary>
+		/// 创建用户编号
+		/// </summary>
+		[Column] public long? CreateUserId { get; set; }
 	}
 	/// <summary>
 	/// 

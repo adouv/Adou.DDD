@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\AdouConfigHelper.cs" />
     <Compile Include="Domain\Entity.cs" />
     <Compile Include="Domain\EntityBase.cs" />
     <Compile Include="Domain\IEntity.cs" />

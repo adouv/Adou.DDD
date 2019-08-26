@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Adou.Repositories.PetaPoco.Adou
 {
+    /// <summary>
+    /// 账户操作类
+    /// </summary>
     public class AccountRep : BaseRep<adAccount>
     {
         /// <summary>
@@ -173,12 +176,20 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// <summary>
         /// 伪删除
         /// </summary>
-        /// <param name="isDel"></param>
-        /// <param name="id"></param>
+        /// <param name="model">请求实体</param>
         /// <returns></returns>
-        public int UpdateAccountIsDelById(bool isDel, int id)
+        public int UpdateAccountIsDelById(adAccount model)
         {
-            return this.UpdateIsDel(isDel, id);
+            #region sql
+            string sql = string.Format(@"
+                SET [IsDel] = @0 ,
+                [ModifyTime] = @1,
+                [ModifyUser] = @2
+                WHERE 1 = 1 AND [Id] = @3
+            ");
+            #endregion
+
+            return PetaPocoAdouDB.GetInstance().Update<adAccount>(sql, model.IsDel, model.ModifyTime, model.ModifyUser, model.Id);
         }
     }
 }

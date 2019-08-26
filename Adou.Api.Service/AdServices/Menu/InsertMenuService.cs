@@ -1,11 +1,12 @@
-﻿using Adou.Api.Model;
-using Adou.Entity.PetaPocoModels.AdouModel;
-using Adou.Repositories.PetaPoco.Adou;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Adou.Api.Model;
+using Adou.Entity.PetaPocoModels.AdouModel;
+using Adou.Repositories.PetaPoco.Adou;
+using Adou.DDD.Config;
 
 namespace Adou.Api.Service.AdServices.Menu
 {
@@ -26,13 +27,15 @@ namespace Adou.Api.Service.AdServices.Menu
                 FatherId = this.Parameter.FatherId,
                 LevelId = this.Parameter.LevelId,
                 CreateTime = DateTime.Now,
-                CreateUser = 1,
-                ModifyUser = 0,
+                CreateUser = AdouConfigHelper.UserName,
                 ModifyTime = DateTime.Now,
+                ModifyUser = AdouConfigHelper.UserName,
                 IsDel = false,
                 Sort = this.Parameter.Sort
             };
+
             var result = menuRep.InsertMenu(model);
+
             this.Result.Data = result;
         }
     }

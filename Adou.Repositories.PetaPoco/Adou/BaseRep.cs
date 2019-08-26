@@ -75,23 +75,6 @@ namespace Adou.Repositories.PetaPoco.Adou
             return PetaPocoAdouDB.GetInstance().Insert(model);
         }
         /// <summary>
-        /// 更新数据状态（伪删除）
-        /// </summary>
-        /// <param name="isDel">是否删除</param>
-        /// <param name="id">编号 自增</param>
-        /// <returns>int</returns>
-        public int UpdateIsDel(bool isDel, long id)
-        {
-            #region sql
-            string sql = string.Format(@"
-                SET [IsDel] = @0 
-                WHERE 1 = 1 AND [Id] = @1
-            ");
-            #endregion
-
-            return PetaPocoAdouDB.GetInstance().Update<P>(sql, isDel, id);
-        }
-        /// <summary>
         /// 删除
         /// </summary>
         /// <param name="id">编号 自增</param>

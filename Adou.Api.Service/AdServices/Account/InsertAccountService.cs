@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Adou.Api.Model;
 using Adou.Repositories.PetaPoco.Adou;
 using Adou.Entity.PetaPocoModels.AdouModel;
+using Adou.DDD.Config;
 
 namespace Adou.Api.Service.AdServices.Account
 {
@@ -28,9 +29,9 @@ namespace Adou.Api.Service.AdServices.Account
                 Mobile = this.Parameter.Mobile,
                 Keyword = this.Parameter.Keyword,
                 Descript = this.Parameter.Descript,
-                CreateUser = 0,
+                CreateUser = AdouConfigHelper.UserName,
                 CreateTime = DateTime.Now,
-                ModifyUser = 0,
+                ModifyUser = AdouConfigHelper.UserName,
                 ModifyTime = DateTime.Now,
                 IsDel = false,
                 Sort = 100,

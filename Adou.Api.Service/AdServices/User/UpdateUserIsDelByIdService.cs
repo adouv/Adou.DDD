@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Adou.Api.Model;
 using Adou.Repositories.PetaPoco.Adou;
+using Adou.Entity.PetaPocoModels.AdouModel;
+using Adou.DDD.Config;
 
 namespace Adou.Api.Service.AdServices.User
 {
@@ -19,7 +21,15 @@ namespace Adou.Api.Service.AdServices.User
         /// </summary>
         protected override void ExecuteMethod()
         {
-            var result = userRep.UpdateUserIsDelById(this.Parameter.IsDel, this.Parameter.Id);
+            var model = new adUser()
+            {
+                Id = this.Parameter.Id,
+                IsDel = this.Parameter.IsDel,
+                ModifyTime = DateTime.Now,
+                ModifyUser = AdouConfigHelper.UserName
+            };
+
+            var result = userRep.UpdateUserIsDelById(model);
 
             this.Result.Data = result;
         }

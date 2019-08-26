@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Adou.Api.Model;
 using Adou.Repositories.PetaPoco.Adou;
 using Adou.Entity.PetaPocoModels.AdouModel;
+using Adou.DDD.Config;
 
 namespace Adou.Api.Service.AdServices.Menu
 {
@@ -25,12 +26,14 @@ namespace Adou.Api.Service.AdServices.Menu
                 MenuUrl = this.Parameter.MenuUrl,
                 FatherId = this.Parameter.FatherId,
                 LevelId = this.Parameter.LevelId,
-                ModifyUser = 0,
+                ModifyUser = AdouConfigHelper.UserName,
                 ModifyTime = DateTime.Now,
                 IsDel = false,
                 Sort = this.Parameter.Sort
             };
+
             var result = menuRep.UpdateMenuById(model);
+
             this.Result.Data = result;
         }
     }
