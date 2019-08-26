@@ -60,13 +60,11 @@
     <Compile Include="Role\Request\RequestInsertRoleAndMenuModel.cs" />
     <Compile Include="Role\Request\RequestUpdateRoleAndMenuByIdModel.cs" />
     <Compile Include="Role\Request\RequestUpdateRoleIsDelByIdModel.cs" />
-    <Compile Include="UserAndRole\Request\RequestDeleteUserAndRoleByUserIdModel.cs" />
-    <Compile Include="UserAndRole\Request\RequestInsertUserAndRoleModel.cs" />
     <Compile Include="User\Request\RequestDeleteUserByIdModel.cs" />
     <Compile Include="User\Request\RequestGetUserListModel.cs" />
     <Compile Include="User\Request\RequestUserLoginModel.cs" />
-    <Compile Include="User\Request\RequestInsertUserModel.cs" />
-    <Compile Include="User\Request\RequestUpdateUserByIdModel.cs" />
+    <Compile Include="User\Request\RequestInsertUserAndRoleModel.cs" />
+    <Compile Include="User\Request\RequestUpdateUserAndRoleByIdModel.cs" />
     <Compile Include="User\Request\RequestUpdateUserIsDelByIdModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestBaseModel.cs" />

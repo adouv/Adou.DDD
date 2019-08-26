@@ -169,7 +169,7 @@ export default {
   methods: {
     getRoleList() {
       let params = {};
-      
+
       adRoleService
         .getRoleList(params)
         .then(response => {
@@ -231,7 +231,7 @@ export default {
         }
       }
 
-      this.params.RoleIds = this.roleIds;
+      this.params.RoleArr = this.roleIds;
 
       console.log(this.params);
 
@@ -239,38 +239,15 @@ export default {
 
       try {
         if (this.params.Id === 0) {
-          result = adUserService.insertUser(this.params);
+          result = adUserService.insertUserAndRole(this.params);
         } else {
-          result = adUserService.updateUserById(this.params);
+          result = adUserService.updateUserAndRoleById(this.params);
         }
 
         let response = await result;
 
         if (response.Data > 0 && response.Data !== null) {
-          if (this.params.RoleIds.length > 0) {
-            let rolePromiseAll = [];
-
-            let uid = this.params.Id > 0 ? this.params.Id : response.Data;
-
-            this.params.RoleIds.forEach(role => {
-              let args = {
-                UserId: uid,
-                RoleId: role
-              };
-
-              rolePromiseAll.push(adUserService.insertUserAndRole(args));
-            });
-
-            let r = await this.http$.all(rolePromiseAll);
-
-            if (r.length > 0) {
-              this.$tip("保存成功");
-            }
-
-            if (r.length === 0) {
-              this.$tip("角色保存失败");
-            }
-          }
+          this.$tip("保存成功");
         }
 
         this.$router.push({ name: "adUser" });

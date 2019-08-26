@@ -1,6 +1,5 @@
 ﻿using Adou.Api.Model;
 using Adou.Api.Service.AdServices.User;
-using Adou.Api.Service.AdServices.UserAndRole;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -25,13 +24,13 @@ namespace Adou.Api.Controllers.Controllers
         /// </summary>
         public UserLoginService userLoginService { get; set; }
         /// <summary>
-        /// 添加用户服务
+        /// 插入用户信息，同时添加所拥有的角色权限
         /// </summary>
-        public InsertUserService insertUserService { get; set; }
+        public InsertUserAndRoleService insertUserAndRoleService { get; set; }
         /// <summary>
-        /// 通过编号更新用户服务
+        /// 通过编号更新用户，同时更新所拥有的角色权限
         /// </summary>
-        public UpdateUserByIdService updateUserByIdService { get; set; }
+        public UpdateUserAndRoleByIdService updateUserAndRoleByIdService { get; set; }
         /// <summary>
         /// 通过编号删除用户服务
         /// </summary>
@@ -40,14 +39,6 @@ namespace Adou.Api.Controllers.Controllers
         /// 通过编号更新用户是否删除状态服务（伪删除）
         /// </summary>
         public UpdateUserIsDelByIdService updateUserIsDelByIdService { get; set; }
-        /// <summary>
-        /// 添加用户角色权限
-        /// </summary>
-        public InsertUserAndRoleService insertUserAndRoleService { get; set; }
-        /// <summary>
-        /// 删除用户角色权限
-        /// </summary>
-        public DeleteUserAndRoleByUserIdService deleteUserAndRoleByUserIdService { get; set; }
 
         /// <summary>
         /// 获取用户列表
@@ -80,24 +71,24 @@ namespace Adou.Api.Controllers.Controllers
             return await Task.Run(() => userLoginService.Execute(model));
         }
         /// <summary>
-        /// 添加用户
+        /// 插入用户信息，同时添加所拥有的角色权限
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [Route("InsertUser"), HttpPost]
-        public async Task<ResponseMessageModel> InsertUser([FromBody]RequestInsertUserModel model)
+        [Route("InsertUserAndRole"), HttpPost]
+        public async Task<ResponseMessageModel> InsertUserAndRole([FromBody]RequestInsertUserAndRoleModel model)
         {
-            return await Task.Run(() => insertUserService.Execute(model));
+            return await Task.Run(() => insertUserAndRoleService.Execute(model));
         }
         /// <summary>
-        /// 通过编号更新用户
+        /// 通过编号更新用户，同时更新所拥有的角色权限
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [Route("UpdateUserById"), HttpPost]
-        public async Task<ResponseMessageModel> UpdateUserById([FromBody]RequestUpdateUserByIdModel model)
+        [Route("UpdateUserAndRoleById"), HttpPost]
+        public async Task<ResponseMessageModel> UpdateUserAndRoleById([FromBody]RequestUpdateUserAndRoleByIdModel model)
         {
-            return await Task.Run(() => updateUserByIdService.Execute(model));
+            return await Task.Run(() => updateUserAndRoleByIdService.Execute(model));
         }
         /// <summary>
         /// 通过编号删除用户
@@ -118,26 +109,6 @@ namespace Adou.Api.Controllers.Controllers
         public async Task<ResponseMessageModel> UpdateUserIsDelById([FromBody]RequestUpdateUserIsDelByIdModel model)
         {
             return await Task.Run(() => updateUserIsDelByIdService.Execute(model));
-        }
-        /// <summary>
-        /// 添加用户角色权限
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        [Route("InsertUserAndRole"), HttpPost]
-        public async Task<ResponseMessageModel> InsertUserAndRole([FromBody]RequestInsertUserAndRoleModel model)
-        {
-            return await Task.Run(() => insertUserAndRoleService.Execute(model));
-        }
-        /// <summary>
-        /// 通过用户编号删除用户角色权限
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        [Route("DeleteUserAndRoleByUserId"), HttpPost]
-        public async Task<ResponseMessageModel> DeleteUserAndRoleByUserId([FromBody]RequestDeleteUserAndRoleByUserIdModel model)
-        {
-            return await Task.Run(() => deleteUserAndRoleByUserIdService.Execute(model));
         }
     }
 }

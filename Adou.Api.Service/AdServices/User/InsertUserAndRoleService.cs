@@ -10,9 +10,9 @@ using Adou.Entity.PetaPocoModels.AdouModel;
 namespace Adou.Api.Service.AdServices.User
 {
     /// <summary>
-    /// 
+    /// 插入用户信息，同时添加所拥有的角色权限
     /// </summary>
-    public class InsertUserService : ApiBase<RequestInsertUserModel>
+    public class InsertUserAndRoleService : ApiBase<RequestInsertUserAndRoleModel>
     {
         public UserRep userRep { get; set; }
         /// <summary>
@@ -36,7 +36,7 @@ namespace Adou.Api.Service.AdServices.User
                 Sort = this.Parameter.Sort
             };
 
-            var result = userRep.InsertUser(model);
+            var result = userRep.InsertUserAndRole(model, this.Parameter.RoleArr);
             this.Result.Data = result;
         }
     }

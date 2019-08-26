@@ -11,9 +11,9 @@ using Adou.Repositories.PetaPoco.Adou;
 namespace Adou.Api.Service.AdServices.User
 {
     /// <summary>
-    /// 通过编号更新用户信息
+    /// 通过编号更新用户，同时更新所拥有的角色权限
     /// </summary>
-    public class UpdateUserByIdService : ApiBase<RequestUpdateUserByIdModel>
+    public class UpdateUserAndRoleByIdService : ApiBase<RequestUpdateUserAndRoleByIdModel>
     {
         public UserRep userRep { get; set; }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Adou.Api.Service.AdServices.User
                 Sort = this.Parameter.Sort
             };
 
-            var result = userRep.UpdateUserById(model);
+            var result = userRep.UpdateUserAndRoleById(model, this.Parameter.RoleArr);
             this.Result.Data = result;
         }
     }

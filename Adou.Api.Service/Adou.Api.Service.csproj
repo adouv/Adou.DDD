@@ -66,14 +66,12 @@
     <Compile Include="AdServices\Role\InsertRoleAndMenuService.cs" />
     <Compile Include="AdServices\Role\UpdateRoleAndMenuByIdService.cs" />
     <Compile Include="AdServices\Role\UpdateRoleIsDelByIdService.cs" />
-    <Compile Include="AdServices\UserAndRole\DeleteUserAndRoleByUserIdService.cs" />
-    <Compile Include="AdServices\UserAndRole\InsertUserAndRoleService.cs" />
     <Compile Include="AdServices\User\DeleteUserByIdService.cs" />
     <Compile Include="AdServices\User\GetUserListService.cs" />
     <Compile Include="AdServices\User\GetUserPageListService.cs" />
     <Compile Include="AdServices\User\UserLoginService.cs" />
-    <Compile Include="AdServices\User\InsertUserService.cs" />
-    <Compile Include="AdServices\User\UpdateUserByIdService.cs" />
+    <Compile Include="AdServices\User\InsertUserAndRoleService.cs" />
+    <Compile Include="AdServices\User\UpdateUserAndRoleByIdService.cs" />
     <Compile Include="AdServices\User\UpdateUserIsDelByIdService.cs" />
     <Compile Include="ApiBase.cs" />
     <Compile Include="ApiBaseBase.cs" />

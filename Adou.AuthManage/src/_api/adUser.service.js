@@ -32,21 +32,21 @@ export default {
         return result;
     },
     /**
-     * 添加用户
+     * 插入用户信息，同时添加所拥有的角色权限
      * @param {*} params 
      * @param {*} config 
      */
-    async insertUser(params = {}, config = {}) {
-        let result = await Vue.http.post("User/InsertUser", params, config);
+    async insertUserAndRole(params = {}, config = {}) {
+        let result = await Vue.http.post("User/InsertUserAndRole", params, config);
         return result;
     },
     /**
-     * 通过编号更新用户
+     * 通过编号更新用户，同时更新所拥有的角色权限
      * @param {*} params 
      * @param {*} config 
      */
-    async updateUserById(params = {}, config = {}) {
-        let result = await Vue.http.post("User/UpdateUserById", params, config);
+    async updateUserAndRoleById(params = {}, config = {}) {
+        let result = await Vue.http.post("User/UpdateUserAndRoleById", params, config);
         return result;
     },
     /**
@@ -65,24 +65,6 @@ export default {
      */
     async updateUserIsDelById(params = {}, config = {}) {
         let result = await Vue.http.post("User/UpdateUserIsDelById", params, config);
-        return result;
-    },
-    /**
-     * 添加用户角色
-     * @param {*} params 
-     * @param {*} config 
-     */
-    async insertUserAndRole(params = {}, config = {}) {
-        let result = await Vue.http.post("User/InsertUserAndRole", params, config);
-        return result;
-    },
-    /**
-     * 删除用户角色
-     * @param {*} params 
-     * @param {*} config 
-     */
-    async deleteUserAndRoleByUserId(params = {}, config = {}) {
-        let result = await Vue.http.post("User/DeleteUserAndRoleByUserId", params, config);
         return result;
     }
 }

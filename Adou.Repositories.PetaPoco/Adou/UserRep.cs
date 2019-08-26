@@ -166,83 +166,164 @@ namespace Adou.Repositories.PetaPoco.Adou
             return this.GetPageList(orderBy, isDesc, pageIndex, pageSize, sql, model.UserName, model.UserType, model.UserStatus);
         }
         /// <summary>
-        /// 插入用户信息
+        /// 插入用户信息，同时添加所拥有的角色权限
         /// </summary>
         /// <param name="model">请求实体</param>
+        /// <param name="roleArr">角色编号数组</param>
         /// <returns>long</returns>
-        public long InsertUser(adUser model)
+        public long InsertUserAndRole(adUser model, int[] roleArr)
         {
-            this.Insert(model);
-            return model.Id;
+            using (var db = PetaPocoAdouDB.GetInstance())
+            {
+                int index = 0;
+
+                db.BeginTransaction();
+
+                try
+                {
+                    db.Insert(model);
+
+                    if (model.Id > 0)
+                    {
+                        foreach (var role in roleArr)
+                        {
+                            var item = new adUserAndRole()
+                            {
+                                UserId = model.Id,
+                                RoleId = role
+                            };
+
+                            db.Insert(item);
+
+                            if (item.Id > 0)
+                            {
+                                index++;
+                            }
+                        }
+
+                        db.CompleteTransaction();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    db.AbortTransaction();
+                }
+
+                return index;
+            }
         }
         /// <summary>
-        /// 通过编号更新用户信息
+        /// 通过编号更新用户，同时更新所拥有的角色权限
         /// </summary>
         /// <param name="model">请求实体</param>
+        /// <param name="roleArr">角色编号数组</param>
         /// <returns>int</returns>
-        public int UpdateUserById(adUser model)
+        public int UpdateUserAndRoleById(adUser model, int[] roleArr)
         {
-            if (string.IsNullOrWhiteSpace(model.UserPwd))
+            using (var db = PetaPocoAdouDB.GetInstance())
             {
-                #region sql
-                string sql = string.Format(@"
-                    SET [UserName] = @0
-                        ,[UserHead] = @1
-                        ,[UserType] = @2
-                        ,[UserStatus] = @3
-                        ,[RoleId] = @4
-                        ,[ModifyTime] = @5
-                        ,[ModifyUser] = @6
-                        ,[IsDel] = @7
-                        ,[Sort] = @8
-                    WHERE 1 = 1 AND [Id] = @9
-                ");
-                #endregion
+                int index = 0;
 
-                return PetaPocoAdouDB.GetInstance().Update<adUser>(sql,
-                    model.UserName,
-                    model.UserHead,
-                    model.UserType,
-                    model.UserStatus,
-                    model.RoleId,
-                    model.ModifyTime,
-                    model.ModifyUser,
-                    model.IsDel,
-                    model.Sort,
-                    model.Id);
-            }
-            else
-            {
-                #region sql
-                string sql = string.Format(@"
-                SET [UserName] = @0
-                    ,[UserPwd] = @1
-                    ,[UserHead] = @2
-                    ,[UserType] = @3
-                    ,[UserStatus] = @4
-                    ,[RoleId] = @5
-                    ,[ModifyTime] = @6
-                    ,[ModifyUser] = @7
-                    ,[IsDel] = @8
-                    ,[Sort] = @9
-                WHERE 1 = 1 AND [Id] = @10
-            ");
-                #endregion
+                db.BeginTransaction();
 
-                return PetaPocoAdouDB.GetInstance().Update<adUser>(sql,
-                    model.UserName,
-                    model.UserPwd,
-                    model.UserHead,
-                    model.UserType,
-                    model.UserStatus,
-                    model.RoleId,
-                    model.ModifyTime,
-                    model.ModifyUser,
-                    model.IsDel,
-                    model.Sort,
-                    model.Id);
+                try
+                {
+                    int result = 0;
+
+                    if (string.IsNullOrWhiteSpace(model.UserPwd))
+                    {
+                        #region sql
+                        string sql = string.Format(@"
+                            SET [UserName] = @0
+                                ,[UserHead] = @1
+                                ,[UserType] = @2
+                                ,[UserStatus] = @3
+                                ,[RoleId] = @4
+                                ,[ModifyTime] = @5
+                                ,[ModifyUser] = @6
+                                ,[IsDel] = @7
+                                ,[Sort] = @8
+                            WHERE 1 = 1 AND [Id] = @9;
+
+                            DELETE FROM [dbo].[adUserAndRole] WHERE 1=1 AND UserId = {0};
+                        ", model.Id);
+                        #endregion
+
+                        result = db.Execute(sql,
+                            model.UserName,
+                            model.UserHead,
+                            model.UserType,
+                            model.UserStatus,
+                            model.RoleId,
+                            model.ModifyTime,
+                            model.ModifyUser,
+                            model.IsDel,
+                            model.Sort,
+                            model.Id);
+                    }
+                    else
+                    {
+                        #region sql
+                        string sql = string.Format(@"
+                            SET [UserName] = @0
+                                ,[UserPwd] = @1
+                                ,[UserHead] = @2
+                                ,[UserType] = @3
+                                ,[UserStatus] = @4
+                                ,[RoleId] = @5
+                                ,[ModifyTime] = @6
+                                ,[ModifyUser] = @7
+                                ,[IsDel] = @8
+                                ,[Sort] = @9
+                            WHERE 1 = 1 AND [Id] = @10;
+        
+                            DELETE FROM [dbo].[adUserAndRole] WHERE 1=1 AND UserId = {0};
+                        ", model.Id);
+                        #endregion
+
+                        result = db.Execute(sql,
+                            model.UserName,
+                            model.UserPwd,
+                            model.UserHead,
+                            model.UserType,
+                            model.UserStatus,
+                            model.RoleId,
+                            model.ModifyTime,
+                            model.ModifyUser,
+                            model.IsDel,
+                            model.Sort,
+                            model.Id);
+                    }
+
+                    if (result > 0)
+                    {
+                        foreach (var role in roleArr)
+                        {
+                            var item = new adUserAndRole()
+                            {
+                                UserId = model.Id,
+                                RoleId = role
+                            };
+
+                            db.Insert(item);
+
+                            if (item.Id > 0)
+                            {
+                                index++;
+                            }
+                        }
+
+                        db.CompleteTransaction();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    db.AbortTransaction();
+                }
+
+                return index;
             }
-            
+
         }
         /// <summary>
         /// 通过编号更新用户是否删除（伪删除）

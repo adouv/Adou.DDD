@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Adou.Api.Model
 {
-    public class RequestInsertUserModel : RequestBaseModel
+    public class RequestUpdateUserAndRoleByIdModel : RequestBaseModel
     {
         /// <summary>
         /// 编号
@@ -44,5 +44,9 @@ namespace Adou.Api.Model
         /// 排序
         /// </summary>
         public int Sort { get; set; }
+        /// <summary>
+        /// 角色编号数组
+        /// </summary>
+        public int[] RoleArr { get; set; }
     }
 }
