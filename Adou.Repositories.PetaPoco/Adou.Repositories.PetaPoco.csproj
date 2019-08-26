@@ -43,7 +43,6 @@
     <Compile Include="Adou\AccountRep.cs" />
     <Compile Include="Adou\BaseRep.cs" />
     <Compile Include="Adou\MenuRep.cs" />
-    <Compile Include="Adou\RoleAndMenuRep.cs" />
     <Compile Include="Adou\RoleRep.cs" />
     <Compile Include="Adou\UserAndRoleRep.cs" />
     <Compile Include="Adou\UserRep.cs" />

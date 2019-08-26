@@ -10,9 +10,9 @@ using Adou.Entity.PetaPocoModels.AdouModel;
 namespace Adou.Api.Service.AdServices.Role
 {
     /// <summary>
-    /// 添加角色服务
+    /// 通过角色编号更新角色，同时更新所拥有的菜单权限
     /// </summary>
-    public class InsertRoleService : ApiBase<RequestInsertRoleModel>
+    public class UpdateRoleAndMenuByIdService : ApiBase<RequestUpdateRoleAndMenuByIdModel>
     {
         public RoleRep roleRep { get; set; }
         /// <summary>
@@ -22,16 +22,15 @@ namespace Adou.Api.Service.AdServices.Role
         {
             var model = new adRole()
             {
+                Id = this.Parameter.Id,
                 RoleName = this.Parameter.RoleName,
-                CreateTime = DateTime.Now,
-                CreateUser = "fukaihang",
                 ModifyTime = DateTime.Now,
                 ModifyUser = "fukaihang",
                 IsDel = this.Parameter.IsDel,
                 Sort = this.Parameter.Sort
             };
 
-            var result = roleRep.InsertRole(model, this.Parameter.menuArr);
+            var result = roleRep.UpdateRoleAndMenuById(model, this.Parameter.MenuArr);
 
             this.Result.Data = result;
         }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Adou.Api.Model
 {
-    public class RequestInsertRoleModel : RequestBaseModel
+    /// <summary>
+    /// 添加角色，同时添加所拥有的菜单权限
+    /// </summary>
+    public class RequestInsertRoleAndMenuModel : RequestBaseModel
     {
         /// <summary>
         /// 编号

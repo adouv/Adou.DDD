@@ -93,21 +93,23 @@ namespace Adou.Repositories.PetaPoco.Adou
         {
             string sql = string.Empty;
 
+            #region sql
             sql = string.Format(@"
                 SELECT b.Id,b.RoleName FROM adUserAndRole a 
                 INNER JOIN adRole b ON a.RoleId=b.Id
                 WHERE UserId = @0
-            ");
+            "); 
+            #endregion
 
             return PetaPocoAdouDB.GetInstance().Query<adRole>(sql, userId);
         }
         /// <summary>
-        /// 添加角色
+        /// 添加角色，同时添加所拥有的菜单权限
         /// </summary>
         /// <param name="model">请求实体</param>
         /// <param name="menuArr">菜单编号数组</param>
         /// <returns>long</returns>
-        public int InsertRole(adRole model, int[] menuArr)
+        public int InsertRoleAndMenu(adRole model, int[] menuArr)
         {
             using (var db = PetaPocoAdouDB.GetInstance())
             {
@@ -149,12 +151,12 @@ namespace Adou.Repositories.PetaPoco.Adou
             }
         }
         /// <summary>
-        /// 通过编号更新角色信息
+        /// 通过编号更新角色,同时更新所拥有的菜单权限
         /// </summary>
         /// <param name="model">请求实体</param>
         /// <param name="menuArr">菜单编号数组</param>
         /// <returns>int</returns>
-        public int UpdateRoleById(adRole model, int[] menuArr)
+        public int UpdateRoleAndMenuById(adRole model, int[] menuArr)
         {
             using (var db = PetaPocoAdouDB.GetInstance())
             {

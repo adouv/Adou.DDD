@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Adou.Api.Model
 {
-    public class RequestUpdateRoleByIdModel : RequestBaseModel
+    /// <summary>
+    /// 通过角色编号更新角色，同时更新所拥有的菜单权限
+    /// </summary>
+    public class RequestUpdateRoleAndMenuByIdModel : RequestBaseModel
     {
         /// <summary>
         /// 编号

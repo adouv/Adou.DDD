@@ -171,6 +171,11 @@ export default {
         return;
       }
 
+      if (keys.length === 0) {
+        this.$tip("请选择菜单");
+        return;
+      }
+
       if (!this.params.Sort) {
         this.params.Sort = 100;
       }
@@ -181,9 +186,9 @@ export default {
 
       try {
         if (this.params.Id === 0) {
-          result = adRoleService.insertRole(this.params);
+          result = adRoleService.insertRoleAndMenu(this.params);
         } else {
-          result = adRoleService.updateRoleById(this.params);
+          result = adRoleService.updateRoleAndMenuById(this.params);
         }
 
         let response = await result;
@@ -191,7 +196,7 @@ export default {
         if (response.Data > 0 && response.Data !== null) {
           this.$tip("保存成功");
         }
-        
+
         this.$router.push({ name: "adRole" });
       } catch (error) {
         this.$tip("保存失败");

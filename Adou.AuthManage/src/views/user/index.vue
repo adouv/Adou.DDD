@@ -136,22 +136,14 @@ export default {
 
       options.save = (params, close) => {
         console.log(params);
-        let args = {
-          UserId: params.Id
-        };
 
-        this.http$
-          .all([
-            adUserService.updateUserIsDelById(params),
-            adUserService.deleteUserAndRoleByUserId(args)
-          ])
-          .then(response => {
-            if (response[0].Data > 0) {
-              this.$tip("删除成功");
-            }
-            this.getList();
-            close();
-          });
+        adUserService.updateUserIsDelById(params).then(response => {
+          if (response.Data > 0) {
+            this.$tip("删除成功");
+          }
+          this.getList();
+          close();
+        });
       };
 
       this.confirm$(options);
