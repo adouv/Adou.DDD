@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Adou.Api.Model
 {
+    /// <summary>
+    /// 通过角色编号删除角色菜单
+    /// </summary>
     public class RequestDeleteRoleAndMenuByRoleIdModel : RequestBaseModel
     {
         /// <summary>

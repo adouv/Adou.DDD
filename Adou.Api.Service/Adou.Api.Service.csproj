@@ -60,6 +60,7 @@
     <Compile Include="AdServices\Menu\UpdateMenuSortByIdService.cs" />
     <Compile Include="AdServices\Menu\UpdateMenuIsDelByIdService.cs" />
     <Compile Include="AdServices\RoleAndMenu\DeleteRoleAndMenuByRoleIdService.cs" />
+    <Compile Include="AdServices\RoleAndMenu\InsertRoleAndMenuListService.cs" />
     <Compile Include="AdServices\RoleAndMenu\InsertRoleAndMenuService.cs" />
     <Compile Include="AdServices\Role\DeleteRoleByIdService.cs" />
     <Compile Include="AdServices\Role\GetRoleListByUserIdService.cs" />

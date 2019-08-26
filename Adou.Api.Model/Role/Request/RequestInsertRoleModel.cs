@@ -24,5 +24,9 @@ namespace Adou.Api.Model
         /// 排序
         /// </summary>
         public int Sort { get; set; }
+        /// <summary>
+        /// 菜单编号数组
+        /// </summary>
+        public int[] menuArr { get; set; }
     }
 }

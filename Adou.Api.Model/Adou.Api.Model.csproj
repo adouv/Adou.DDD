@@ -55,6 +55,7 @@
     <Compile Include="Menu\Request\RequestMenuUpdateSortByIdModel.cs" />
     <Compile Include="Menu\Request\RequestUpdateMenuIsDelByIdModel.cs" />
     <Compile Include="RoleAndMenu\Request\RequestDeleteRoleAndMenuByRoleIdModel.cs" />
+    <Compile Include="RoleAndMenu\Request\RequestInsertRoleAndMenuListModel.cs" />
     <Compile Include="RoleAndMenu\Request\RequestInsertRoleAndMenuModel.cs" />
     <Compile Include="Role\Request\RequestDeleteRoleByIdModel.cs" />
     <Compile Include="Role\Request\RequestGetRoleListByUserIdModel.cs" />

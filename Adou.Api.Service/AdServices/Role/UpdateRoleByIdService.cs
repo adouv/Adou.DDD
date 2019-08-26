@@ -30,7 +30,7 @@ namespace Adou.Api.Service.AdServices.Role
                 Sort = this.Parameter.Sort
             };
 
-            var result = roleRep.UpdateRoleById(model);
+            var result = roleRep.UpdateRoleById(model, this.Parameter.MenuArr);
 
             this.Result.Data = result;
         }

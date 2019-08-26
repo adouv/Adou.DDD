@@ -78,6 +78,15 @@ export default {
         return result;
     },
     /**
+     * 批量添加角色菜单
+     * @param {*} params 
+     * @param {*} config 
+     */
+    async insertRoleAndMenuList(params = {}, config = {}) {
+        let result = await Vue.http.post("Role/InsertRoleAndMenuList", params, config);
+        return result;
+    },
+    /**
      * 通过角色编号删除角色菜单
      * @param {*} params 
      * @param {*} config 

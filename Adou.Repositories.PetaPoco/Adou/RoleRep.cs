@@ -105,37 +105,114 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// 添加角色
         /// </summary>
         /// <param name="model">请求实体</param>
+        /// <param name="menuArr">菜单编号数组</param>
         /// <returns>long</returns>
-        public long InsertRole(adRole model)
+        public int InsertRole(adRole model, int[] menuArr)
         {
-            this.Insert(model);
-            return model.Id;
+            using (var db = PetaPocoAdouDB.GetInstance())
+            {
+                int index = 0;
+
+                db.BeginTransaction();
+
+                try
+                {
+                    db.Insert(model);
+
+                    if (model.Id > 0)
+                    {
+                        foreach (var menu in menuArr)
+                        {
+                            var item = new adRoleAndMenu()
+                            {
+                                RoleId = model.Id,
+                                MenuId = menu
+                            };
+
+                            db.Insert(item);
+
+                            if (item.Id > 0)
+                            {
+                                index++;
+                            }
+                        }
+
+                        db.CompleteTransaction();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    db.AbortTransaction();
+                }
+
+                return index;
+            }
         }
         /// <summary>
         /// 通过编号更新角色信息
         /// </summary>
         /// <param name="model">请求实体</param>
+        /// <param name="menuArr">菜单编号数组</param>
         /// <returns>int</returns>
-        public int UpdateRoleById(adRole model)
+        public int UpdateRoleById(adRole model, int[] menuArr)
         {
-            #region sql
-            string sql = string.Format(@"
-                    SET [RoleName] = @0
-                        ,[ModifyTime] = @1
-                        ,[ModifyUser] = @2
-                        ,[IsDel] = @3
-                        ,[Sort] = @4
-                    WHERE 1 = 1 AND [Id] = @5
-                ");
-            #endregion
+            using (var db = PetaPocoAdouDB.GetInstance())
+            {
+                int index = 0;
 
-            return PetaPocoAdouDB.GetInstance().Update<adRole>(sql,
-                model.RoleName,
-                model.ModifyTime,
-                model.ModifyUser,
-                model.IsDel,
-                model.Sort,
-                model.Id);
+                db.BeginTransaction();
+
+                try
+                {
+                    #region sql
+                    string sql = string.Format(@"
+                        UPDATE [dbo].[adRole] SET [RoleName] = @0
+                            ,[ModifyTime] = @1
+                            ,[ModifyUser] = @2
+                            ,[IsDel] = @3
+                            ,[Sort] = @4
+                        WHERE 1 = 1 AND [Id] = @5;
+                        
+                        DELETE FROM [dbo].[adRoleAndMenu] WHERE 1=1 AND RoleId = {0};
+                    ", model.Id);
+                    #endregion
+
+                    var result = db.Execute(sql, model.RoleName,
+                        model.ModifyTime,
+                        model.ModifyUser,
+                        model.IsDel,
+                        model.Sort,
+                        model.Id);
+
+
+                    if (result > 0)
+                    {
+                        foreach (var menu in menuArr)
+                        {
+                            var item = new adRoleAndMenu()
+                            {
+                                RoleId = model.Id,
+                                MenuId = menu
+                            };
+
+                            db.Insert(item);
+
+                            if (item.Id > 0)
+                            {
+                                index++;
+                            }
+                        }
+
+                        db.CompleteTransaction();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    db.AbortTransaction();
+                }
+
+                return index;
+            }
         }
         /// <summary>
         /// 通过编号更新角色是否删除（伪删除）

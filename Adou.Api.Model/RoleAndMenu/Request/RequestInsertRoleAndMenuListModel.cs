@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 namespace Adou.Api.Model
 {
     /// <summary>
-    /// 添加角色编号
+    /// 批量添加角色菜单
     /// </summary>
-    public class RequestInsertRoleAndMenuModel : RequestBaseModel
+    public class RequestInsertRoleAndMenuListModel : RequestBaseModel
     {
         /// <summary>
         /// 角色编号
         /// </summary>
         public long RoleId { get; set; }
         /// <summary>
-        /// 菜单编号
+        /// 菜单编号数组
         /// </summary>
-        public long MenuId { get; set; }
+        public int[] MenuArr { get; set; }
     }
 }

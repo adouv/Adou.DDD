@@ -26,6 +26,8 @@
       <div class="col-sm-12 col-md-12">
         <div class="example-wrap">
           <h4 class="example-title">菜单</h4>
+          <ad-button type="default" size="sm" @click.native="selectAllTree">全选</ad-button>
+          <ad-button type="default" size="sm" @click.native="cleanAllTree">取消全选</ad-button>
           <el-tree
             v-if="menuList.length!==0"
             :data="menuList"
@@ -131,7 +133,7 @@ export default {
 
         if (this.menuList.length > 0 && this.params.Id > 0) {
           this.params.MenuList.forEach(element => {
-            if (element.FatherId !== 0) {
+            if (element.FatherId > 0) {
               this.defaultCheckedKeys.push(element.Id);
             }
           });
@@ -143,6 +145,20 @@ export default {
       } catch (error) {
         this.loading.close();
       }
+    },
+    selectAllTree() {
+      if (this.menuList.length > 0) {
+        let keys = [];
+        this.menuList.forEach(menu => {
+          menu.children.forEach(sub => {
+            keys.push(sub.id);
+          });
+        });
+        this.$refs.tree.setCheckedKeys(keys);
+      }
+    },
+    cleanAllTree() {
+      this.$refs.tree.setCheckedKeys([]);
     },
     async btnSave() {
       let checkKeys = this.$refs.tree.getCheckedKeys();
@@ -159,6 +175,8 @@ export default {
         this.params.Sort = 100;
       }
 
+      this.params.MenuArr = keys;
+
       let result = null;
 
       try {
@@ -171,29 +189,9 @@ export default {
         let response = await result;
 
         if (response.Data > 0 && response.Data !== null) {
-          let promiseAll = [];
-
-          let rid = this.params.Id > 0 ? this.params.Id : response.Data;
-
-          keys.forEach(menu => {
-            let args = {
-              RoleId: rid,
-              MenuId: menu
-            };
-
-            promiseAll.push(adRoleService.insertRoleAndMenu(args));
-          });
-
-          let r = await this.http$.all(promiseAll);
-
-          if (r.length > 0) {
-            this.$tip("保存成功");
-          }
-
-          if (r.length === 0) {
-            this.$tip("菜单保存失败");
-          }
+          this.$tip("保存成功");
         }
+        
         this.$router.push({ name: "adRole" });
       } catch (error) {
         this.$tip("保存失败");
@@ -207,6 +205,7 @@ export default {
 .ad-role-edit {
   .el-tree {
     border: 1px solid #e4eaec;
+    margin-top: 10px;
     .el-tree-node {
       line-height: 28px !important;
       .el-checkbox {

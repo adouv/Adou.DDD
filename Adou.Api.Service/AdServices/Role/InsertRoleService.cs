@@ -31,7 +31,7 @@ namespace Adou.Api.Service.AdServices.Role
                 Sort = this.Parameter.Sort
             };
 
-            var result = roleRep.InsertRole(model);
+            var result = roleRep.InsertRole(model, this.Parameter.menuArr);
 
             this.Result.Data = result;
         }

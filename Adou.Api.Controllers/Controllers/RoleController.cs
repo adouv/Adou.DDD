@@ -45,6 +45,10 @@ namespace Adou.Api.Controllers.Controllers
         /// </summary>
         public InsertRoleAndMenuService insertRoleAndMenuService { get; set; }
         /// <summary>
+        /// 批量添加角色菜单
+        /// </summary>
+        public InsertRoleAndMenuListService insertRoleAndMenuListService { get; set; }
+        /// <summary>
         /// 通过角色编号删除角色菜单服务
         /// </summary>
         public DeleteRoleAndMenuByRoleIdService deleteRoleAndMenuByRoleIdService { get; set; }
@@ -128,6 +132,16 @@ namespace Adou.Api.Controllers.Controllers
         public async Task<ResponseMessageModel> InsertRoleAndMenu([FromBody]RequestInsertRoleAndMenuModel model)
         {
             return await Task.Run(() => insertRoleAndMenuService.Execute(model));
+        }
+        /// <summary>
+        /// 批量添加角色菜单
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [Route("InsertRoleAndMenuList"), HttpPost]
+        public async Task<ResponseMessageModel> InsertRoleAndMenuList([FromBody]RequestInsertRoleAndMenuListModel model)
+        {
+            return await Task.Run(() => insertRoleAndMenuListService.Execute(model));
         }
         /// <summary>
         /// 通过角色编号删除角色菜单
