@@ -24,7 +24,7 @@ namespace Adou.Api.Service.AdServices.DictionaryType
             var model = new adDictionaryType()
             {
                 Id = this.Parameter.Id,
-                IsDel = this.Parameter.IsDel,
+                IsDel = true,
                 ModifyTime = DateTime.Now,
                 ModifyUser = AdouConfigHelper.UserName
             };

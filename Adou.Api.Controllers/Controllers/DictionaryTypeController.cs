@@ -13,7 +13,7 @@ namespace Adou.Api.Controllers.Controllers
     /// 字典项信息 - 控制器
     /// </summary>
     [RoutePrefix("api/Adou/DictionaryType")]
-    class DictionaryTypeController : BaseController
+    public class DictionaryTypeController : BaseController
     {
         /// <summary>
         /// 获取字典项列表服务

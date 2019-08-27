@@ -34,7 +34,6 @@ namespace Adou.Api.Service.AdServices.Account
                 Descript = this.Parameter.Descript,
                 ModifyUser = AdouConfigHelper.UserName,
                 ModifyTime = DateTime.Now,
-                IsDel = false,
                 Sort = 100,
                 Type = this.Parameter.Type
             };

@@ -29,7 +29,7 @@ namespace Adou.Api.Service.AdServices.Dictionary
                 DicType = this.Parameter.DicType,
                 Sort = this.Parameter.Sort,
                 Remark = this.Parameter.Remark,
-                IsDel = this.Parameter.IsDel,
+                IsDel = false,
                 CreateTime = DateTime.Now,
                 CreateUser = AdouConfigHelper.UserName,
                 ModifyTime = DateTime.Now,

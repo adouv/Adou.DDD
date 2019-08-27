@@ -21,7 +21,7 @@ namespace Adou.Api.Service.AdServices.Account
             var model = new adAccount()
             {
                 Id = this.Parameter.Id,
-                IsDel = this.Parameter.IsDel,
+                IsDel = true,
                 ModifyTime = DateTime.Now,
                 ModifyUser = AdouConfigHelper.UserName
             };

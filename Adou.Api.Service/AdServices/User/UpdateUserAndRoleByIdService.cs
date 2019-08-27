@@ -31,7 +31,6 @@ namespace Adou.Api.Service.AdServices.User
                 RoleId = this.Parameter.RoleId,
                 ModifyTime = DateTime.Now,
                 ModifyUser = AdouConfigHelper.UserName,
-                IsDel = false,
                 Sort = this.Parameter.Sort
             };
 

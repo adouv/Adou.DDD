@@ -150,10 +150,9 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[Descript] = @7
                       ,[ModifyTime] = @8
                       ,[ModifyUser] = @9
-                      ,[IsDel] = @10
-                      ,[Sort] = @11
-                      ,[Type] = @12
-                 WHERE 1=1 AND [Id] = @13
+                      ,[Sort] = @10
+                      ,[Type] = @11
+                 WHERE 1=1 AND [Id] = @12
             ");
             #endregion
 
@@ -168,7 +167,6 @@ namespace Adou.Repositories.PetaPoco.Adou
                 model.Descript,
                 model.ModifyTime,
                 model.ModifyUser,
-                model.IsDel,
                 model.Sort,
                 model.Type,
                 model.Id);

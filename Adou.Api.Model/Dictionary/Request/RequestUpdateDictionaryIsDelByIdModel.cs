@@ -15,9 +15,5 @@ namespace Adou.Api.Model
         /// 编号
         /// </summary>
         public long Id { get; set; }
-        /// <summary>
-        /// 是否删除
-        /// </summary>
-        public bool IsDel { get; set; }
     }
 }

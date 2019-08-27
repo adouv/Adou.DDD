@@ -96,9 +96,11 @@ export default {
 
     let params = this.$route.params;
 
-    if (params.Id === undefined) {
+    if (params.Id !== undefined) {
       this.params = params;
     }
+
+    console.log(this.params);
 
     this.getMenuListByFatherId();
   },

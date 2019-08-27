@@ -12,10 +12,6 @@ namespace Adou.Api.Model
     public class RequestInsertAccountModel : RequestBaseModel
     {
         /// <summary>
-        /// 编号
-        /// </summary>
-        public long Id { get; set; }
-        /// <summary>
         /// 标题
         /// </summary>
         public string Title { get; set; }
@@ -47,10 +43,6 @@ namespace Adou.Api.Model
         /// 描述
         /// </summary>
         public string Descript { get; set; }
-        /// <summary>
-        /// 是否删除
-        /// </summary>
-        public bool IsDel { get; set; }
         /// <summary>
         /// 排序
         /// </summary>

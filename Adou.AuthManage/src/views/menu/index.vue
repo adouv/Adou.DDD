@@ -153,7 +153,6 @@ export default {
 
       options.params = {};
       options.params.Id = item.Id;
-      options.params.IsDel = 1;
 
       options.save = (params, close) => {
         console.log(params);

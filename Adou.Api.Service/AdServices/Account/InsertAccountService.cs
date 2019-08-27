@@ -20,7 +20,6 @@ namespace Adou.Api.Service.AdServices.Account
         {
             var model = new adAccount()
             {
-                Id = this.Parameter.Id,
                 Title = this.Parameter.Title,
                 Account = this.Parameter.Account,
                 Password = this.Parameter.Password,

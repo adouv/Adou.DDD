@@ -27,9 +27,5 @@ namespace Adou.Api.Model
         /// 备注
         /// </summary>
         public string Remark { get; set; }
-        /// <summary>
-        /// 是否删除
-        /// </summary>
-        public bool IsDel { get; set; }
     }
 }
