@@ -9,44 +9,37 @@ using Adou.Entity.PetaPocoModels.AdouModel;
 namespace Adou.Repositories.PetaPoco.Adou
 {
     /// <summary>
-    /// 字典数据操作类
+    /// 数据字典项操作类
     /// </summary>
-    public class DictionaryRep : BaseRep<adDictionary>
+    public class DictionaryTypeRep : BaseRep<adDictionaryType>
     {
         /// <summary>
         /// 获取字典项列表
         /// </summary>
         /// <param name="model">请求参数</param>
         /// <returns></returns>
-        public IEnumerable<adDictionary> GetDictionaryList(string orderBy, bool isDesc, adDictionary model)
+        public IEnumerable<adDictionaryType> GetDictionaryTypeList(string orderBy, bool isDesc, adDictionaryType model)
         {
             string sqlWhere = string.Empty;
             string sql = string.Empty;
 
             #region where
-            if (!string.IsNullOrWhiteSpace(model.DicKey))
+            if (!string.IsNullOrWhiteSpace(model.Name))
             {
-                sqlWhere += " AND [DicKey] = @0 ";
+                sqlWhere += " AND [Name] = @0 ";
             }
 
-            if (!string.IsNullOrWhiteSpace(model.DicCoding))
+            if (!string.IsNullOrWhiteSpace(model.Coding))
             {
-                sqlWhere += " AND [DicCoding] = @1 ";
-            }
-
-            if (model.DicType > 0)
-            {
-                sqlWhere += " AND [DicType] = @2 ";
+                sqlWhere += " AND [Coding] = @1 ";
             }
             #endregion
 
             #region sql
             sql = string.Format(@"
                 SELECT [Id]
-                    ,[DicKey]
-                    ,[DicValue]
-                    ,[DicCoding]
-                    ,[DicType]
+                    ,[Coding]
+                    ,[Name]
                     ,[Sort]
                     ,[Remark]
                     ,[IsDel]
@@ -54,15 +47,15 @@ namespace Adou.Repositories.PetaPoco.Adou
                     ,[CreateUser]
                     ,[ModifyTime]
                     ,[ModifyUser]
-                FROM [dbo].[adDictionary]
+                FROM [dbo].[adDictionaryType]
                 WHERE 1=1 AND [IsDel] = 0 {0} 
             ", sqlWhere);
             #endregion
 
-            return this.GetList(orderBy, isDesc, sql, model.DicKey, model.DicCoding, model.DicType);
+            return this.GetList(orderBy, isDesc, sql, model.Name, model.Coding);
         }
         /// <summary>
-        /// 分页获取字典列表
+        /// 分页获取字典项列表
         /// </summary>
         /// <param name="pageIndex">当前页</param>
         /// <param name="pageSize">每页条数</param>
@@ -70,35 +63,28 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// <param name="isDes">是否倒序</param>
         /// <param name="model">请求实体</param>
         /// <returns></returns>
-        public Page<adDictionary> GetDictionaryPageList(int pageIndex, int pageSize, string orderBy, bool isDesc, adDictionary model)
+        public Page<adDictionaryType> GetDictionaryTypePageList(int pageIndex, int pageSize, string orderBy, bool isDesc, adDictionaryType model)
         {
             string sqlWhere = string.Empty;
             string sql = string.Empty;
 
             #region where
-            if (!string.IsNullOrWhiteSpace(model.DicKey))
+            if (!string.IsNullOrWhiteSpace(model.Name))
             {
-                sqlWhere += " AND [DicKey] = @0 ";
+                sqlWhere += " AND [Name] = @0 ";
             }
 
-            if (!string.IsNullOrWhiteSpace(model.DicCoding))
+            if (!string.IsNullOrWhiteSpace(model.Coding))
             {
-                sqlWhere += " AND [DicCoding] = @1 ";
-            }
-
-            if (model.DicType > 0)
-            {
-                sqlWhere += " AND [DicType] = @2 ";
+                sqlWhere += " AND [Coding] = @1 ";
             }
             #endregion
 
             #region sql
             sql = string.Format(@"
                 SELECT [Id]
-                    ,[DicKey]
-                    ,[DicValue]
-                    ,[DicCoding]
-                    ,[DicType]
+                    ,[Coding]
+                    ,[Name]
                     ,[Sort]
                     ,[Remark]
                     ,[IsDel]
@@ -106,51 +92,47 @@ namespace Adou.Repositories.PetaPoco.Adou
                     ,[CreateUser]
                     ,[ModifyTime]
                     ,[ModifyUser]
-                FROM [dbo].[adDictionary]
+                FROM [dbo].[adDictionaryType]
                 WHERE 1=1 AND [IsDel] = 0 {0} 
             ", sqlWhere);
             #endregion
 
-            return this.GetPageList(orderBy, isDesc, pageIndex, pageSize, sql, model.DicKey, model.DicCoding, model.DicType);
+            return this.GetPageList(orderBy, isDesc, pageIndex, pageSize, sql, model.Name, model.Coding);
         }
         /// <summary>
-        /// 添加字典
+        /// 添加字典项
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public long InsertDictionary(adDictionary model)
+        public long InsertDictionaryType(adDictionaryType model)
         {
             this.Insert(model);
             return model.Id;
         }
         /// <summary>
-        /// 修改字典
+        /// 修改字典项
         /// </summary>
         /// <param name="model">请求参数</param>
         /// <returns></returns>
-        public long UpdateDictionaryById(adDictionary model)
+        public long UpdateDictionaryTypeById(adDictionaryType model)
         {
             string sql = string.Empty;
 
             #region sql
             sql = string.Format(@"
-                SET [DicKey] = @0
-                    ,[DicValue] = @1
-                    ,[DicCoding] = @2
-                    ,[DicType] = @3
-                    ,[Sort] = @4
-                    ,[Remark] = @5
-                    ,[ModifyTime] = @6
-                    ,[ModifyUser] = @7
-                WHERE 1 = 1 AND [Id] = @8
+                SET [Coding] = @0
+                    ,[Name] = @1
+                    ,[Sort] = @2
+                    ,[Remark] = @3
+                    ,[ModifyTime] = @4
+                    ,[ModifyUser] = @5
+                WHERE 1 = 1 AND [Id] = @6
             ");
             #endregion
 
-            return PetaPocoAdouDB.GetInstance().Update<adDictionary>(sql,
-                model.DicKey,
-                model.DicValue,
-                model.DicCoding,
-                model.DicType,
+            return PetaPocoAdouDB.GetInstance().Update<adDictionaryType>(sql,
+                model.Coding,
+                model.Name,
                 model.Sort,
                 model.Remark,
                 model.ModifyTime,
@@ -158,11 +140,11 @@ namespace Adou.Repositories.PetaPoco.Adou
                 model.Id);
         }
         /// <summary>
-        /// 删除字典
+        /// 删除字典项
         /// </summary>
         /// <param name="id">编号</param>
         /// <returns></returns>
-        public int DeleteDictionaryById(long id)
+        public int DeleteDictionaryTypeById(long id)
         {
             return this.Delete(id);
         }
@@ -171,7 +153,7 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// </summary>
         /// <param name="model">请求实体</param>
         /// <returns></returns>
-        public int UpdateDictionaryIsDelById(adDictionary model)
+        public int UpdateDictionaryTypeIsDelById(adDictionaryType model)
         {
             #region sql
             string sql = string.Format(@"
@@ -182,7 +164,7 @@ namespace Adou.Repositories.PetaPoco.Adou
             ");
             #endregion
 
-            return PetaPocoAdouDB.GetInstance().Update<adDictionary>(sql, model.IsDel, model.ModifyTime, model.ModifyUser, model.Id);
+            return PetaPocoAdouDB.GetInstance().Update<adDictionaryType>(sql, model.IsDel, model.ModifyTime, model.ModifyUser, model.Id);
         }
     }
 }
