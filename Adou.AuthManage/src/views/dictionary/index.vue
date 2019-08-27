@@ -2,13 +2,17 @@
   <ad-left-main title="数据字典管理" class="ad-dictionary">
     <div slot="left">
       <section class="page-aside-section" style="height:auto !important;">
-        <h5 class="page-aside-title">数据字典分类</h5>
+        <h5 class="page-aside-title">
+          数据字典分类
+          <i class="icon ti-reload" @click="getDictionaryList();"></i>
+        </h5>
         <div class="list-group">
           <a
-            class="list-group-item active"
+            class="list-group-item"
             href="javascript:;"
             v-for="(item,index) in typeList"
             :key="index"
+            :class="request.DicType===item.Id?'active':''"
             @click="getDictionaryList(1,item.Id);"
           >
             <i class="icon wb-dashboard" aria-hidden="true"></i>
@@ -39,7 +43,7 @@
         </div>
 
         <div class="col-sm-12 col-md-12">
-          <ad-button type="inverse" @click.native="getList();">搜索</ad-button>
+          <ad-button type="inverse" @click.native="getDictionaryList();">搜索</ad-button>
           <ad-button type="primary" @click.native="btnEditHandller(item);">添加</ad-button>
           <ad-button
             type="success"
@@ -69,7 +73,7 @@
         style="padding:0 24px !important;"
         :total="TotalItems"
         :pageIndex="request.PageIndex"
-        @currentChange="getList"
+        @currentChange="getDictionaryList"
       ></ad-pagination>
     </div>
   </ad-left-main>
@@ -78,6 +82,7 @@
 <script>
 import adDictionaryService from "../../_api/adDictionary.service";
 import adDictionaryTypeService from "../../_api/adDictionaryType.service";
+import AdDictionaryEditComponent from "./edit";
 export default {
   name: "AdDictionaryComponent",
   data() {
@@ -95,7 +100,8 @@ export default {
         IsDesc: false
       },
       TotalItems: 0,
-      loading: null
+      loading: null,
+      flag: false
     };
   },
   mounted() {
@@ -145,11 +151,54 @@ export default {
       }
     },
     btnEditHandller(item = {}) {
-      if (item.Id === undefined) {
-        item.DicType = this.request.DicType;
-      }
+      let IsUndefined = item.Id !== undefined;
+      let options = {};
+      options.title = IsUndefined ? "修改数据字典" : "添加数据字典";
+      options.componentName = AdDictionaryEditComponent;
+      options.height = 350;
+      options.params = {};
+      options.params.Id = IsUndefined ? item.Id : 0;
+      options.params.DicKey = IsUndefined ? item.DicKey : "";
+      options.params.DicValue = IsUndefined ? item.DicValue : "";
+      options.params.DicCoding = IsUndefined ? item.DicCoding : "";
+      options.params.DicType = this.request.DicType;
+      options.params.Sort = IsUndefined ? item.Sort : 100;
+      options.params.Remark = IsUndefined ? item.Remark : "";
+      options.save = (params, close) => {
+        console.log(params);
+        if (!params.DicKey) {
+          this.$tip("请填写键");
+          return;
+        }
 
-      this.$router.push({ name: "adDictionaryEdit", params: item });
+        if (!params.DicValue) {
+          this.$tip("请填写值");
+          return;
+        }
+
+        if (params.Sort === 0 && !params.Sort) {
+          params.Sort = 100;
+        }
+
+        let result = null;
+
+        if (params.Id === 0) {
+          result = adDictionaryService.insertDictionary(params);
+        } else {
+          result = adDictionaryService.updateDictionaryById(params);
+        }
+
+        result.then(response => {
+          if (response.Data > 0 && response.Data !== null) {
+            this.$tip("保存成功");
+          }
+
+          this.getDictionaryList(1, this.request.DicType);
+
+          close();
+        });
+      };
+      this.modal$(options);
     },
     btnDeleteHandller(item) {
       let options = {};
@@ -165,7 +214,9 @@ export default {
           if (response.Data > 0 && response.Data !== null) {
             this.$tip("删除成功");
           }
-          this.getList();
+
+          this.getDictionaryList(1, this.request.DicType);
+
           close();
         });
       };

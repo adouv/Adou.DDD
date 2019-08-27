@@ -181,31 +181,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dist\static\css\app.78a9a3e7a1a21c043fd2a6f92a6c4132.css" />
-    <Content Include="dist\static\fonts\element-icons.535877f.woff" />
-    <Content Include="dist\static\fonts\element-icons.732389d.ttf" />
-    <Content Include="dist\static\fonts\fontawesome-webfont.674f50d.eot" />
-    <Content Include="dist\static\fonts\fontawesome-webfont.af7ae50.woff2" />
-    <Content Include="dist\static\fonts\fontawesome-webfont.b06871f.ttf" />
-    <Content Include="dist\static\fonts\fontawesome-webfont.fee66e7.woff" />
-    <Content Include="dist\static\fonts\ionicons.05acfdb.woff" />
-    <Content Include="dist\static\fonts\ionicons.24712f6.ttf" />
-    <Content Include="dist\static\fonts\ionicons.2c2ae06.eot" />
-    <Content Include="dist\static\fonts\themify.2c45466.eot" />
-    <Content Include="dist\static\fonts\themify.a1ecc3b.woff" />
-    <Content Include="dist\static\fonts\themify.e23a7dc.ttf" />
-    <Content Include="dist\static\fonts\web-icons.3ed7c27.woff2" />
-    <Content Include="dist\static\fonts\web-icons.71af561.eot" />
-    <Content Include="dist\static\fonts\web-icons.b1694eb.woff" />
-    <Content Include="dist\static\fonts\web-icons.f3d4e9a.ttf" />
-    <Content Include="dist\static\images\dashboard2-header.0b51d3c.jpg" />
-    <Content Include="dist\static\images\fontawesome-webfont.912ec66.svg" />
-    <Content Include="dist\static\images\ionicons.c037dbb.svg" />
-    <Content Include="dist\static\images\login.da7ba2a.jpg" />
-    <Content Include="dist\static\images\themify.cba68f9.svg" />
-    <Content Include="dist\static\images\user9-200x200.2767ce2.png" />
-    <Content Include="dist\static\images\web-icons.c649234.svg" />
-    <Content Include="dist\static\js\app.58bcc7d95cdcaf404e7c.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -238,8 +213,6 @@
     <Content Include="Areas\AdouManage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\AdouManage\Views\Shared\_Template.cshtml" />
     <Content Include="Areas\AdouManage\Views\App\Index.cshtml" />
-    <Content Include="dist\static\css\app.78a9a3e7a1a21c043fd2a6f92a6c4132.css.map" />
-    <Content Include="dist\static\js\app.58bcc7d95cdcaf404e7c.js.map" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>

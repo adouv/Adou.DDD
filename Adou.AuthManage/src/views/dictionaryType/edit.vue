@@ -1,5 +1,5 @@
 <template>
-  <div class="page right-edit">
+  <div class="page ad-dictionary-type-edit">
     <div class="example-wrap">
       <h4 class="example-title">编码</h4>
       <input type="text" class="form-control" v-model="params.Coding" placeholder="标题" />

@@ -64,7 +64,7 @@
       <publishTime>06/09/2018 22:14:39</publishTime>
     </File>
     <File Include="Areas/AdouManage/Views/Shared/_Layout.cshtml">
-      <publishTime>08/26/2019 17:18:24</publishTime>
+      <publishTime>08/27/2019 19:53:45</publishTime>
     </File>
     <File Include="Areas/AdouManage/Views/Shared/_Template.cshtml">
       <publishTime>08/01/2019 19:08:45</publishTime>
@@ -76,55 +76,55 @@
       <publishTime>07/23/2019 15:10:28</publishTime>
     </File>
     <File Include="bin/Adou.Api.Controllers.dll">
-      <publishTime>08/26/2019 17:20:22</publishTime>
+      <publishTime>08/27/2019 19:56:09</publishTime>
     </File>
     <File Include="bin/Adou.Api.Controllers.dll.config">
       <publishTime>07/23/2019 15:10:28</publishTime>
     </File>
     <File Include="bin/Adou.Api.Controllers.pdb">
-      <publishTime>08/26/2019 17:20:22</publishTime>
+      <publishTime>08/27/2019 19:56:09</publishTime>
     </File>
     <File Include="bin/Adou.Api.Model.dll">
-      <publishTime>08/26/2019 17:20:18</publishTime>
+      <publishTime>08/27/2019 19:56:05</publishTime>
     </File>
     <File Include="bin/Adou.Api.Model.pdb">
-      <publishTime>08/26/2019 17:20:18</publishTime>
+      <publishTime>08/27/2019 19:56:05</publishTime>
     </File>
     <File Include="bin/Adou.Api.Service.dll">
-      <publishTime>08/26/2019 17:20:18</publishTime>
+      <publishTime>08/27/2019 19:56:05</publishTime>
     </File>
     <File Include="bin/Adou.Api.Service.pdb">
-      <publishTime>08/26/2019 17:20:18</publishTime>
+      <publishTime>08/27/2019 19:56:05</publishTime>
     </File>
     <File Include="bin/Adou.AuthManage.dll">
-      <publishTime>08/26/2019 17:20:59</publishTime>
+      <publishTime>08/27/2019 19:56:13</publishTime>
     </File>
     <File Include="bin/Adou.AuthManage.pdb">
-      <publishTime>08/26/2019 17:20:59</publishTime>
+      <publishTime>08/27/2019 19:56:13</publishTime>
     </File>
     <File Include="bin/Adou.DDD.dll">
-      <publishTime>08/14/2019 11:32:17</publishTime>
+      <publishTime>08/27/2019 19:56:04</publishTime>
     </File>
     <File Include="bin/Adou.DDD.dll.config">
       <publishTime>07/23/2019 15:10:29</publishTime>
     </File>
     <File Include="bin/Adou.DDD.pdb">
-      <publishTime>08/14/2019 11:32:17</publishTime>
+      <publishTime>08/27/2019 19:56:04</publishTime>
     </File>
     <File Include="bin/Adou.Entity.dll">
-      <publishTime>08/26/2019 17:20:17</publishTime>
+      <publishTime>08/27/2019 19:56:04</publishTime>
     </File>
     <File Include="bin/Adou.Entity.dll.config">
       <publishTime>08/26/2019 08:56:54</publishTime>
     </File>
     <File Include="bin/Adou.Entity.pdb">
-      <publishTime>08/26/2019 17:20:17</publishTime>
+      <publishTime>08/27/2019 19:56:04</publishTime>
     </File>
     <File Include="bin/Adou.Repositories.PetaPoco.dll">
-      <publishTime>08/26/2019 17:20:18</publishTime>
+      <publishTime>08/27/2019 19:56:04</publishTime>
     </File>
     <File Include="bin/Adou.Repositories.PetaPoco.pdb">
-      <publishTime>08/26/2019 17:20:18</publishTime>
+      <publishTime>08/27/2019 19:56:04</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>07/23/2019 15:10:29</publishTime>
@@ -136,10 +136,10 @@
       <publishTime>07/23/2019 15:10:28</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/26/2019 17:21:11</publishTime>
+      <publishTime>08/27/2019 19:56:25</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/26/2019 17:21:11</publishTime>
+      <publishTime>08/27/2019 19:56:25</publishTime>
     </File>
     <File Include="bin/Autofac.dll">
       <publishTime>07/23/2019 15:16:56</publishTime>
@@ -1501,7 +1501,7 @@
       <publishTime>08/09/2019 10:40:41</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/26/2019 17:21:01</publishTime>
+      <publishTime>08/27/2019 19:56:15</publishTime>
     </File>
     <File Include="README.md">
       <publishTime>07/23/2019 15:10:28</publishTime>
