@@ -48,10 +48,6 @@ namespace Adou.Api.Model
         /// </summary>
         public string Descript { get; set; }
         /// <summary>
-        /// 是否删除
-        /// </summary>
-        public bool IsDel { get; set; }
-        /// <summary>
         /// 排序
         /// </summary>
         public int Sort { get; set; }

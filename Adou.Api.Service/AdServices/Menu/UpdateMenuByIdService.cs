@@ -28,7 +28,6 @@ namespace Adou.Api.Service.AdServices.Menu
                 LevelId = this.Parameter.LevelId,
                 ModifyUser = AdouConfigHelper.UserName,
                 ModifyTime = DateTime.Now,
-                IsDel = false,
                 Sort = this.Parameter.Sort
             };
 

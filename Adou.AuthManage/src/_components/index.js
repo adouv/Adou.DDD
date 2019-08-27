@@ -1,5 +1,6 @@
 import { adPaginationInstall } from "./adPagination/index";
 import { adMainInstall } from "./adMain/index";
+import { adLeftMainInstall } from "./adLeftMain/index";
 import { adTableInstall } from "./adTable/index";
 import { adButtonInstall } from "./adButton/index";
 /**
@@ -8,6 +9,7 @@ import { adButtonInstall } from "./adButton/index";
 export const ComponentInstall = Vue => {
     adPaginationInstall(Vue);
     adMainInstall(Vue);
+    adLeftMainInstall(Vue);
     adTableInstall(Vue);
     adButtonInstall(Vue);
 };

@@ -171,9 +171,8 @@ namespace Adou.Repositories.PetaPoco.Adou
                         UPDATE [dbo].[adRole] SET [RoleName] = @0
                             ,[ModifyTime] = @1
                             ,[ModifyUser] = @2
-                            ,[IsDel] = @3
-                            ,[Sort] = @4
-                        WHERE 1 = 1 AND [Id] = @5;
+                            ,[Sort] = @3
+                        WHERE 1 = 1 AND [Id] = @4;
                         
                         DELETE FROM [dbo].[adRoleAndMenu] WHERE 1=1 AND RoleId = {0};
                     ", model.Id);
@@ -182,7 +181,6 @@ namespace Adou.Repositories.PetaPoco.Adou
                     var result = db.Execute(sql, model.RoleName,
                         model.ModifyTime,
                         model.ModifyUser,
-                        model.IsDel,
                         model.Sort,
                         model.Id);
 

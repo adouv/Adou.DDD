@@ -24,7 +24,7 @@ namespace Adou.Api.Service.AdServices.Menu
             var model = new adMenu()
             {
                 Id = this.Parameter.Id,
-                IsDel = this.Parameter.IsDel,
+                IsDel = true,
                 ModifyTime = DateTime.Now,
                 ModifyUser = AdouConfigHelper.UserName
             };

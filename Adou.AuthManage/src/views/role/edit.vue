@@ -60,7 +60,6 @@ export default {
         CreateTime: "",
         CreateUser: "",
         Id: 0,
-        IsDel: false,
         MenuList: [],
         ModifyTime: "",
         ModifyUser: "",

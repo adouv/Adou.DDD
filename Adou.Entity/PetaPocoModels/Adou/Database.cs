@@ -193,15 +193,96 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// <summary>
 		/// ¼ü
 		/// </summary>
-		[Column] public string dicKey { get; set; }
+		[Column] public string DicKey { get; set; }
 		/// <summary>
 		/// Öµ
 		/// </summary>
-		[Column] public string dicValue { get; set; }
+		[Column] public string DicValue { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string DicCoding { get; set; }
 		/// <summary>
 		/// ÀàÐÍ
 		/// </summary>
-		[Column] public int? Type { get; set; }
+		[Column] public long? DicType { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public int? Sort { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Remark { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public bool? IsDel { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public DateTime? CreateTime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string CreateUser { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public DateTime? ModifyTime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string ModifyUser { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
+	[TableName("dbo.adDictionaryType")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adDictionaryType : PetaPocoAdouDB.Record<adDictionaryType>  
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long Id { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Coding { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Name { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public int? Sort { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string Remark { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public bool? IsDel { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public DateTime? CreateTime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string CreateUser { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public DateTime? ModifyTime { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public string ModifyUser { get; set; }
 	}
 	/// <summary>
 	/// 

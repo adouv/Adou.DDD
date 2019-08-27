@@ -241,9 +241,8 @@ namespace Adou.Repositories.PetaPoco.Adou
                                 ,[RoleId] = @4
                                 ,[ModifyTime] = @5
                                 ,[ModifyUser] = @6
-                                ,[IsDel] = @7
-                                ,[Sort] = @8
-                            WHERE 1 = 1 AND [Id] = @9;
+                                ,[Sort] = @7
+                            WHERE 1 = 1 AND [Id] = @8;
 
                             DELETE FROM [dbo].[adUserAndRole] WHERE 1=1 AND UserId = {0};
                         ", model.Id);
@@ -257,7 +256,6 @@ namespace Adou.Repositories.PetaPoco.Adou
                             model.RoleId,
                             model.ModifyTime,
                             model.ModifyUser,
-                            model.IsDel,
                             model.Sort,
                             model.Id);
                     }
@@ -273,9 +271,8 @@ namespace Adou.Repositories.PetaPoco.Adou
                                 ,[RoleId] = @5
                                 ,[ModifyTime] = @6
                                 ,[ModifyUser] = @7
-                                ,[IsDel] = @8
-                                ,[Sort] = @9
-                            WHERE 1 = 1 AND [Id] = @10;
+                                ,[Sort] = @8
+                            WHERE 1 = 1 AND [Id] = @9;
         
                             DELETE FROM [dbo].[adUserAndRole] WHERE 1=1 AND UserId = {0};
                         ", model.Id);
@@ -290,7 +287,6 @@ namespace Adou.Repositories.PetaPoco.Adou
                             model.RoleId,
                             model.ModifyTime,
                             model.ModifyUser,
-                            model.IsDel,
                             model.Sort,
                             model.Id);
                     }

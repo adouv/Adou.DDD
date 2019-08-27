@@ -162,13 +162,12 @@ namespace Adou.Repositories.PetaPoco.Adou
                       ,[LevelId] = @4
                       ,[ModifyTime] = @5
                       ,[ModifyUser] = @6
-                      ,[IsDel] = @7
-                      ,[Sort] = @8
-                 WHERE 1=1 AND [Id] = @9
+                      ,[Sort] = @7
+                 WHERE 1=1 AND [Id] = @8
             ");
             #endregion
 
-            return PetaPocoAdouDB.GetInstance().Update<adMenu>(sql, model.Title, model.MenuIcon, model.MenuUrl, model.FatherId, model.LevelId, model.ModifyTime, model.ModifyUser, model.IsDel, model.Sort, model.Id);
+            return PetaPocoAdouDB.GetInstance().Update<adMenu>(sql, model.Title, model.MenuIcon, model.MenuUrl, model.FatherId, model.LevelId, model.ModifyTime, model.ModifyUser,model.Sort, model.Id);
         }
         /// <summary>
         /// 通过编号更新排序值

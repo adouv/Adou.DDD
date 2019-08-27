@@ -24,7 +24,7 @@ namespace Adou.Api.Service.AdServices.Role
             var model = new adRole()
             {
                 Id = this.Parameter.Id,
-                IsDel = this.Parameter.IsDel,
+                IsDel = true,
                 ModifyTime = DateTime.Now,
                 ModifyUser = AdouConfigHelper.UserName
             };

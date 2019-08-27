@@ -47,6 +47,16 @@
     <Compile Include="Account\Request\RequestInsertAccountModel.cs" />
     <Compile Include="Account\Request\RequestUpdateAccountByIdModel.cs" />
     <Compile Include="Account\Request\RequestUpdateAccountIsDelByIdModel.cs" />
+    <Compile Include="DictionaryType\Request\RequestDeleteDictionaryTypeByIdModel.cs" />
+    <Compile Include="DictionaryType\Request\RequestGetDictionaryTypeListModel.cs" />
+    <Compile Include="DictionaryType\Request\RequestInsertDictionaryTypeModel.cs" />
+    <Compile Include="DictionaryType\Request\RequestUpdateDictionaryTypeByIdModel.cs" />
+    <Compile Include="DictionaryType\Request\RequestUpdateDictionaryTypeIsDelByIdModel.cs" />
+    <Compile Include="Dictionary\Request\RequestDeleteDictionaryByIdModel.cs" />
+    <Compile Include="Dictionary\Request\RequestGetDictionaryListModel.cs" />
+    <Compile Include="Dictionary\Request\RequestInsertDictionaryModel.cs" />
+    <Compile Include="Dictionary\Request\RequestUpdateDictionaryByIdModel.cs" />
+    <Compile Include="Dictionary\Request\RequestUpdateDictionaryIsDelByIdModel.cs" />
     <Compile Include="Menu\Request\RequestDeleteMenuByIdModel.cs" />
     <Compile Include="Menu\Request\RequestGetMenuListByRoleIdModel.cs" />
     <Compile Include="Menu\Request\RequestGetMenuListModel.cs" />

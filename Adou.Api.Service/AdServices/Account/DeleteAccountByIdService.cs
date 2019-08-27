@@ -20,6 +20,7 @@ namespace Adou.Api.Service.AdServices.Account
         protected override void ExecuteMethod()
         {
             var result = accountRep.DeleteAccountById(this.Parameter.Id);
+
             this.Result.Data = result;
         }
     }

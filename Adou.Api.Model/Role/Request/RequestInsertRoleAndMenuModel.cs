@@ -20,10 +20,6 @@ namespace Adou.Api.Model
         /// </summary>
         public string RoleName { get; set; }
         /// <summary>
-        /// 是否有效 0无效  1有效
-        /// </summary>
-        public bool IsDel { get; set; }
-        /// <summary>
         /// 排序
         /// </summary>
         public int Sort { get; set; }
