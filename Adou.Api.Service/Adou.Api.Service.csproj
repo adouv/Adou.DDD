@@ -50,6 +50,8 @@
     <Compile Include="AdServices\Account\GetAccountPageListService.cs" />
     <Compile Include="AdServices\Account\UpdateAccountByIdService.cs" />
     <Compile Include="AdServices\Account\UpdateAccountIsDelByIdService.cs" />
+    <Compile Include="AdServices\DictionaryType\DeleteDictionaryTypeByIdService.cs" />
+    <Compile Include="AdServices\Dictionary\DeleteDictionaryByIdService.cs" />
     <Compile Include="AdServices\Dictionary\GetDictionaryListService.cs" />
     <Compile Include="AdServices\Dictionary\GetDictionaryPageListService.cs" />
     <Compile Include="AdServices\Dictionary\InsertDictionaryService.cs" />
