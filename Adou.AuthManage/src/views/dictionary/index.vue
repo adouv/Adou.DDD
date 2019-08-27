@@ -4,7 +4,7 @@
       <section class="page-aside-section" style="height:auto !important;">
         <h5 class="page-aside-title">
           数据字典分类
-          <i class="icon ti-reload" @click="getDictionaryList();"></i>
+          <i class="icon ti-reload" @click="getDictionaryTypeList();"></i>
         </h5>
         <div class="list-group">
           <a
@@ -105,34 +105,35 @@ export default {
     };
   },
   mounted() {
-    this.loading = this.loading$({
-      lock: true,
-      text: "正在加载...",
-      spinner: "el-icon-loading",
-      background: "rgba(0, 0, 0, 0.7)"
-    });
-
-    let type = 0;
-    if (this.$route.params.DicType !== undefined) {
-      type = this.$route.params.DicType;
-    }
-
-    this.getDictionaryList(1, type);
+    this.getDictionaryTypeList();
   },
   methods: {
-    async getDictionaryList(PageIndex = 1, type = 0) {
+    async getDictionaryTypeList() {
       this.typeList = [];
-      this.list = [];
+      let tres = await adDictionaryTypeService.getDictionaryTypeList();
+
+      if (tres.Data !== null && tres.Data.length !== 0) {
+        this.typeList = tres.Data;
+      }
+
+      let type = 0;
+      if (this.$route.params.DicType !== undefined) {
+        type = this.$route.params.DicType;
+      }
+
+      this.getDictionaryList(1, type);
+    },
+    async getDictionaryList(PageIndex = 1, type = 0) {
+      this.loading = this.loading$({
+        lock: true,
+        text: "正在加载...",
+        spinner: "el-icon-loading",
+        background: "rgba(0, 0, 0, 0.7)"
+      });
 
       try {
-        // 获取数据词典分类
-        let tres = await adDictionaryTypeService.getDictionaryTypeList();
+        this.list = [];
 
-        if (tres.Data !== null && tres.Data.length !== 0) {
-          this.typeList = tres.Data;
-        }
-
-        // 获取数据词典
         this.request.PageIndex = PageIndex;
 
         this.request.DicType = type === 0 ? this.typeList[0].Id : type;
@@ -226,3 +227,40 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.ad-dictionary {
+  .page-aside-section {
+    .page-aside-title {
+      i {
+        margin-left: 30px;
+        cursor: pointer;
+      }
+    }
+    .list-group {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      margin-bottom: 22px;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      a {
+        position: relative;
+        display: block;
+        padding: 13px 20px;
+        margin-bottom: 1px;
+        border: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-decoration: none;
+        background: none;
+        &.active {
+          color: #3e8ef7;
+          background-color: #f3f7f9;
+        }
+      }
+    }
+  }
+}
+</style>

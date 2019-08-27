@@ -14,10 +14,22 @@ namespace Adou.Repositories.PetaPoco.Adou
         /// 获取菜单列表
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<adMenu> GetMenuList(string orderBy, bool isDesc)
+        public IEnumerable<adMenu> GetMenuList(string orderBy, bool isDesc, adMenu model)
         {
             string sqlWhere = string.Empty;
             string sql = string.Empty;
+
+            #region where
+            if (!string.IsNullOrWhiteSpace(model.Title))
+            {
+                sqlWhere += " AND [Title] =  @0 ";
+            }
+
+            if (model.FatherId > 0)
+            {
+                sqlWhere += " AND [FatherId] =  @1 ";
+            }
+            #endregion
 
             #region sql
             sql = string.Format(@"
@@ -38,35 +50,7 @@ namespace Adou.Repositories.PetaPoco.Adou
             ", sqlWhere);
             #endregion
 
-            return this.GetList(orderBy, isDesc, sql);
-        }
-        /// <summary>
-        /// 通过父级编号获取菜单列表
-        /// </summary>
-        /// <param name="FatherId">父级编号</param>
-        /// <returns>IEnumerable<adMenu></returns>
-        public IEnumerable<adMenu> GetMenuListByFatherId(int FatherId, string orderBy, bool isDesc)
-        {
-            #region sql
-            string sql = string.Format(@"
-                SELECT [Id]
-                      ,[Title]
-                      ,[MenuIcon]
-                      ,[MenuUrl]
-                      ,[FatherId]
-                      ,[LevelId]
-                      ,[CreateTime]
-                      ,[CreateUser]
-                      ,[ModifyTime]
-                      ,[ModifyUser]
-                      ,[IsDel]
-                      ,[Sort]
-                  FROM [dbo].[adMenu]
-                WHERE 1=1 AND [IsDel] = 0 AND [FatherId] = @0 
-            ");
-            #endregion
-
-            return this.GetList(orderBy, isDesc, sql, FatherId);
+            return this.GetList(orderBy, isDesc, sql, model.Title, model.FatherId);
         }
         /// <summary>
         /// 通过父级编号获取菜单
@@ -167,7 +151,7 @@ namespace Adou.Repositories.PetaPoco.Adou
             ");
             #endregion
 
-            return PetaPocoAdouDB.GetInstance().Update<adMenu>(sql, model.Title, model.MenuIcon, model.MenuUrl, model.FatherId, model.LevelId, model.ModifyTime, model.ModifyUser,model.Sort, model.Id);
+            return PetaPocoAdouDB.GetInstance().Update<adMenu>(sql, model.Title, model.MenuIcon, model.MenuUrl, model.FatherId, model.LevelId, model.ModifyTime, model.ModifyUser, model.Sort, model.Id);
         }
         /// <summary>
         /// 通过编号更新排序值

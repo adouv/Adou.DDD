@@ -1,4 +1,5 @@
 ﻿using Adou.Api.Model;
+using Adou.Entity.PetaPocoModels.AdouModel;
 using Adou.Repositories.PetaPoco.Adou;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,12 @@ namespace Adou.Api.Service.AdServices.Menu
         /// </summary>
         protected override void ExecuteMethod()
         {
-            var result = menuRep.GetMenuList(this.Parameter.OrderBy, this.Parameter.IsDesc);
+            var model = new adMenu()
+            {
+                Title = this.Parameter.Title,
+                FatherId = this.Parameter.FatherId
+            };
+            var result = menuRep.GetMenuList(this.Parameter.OrderBy, this.Parameter.IsDesc, model);
             this.Result.Data = result;
         }
     }

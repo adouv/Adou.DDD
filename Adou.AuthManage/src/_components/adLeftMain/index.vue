@@ -51,38 +51,6 @@ export default {
     .adou-page-aside {
       background: #fff;
       width: 220px;
-      .page-aside-section {
-        .page-aside-title{
-          i{
-            margin-left: 30px;
-            cursor: pointer;
-          }
-        }
-        .list-group {
-          display: flex;
-          flex-direction: column;
-          padding-left: 0;
-          margin-bottom: 22px;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          a {
-            position: relative;
-            display: block;
-            padding: 13px 20px;
-            margin-bottom: 1px;
-            border: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            text-decoration: none;
-            background: none;
-            &.active {
-              color: #3e8ef7;
-              background-color: #f3f7f9;
-            }
-          }
-        }
-      }
     }
     .page-main {
       flex: 1;

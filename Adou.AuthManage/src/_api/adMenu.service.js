@@ -15,21 +15,6 @@ export default {
         return result;
     },
     /**
-     * 通过父级编号获取菜单列表
-     * @param {*} [params={}]
-     * @param {*} [config={}]
-     * @returns
-     */
-    async getMenuListByFatherId(params = {}, config = {}) {
-        let newParams = Vue.utils.requestParamsFormat(params);
-        let result = await Vue.http.post(
-            "Menu/GetMenuListByFatherId",
-            newParams,
-            config
-        );
-        return result;
-    },
-    /**
      * 通過角色編號獲取菜單列表
      * @param {*} params 
      * @param {*} config 

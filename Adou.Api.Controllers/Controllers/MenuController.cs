@@ -16,10 +16,6 @@ namespace Adou.Api.Controllers.Controllers
     public class MenuController : BaseController
     {
         /// <summary>
-        /// 通过父级编号获取菜单列表服务
-        /// </summary>
-        public GetMenuListByFatherIdService getMenuListByFatherIdService { get; set; }
-        /// <summary>
         /// 获取菜单列表服务
         /// </summary>
         public GetMenuListService getMenuListService { get; set; }
@@ -56,16 +52,6 @@ namespace Adou.Api.Controllers.Controllers
         public async Task<ResponseMessageModel> GetMenuList([FromBody]RequestGetMenuListModel model)
         {
             return await Task.Run(() => getMenuListService.Execute(model));
-        }
-        /// <summary>
-        /// 通过父级编号获取菜单列表
-        /// </summary>
-        /// <param name="model">请求实体</param>
-        /// <returns>ResponseMessageModel</returns>
-        [Route("GetMenuListByFatherId"), HttpPost]
-        public async Task<ResponseMessageModel> GetMenuListByFatherId([FromBody]RequestGetMenuListModel model)
-        {
-            return await Task.Run(() => getMenuListByFatherIdService.Execute(model));
         }
         /// <summary>
         /// 通过角色编号获取菜单列表

@@ -1,78 +1,101 @@
 <template>
-  <ad-main title="菜单管理" class="ad-account">
-    <div class="row row-lg">
-      <div class="col-sm-12 col-md-12">
-        <ad-button type="inverse" @click.native="getList();">搜索</ad-button>
-        <ad-button
-          type="primary"
-          @click.native="$router.push({ name: 'adMenuEdit', params: {} })"
-        >添加</ad-button>
-      </div>
+  <ad-left-main title="菜单管理" class="ad-dictionary">
+    <div slot="left">
+      <section class="page-aside-section" style="height:auto !important;">
+        <h5 class="page-aside-title">
+          导航目录
+          <i class="icon ti-reload" @click="getDictionaryTypeList();"></i>
+        </h5>
+        <div class="list-group">
+          <a
+            class="list-group-item"
+            href="javascript:;"
+            v-for="(item,index) in typeList"
+            :key="index"
+            :class="request.DicType===item.Id?'active':''"
+            @click="getDictionaryList(1,item.Id);"
+          >
+            <i class="icon wb-dashboard" aria-hidden="true"></i>
+            {{item.Name}}
+          </a>
+        </div>
+      </section>
     </div>
+    <div slot="main">
+      <div class="row row-lg" style="padding:0px !important;margin:0px !important;">
+        <div class="col-sm-12 col-md-12">
+          <ad-button type="inverse" @click.native="getList();">搜索</ad-button>
+          <ad-button
+            type="primary"
+            @click.native="$router.push({ name: 'adMenuEdit', params: {} })"
+          >添加</ad-button>
+        </div>
+      </div>
 
-    <ad-table :headers="headers" :list="list">
-      <tbody v-for="item in list" :key="item.Id">
-        <tr>
-          <td>
-            <i class="fa fa-angle-right" style="cursor: pointer;"></i>
-          </td>
-          <td>{{item.Id}}</td>
-          <td>
-            <i :class="item.MenuIcon"></i>
-            &nbsp;&nbsp;{{item.Title}}
-          </td>
-          <td>{{item.MenuUrl}}</td>
-          <td>
-            <input
-              type="text"
-              style="width:50px;text-align:center;"
-              class="form-control"
-              v-model="item.Sort"
-              @blur="sortHandller(item)"
-            />
-          </td>
-          <td>{{item.CreateTime|dateFormats}}</td>
-          <td>
-            <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
-            <ad-button
-              type="primary"
-              size="sm"
-              @click.native="$router.push({ name: 'adMenuEdit', params: item })"
-            >编辑</ad-button>
-          </td>
-        </tr>
-        <tr v-for="items in item.children" :key="items.Id">
-          <td></td>
-          <td>{{items.Id}}</td>
-          <td>
-            <i class="fa fa-angle-right"></i>
-            <i class="fa fa-angle-right"></i>
-            <i class="fa fa-angle-right"></i>
-            &nbsp;{{items.Title}}
-          </td>
-          <td>{{items.MenuUrl}}</td>
-          <td>
-            <input
-              type="text"
-              style="width:50px;text-align:center;"
-              class="form-control"
-              v-model="items.Sort"
-              @blur="sortHandller(items)"
-            />
-          </td>
-          <td>{{items.CreateTime|dateFormats}}</td>
-          <td>
-            <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(items);">删除</ad-button>
-            <ad-button
-              type="primary"
-              size="sm"
-              @click.native="$router.push({ name: 'adMenuEdit', params: items })"
-            >编辑</ad-button>
-          </td>
-        </tr>
-      </tbody>
-    </ad-table>
-  </ad-main>
+      <ad-table :headers="headers" :list="list">
+        <tbody v-for="item in list" :key="item.Id">
+          <tr>
+            <td>
+              <i class="fa fa-angle-right" style="cursor: pointer;"></i>
+            </td>
+            <td>{{item.Id}}</td>
+            <td>
+              <i :class="item.MenuIcon"></i>
+              &nbsp;&nbsp;{{item.Title}}
+            </td>
+            <td>{{item.MenuUrl}}</td>
+            <td>
+              <input
+                type="text"
+                style="width:50px;text-align:center;"
+                class="form-control"
+                v-model="item.Sort"
+                @blur="sortHandller(item)"
+              />
+            </td>
+            <td>{{item.CreateTime|dateFormats}}</td>
+            <td>
+              <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(item);">删除</ad-button>
+              <ad-button
+                type="primary"
+                size="sm"
+                @click.native="$router.push({ name: 'adMenuEdit', params: item })"
+              >编辑</ad-button>
+            </td>
+          </tr>
+          <tr v-for="items in item.children" :key="items.Id">
+            <td></td>
+            <td>{{items.Id}}</td>
+            <td>
+              <i class="fa fa-angle-right"></i>
+              <i class="fa fa-angle-right"></i>
+              <i class="fa fa-angle-right"></i>
+              &nbsp;{{items.Title}}
+            </td>
+            <td>{{items.MenuUrl}}</td>
+            <td>
+              <input
+                type="text"
+                style="width:50px;text-align:center;"
+                class="form-control"
+                v-model="items.Sort"
+                @blur="sortHandller(items)"
+              />
+            </td>
+            <td>{{items.CreateTime|dateFormats}}</td>
+            <td>
+              <ad-button type="danger" size="sm" @click.native="btnDeleteHandller(items);">删除</ad-button>
+              <ad-button
+                type="primary"
+                size="sm"
+                @click.native="$router.push({ name: 'adMenuEdit', params: items })"
+              >编辑</ad-button>
+            </td>
+          </tr>
+        </tbody>
+      </ad-table>
+    </div>
+  </ad-left-main>
 </template>
 
 <script>
@@ -101,6 +124,9 @@ export default {
     this.getList();
   },
   methods: {
+    getMenuList(){
+      
+    },
     getList() {
       this.list = [];
 
