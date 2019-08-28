@@ -88,15 +88,17 @@ export default {
     if (params.Id !== undefined) {
       this.params = params;
     }
-
-    console.log(this.params);
-    console.log(this.defaultCheckedKeys);
-
     this.getMenuList();
   },
   methods: {
     async getMenuList() {
-      let response = await adMenuService.getMenuList(this.request);
+      let params = {
+        FatherId: -1,
+        OrderBy: "Sort",
+        IsDesc: false
+      };
+
+      let response = await adMenuService.getMenuList(params);
 
       try {
         if (response.Data !== null && response.Data.length !== 0) {

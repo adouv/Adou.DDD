@@ -25,7 +25,7 @@ namespace Adou.Repositories.PetaPoco.Adou
                 sqlWhere += " AND [Title] =  @0 ";
             }
 
-            if (model.FatherId > 0)
+            if (model.FatherId >= 0)
             {
                 sqlWhere += " AND [FatherId] =  @1 ";
             }

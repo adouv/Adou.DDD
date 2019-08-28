@@ -74,47 +74,51 @@ export default {
     },
     getMenuList() {
       let params = {
+        FatherId: -1,
         OrderBy: "Sort",
         IsDesc: false
       };
 
-      adMenuService.getMenuList(params).then(response => {
-        let { Data } = response;
-        if (null !== Data) {
-          //===
-          Data.forEach(element => {
-            let children = [];
+      adMenuService
+        .getMenuList(params)
+        .then(response => {
+          let { Data } = response;
+          if (null !== Data) {
+            //===
+            Data.forEach(element => {
+              let children = [];
 
-            if (element.FatherId === 0) {
-              this.sidebarList.push({
-                id: element.Id,
-                text: element.Title,
-                icon: element.MenuIcon,
-                url: "#",
-                path: "#",
-                isSubShow: false,
-                children: children
-              });
-            }
-
-            Data.forEach(subElement => {
-              if (subElement.FatherId === element.Id) {
-                children.push({
-                  id: subElement.Id,
-                  text: subElement.Title,
-                  icon: "",
-                  url: subElement.MenuUrl,
-                  path: subElement.MenuUrl
+              if (element.FatherId === 0) {
+                this.sidebarList.push({
+                  id: element.Id,
+                  text: element.Title,
+                  icon: element.MenuIcon,
+                  url: "#",
+                  path: "#",
+                  isSubShow: false,
+                  children: children
                 });
               }
+
+              Data.forEach(subElement => {
+                if (subElement.FatherId === element.Id) {
+                  children.push({
+                    id: subElement.Id,
+                    text: subElement.Title,
+                    icon: "",
+                    url: subElement.MenuUrl,
+                    path: subElement.MenuUrl
+                  });
+                }
+              });
             });
-          });
-          //===
-        }
-        this.loading.close();
-      }).catch(err=>{
-        this.loading.close();
-      });
+            //===
+          }
+          this.loading.close();
+        })
+        .catch(err => {
+          this.loading.close();
+        });
     }
   }
 };

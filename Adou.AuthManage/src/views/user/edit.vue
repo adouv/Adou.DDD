@@ -57,7 +57,7 @@
         <div class="example-wrap">
           <h4 class="example-title">是否超级管理员</h4>
           <ul class="list-unstyled list-inline">
-            <li class="list-inline-item" v-for="item in UserTypeData" :key="item.id">
+            <li class="list-inline-item" v-for="item in UserTypeData" :key="item.key">
               <div class="radio-custom radio-primary">
                 <input
                   type="radio"
@@ -98,7 +98,7 @@
         <div class="example-wrap">
           <h4 class="example-title">是否启用</h4>
           <ul class="list-unstyled list-inline">
-            <li class="list-inline-item" v-for="item in UserStatusData" :key="item.id">
+            <li class="list-inline-item" v-for="item in UserStatusData" :key="item.key">
               <div class="radio-custom radio-primary">
                 <input
                   type="radio"

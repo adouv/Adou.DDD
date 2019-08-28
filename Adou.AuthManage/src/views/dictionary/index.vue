@@ -43,7 +43,7 @@
         </div>
 
         <div class="col-sm-12 col-md-12">
-          <ad-button type="inverse" @click.native="getDictionaryList();">搜索</ad-button>
+          <ad-button type="inverse" @click.native="getDictionaryList(1,request.DicType);">搜索</ad-button>
           <ad-button type="primary" @click.native="btnEditHandller(item);">添加</ad-button>
           <ad-button
             type="success"
