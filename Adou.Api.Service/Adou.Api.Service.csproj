@@ -84,6 +84,12 @@
     <Compile Include="AdServices\User\InsertUserAndRoleService.cs" />
     <Compile Include="AdServices\User\UpdateUserAndRoleByIdService.cs" />
     <Compile Include="AdServices\User\UpdateUserIsDelByIdService.cs" />
+    <Compile Include="AdServices\WebProduct\DeleteWebProductByIdService.cs" />
+    <Compile Include="AdServices\WebProduct\GetWebProductListService.cs" />
+    <Compile Include="AdServices\WebProduct\GetWebProductPageListService.cs" />
+    <Compile Include="AdServices\WebProduct\InsertWebProductService.cs" />
+    <Compile Include="AdServices\WebProduct\UpdateWebProductByIdService.cs" />
+    <Compile Include="AdServices\WebProduct\UpdateWebProductIsDelByIdService.cs" />
     <Compile Include="ApiBase.cs" />
     <Compile Include="ApiBaseBase.cs" />
     <Compile Include="ApiEncryBase.cs" />

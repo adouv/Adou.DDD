@@ -47,6 +47,7 @@
     <Compile Include="Adou\MenuRep.cs" />
     <Compile Include="Adou\RoleRep.cs" />
     <Compile Include="Adou\UserRep.cs" />
+    <Compile Include="Adou\WebProductRep.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

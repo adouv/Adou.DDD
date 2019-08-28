@@ -80,6 +80,11 @@
     <Compile Include="RequestBaseModel.cs" />
     <Compile Include="RequestModel.cs" />
     <Compile Include="ResponseMessageModel.cs" />
+    <Compile Include="WebProduct\Request\RequestDeleteWebProductByIdModel.cs" />
+    <Compile Include="WebProduct\Request\RequestGetWebProductListModel.cs" />
+    <Compile Include="WebProduct\Request\RequestInsertWebProductModel.cs" />
+    <Compile Include="WebProduct\Request\RequestUpdateWebProductByIdModel.cs" />
+    <Compile Include="WebProduct\Request\RequestUpdateWebProductIsDelByIdModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Adou.DDD\Adou.DDD.csproj">

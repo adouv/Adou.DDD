@@ -344,75 +344,6 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 	/// <summary>
 	/// 
 	/// </summary>    
-	[TableName("dbo.adProduct")]
-	[PrimaryKey("Id")]
-	[ExplicitColumns]
-    public partial class adProduct : PetaPocoAdouDB.Record<adProduct>  
-    {
-		/// <summary>
-		/// 
-		/// </summary>
-		[Column] public long Id { get; set; }
-		/// <summary>
-		/// 产品名称
-		/// </summary>
-		[Column] public string Name { get; set; }
-		/// <summary>
-		/// 产品分类
-		/// </summary>
-		[Column] public long? ProductTypeId { get; set; }
-		/// <summary>
-		/// 品种
-		/// </summary>
-		[Column] public long? VarietyId { get; set; }
-		/// <summary>
-		/// 规格
-		/// </summary>
-		[Column] public string Specification { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		[Column] public long? FewHolesId { get; set; }
-		/// <summary>
-		/// 
-		/// </summary>
-		[Column] public long? ZincLayerId { get; set; }
-		/// <summary>
-		/// 颜色
-		/// </summary>
-		[Column] public long? ColorId { get; set; }
-		/// <summary>
-		/// 数量
-		/// </summary>
-		[Column] public string Quantity { get; set; }
-		/// <summary>
-		/// 公司名称
-		/// </summary>
-		[Column] public string CompanyName { get; set; }
-		/// <summary>
-		/// 是否热点
-		/// </summary>
-		[Column] public int? IsHot { get; set; }
-		/// <summary>
-		/// 排序
-		/// </summary>
-		[Column] public int? Sort { get; set; }
-		/// <summary>
-		/// 创建时间、发布时间
-		/// </summary>
-		[Column] public DateTime? CreateTime { get; set; }
-		/// <summary>
-		/// 创建用户
-		/// </summary>
-		[Column] public string CreateUser { get; set; }
-		/// <summary>
-		/// 创建用户编号
-		/// </summary>
-		[Column] public long? CreateUserId { get; set; }
-	}
-	/// <summary>
-	/// 
-	/// </summary>    
 	[TableName("dbo.adRole")]
 	[PrimaryKey("Id")]
 	[ExplicitColumns]
@@ -553,5 +484,142 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// 
 		/// </summary>
 		[Column] public long? RoleId { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
+	[TableName("dbo.adWebArticle")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adWebArticle : PetaPocoAdouDB.Record<adWebArticle>  
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long Id { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
+	[TableName("dbo.adWebNavigation")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adWebNavigation : PetaPocoAdouDB.Record<adWebNavigation>  
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long Id { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
+	[TableName("dbo.adWebProduct")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adWebProduct : PetaPocoAdouDB.Record<adWebProduct>  
+    {
+		/// <summary>
+		/// 编号 自增
+		/// </summary>
+		[Column] public long Id { get; set; }
+		/// <summary>
+		/// 产品名称
+		/// </summary>
+		[Column] public string Name { get; set; }
+		/// <summary>
+		/// 产品分类
+		/// </summary>
+		[Column] public long? ProductTypeId { get; set; }
+		/// <summary>
+		/// 品种
+		/// </summary>
+		[Column] public long? VarietyId { get; set; }
+		/// <summary>
+		/// 规格
+		/// </summary>
+		[Column] public string Specification { get; set; }
+		/// <summary>
+		/// 几孔
+		/// </summary>
+		[Column] public long? FewHolesId { get; set; }
+		/// <summary>
+		/// 锌层
+		/// </summary>
+		[Column] public long? ZincLayerId { get; set; }
+		/// <summary>
+		/// 颜色
+		/// </summary>
+		[Column] public long? ColorId { get; set; }
+		/// <summary>
+		/// 数量
+		/// </summary>
+		[Column] public string Quantity { get; set; }
+		/// <summary>
+		/// 公司名称、用户名称
+		/// </summary>
+		[Column] public string CompanyName { get; set; }
+		/// <summary>
+		/// 公司编号、用户编号
+		/// </summary>
+		[Column] public long? UserId { get; set; }
+		/// <summary>
+		/// 用户名
+		/// </summary>
+		[Column] public string UserName { get; set; }
+		/// <summary>
+		/// 是否热点
+		/// </summary>
+		[Column] public int? IsHot { get; set; }
+		/// <summary>
+		/// 是否删除
+		/// </summary>
+		[Column] public bool? IsDel { get; set; }
+		/// <summary>
+		/// 排序
+		/// </summary>
+		[Column] public int? Sort { get; set; }
+		/// <summary>
+		/// 创建时间、发布时间
+		/// </summary>
+		[Column] public DateTime? CreateTime { get; set; }
+		/// <summary>
+		/// 创建用户
+		/// </summary>
+		[Column] public string CreateUser { get; set; }
+		/// <summary>
+		/// 修改时间
+		/// </summary>
+		[Column] public DateTime? ModifyTime { get; set; }
+		/// <summary>
+		/// 修改用户
+		/// </summary>
+		[Column] public string ModifyUser { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
+	[TableName("dbo.adWebSetting")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adWebSetting : PetaPocoAdouDB.Record<adWebSetting>  
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long Id { get; set; }
+	}
+	/// <summary>
+	/// 
+	/// </summary>    
+	[TableName("dbo.adWebUser")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class adWebUser : PetaPocoAdouDB.Record<adWebUser>  
+    {
+		/// <summary>
+		/// 
+		/// </summary>
+		[Column] public long Id { get; set; }
 	}
 }

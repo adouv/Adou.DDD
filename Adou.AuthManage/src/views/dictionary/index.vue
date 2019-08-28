@@ -68,13 +68,6 @@
           </tr>
         </tbody>
       </ad-table>
-
-      <ad-pagination
-        style="padding:0 24px !important;"
-        :total="TotalItems"
-        :pageIndex="request.PageIndex"
-        @currentChange="getDictionaryList"
-      ></ad-pagination>
     </div>
   </ad-left-main>
 </template>
@@ -94,14 +87,10 @@ export default {
         DicKey: "",
         DicCoding: "",
         DicType: 0,
-        PageIndex: 1,
-        PageSize: 10,
         OrderBy: "Sort",
         IsDesc: false
       },
-      TotalItems: 0,
-      loading: null,
-      flag: false
+      loading: null
     };
   },
   mounted() {
@@ -138,12 +127,10 @@ export default {
 
         this.request.DicType = type === 0 ? this.typeList[0].Id : type;
 
-        let res = await adDictionaryService.getDictionaryPageList(this.request);
+        let res = await adDictionaryService.getDictionaryList(this.request);
 
-        if (res.Data !== null && res.Data.Items.length !== 0) {
-          this.list = res.Data.Items;
-          this.TotalItems = res.Data.TotalItems;
-          this.request.PageIndex = res.Data.CurrentPage;
+        if (res.Data && res.Data.length > 0) {
+          this.list = res.Data;
         }
 
         this.loading.close();
