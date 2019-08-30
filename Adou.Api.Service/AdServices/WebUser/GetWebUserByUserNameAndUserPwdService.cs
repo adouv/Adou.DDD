@@ -8,7 +8,7 @@ using Adou.DDD.Config;
 using Adou.Repositories.PetaPoco.Adou;
 using Adou.Entity.PetaPocoModels.AdouModel;
 
-namespace Adou.Api.Service.AdServices.WenUser
+namespace Adou.Api.Service.AdServices.WebUser
 {
     /// <summary>
     /// 通过用户名和密码进行用户登录

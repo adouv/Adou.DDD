@@ -8,12 +8,12 @@ using Adou.DDD.Config;
 using Adou.Repositories.PetaPoco.Adou;
 using Adou.Entity.PetaPocoModels.AdouModel;
 
-namespace Adou.Api.Service.AdServices.WenUser
+namespace Adou.Api.Service.AdServices.WebUser
 {
     /// <summary>
-    /// 分页获取用户列表
+    /// 获取用户列表
     /// </summary>
-    public class GetWebUserPageListService : ApiBase<RequestGetWebUserListModel>
+    public class GetWebUserListService : ApiBase<RequestGetWebUserListModel>
     {
         public WebUserRep webUserRep { get; set; }
         /// <summary>
@@ -34,7 +34,7 @@ namespace Adou.Api.Service.AdServices.WenUser
                 IsVip = this.Parameter.IsVip
             };
 
-            var result = webUserRep.GetWebUserPageList(this.Parameter.OrderBy, this.Parameter.IsDesc, this.Parameter.PageIndex, this.Parameter.PageSize, model);
+            var result = webUserRep.GetWebUserList(this.Parameter.OrderBy, this.Parameter.IsDesc, model);
 
             this.Result.Data = result;
         }

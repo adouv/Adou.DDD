@@ -8,12 +8,12 @@ using Adou.DDD.Config;
 using Adou.Repositories.PetaPoco.Adou;
 using Adou.Entity.PetaPocoModels.AdouModel;
 
-namespace Adou.Api.Service.AdServices.WenUser
+namespace Adou.Api.Service.AdServices.WebUser
 {
     /// <summary>
-    /// 通过编号删除用户
+    /// 伪删除
     /// </summary>
-    public class DeleteWebUserByIdService : ApiBase<RequestDeleteWebUserByIdModel>
+    public class UpdateWebUserIsDelByIdService : ApiBase<RequestUpdateWebUserIsDelByIdModel>
     {
         public WebUserRep webUserRep { get; set; }
         /// <summary>
@@ -21,7 +21,15 @@ namespace Adou.Api.Service.AdServices.WenUser
         /// </summary>
         protected override void ExecuteMethod()
         {
-            var result = webUserRep.DeleteWebUserById(this.Parameter.Id);
+            var model = new adWebUser()
+            {
+                Id = this.Parameter.Id,
+                IsDel = true,
+                ModifyTime = DateTime.Now,
+                ModifyUser = AdouConfigHelper.UserName
+            };
+
+            var result = webUserRep.UpdateWebUserIsDelById(model);
 
             this.Result.Data = result;
         }
