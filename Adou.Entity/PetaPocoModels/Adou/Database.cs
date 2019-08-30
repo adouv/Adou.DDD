@@ -621,5 +621,65 @@ namespace Adou.Entity.PetaPocoModels.AdouModel
 		/// 
 		/// </summary>
 		[Column] public long Id { get; set; }
+		/// <summary>
+		/// 用户名
+		/// </summary>
+		[Column] public string UserName { get; set; }
+		/// <summary>
+		/// 密码
+		/// </summary>
+		[Column] public string UserPwd { get; set; }
+		/// <summary>
+		/// 真实姓名
+		/// </summary>
+		[Column] public string RealName { get; set; }
+		/// <summary>
+		/// 身份证号
+		/// </summary>
+		[Column] public string IDCard { get; set; }
+		/// <summary>
+		/// 公司名称
+		/// </summary>
+		[Column] public string CompanyName { get; set; }
+		/// <summary>
+		/// 手机号
+		/// </summary>
+		[Column] public string Mobile { get; set; }
+		/// <summary>
+		/// 电话号
+		/// </summary>
+		[Column] public string Tel { get; set; }
+		/// <summary>
+		/// 联系地址
+		/// </summary>
+		[Column] public string Address { get; set; }
+		/// <summary>
+		/// 创建时间
+		/// </summary>
+		[Column] public DateTime? CreateTime { get; set; }
+		/// <summary>
+		/// 创建用户
+		/// </summary>
+		[Column] public string CreateUser { get; set; }
+		/// <summary>
+		/// 修改时间
+		/// </summary>
+		[Column] public DateTime? ModifyTime { get; set; }
+		/// <summary>
+		/// 修改用户
+		/// </summary>
+		[Column] public string ModifyUser { get; set; }
+		/// <summary>
+		/// 是否删除
+		/// </summary>
+		[Column] public bool? IsDel { get; set; }
+		/// <summary>
+		/// 1有效 2无效
+		/// </summary>
+		[Column] public int? IsValid { get; set; }
+		/// <summary>
+		/// 1是  2否
+		/// </summary>
+		[Column] public int? IsVip { get; set; }
 	}
 }

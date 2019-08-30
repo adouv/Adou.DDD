@@ -18,6 +18,9 @@ import AdRoleEditComponent from "@views/role/edit";
 
 import AdDictionaryComponent from "@views/dictionary/index";
 import AdDictionaryTypeComponent from "@views/dictionaryType/index";
+
+import AdWebProductComponent from "@views/webManage/product/index";
+import AdWebProductEditComponent from "@views/webManage/product/edit";
 Vue.use(Router);
 
 const routers = [{
@@ -80,9 +83,19 @@ const routers = [{
                 component: AdDictionaryComponent
             },
             {
-                path: 'adDictionaryType',
-                name: 'adDictionaryType',
+                path: "adDictionaryType",
+                name: "adDictionaryType",
                 component: AdDictionaryTypeComponent
+            },
+            {
+                path: "adProduct",
+                name: "adProduct",
+                component: AdWebProductComponent
+            },
+            {
+                path: "adProductEdit",
+                name: "adProductEdit",
+                component: AdWebProductEditComponent
             }
         ]
     }

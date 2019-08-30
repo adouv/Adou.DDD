@@ -80,7 +80,7 @@ namespace Adou.Repositories.PetaPoco.Adou
                 sqlWhere += " AND [UserName] LIKE '%@10%' ";
             }
             //是否热点
-            if (model.IsHot > -1)
+            if (model.IsHot > 0)
             {
                 sqlWhere += " AND [IsHot] = @11 ";
             }
@@ -197,7 +197,7 @@ namespace Adou.Repositories.PetaPoco.Adou
                 sqlWhere += " AND [UserName] LIKE '%@10%' ";
             }
             //是否热点
-            if (model.IsHot > -1)
+            if (model.IsHot > 0)
             {
                 sqlWhere += " AND [IsHot] = @11 ";
             }

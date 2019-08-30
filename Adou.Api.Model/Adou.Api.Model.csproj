@@ -85,6 +85,12 @@
     <Compile Include="WebProduct\Request\RequestInsertWebProductModel.cs" />
     <Compile Include="WebProduct\Request\RequestUpdateWebProductByIdModel.cs" />
     <Compile Include="WebProduct\Request\RequestUpdateWebProductIsDelByIdModel.cs" />
+    <Compile Include="WebUser\Request\RequestDeleteWebUserByIdModel.cs" />
+    <Compile Include="WebUser\Request\RequestGetWebUserByUserNameAndUserPwdModel.cs" />
+    <Compile Include="WebUser\Request\RequestGetWebUserListModel.cs" />
+    <Compile Include="WebUser\Request\RequestInsertWebUserModel.cs" />
+    <Compile Include="WebUser\Request\RequestUpdateWebUserByIdModel.cs" />
+    <Compile Include="WebUser\Request\RequestUpdateWebUserIsDelByIdModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Adou.DDD\Adou.DDD.csproj">

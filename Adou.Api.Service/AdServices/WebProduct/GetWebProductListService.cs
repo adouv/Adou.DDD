@@ -34,8 +34,7 @@ namespace Adou.Api.Service.AdServices.WebProduct
                 CompanyName = this.Parameter.CompanyName,
                 UserId = this.Parameter.UserId,
                 UserName = this.Parameter.UserName,
-                IsHot = this.Parameter.IsHot,
-                CreateTime = Convert.ToDateTime(this.Parameter.CreateTime)
+                IsHot = this.Parameter.IsHot
             };
 
             var result = webProductRep.GetWebProductList(this.Parameter.OrderBy, this.Parameter.IsDesc, model);
