@@ -188,7 +188,7 @@
     </Content>
     <Content Include="Areas\AdouManage\Views\web.config" />
     <Content Include="Areas\AdouManage\Views\_ViewStart.cshtml" />
-    <Content Include="README.md" />
+    <Content Include="login.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -206,8 +206,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdouManage\Views\Default\" />
-    <Folder Include="web\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\AdouManage\Views\Shared\_Layout.cshtml" />
